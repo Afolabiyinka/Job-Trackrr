@@ -25,33 +25,43 @@ interface Addjob {
   setJobType: (jobType: JobType) => void;
   setFeedback: (feedback: string) => void;
   setSalaryRange: (salary: number | string | null) => void;
+  reset: () => void;
 }
 
-export const useSetJob = create<Addjob>((set) => ({
-  company: "",
-  companyImg: "",
-  role: "",
-  status: "applied",
-  interviewType: "Virtual",
-  interviewDate: new Date(),
-  workType: "Remote",
-  companyEmail: "",
-  jobType: "Full_Time",
-  feedback: "",
-  salaryRange: null,
+export const useSetJob = create<Addjob>((set) => {
+  // default state object
+  const defaultState = {
+    company: "",
+    companyImg: "",
+    role: "",
+    status: "applied" as Status,
+    interviewType: "Virtual" as InterviewType,
+    interviewDate: new Date(),
+    workType: "Remote" as WorkType,
+    companyEmail: "",
+    jobType: "Full_Time" as JobType,
+    feedback: "",
+    salaryRange: null,
+  };
 
-  setCompany: (c) => set({ company: c }),
-  setCompanyImg: (ci) => set({ companyImg: ci }),
-  setRole: (r) => set({ role: r }),
-  setStatus: (s) => set({ status: s }),
-  setInterviewType: (it) => set({ interviewType: it }),
-  setInterviewDate: (d) => set({ interviewDate: new Date(d) }),
-  setWorkType: (wt) => set({ workType: wt }),
-  setCompanyEmail: (e) => set({ companyEmail: e }),
-  setJobType: (jt) => set({ jobType: jt }),
-  setFeedback: (f) => set({ feedback: f }),
-  setSalaryRange: (s) =>
-    set({
-      salaryRange: s === null || s === "" ? null : Number(s),
-    }),
-}));
+  return {
+    ...defaultState,
+
+    setCompany: (c) => set({ company: c }),
+    setCompanyImg: (ci) => set({ companyImg: ci }),
+    setRole: (r) => set({ role: r }),
+    setStatus: (s) => set({ status: s }),
+    setInterviewType: (it) => set({ interviewType: it }),
+    setInterviewDate: (d: Date | undefined) =>
+      set({ interviewDate: d ? new Date(d) : new Date() }),
+    setWorkType: (wt) => set({ workType: wt }),
+    setCompanyEmail: (e) => set({ companyEmail: e }),
+    setJobType: (jt) => set({ jobType: jt }),
+    setFeedback: (f) => set({ feedback: f }),
+    setSalaryRange: (s) =>
+      set({ salaryRange: s === null || s === "" ? null : Number(s) }),
+
+    // reset function
+    reset: () => set({ ...defaultState }),
+  };
+});

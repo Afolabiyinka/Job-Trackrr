@@ -85,6 +85,7 @@ const CreateJobStepper = ({
     setFeedback,
     setSalaryRange,
     setInterviewDate,
+    reset,
   } = useSetJob();
 
   const { handleCreate, loading } = useCreateJob();
@@ -105,7 +106,13 @@ const CreateJobStepper = ({
   }, [editing, job]);
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(isOpen) => {
+        setOpen(isOpen);
+        if (!isOpen) reset();
+      }}
+    >
       <DialogTrigger asChild>
         <span>
           <Button size={`lg`}>
@@ -137,6 +144,7 @@ const CreateJobStepper = ({
             e.preventDefault();
             const success = await handleCreate();
             if (success) {
+              reset();
               setOpen(false);
             }
           }}
@@ -247,7 +255,7 @@ const CreateJobStepper = ({
                       <DatePicker
                         title="Interview Date"
                         inputtedDate={interviewDate}
-                        onSelect={(val) => setInterviewDate(val)}
+                        onSelect={(val) => val && setInterviewDate(val)}
                       />
                     </div>
                     <div className="grid flex-1 gap-2">
