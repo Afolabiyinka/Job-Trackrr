@@ -36,6 +36,7 @@ import MoneyInput from "../input/salary-range";
 import { useJobs } from "../../../store/useJobs";
 import type { Job } from "../../../types/job";
 import { useEffect } from "react";
+import { useEditJobs } from "../../../hooks/useEditJob";
 
 const CreateJobStepper = ({
   title,
@@ -89,6 +90,7 @@ const CreateJobStepper = ({
   } = useSetJob();
 
   const { handleCreate, loading } = useCreateJob();
+  const { handleEdit } = useEditJobs();
 
   useEffect(() => {
     if (editing && job) {
@@ -142,7 +144,10 @@ const CreateJobStepper = ({
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            const success = await handleCreate();
+
+            const success = editing
+              ? await handleEdit(id)
+              : await handleCreate();
             if (success) {
               reset();
               setOpen(false);

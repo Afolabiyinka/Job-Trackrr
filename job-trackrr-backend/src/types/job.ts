@@ -7,6 +7,7 @@ export type JobType = "Full Time" | "Part Time" | "Contract" | "Internship";
 export type WorkType = "Remote" | "Hybrid" | "On-Site";
 
 export interface Job {
+  id: number | string;
   company: string;
   role: string;
   appliedAt: Date | string;
