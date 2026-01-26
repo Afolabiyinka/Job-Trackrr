@@ -4,48 +4,41 @@ import jwt from "jsonwebtoken";
 import { LoginPayload, SignupPayload } from "../types/auth";
 import { User } from "../models/User";
 
-const jwtsecret = process.env.JWT_SECRET!;
+const jwtSecret = process.env.JWT_SECRET!;
+const cookieOptions = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === "production", // only over HTTPS in prod
+  sameSite: "strict" as const, // prevents CSRF
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
+};
 
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body as LoginPayload;
 
   if (!email || !password) {
-    return res.status(400).json({
-      message: "Email & Password is required",
-    });
+    return res.status(400).json({ message: "Email & Password is required" });
   }
 
   try {
-    //Check if user exists
     const user = await User.findOne({ where: { email } });
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    //Compare if the password matches
+    if (!user) return res.status(404).json({ message: "User not found" });
+
     const passwordMatch = await bcrypt.compare(
       password,
       user.getDataValue("password"),
     );
+    if (!passwordMatch)
+      return res.status(400).json({ message: "Incorrect password" });
 
-    if (!passwordMatch) {
-      return res.status(400).json({ message: "Incorrect Password" });
-    }
-    const token = jwt.sign({ id: user?.getDataValue("id") }, jwtsecret, {
+    const token = jwt.sign({ id: user.getDataValue("id") }, jwtSecret, {
       expiresIn: "7d",
     });
 
-    res.status(200).json({
-      message: "Login Succesfull",
-      token,
-      user: {
-        username: user.getDataValue("username"),
-        email: user.getDataValue("email"),
-        profilePic: user.getDataValue("profilePic"),
-      },
-    });
+    res.cookie("token", token, cookieOptions);
+    res.status(200).json({ message: "Login successful" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "Something went wrong" });
-    console.log(err);
   }
 };
 
@@ -56,36 +49,29 @@ const signup = async (req: Request, res: Response) => {
       .status(400)
       .json({ message: "Email, Username & Password is required" });
   }
+
   try {
-    //Check if the email is already taken
     const emailTaken = await User.findOne({ where: { email } });
-    if (emailTaken) {
+    if (emailTaken)
       return res.status(400).json({ message: "Email already taken" });
-    }
-    //Hashing the password
-    const saltRounds = 10;
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const user = await User.create({
       email,
       username,
       password: hashedPassword,
     });
 
-    const token = jwt.sign({ id: user?.getDataValue("id") }, jwtsecret, {
+    const token = jwt.sign({ id: user.getDataValue("id") }, jwtSecret, {
       expiresIn: "7d",
     });
-    res.status(200).json({
-      message: "Account created succesfully",
-      token,
-      user: {
-        username: user.getDataValue("username"),
-        email: user.getDataValue("email"),
-        profilePic: user.getDataValue("profilePic"),
-      },
-    });
+
+    res.cookie("token", token, cookieOptions);
+    res.status(200).json({ message: "Account created successfully" });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ message: "Something went wrong" });
-    console.log(err);
   }
 };
 

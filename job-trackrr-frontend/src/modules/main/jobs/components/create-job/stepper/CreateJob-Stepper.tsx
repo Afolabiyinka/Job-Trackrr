@@ -92,19 +92,45 @@ const CreateJobStepper = ({
   const { handleCreate, loading } = useCreateJob();
   const { handleEdit } = useEditJobs();
 
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (editing) {
+      if (!id) {
+        console.error("Editing without ID");
+        return;
+      }
+
+      const success = await handleEdit({ id });
+      if (success) {
+        reset();
+        setOpen(false);
+      }
+      return;
+    }
+
+    const success = await handleCreate();
+    if (success) {
+      reset();
+      setOpen(false);
+    }
+  }
+
   useEffect(() => {
     if (editing && job) {
       setCompany(job.company);
       setRole(job.role);
       setCompanyEmail(job.companyEmail);
-      setFeedback(job.feedback);
+      // setFeedback(job.feedback);
       setSalaryRange(job.salaryRange);
-      setInterviewDate(job.interviewDate);
-      setInterviewType(job.interviewType);
-      setStatus(job.status);
-      setWorkType(job.workType);
-      setJobType(job.jobType);
+      setInterviewDate(job.interviewDate ? new Date(job.interviewDate) : null);
+      setInterviewType(job.interviewType ?? null);
+      setStatus(job.status ?? null);
+      setWorkType(job.workType ?? null);
+      setJobType(job.jobType ?? null);
     }
+    // Add all setter functions or disable the rule if they're stable
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editing, job]);
 
   return (
@@ -141,19 +167,7 @@ const CreateJobStepper = ({
           <Step />
           <Step />
         </Stepper>
-        <form
-          onSubmit={async (e) => {
-            e.preventDefault();
-
-            const success = editing
-              ? await handleEdit(id)
-              : await handleCreate();
-            if (success) {
-              reset();
-              setOpen(false);
-            }
-          }}
-        >
+        <form onSubmit={(e) => handleSubmit(e)}>
           {/* //Main Step Content */}
           <div>
             {activeStep === 0 && (
@@ -205,7 +219,7 @@ const CreateJobStepper = ({
                         dropdownItems={JOB_TYPES}
                         placeholder="Select job type"
                         hasColor={false}
-                        value={jobType}
+                        value={jobType ?? undefined}
                         onSelect={(e) => setJobType(e)}
                       />
                     </div>
@@ -215,7 +229,7 @@ const CreateJobStepper = ({
                         dropdownItems={WORK_TYPES}
                         placeholder="Select work type"
                         hasColor={false}
-                        value={workType}
+                        value={workType ?? undefined}
                         onSelect={(e) => setWorkType(e)}
                       />
                     </div>
@@ -252,14 +266,14 @@ const CreateJobStepper = ({
                         dropdownItems={INTERVIEW_TYPES}
                         placeholder="Select interview type"
                         hasColor={false}
-                        value={interviewType}
+                        value={interviewType ?? undefined}
                         onSelect={(e) => setInterviewType(e)}
                       />
                     </div>
                     <div className="grid flex-1 gap-2">
                       <DatePicker
                         title="Interview Date"
-                        inputtedDate={interviewDate}
+                        inputtedDate={interviewDate ?? undefined}
                         onSelect={(val) => val && setInterviewDate(val)}
                       />
                     </div>
@@ -292,7 +306,7 @@ const CreateJobStepper = ({
                         Status
                       </Label>
                       <CreateDropdown
-                        value={status}
+                        value={status ?? undefined}
                         dropdownItems={STATUS_TYPES}
                         placeholder="Select current status"
                         hasColor={false}

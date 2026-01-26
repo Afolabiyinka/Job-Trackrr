@@ -1,19 +1,18 @@
 import { testingEndpoint } from "@/constants/api-data";
-import { useUser } from "../store/useUser";
 
-const token = useUser.getState().token;
 const getUser = async () => {
   const res = await fetch(`${testingEndpoint}api/auth/user`, {
     method: "GET",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
   });
-  const data = res.json();
+  const data = await res.json();
   if (!res.ok) {
-    window.location.href === "/auth/login";
+    throw new Error(data.message || "Failed to fetch user");
   }
+
   return data;
 };
 

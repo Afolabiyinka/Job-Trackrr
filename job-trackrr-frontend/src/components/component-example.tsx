@@ -92,7 +92,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "@/modules/theme/useTheme";
 
-export function ComponentExample() {
+export default function ComponentExample() {
   return (
     <ExampleWrapper>
       <CardExample />

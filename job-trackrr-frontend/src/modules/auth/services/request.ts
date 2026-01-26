@@ -9,13 +9,10 @@ const login = async (payload: LoginPayload): Promise<SuccessResponse> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
+    credentials: "include",
   });
 
   const data = await res.json();
-
-  if (!res.ok) {
-    throw new Error(data.message);
-  }
 
   return data;
 };
@@ -23,13 +20,15 @@ const login = async (payload: LoginPayload): Promise<SuccessResponse> => {
 const signup = async (payload: SignupPayload): Promise<SuccessResponse> => {
   const res = await fetch(`${testingEndpoint}api/auth/signup`, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(payload),
-    headers: { "Content-Type": "application/json" },
+    credentials: "include",
   });
+
   const data = await res.json();
-  if (!res.ok) {
-    throw new Error(data.message);
-  }
+
   return data;
 };
 

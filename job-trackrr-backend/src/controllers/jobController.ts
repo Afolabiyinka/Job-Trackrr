@@ -62,7 +62,6 @@ const createJob = async (req: AuthenticatedRequest, res: Response) => {
 
 const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
   const {
-    id,
     // appliedAt,
     company,
     companyEmail,
@@ -77,7 +76,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
   } = req.body as Partial<Job>;
 
   const userId = req.user?.id;
-  // const { id } = req.params;
+  const { id } = req.params;
   if (!userId) return res.status(401).json({ message: "Unauthorized" });
 
   try {
@@ -85,7 +84,6 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
     if (!job) return res.status(404).json({ message: "Job not found" });
 
     await job.update({
-      // appliedAt,
       company,
       companyEmail,
       interviewDate: rawInterviewDate ? new Date(rawInterviewDate) : null,
@@ -105,6 +103,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
+const deleteJob = async (req: AuthenticatedRequest, res: Response) => {};
 const getAllJobs = async (req: AuthenticatedRequest, res: Response) => {
   const id = req.user?.id;
 

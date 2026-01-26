@@ -2,7 +2,6 @@ import React from "react";
 import type { LoginPayload } from "../types/types";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../services/request";
-import { useUser } from "@/modules/main/settings/store/useUser";
 import useToastMessage from "@/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 export const useLogin = () => {
@@ -11,15 +10,12 @@ export const useLogin = () => {
     password: "",
   });
 
-  const { setToken, setUser } = useUser();
   const { toastError, toastSuccess } = useToastMessage();
   const navigate = useNavigate();
 
   const { mutate, isPending } = useMutation({
     mutationFn: (payload: LoginPayload) => login(payload),
     onSuccess: (data) => {
-      setToken(data.token);
-      setUser(data.user);
       toastSuccess(data.message);
       navigate("/");
     },

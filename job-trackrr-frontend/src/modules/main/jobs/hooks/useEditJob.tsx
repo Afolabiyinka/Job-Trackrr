@@ -21,7 +21,8 @@ export const useEditJobs = () => {
   } = useSetJob();
 
   const { mutateAsync, isPending } = useMutation({
-    mutationFn: (payload: Job) => editJob(payload),
+    mutationFn: ({ id, payload }: { id: number | string; payload: Job }) =>
+      editJob(payload, id),
     onSuccess: (data) => {
       toastSuccess(data.message);
     },
@@ -32,18 +33,21 @@ export const useEditJobs = () => {
   async function handleEdit({ id }: { id: number | string }): Promise<boolean> {
     try {
       await mutateAsync({
-        company,
         id,
-        role,
-        companyEmail,
-        feedback,
-        status,
-        jobType,
-        salaryRange,
-        interviewDate,
-        interviewType,
-        workType,
+        payload: {
+          company,
+          role,
+          companyEmail,
+          feedback,
+          status,
+          jobType,
+          salaryRange,
+          interviewDate,
+          interviewType,
+          workType,
+        },
       });
+
       return true;
     } catch (err) {
       return false;

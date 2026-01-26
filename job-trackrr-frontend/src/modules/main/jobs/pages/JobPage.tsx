@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Pencil } from "lucide-react";
 import { CopyButton } from "@/components/ui/copy-button";
 import { getStatusColor } from "../libs/utils";
-import CreateJobModal from "../components/create-job/CreateJob-modal";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 
 const JobPage = () => {
@@ -22,7 +21,7 @@ const JobPage = () => {
   if (!job) return <div>Job not found</div>;
 
   return (
-    <div className=" mx-auto p-2 mt-6">
+    <div className=" mx-auto p-3 mt-6">
       <Button onClick={() => navigate(-1)} size={`lg`} className="mb-6">
         <ArrowLeft className="mr-2" />
         Go back
@@ -44,7 +43,7 @@ const JobPage = () => {
         </div>
       </div>
 
-      <div className="shadow shadow-gray-600 rounded-lg p-3 mt-3  mb-6">
+      <div className="shadow shadow-gray-600 rounded-lg p-5 mt-3  mb-6">
         <h3 className="text-lg font-semibold mb-4 pb-2 border-b border-gray-200">
           Job Details
         </h3>
@@ -72,14 +71,14 @@ const JobPage = () => {
               <p className="font-medium text-lg">{job.interviewType}</p>
             </div>
           )}
-          {job.appliedAt && (
+          {/* {job.appliedAt && (
             <div>
               <p className="text-sm  mb-1">Applied At</p>
               <p className="font-medium text-lg">
                 {new Date(job.appliedAt).toLocaleDateString()}
               </p>
             </div>
-          )}
+          )} */}
           {job.interviewDate && (
             <div>
               <p className="text-sm  mb-1">Interview Date</p>

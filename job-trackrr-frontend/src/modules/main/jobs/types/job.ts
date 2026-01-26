@@ -1,8 +1,8 @@
 export type Status = "interview" | "applied" | "offer" | "rejected";
 
-export type InterviewType = "Virtual" | "In_person";
+export type InterviewType = "Virtual" | "In_Person";
 
-export type JobType = "Full_Time" | "Part_Time" | "Contract" | "Internship";
+export type JobType = "Full Time" | "Part_Time" | "Contract" | "Internship";
 
 export type WorkType = "Remote" | "Hybrid" | "On-Site";
 
@@ -10,13 +10,12 @@ export interface Job {
   id?: number | string;
   company: string;
   role: string;
-  appliedAt?: Date | string;
-  status: Status;
-  interviewType: InterviewType;
-  jobType: JobType;
-  workType: WorkType;
-  interviewDate: Date;
+  status: Status | null;
+  interviewType?: InterviewType | null;
+  jobType: JobType | null;
+  workType: WorkType | null;
+  interviewDate: Date | string | number | null;
   companyEmail: string;
-  feedback: string;
   salaryRange: number | null;
+  feedback?: string | null;
 }

@@ -1,24 +1,34 @@
 import express from "express";
 import { configDotenv } from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { connectDb } from "./config/db";
 import { syncModels } from "./models";
 import { AuthRouter } from "./routes/authRouter";
 import { JobRouter } from "./routes/jobRouter";
 
 configDotenv();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-//Database Connections
+// Middleware
+app.use(express.json());
+app.use(cookieParser());
+
+// CORS setup for cookies
+app.use(
+  cors({
+    origin: "http://localhost:4000",
+    credentials: true,
+  }),
+);
+
+// Database
 connectDb();
 syncModels();
 
-//Routing
-
+// Routes
 app.use("/api/auth", AuthRouter);
 app.use("/api/jobs", JobRouter);
 

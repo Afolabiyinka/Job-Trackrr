@@ -1,61 +1,58 @@
 import { testingEndpoint } from "@/constants/api-data";
 import type { Job } from "../types/job";
-import { useUser } from "../../settings/store/useUser";
 
 const createJob = async (payload: Job) => {
-  const token = useUser.getState().token;
-
   const res = await fetch(`${testingEndpoint}api/jobs/create`, {
-    body: JSON.stringify(payload),
     method: "POST",
-
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify(payload),
+    credentials: "include",
   });
-  const data = await res.json();
 
+  const data = await res.json();
   if (!res.ok) {
-    window.location.href === "/auth/login";
+    window.location.href = "/auth/login";
     throw new Error(data.message);
   }
+
   return data;
 };
 
-const editJob = async (payload: Partial<Job>) => {
-  const token = useUser.getState().token;
-
-  const res = await fetch(`${testingEndpoint}api/jobs/update`, {
+const editJob = async (payload: Partial<Job>, id: number | string) => {
+  const res = await fetch(`${testingEndpoint}api/jobs/update/${id}`, {
     method: "PUT",
-    body: JSON.stringify(payload),
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
+    body: JSON.stringify(payload),
+    credentials: "include",
   });
-  const data = res.json();
+
+  const data = await res.json();
   if (!res.ok) {
-    window.location.href === "/auth/login";
-    throw new Error();
+    window.location.href = "/auth/login";
+    throw new Error(data.message);
   }
+
   return data;
 };
 
 const getAllJobs = async (): Promise<Job[]> => {
-  const token = useUser.getState().token;
   const res = await fetch(`${testingEndpoint}api/jobs`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
     },
+    credentials: "include", // ✅ send the HttpOnly cookie
   });
+
   const data = await res.json();
   if (!res.ok) {
     window.location.href = "/auth/login";
-
     throw new Error(data.message);
   }
+
   return data;
 };
 

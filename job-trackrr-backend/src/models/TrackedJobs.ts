@@ -23,6 +23,7 @@ export const TrackedJobs = sequelize.define(
     },
     interviewType: {
       type: DataTypes.ENUM("Virtual", "In_Person"),
+      allowNull: true,
     },
     companyEmail: {
       type: DataTypes.STRING,
