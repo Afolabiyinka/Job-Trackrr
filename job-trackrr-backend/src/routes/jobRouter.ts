@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   createJob,
+  deleteJob,
   getAllJobs,
   updateJobDetails,
 } from "../controllers/jobController";
@@ -10,3 +11,4 @@ export const JobRouter = Router();
 JobRouter.route("/").get(authMiddleware, getAllJobs);
 JobRouter.route("/create").post(authMiddleware, createJob);
 JobRouter.route("/update/:id").put(authMiddleware, updateJobDetails);
+JobRouter.route("/delete").delete(authMiddleware, deleteJob);

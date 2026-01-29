@@ -3,7 +3,7 @@ import TableView from "./views/table-view";
 import CardView from "./views/card-view";
 import { ArrowRight, LayoutGrid, Table } from "lucide-react";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
-import { useJobs } from "../store/useJobs";
+import { useJobs } from "../hooks/useJobs";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import NoJobs from "./error/NoJobs";
 
@@ -32,7 +32,7 @@ const Jobs = () => {
           editing={false}
         />
       </div>
-      <Tabs defaultValue={`table`}>
+      <Tabs defaultValue={`card`}>
         <TabsList className="border">
           <TabsTrigger value="table">
             <span className="flex items-center gap-1">

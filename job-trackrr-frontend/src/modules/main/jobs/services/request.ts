@@ -1,4 +1,5 @@
 import { testingEndpoint } from "@/constants/api-data";
+import axios from "axios";
 import type { Job } from "../types/job";
 
 const createJob = async (payload: Job) => {
@@ -44,7 +45,7 @@ const getAllJobs = async (): Promise<Job[]> => {
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: "include", // ✅ send the HttpOnly cookie
+    credentials: "include",
   });
 
   const data = await res.json();
@@ -55,5 +56,16 @@ const getAllJobs = async (): Promise<Job[]> => {
 
   return data;
 };
+const deleteJob = async (id: string) => {
+  try {
+    const res = await axios.delete(`${testingEndpoint}api/jobs/delete`, {
+      withCredentials: true,
+      data: { id },
+    });
+    return res;
+  } catch (err) {
+    throw new Error();
+  }
+};
 
-export { createJob, getAllJobs, editJob };
+export { createJob, getAllJobs, editJob, deleteJob };

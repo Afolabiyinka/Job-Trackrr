@@ -33,7 +33,7 @@ import {
 } from "../utils/utils";
 import { useCreateJob } from "../../../hooks/useCreateJob";
 import MoneyInput from "../input/salary-range";
-import { useJobs } from "../../../store/useJobs";
+import { useJobs } from "../../../hooks/useJobs";
 import type { Job } from "../../../types/job";
 import { useEffect } from "react";
 import { useEditJobs } from "../../../hooks/useEditJob";
@@ -121,7 +121,6 @@ const CreateJobStepper = ({
       setCompany(job.company);
       setRole(job.role);
       setCompanyEmail(job.companyEmail);
-      // setFeedback(job.feedback);
       setSalaryRange(job.salaryRange);
       setInterviewDate(job.interviewDate ? new Date(job.interviewDate) : null);
       setInterviewType(job.interviewType ?? null);
@@ -129,16 +128,20 @@ const CreateJobStepper = ({
       setWorkType(job.workType ?? null);
       setJobType(job.jobType ?? null);
     }
-    // Add all setter functions or disable the rule if they're stable
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editing, job]);
+
+  useEffect(() => {
+    if (!editing) {
+      reset();
+    }
+  }, [job]);
 
   return (
     <Dialog
       open={open}
       onOpenChange={(isOpen) => {
         setOpen(isOpen);
-        if (!isOpen) reset();
+        // if (!isOpen) reset();
       }}
     >
       <DialogTrigger asChild>

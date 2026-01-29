@@ -1,15 +1,20 @@
 import { useParams, useNavigate } from "react-router-dom";
 import type { Job, Status } from "../types/job";
 import LoadingContainer from "@/components/loader/loadingcontainer";
-import { useJobs } from "../store/useJobs";
+import { useJobs } from "../hooks/useJobs";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Pencil } from "lucide-react";
 import { CopyButton } from "@/components/ui/copy-button";
 import { getStatusColor } from "../libs/utils";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
+import DeleteJobModal from "../components/delete-job/delete-job";
 
 const JobPage = () => {
   const { id } = useParams<{ id: string }>();
+
+  if (!id) {
+    return <div>Invalid job ID</div>;
+  }
   const navigate = useNavigate();
   const { jobs, loading, error } = useJobs();
 
@@ -21,25 +26,26 @@ const JobPage = () => {
   if (!job) return <div>Job not found</div>;
 
   return (
-    <div className=" mx-auto p-3 mt-6">
+    <div className="mx-auto p-3">
       <Button onClick={() => navigate(-1)} size={`lg`} className="mb-6">
         <ArrowLeft className="mr-2" />
         Go back
       </Button>
 
-      <div className="flex flex-col md:flex-row  md:justify-between items-center">
+      <div className="flex flex-col md:flex-row  md:justify-between items-center p-2">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-3">{job.company}</h1>
           <h2 className="text-xl">{job.role}</h2>
         </div>
 
-        <div>
+        <div className="flex gap-2 w-full md:w-1/2">
           <CreateJobStepper
             title="Edit Job Details"
             icon={<Pencil />}
             editing={true}
-            id={id}
+            id={job.id}
           />
+          <DeleteJobModal id={job?.id} />
         </div>
       </div>
 
