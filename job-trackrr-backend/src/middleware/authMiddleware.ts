@@ -29,7 +29,7 @@ export const authMiddleware = (
 
     const user = decoded as DecodedUser;
 
-    req.user = { id: user.id }; // attach user info to request
+    req.user = { id: user.id };
     next();
   } catch (err) {
     if (err instanceof TokenExpiredError) {

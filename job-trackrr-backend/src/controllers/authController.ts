@@ -7,9 +7,9 @@ import { User } from "../models/User";
 const jwtSecret = process.env.JWT_SECRET!;
 const cookieOptions = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production", // only over HTTPS in prod
-  sameSite: "strict" as const, // prevents CSRF
-  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
+  secure: process.env.NODE_ENV === "production",
+  sameSite: "strict" as const,
+  maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
 const login = async (req: Request, res: Response) => {

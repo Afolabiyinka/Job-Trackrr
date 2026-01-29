@@ -1,5 +1,5 @@
 function getStatusColor(
-  status: "applied" | "interview" | "offer" | "rejected",
+  status: "applied" | "interview" | "offer" | "rejected" | null,
 ) {
   switch (status) {
     case "applied":
