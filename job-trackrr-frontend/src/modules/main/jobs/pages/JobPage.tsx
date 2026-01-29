@@ -32,7 +32,7 @@ const JobPage = () => {
         Go back
       </Button>
 
-      <div className="flex flex-col md:flex-row  md:justify-between items-center p-2">
+      <div className="flex flex-col md:flex-row  md:justify-between  items-center p-2">
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-3">{job.company}</h1>
           <h2 className="text-xl">{job.role}</h2>
