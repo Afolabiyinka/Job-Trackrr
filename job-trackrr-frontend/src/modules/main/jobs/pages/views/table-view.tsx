@@ -15,7 +15,7 @@ const TableView = () => {
   const { jobs } = useJobs();
 
   return (
-    <Table className="h-full">
+    <Table className="h-full w-full">
       <TableHeader>
         <TableRow>
           <TableHead>Company</TableHead>

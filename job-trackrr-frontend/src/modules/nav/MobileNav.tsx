@@ -35,16 +35,29 @@ const MobileNav = () => {
                   onClick={() => setOpen(false)}
                   whileTap={{ scale: 0.95 }}
                   key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3, delay: i * 0.05 }}
+                  className="flex gap-3 "
                 >
+                  <motion.span
+                    initial={{ height: 0 }}
+                    animate={{ height: "100%" }}
+                    transition={{}}
+                    className={`${pathMatch ? "border-l-2 border-l-primary rounded-full" : ""}`}
+                  />
+
                   <NavLink
                     to={path}
-                    className={`flex gap-2 items-center rounded-lg p-1.5 text-md  transition ${
-                      pathMatch
-                        ? "bg-gray-200 dark:bg-gray-600 dark:text-white p-1.5"
-                        : ""
+                    className={`flex gap-2 items-center rounded-xl p-1.5 text-md  transition w-full ${
+                      pathMatch ? "bg-primary/10 p-2.5" : ""
                     }`}
                   >
-                    <Icon className={`h-5 w-5 stroke-[1.25px]`} />
+                    <Icon
+                      className={`h-5 w-5`}
+                      // fill={`${pathMatch ? "white" : "none"}`}
+                    />
                     <p>{name}</p>
                   </NavLink>
                 </motion.span>
@@ -54,7 +67,7 @@ const MobileNav = () => {
             <div className="mt-auto flex flex-col gap-3 border-t pt-4">
               <Link
                 onClick={() => setOpen(false)}
-                className="flex gap-2 mb-2 p-2 rounded-lg cursor-pointer"
+                className="flex gap-2 mb-2 p-2 rounded-xl cursor-pointer"
                 to={`/settings`}
               >
                 <Settings />

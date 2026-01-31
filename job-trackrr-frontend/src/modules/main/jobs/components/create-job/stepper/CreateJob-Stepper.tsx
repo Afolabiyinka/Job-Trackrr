@@ -75,7 +75,9 @@ const CreateJobStepper = ({
     status,
     workType,
     jobType,
+    appliedAt,
 
+    setApplied,
     setCompany,
     setInterviewType,
     setRole,
@@ -118,6 +120,7 @@ const CreateJobStepper = ({
 
   useEffect(() => {
     if (editing && job) {
+      setApplied(job.appliedAt ? new Date(job.appliedAt) : null);
       setCompany(job.company);
       setRole(job.role);
       setCompanyEmail(job.companyEmail);
@@ -162,7 +165,7 @@ const CreateJobStepper = ({
           styleConfig={{
             activeBgColor: "#5ea500",
             completedBgColor: "#5ea500",
-            inactiveBgColor: "",
+            inactiveBgColor: "gray",
           }}
         >
           <Step />
@@ -198,6 +201,13 @@ const CreateJobStepper = ({
                         type="email"
                         value={role}
                         onChange={(e) => setRole(e)}
+                      />
+                    </div>
+                    <div className="grid flex-1 gap-2">
+                      <DatePicker
+                        title="Applied at"
+                        onSelect={(val) => val && setApplied(val)}
+                        inputtedDate={appliedAt ?? undefined}
                       />
                     </div>
                   </div>
@@ -324,7 +334,7 @@ const CreateJobStepper = ({
                         onChange={(e) => setFeedback(e.target.value)}
                       />
                     </div>
-                    <span className="w-full shadow rounded-lg flex justify-center items-center">
+                    <span className="w-full shadow rounded-xl flex justify-center items-center">
                       {loading ? (
                         <Loader2 className="animate-spin h-8 w-6" />
                       ) : (

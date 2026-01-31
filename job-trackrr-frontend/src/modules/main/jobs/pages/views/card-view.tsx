@@ -5,7 +5,7 @@ const CardView = () => {
   const { interviewJobs, appliedJobs, offeredJobs, rejectedJobs } =
     useFilterJobs();
   return (
-    <div className="h-full w-full flex flex-col justify-center items-center p-2">
+    <div className="h-full w-full flex flex-col justify-center items-center">
       <div className="grid lg:grid-cols-2 w-full gap-10 pt-6">
         <JobCard
           title="Applied Jobs"

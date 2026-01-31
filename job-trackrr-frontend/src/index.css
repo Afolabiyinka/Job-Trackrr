@@ -142,15 +142,17 @@
   color: #252525;
 }
 
-*::-webkit-scrollbar {
-  width: 8px;
+/* *::-webkit-scrollbar {
+  width: 6px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: gray;
   border-radius: 999px;
-}
+  height: 2px;
+  width: 6px;
+} */
 
-*::-webkit-scrollbar-track {
+/* *::-webkit-scrollbar-track {
   background: transparent;
-}
+} */

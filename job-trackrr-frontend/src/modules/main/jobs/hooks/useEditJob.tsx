@@ -8,6 +8,7 @@ export const useEditJobs = () => {
   const { toastError, toastSuccess } = useToastMessage();
 
   const {
+    appliedAt,
     company,
     role,
     companyEmail,
@@ -35,6 +36,7 @@ export const useEditJobs = () => {
       await mutateAsync({
         id,
         payload: {
+          appliedAt,
           company,
           role,
           companyEmail,

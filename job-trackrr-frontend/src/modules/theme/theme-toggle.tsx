@@ -11,7 +11,7 @@ const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex gap-3 items-center border rounded-lg p-2 cursor-pointer">
+      <DropdownMenuTrigger className="flex gap-3 items-center border rounded-xl p-2 cursor-pointer">
         <h1>Change Theme</h1>
         <span>{theme === "light" ? <Sun /> : <Moon />}</span>
       </DropdownMenuTrigger>

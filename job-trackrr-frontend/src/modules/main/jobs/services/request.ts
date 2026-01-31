@@ -17,7 +17,6 @@ const createJob = async (payload: Job) => {
     window.location.href = "/auth/login";
     throw new Error(data.message);
   }
-
   return data;
 };
 

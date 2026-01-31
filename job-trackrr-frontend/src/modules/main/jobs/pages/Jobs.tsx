@@ -20,7 +20,7 @@ const Jobs = () => {
     return <LoadingContainer />;
   }
 
-  if (jobs.length === 0) {
+  if (jobs?.length === 0) {
     return <NoJobs />;
   }
   return (

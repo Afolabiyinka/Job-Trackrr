@@ -40,7 +40,7 @@ const Login = () => {
             <Checkbox id="checkbox" className="w-4 h-4" />
             <Label htmlFor="checkbox">Remember me</Label>
           </span>
-          <span className="w-full border rounded-lg flex justify-center items-center">
+          <span className="w-full border rounded-xl flex justify-center items-center">
             {loading ? (
               <Loader2 className="animate-spin h-8 w-6" />
             ) : (

@@ -33,9 +33,9 @@ export function App() {
     }
   }, [theme]);
 
-  if (loading) {
-    return <LoadingContainer />;
-  }
+  // if (loading) {
+  //   return <LoadingContainer />;
+  // }
   // React.useEffect(() => {
   //   if (error) {
   //     window.location.href = "/auth/login";

@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Loader2, Trash } from "lucide-react";
+import { Loader2, Minus, Trash } from "lucide-react";
 import { useDeleteJob } from "../../hooks/useDeleteJob";
 import {
   Tooltip,
@@ -26,7 +26,7 @@ const DeleteJobModal = ({ id }: { id: string }) => {
         <Tooltip>
           <TooltipTrigger>
             <Button size={`icon-lg`} variant={`destructive`}>
-              <Trash />
+              <Minus />
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -52,9 +52,7 @@ const DeleteJobModal = ({ id }: { id: string }) => {
             {loading ? (
               <Loader2 className="animate-spin h-8 w-6" />
             ) : (
-              <>
-                Delete job <Trash />
-              </>
+              <>Delete job</>
             )}
           </AlertDialogAction>
         </AlertDialogFooter>

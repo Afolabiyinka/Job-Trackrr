@@ -11,6 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { formatDate } from "../../libs/utils";
 
 interface Props {
   title: string;
@@ -19,6 +20,8 @@ interface Props {
 }
 export function DatePicker({ title, inputtedDate, onSelect }: Props) {
   const [open, setOpen] = React.useState(false);
+
+  const formattedDate = formatDate(inputtedDate);
 
   return (
     <div className="flex flex-col gap-3 w-full">
@@ -32,7 +35,7 @@ export function DatePicker({ title, inputtedDate, onSelect }: Props) {
             id="date"
             className="w-full h-12 justify-between font-normal"
           >
-            {inputtedDate ? inputtedDate.toLocaleDateString() : "Select date"}
+            {inputtedDate ? formattedDate : "Select date"}
             <ChevronDownIcon />
           </Button>
         </PopoverTrigger>

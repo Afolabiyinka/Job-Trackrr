@@ -30,7 +30,7 @@ export function CopyButton({ value }: CopyButtonProps) {
         <TooltipTrigger
           onClick={handleCopy}
           className="group relative shadow backdrop-blur-3xl
-             h-10 w-10 stroke-2  rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer p-3"
+             h-6 w-6 stroke-2  rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer p-3"
         >
           <AnimatePresence mode="wait">
             {hasCopied ? (
@@ -41,7 +41,7 @@ export function CopyButton({ value }: CopyButtonProps) {
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.15 }}
               >
-                <Check className="h-6 w-6" />
+                <Check className="h-4 w-4" />
               </motion.div>
             ) : (
               <motion.div
@@ -52,7 +52,7 @@ export function CopyButton({ value }: CopyButtonProps) {
                 transition={{ duration: 0.15 }}
                 className="cursor-pointer"
               >
-                <Copy className="h-5 w-5" />
+                <Copy className="h-4 w-4" />
               </motion.div>
             )}
           </AnimatePresence>

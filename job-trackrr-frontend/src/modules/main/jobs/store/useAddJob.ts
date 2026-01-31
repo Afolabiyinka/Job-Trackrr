@@ -2,6 +2,7 @@ import { create } from "zustand";
 import type { InterviewType, JobType, Status, WorkType } from "../types/job";
 
 interface Addjob {
+  appliedAt: Date | null;
   company: string;
   companyImg: string;
   role: string;
@@ -16,6 +17,7 @@ interface Addjob {
   feedback: string;
   salaryRange: number | null;
 
+  setApplied: (at: Date | null) => void;
   setCompany: (company: string) => void;
   setCompanyImg: (img: string) => void;
   setRole: (role: string) => void;
@@ -32,6 +34,7 @@ interface Addjob {
 
 export const useSetJob = create<Addjob>((set) => {
   const defaultState = {
+    appliedAt: null,
     company: "",
     companyImg: "",
     role: "",
@@ -49,7 +52,7 @@ export const useSetJob = create<Addjob>((set) => {
 
   return {
     ...defaultState,
-
+    setApplied: (at) => set({ appliedAt: at }),
     setCompany: (c) => set({ company: c }),
     setCompanyImg: (ci) => set({ companyImg: ci }),
     setRole: (r) => set({ role: r }),

@@ -10,6 +10,7 @@ export const useCreateJob = () => {
   const navigate = useNavigate();
 
   const {
+    appliedAt,
     company,
     role,
     companyEmail,
@@ -36,6 +37,20 @@ export const useCreateJob = () => {
   async function handleCreate(): Promise<boolean> {
     try {
       await mutateAsync({
+        appliedAt,
+        company,
+        role,
+        companyEmail,
+        feedback,
+        status,
+        jobType,
+        salaryRange,
+        interviewDate,
+        interviewType,
+        workType,
+      });
+      console.log({
+        appliedAt,
         company,
         role,
         companyEmail,

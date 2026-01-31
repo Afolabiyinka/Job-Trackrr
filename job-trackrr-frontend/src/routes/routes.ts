@@ -5,6 +5,9 @@ import AuthLayout from "@/layouts/AuthLayout";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 
 // Lazy-loaded pages
+const Dashboard = lazy(
+  () => import("@/modules/main/dashboard/pages/DashBoard"),
+);
 const NotFound = lazy(() => import("@/modules/NotFound"));
 const Jobs = lazy(() => import("@/modules/main/jobs/pages/Jobs"));
 const JobPage = lazy(() => import("@/modules/main/jobs/pages/JobPage"));
@@ -22,6 +25,10 @@ export const routes: RouteObject[] = [
     path: "/",
     Component: MainLayout,
     children: [
+      {
+        index: true,
+        Component: Dashboard,
+      },
       {
         path: "jobs",
         children: [

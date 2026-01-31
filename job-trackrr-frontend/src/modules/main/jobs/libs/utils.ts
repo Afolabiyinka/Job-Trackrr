@@ -15,4 +15,15 @@ function getStatusColor(
   }
 }
 
-export { getStatusColor };
+function formatDate(date: Date | string | null) {
+  const formattedDate = date
+    ? new Date(date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : null;
+  return formattedDate;
+}
+
+export { getStatusColor, formatDate };

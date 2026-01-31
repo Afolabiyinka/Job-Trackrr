@@ -3,9 +3,9 @@ import type { Job, Status } from "../types/job";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import { useJobs } from "../hooks/useJobs";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Pencil } from "lucide-react";
+import { ArrowLeft, Building2, CalendarClockIcon, Pencil } from "lucide-react";
 import { CopyButton } from "@/components/ui/copy-button";
-import { getStatusColor } from "../libs/utils";
+import { formatDate, getStatusColor } from "../libs/utils";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import DeleteJobModal from "../components/delete-job/delete-job";
 
@@ -25,35 +25,55 @@ const JobPage = () => {
   if (error) return <div>Failed to load jobs</div>;
   if (!job) return <div>Job not found</div>;
 
+  const formatedInterviewDate = formatDate(job.interviewDate);
+  const formatedAppliedAtDate = formatDate(job?.appliedAt);
+
   return (
-    <div className="mx-auto p-3">
+    <div className="mx-auto p-1">
       <Button onClick={() => navigate(-1)} size={`lg`} className="mb-6">
         <ArrowLeft className="mr-2" />
         Go back
       </Button>
 
       <div className="flex flex-col md:flex-row  md:justify-between  items-center p-2">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-3">{job.company}</h1>
-          <h2 className="text-xl">{job.role}</h2>
-        </div>
+        <span className="font-medium flex gap-2 items-center  p-2 rounded-xl cursor-pointer">
+          <span className="h-16 w-16  rounded-full border  flex justify-center items-center">
+            <Building2 size={40} className="stroke-[1px]" />
+          </span>
+          <span>
+            <p className="text-lg font-bold tracking-wide line-clamp-1">
+              {job.company}
+            </p>
+            <span className="flex gap-2">
+              <p>{job.companyEmail}</p>
+              <CopyButton value={job.companyEmail} />
+            </span>
+          </span>
+        </span>
 
-        <div className="flex gap-2 w-full md:w-1/2">
+        <div className="flex gap-2">
           <CreateJobStepper
             title="Edit Job Details"
             icon={<Pencil />}
             editing={true}
             id={job.id}
           />
-          <DeleteJobModal id={job?.id} />
+          <DeleteJobModal id={id} />
         </div>
       </div>
 
-      <div className="shadow shadow-gray-600 rounded-lg p-5 mt-3  mb-6">
-        <h3 className="text-lg font-semibold mb-4 pb-2 border-b border-gray-200">
-          Job Details
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="rounded-xl p-5 mt-3  mb-6">
+        <div className="flex justify-between border-b mb-2 p-3">
+          <h3 className="text-3xl font-semibold  border-gray-200">
+            {job.role}
+          </h3>
+          <span className="flex items-center gap-2 shadow p-2 rounded-3xl">
+            <CalendarClockIcon />
+            <h3>{formatedInterviewDate}</h3>
+            <span className="h-3 border w-3 bg-primary rounded-full animate-ping" />
+          </span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <span className="flex gap-2 items-center">
               <span
@@ -77,31 +97,13 @@ const JobPage = () => {
               <p className="font-medium text-lg">{job.interviewType}</p>
             </div>
           )}
-          {/* {job.appliedAt && (
+          {job.appliedAt && (
             <div>
               <p className="text-sm  mb-1">Applied At</p>
-              <p className="font-medium text-lg">
-                {new Date(job.appliedAt).toLocaleDateString()}
-              </p>
-            </div>
-          )} */}
-          {job.interviewDate && (
-            <div>
-              <p className="text-sm  mb-1">Interview Date</p>
-              <p className="font-medium text-lg">
-                {new Date(job.interviewDate).toLocaleDateString()}
-              </p>
+              <p className="font-medium text-lg">{formatedAppliedAtDate}</p>
             </div>
           )}
-          <div className="flex gap-16 items-center">
-            <span>
-              <p className="text-sm  mb-1">Company Email</p>
-              <p className="font-medium text-lg break-all">
-                {job.companyEmail}
-              </p>
-            </span>
-            <CopyButton value={job.companyEmail} />
-          </div>
+
           <div>
             <p className="text-sm  mb-1">Salary Range</p>
             <p className="font-medium text-lg">
@@ -112,7 +114,7 @@ const JobPage = () => {
       </div>
 
       {job.feedback && (
-        <div className=" border border-gray-200 rounded-lg p-6 shadow-sm">
+        <div className=" border border-gray-200 rounded-xl p-6 shadow-sm">
           <h3 className="text-lg font-semibold mb-3">Feedback</h3>
           <p className="text-gray-700 leading-relaxed">{job.feedback}</p>
         </div>

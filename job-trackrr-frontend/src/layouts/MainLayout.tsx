@@ -18,18 +18,13 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-3 flex flex-col border rounded-lg">
+      <main className="w-full gap-3 flex flex-col border rounded-xl">
         <span className="w-full shadow">
           <Greeting />
           <Header />
         </span>
 
-        <motion.div
-          className="h-full w-full overflow-y-scroll p-2"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
+        <motion.div className="h-full w-full overflow-y-scroll p-2">
           <Outlet />
         </motion.div>
       </main>

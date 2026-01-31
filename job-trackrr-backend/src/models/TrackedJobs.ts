@@ -28,7 +28,7 @@ export const TrackedJobs = sequelize.define(
     companyEmail: {
       type: DataTypes.STRING,
     },
-    salaryExpectation: {
+    salaryRange: {
       type: DataTypes.INTEGER,
     },
     personalRating: {

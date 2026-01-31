@@ -8,7 +8,7 @@ interface MenuButtonProps {
 const MenuButton = ({ open, onClick }: MenuButtonProps) => {
   return (
     <div
-      className="relative w-10 h-10 flex items-center justify-center cursor-pointer"
+      className="relative w-8 h-10 flex items-center justify-center cursor-pointer"
       onClick={onClick}
     >
       <motion.span
@@ -16,21 +16,21 @@ const MenuButton = ({ open, onClick }: MenuButtonProps) => {
         initial={false}
         animate={open ? { rotate: 45, y: 0 } : { rotate: 0, y: -8 }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
-        className="absolute border-2 border-primary w-10 rounded"
+        className="absolute border-2 border-primary w-8 rounded"
       />
 
       <motion.span
         initial={false}
         animate={open ? { opacity: 0 } : { opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="absolute border-2 border-primary w-10 rounded"
+        className="absolute border-2 border-primary w-8 rounded"
       />
 
       <motion.span
         initial={false}
         animate={open ? { rotate: -45, y: 0 } : { rotate: 0, y: 8 }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
-        className="absolute border-2 border-primary w-10 rounded"
+        className="absolute border-2 border-primary w-8 rounded"
       />
     </div>
   );
