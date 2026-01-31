@@ -9,7 +9,7 @@ import { Briefcase } from "lucide-react";
 const DashBoard = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-full w-full flex flex-col gap-4 items-center">
+    <div className="h-full w-full flex flex-col gap-4 items-center overflow-y-scroll p-2">
       {/* <div className="w-full">
         <Card className="bg-primary text-white">
           <CardHeader>
@@ -18,7 +18,7 @@ const DashBoard = () => {
           <CardContent></CardContent>
         </Card>
       </div> */}
-      <section className="grid md:grid-cols-2 w-full gap-6 mb-4">
+      <section className="grid md:grid-cols-2 w-full gap-6 mb-4 ">
         <GoalsStatsCard />
         <ContactsStatsCard />
       </section>

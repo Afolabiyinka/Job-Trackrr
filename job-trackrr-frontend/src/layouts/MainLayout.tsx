@@ -24,7 +24,7 @@ const MainLayout = () => {
           <Header />
         </span>
 
-        <motion.div className="h-full w-full overflow-y-scroll p-2">
+        <motion.div className="h-full w-full overflow-y-scroll p-2 rounded-xl">
           <Outlet />
         </motion.div>
       </main>

@@ -21,7 +21,7 @@ interface Props {
 export function DatePicker({ title, inputtedDate, onSelect }: Props) {
   const [open, setOpen] = React.useState(false);
 
-  const formattedDate = formatDate(inputtedDate);
+  const formattedDate = formatDate(inputtedDate ?? null);
 
   return (
     <div className="flex flex-col gap-3 w-full">

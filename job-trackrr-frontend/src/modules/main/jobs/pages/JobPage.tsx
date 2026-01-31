@@ -8,6 +8,7 @@ import { CopyButton } from "@/components/ui/copy-button";
 import { formatDate, getStatusColor } from "../libs/utils";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import DeleteJobModal from "../components/delete-job/delete-job";
+import { NumericFormat } from "react-number-format";
 
 const JobPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -106,9 +107,13 @@ const JobPage = () => {
 
           <div>
             <p className="text-sm  mb-1">Salary Range</p>
-            <p className="font-medium text-lg">
-              {job.salaryRange ? `$${job.salaryRange}` : "N/A"}
-            </p>
+            <NumericFormat
+              className="font-medium text-lg"
+              value={job.salaryRange}
+              thousandSeparator
+              prefix="$"
+            />
+            {/* {job.salaryRange ? `$${job.salaryRange}` : "N/A"} */}
           </div>
         </div>
       </div>

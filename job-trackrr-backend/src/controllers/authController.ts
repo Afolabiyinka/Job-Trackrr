@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { LoginPayload, SignupPayload } from "../types/auth";
 import { User } from "../models/User";
+import { AuthenticatedRequest } from "../types/request/types";
 
 const jwtSecret = process.env.JWT_SECRET!;
 const cookieOptions = {
@@ -75,4 +76,14 @@ const signup = async (req: Request, res: Response) => {
   }
 };
 
-export { login, signup };
+const logout = async (req: AuthenticatedRequest, res: Response) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "lax",
+  });
+
+  res.json({ message: "Logged out" });
+};
+
+export { login, signup, logout };

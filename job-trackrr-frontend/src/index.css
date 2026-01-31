@@ -142,7 +142,7 @@
   color: #252525;
 }
 
-/* *::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 6px;
 }
 
@@ -151,8 +151,11 @@
   border-radius: 999px;
   height: 2px;
   width: 6px;
-} */
+}
 
-/* *::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: transparent;
-} */
+}
+*::-webkit-scrollbar-button {
+  /* background: red; */
+}
