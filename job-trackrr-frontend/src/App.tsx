@@ -4,10 +4,9 @@ import React from "react";
 import { Toaster } from "sonner";
 import { useUser } from "./modules/main/settings/store/useUser";
 import { useFetchUser } from "./modules/main/settings/hooks/useFetchUser";
-import LoadingContainer from "./components/loader/loadingcontainer";
 
 export function App() {
-  const { fetchedUser, loading, error } = useFetchUser();
+  const { fetchedUser, error } = useFetchUser();
   const { setUser } = useUser();
   const { theme } = useTheme();
 

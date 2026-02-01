@@ -12,15 +12,15 @@ const Header = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="w-full p-4 flex justify-start items-center">
+    <div className="w-full p-3 flex justify-start items-center">
       <AnimatePresence mode="wait">
         <motion.h1
           key={jobMotivations[index]}
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -30, opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="text-center text-lg"
+          transition={{ duration: 0.7, ease: "easeInOut" }}
+          className="text-center text-xl"
         >
           {jobMotivations[index]}
         </motion.h1>
