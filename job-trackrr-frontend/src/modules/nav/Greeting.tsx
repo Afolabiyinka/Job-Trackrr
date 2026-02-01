@@ -4,8 +4,8 @@ const Greeting = () => {
   const { user } = useUser();
 
   return (
-    <div className="w-full p-2 flex flex-col md:flex-row items-center md:justify-between">
-      <h1 className="text-xl md:text-3xl  tracking-wider font-semibold flex gap-2 items-center">
+    <div className="w-full flex items-center justify-between p-1 ml-2">
+      <h1 className="md:text-xl  tracking-wider font-semibold flex gap-2 items-center">
         Welcome back,{" "}
         {user ? (
           <p>{user?.username}</p>

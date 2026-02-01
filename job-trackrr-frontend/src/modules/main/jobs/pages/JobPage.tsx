@@ -1,14 +1,21 @@
 import { useParams, useNavigate } from "react-router-dom";
-import type { Job, Status } from "../types/job";
+import type { Status } from "../types/job";
 import LoadingContainer from "@/components/loader/loadingcontainer";
-import { useJobs } from "../hooks/useJobs";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Building2, CalendarClockIcon, Pencil } from "lucide-react";
+import {
+  ArrowLeft,
+  Building2,
+  CalendarClockIcon,
+  DollarSign,
+  Pencil,
+  User,
+} from "lucide-react";
 import { CopyButton } from "@/components/ui/copy-button";
 import { formatDate, getStatusColor } from "../libs/utils";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import DeleteJobModal from "../components/delete-job/delete-job";
 import { NumericFormat } from "react-number-format";
+import { useGetJob } from "../hooks/useGetJob";
 
 const JobPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -17,13 +24,10 @@ const JobPage = () => {
     return <div>Invalid job ID</div>;
   }
   const navigate = useNavigate();
-  const { jobs, loading, error } = useJobs();
-
-  // Find the job in the jobs array by ID
-  const job = jobs.find((job: Job) => job.id === id);
+  const { job, error, loading } = useGetJob({ id });
 
   if (loading) return <LoadingContainer />;
-  if (error) return <div>Failed to load jobs</div>;
+  if (error) return <div>Failed to load job</div>;
   if (!job) return <div>Job not found</div>;
 
   const formatedInterviewDate = formatDate(job.interviewDate);
@@ -65,7 +69,8 @@ const JobPage = () => {
 
       <div className="rounded-xl p-5 mt-3  mb-6">
         <div className="flex justify-between border-b mb-2 p-3">
-          <h3 className="text-3xl font-semibold  border-gray-200">
+          <h3 className="text-3xl font-semibold  border-gray-200 flex items-center gap-2">
+            <User size={30} />
             {job.role}
           </h3>
           <span className="flex items-center gap-2 shadow p-2 rounded-3xl">
@@ -74,9 +79,9 @@ const JobPage = () => {
             <span className="h-3 border w-3 bg-primary rounded-full animate-ping" />
           </span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
           <div>
-            <span className="flex gap-2 items-center">
+            <span className="flex gap-2">
               <span
                 className={`h-4 w-4 border rounded-full ${getStatusColor(job.status as Status)}`}
               />
@@ -106,14 +111,16 @@ const JobPage = () => {
           )}
 
           <div>
-            <p className="text-sm  mb-1">Salary Range</p>
+            <p className="text-sm  mb-1 flex items-center ">
+              <DollarSign size={17} />
+              Salary Range
+            </p>
             <NumericFormat
               className="font-medium text-lg"
               value={job.salaryRange}
               thousandSeparator
-              prefix="$"
+              // prefix="$"
             />
-            {/* {job.salaryRange ? `$${job.salaryRange}` : "N/A"} */}
           </div>
         </div>
       </div>

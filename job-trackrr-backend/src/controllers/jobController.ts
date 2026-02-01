@@ -1,6 +1,6 @@
 import { TrackedJobs } from "../models/TrackedJobs";
 import { User } from "../models/User";
-import { Job, ParticularJobPayload } from "../types/job";
+import { Job } from "../types/job";
 import { AuthenticatedRequest } from "../types/request/types";
 import { Response, Request } from "express";
 
@@ -60,7 +60,7 @@ const createJob = async (req: AuthenticatedRequest, res: Response) => {
 
 const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
   const {
-    // appliedAt,
+    appliedAt,
     company,
     companyEmail,
     interviewDate: rawInterviewDate,
@@ -81,6 +81,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
     if (!job) return res.status(404).json({ message: "Job not found" });
 
     await job.update({
+      appliedAt,
       company,
       companyEmail,
       interviewDate: rawInterviewDate ? new Date(rawInterviewDate) : null,
@@ -132,5 +133,20 @@ const getAllJobs = async (req: AuthenticatedRequest, res: Response) => {
     });
   }
 };
+const getParticularJob = async (req: AuthenticatedRequest, res: Response) => {
+  const userId = req.user?.id;
+  const { id } = req.params;
+  if (!userId) return res.status(401).json({ message: "Unauthorized" });
 
-export { createJob, getAllJobs, updateJobDetails, deleteJob };
+  try {
+    const job = await TrackedJobs.findByPk(id);
+    res.status(200).json({ job });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Something went wrong",
+    });
+  }
+};
+
+export { createJob, getAllJobs, updateJobDetails, deleteJob, getParticularJob };

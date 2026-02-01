@@ -1,4 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSetJob } from "../store/useAddJob";
 import type { Job } from "../types/job";
 import useToastMessage from "@/lib/toastMsg";
@@ -6,6 +6,7 @@ import { editJob } from "../services/request";
 
 export const useEditJobs = () => {
   const { toastError, toastSuccess } = useToastMessage();
+  const queryClient = useQueryClient();
 
   const {
     appliedAt,
@@ -26,6 +27,9 @@ export const useEditJobs = () => {
       editJob(payload, id),
     onSuccess: (data) => {
       toastSuccess(data.message);
+      queryClient.invalidateQueries({
+        queryKey: ["job"],
+      });
     },
     onError: (err: any) => {
       toastError(err.message || "Something went wrong");

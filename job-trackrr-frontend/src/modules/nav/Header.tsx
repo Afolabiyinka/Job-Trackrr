@@ -8,19 +8,19 @@ const Header = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % jobMotivations.length);
-    }, 10000);
+    }, 4000);
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="w-full p-3 flex justify-start items-center">
+    <div className="w-full flex justify-start items-center p-1 ml-2">
       <AnimatePresence mode="wait">
         <motion.h1
           key={jobMotivations[index]}
-          initial={{ y: 30, opacity: 0 }}
+          initial={{ y: 3, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -30, opacity: 0 }}
+          exit={{ y: -3, opacity: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="text-center text-xl"
+          className="text-center md:text-lg"
         >
           {jobMotivations[index]}
         </motion.h1>

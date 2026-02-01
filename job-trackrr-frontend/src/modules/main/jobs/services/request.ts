@@ -55,6 +55,17 @@ const getAllJobs = async (): Promise<Job[]> => {
 
   return data;
 };
+
+const getParticularJob = async (id: string): Promise<Job> => {
+  try {
+    const res: any = await axios.get(`${testingEndpoint}api/jobs/${id}`, {
+      withCredentials: true,
+    });
+    return res.data.job;
+  } catch (err) {
+    throw new Error();
+  }
+};
 const deleteJob = async (id: string) => {
   try {
     const res = await axios.delete(`${testingEndpoint}api/jobs/delete`, {
@@ -63,8 +74,9 @@ const deleteJob = async (id: string) => {
     });
     return res;
   } catch (err) {
+    console.log(err);
     throw new Error();
   }
 };
 
-export { createJob, getAllJobs, editJob, deleteJob };
+export { createJob, getAllJobs, editJob, deleteJob, getParticularJob };

@@ -13,7 +13,7 @@ const MainLayout = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen p-1">
+    <div className="flex flex-col lg:flex-row h-screen p-2">
       <aside className="lg:w-80">
         <NavLayout />
       </aside>
