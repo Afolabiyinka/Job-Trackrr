@@ -6,6 +6,7 @@ export const useJobs = () => {
     data: jobs = [],
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["jobs"],
     queryFn: getAllJobs,
@@ -14,5 +15,6 @@ export const useJobs = () => {
     jobs,
     loading: isLoading,
     error,
+    refetch,
   };
 };

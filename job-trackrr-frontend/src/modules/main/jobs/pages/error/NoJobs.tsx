@@ -1,17 +1,41 @@
-import { Briefcase } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { ArrowRight, Briefcase } from "lucide-react";
 import CreateJobStepper from "../../components/create-job/stepper/CreateJob-Stepper";
 
-const NoJobs = () => {
+export default function NoJobs() {
   return (
-    <div className="h-full w-full flex justify-center items-start rounded-xl">
-      <div className="w-full h-4/5 flex-col flex justify-center items-center">
-        <Briefcase size={100} className="stroke-[1px]" />
+    <Empty className="h-full border border-dashed">
+      <EmptyHeader>
+        <EmptyMedia variant="icon" className="h-16 w-16">
+          <Briefcase aria-hidden />
+        </EmptyMedia>
 
-        <p className="text-xl mb-3">Add a new job to get Started</p>
-        <CreateJobStepper title="Add a new job" />
-      </div>
-    </div>
+        <EmptyTitle className="text-2xl">No Jobs Added Yet</EmptyTitle>
+
+        <EmptyDescription className="text-md">
+          Add your first job application to start tracking your job search in
+          one place.
+        </EmptyDescription>
+      </EmptyHeader>
+
+      <EmptyContent className="flex-row justify-center gap-2">
+        <CreateJobStepper title="Add a new job" icon={<ArrowRight />} />
+      </EmptyContent>
+
+      <Button
+        variant="link"
+        asChild
+        size="sm"
+        className="mx-auto text-muted-foreground"
+      ></Button>
+    </Empty>
   );
-};
-
-export default NoJobs;
+}

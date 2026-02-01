@@ -44,7 +44,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
                   <p className="text-lg font-bold tracking-wide line-clamp-1">
                     {job.company}
                   </p>
-                  <p>{job.companyEmail}</p>
+                  <p className="text-muted-foreground">{job.companyEmail}</p>
                 </span>
               </span>
             ))
