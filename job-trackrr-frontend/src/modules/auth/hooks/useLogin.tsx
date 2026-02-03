@@ -20,7 +20,6 @@ export const useLogin = () => {
       navigate("/");
     },
     onError: (error) => {
-      alert(error.message);
       toastError(error.message);
     },
   });

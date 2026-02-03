@@ -1,45 +1,52 @@
-import { Avatar } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Upload, User } from "lucide-react";
+import { Loader2, Mail, User } from "lucide-react";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { useUser } from "../store/useUser";
+import { useEditUser } from "../hooks/useEditUser";
+import React, { useEffect } from "react";
 
 const EditInfo = () => {
   const { user } = useUser();
+  const { editData, handleEdit, loading, setEditData } = useEditUser();
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    handleEdit();
+  }
+  useEffect(() => {
+    if (user) {
+      setEditData(user);
+    }
+  }, [user]);
   return (
     <Card>
       <CardHeader className="text-2xl">Edit your details</CardHeader>
       <CardContent>
-        <div className="p-1">
-          <span className="flex flex-col md:flex-row gap-3 items-center mb-4">
-            <Avatar className="animate-pulse flex items-center justify-center">
-              <User size={30} />
-            </Avatar>
-
-            <Button size={`lg`}>
-              <Upload className="mr-1" />
-              Change Profile Pic
-            </Button>
-          </span>
-
+        <form className="p-1" onSubmit={onSubmit}>
           <div className="grid md:grid-cols-3 gap-6 grid-cols-1">
             <CustomInput
               icon={<User />}
               placeholder="Username"
               type="text"
               id="username"
-              value={user?.username}
+              value={editData.username}
+              onChange={(e) => setEditData({ ...editData, username: e })}
             />
             <CustomInput
               icon={<Mail />}
               placeholder="Email"
               type="text"
               id="email"
-              value={user?.email}
+              value={editData.email}
+              onChange={(e) => setEditData({ ...editData, email: e })}
             />
           </div>
-        </div>
+          <Button size={`lg`} className="mt-3" type="submit">
+            {loading && <Loader2 className="h-6 w-6 animate-spin" />}
+            Update your Details
+          </Button>
+        </form>
       </CardContent>
     </Card>
   );

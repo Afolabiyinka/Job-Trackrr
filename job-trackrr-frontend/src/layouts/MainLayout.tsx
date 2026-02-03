@@ -1,13 +1,10 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NavLayout from "./NavLayout";
 import Greeting from "@/modules/nav/Greeting";
 import Header from "@/modules/nav/Header";
 import { motion } from "framer-motion";
-import { useFetchUser } from "@/modules/main/settings/hooks/useFetchUser";
 
 const MainLayout = () => {
-  const { error } = useFetchUser();
-
   // if (error) {
   //   return <Navigate to="/auth/login" replace />;
   // }

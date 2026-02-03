@@ -3,10 +3,10 @@ import type { Job } from "../types/job";
 
 interface JobStore {
   jobs: Job[];
-  setJob: (jobs: Job[]) => void;
+  setJobs: (jobs: Job[]) => void;
 }
 
 export const useJobs = create<JobStore>((set) => ({
   jobs: [],
-  setJob: (jobs) => set({ jobs: jobs }),
+  setJobs: (jobs) => set({ jobs: jobs }),
 }));

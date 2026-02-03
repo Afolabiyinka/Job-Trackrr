@@ -12,7 +12,7 @@ const Header = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="w-full flex justify-start items-center p-1 ml-2">
+    <div className="w-full flex justify-start items-center p-2 ml-2">
       <AnimatePresence mode="wait">
         <motion.h1
           key={jobMotivations[index]}

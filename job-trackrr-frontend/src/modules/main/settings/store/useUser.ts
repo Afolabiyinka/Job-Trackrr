@@ -1,5 +1,5 @@
-import type { AuthUser } from "@/types/types";
 import { create } from "zustand";
+import type { AuthUser } from "../types/types";
 
 interface UserStore {
   user: AuthUser | null;

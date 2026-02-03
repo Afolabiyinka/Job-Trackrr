@@ -1,14 +1,14 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import type { Job } from "../types/job";
 import { createJob } from "../services/request";
 import useToastMessage from "@/lib/toastMsg";
 import { useSetJob } from "../store/useAddJob";
 import { useNavigate } from "react-router-dom";
+import { queryClient } from "@/constants/queryClient";
 
 export const useCreateJob = () => {
   const { toastError, toastSuccess } = useToastMessage();
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
 
   const {
     appliedAt,

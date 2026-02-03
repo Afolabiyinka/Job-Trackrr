@@ -3,7 +3,7 @@ import { getAllJobs } from "../services/request";
 
 export const useGetJobs = () => {
   const {
-    data: jobs = [],
+    data: jobs,
     isLoading,
     error,
     refetch,

@@ -1,3 +1,5 @@
+import type { AuthUser } from "@/modules/main/settings/types/types";
+
 export interface SuccessResponse {
   message: string;
   token: string;
@@ -8,10 +10,4 @@ export interface ErrorResponse {
   success: boolean;
   message: string;
   error: string;
-}
-
-export interface AuthUser {
-  username: string;
-  email: string;
-  profilePic: string;
 }

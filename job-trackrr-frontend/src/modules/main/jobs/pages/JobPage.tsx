@@ -1,12 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
-import type { Status } from "../types/job";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
+  Briefcase,
   Building2,
+  CalendarCheck,
   CalendarClockIcon,
+  ClipboardList,
   DollarSign,
+  Laptop,
+  MessageSquare,
   Pencil,
   User,
 } from "lucide-react";
@@ -34,101 +38,129 @@ const JobPage = () => {
   const formatedAppliedAtDate = formatDate(job?.appliedAt);
 
   return (
-    <div className="mx-auto p-1">
-      <Button onClick={() => navigate(-1)} size={`lg`} className="mb-6">
-        <ArrowLeft className="mr-2" />
-        Go back
+    <div className="mx-auto p-3">
+      <Button
+        onClick={() => navigate(-1)}
+        variant="ghost"
+        size="lg"
+        className="mb-4 gap-2"
+      >
+        <ArrowLeft />
+        Back
       </Button>
 
-      <div className="flex flex-col md:flex-row  md:justify-between  items-center p-2">
-        <span className="font-medium flex gap-2 items-center  p-2 rounded-xl cursor-pointer">
-          <span className="h-16 w-16  rounded-full border  flex justify-center items-center">
-            <Building2 size={40} className="stroke-[1px]" />
-          </span>
-          <span>
-            <p className="text-lg font-bold tracking-wide line-clamp-1">
+      <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between bg-card border rounded-2xl p-4 shadow-sm">
+        <div className="flex items-center gap-4">
+          <div className="h-16 w-16 rounded-full border flex items-center justify-center bg-muted">
+            <Building2 size={36} />
+          </div>
+
+          <div>
+            <h2 className="text-xl font-semibold leading-tight">
               {job.company}
-            </p>
-            <span className="flex gap-2">
-              <p>{job.companyEmail}</p>
+            </h2>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              {job.companyEmail}
               <CopyButton value={job.companyEmail} />
-            </span>
-          </span>
-        </span>
+            </div>
+          </div>
+        </div>
 
         <div className="flex gap-2">
           <CreateJobStepper
-            title="Edit Job Details"
+            title="Edit Job"
             icon={<Pencil />}
-            editing={true}
+            editing
             id={job.id}
           />
           <DeleteJobModal id={id} />
         </div>
       </div>
 
-      <div className="rounded-xl p-5 mt-3  mb-6">
-        <div className="flex justify-between border-b mb-2 p-3">
-          <h3 className="text-3xl font-semibold  border-gray-200 flex items-center gap-2">
-            <User size={30} />
+      <div className="mt-6 bg-card border rounded-2xl p-5 shadow-sm">
+        <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between border-b pb-4 mb-6">
+          <h3 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
+            <User />
             {job.role}
           </h3>
-          <span className="flex items-center gap-2 shadow p-2 rounded-3xl">
+
+          <span className="flex items-center gap-2 bg-muted px-4 py-2 rounded-full text-sm font-medium">
             <CalendarClockIcon />
-            <h3>{formatedInterviewDate}</h3>
-            <span className="h-3 border w-3 bg-primary rounded-full animate-ping" />
+            {formatedInterviewDate}
+            <span className="h-2 w-2 bg-primary rounded-full animate-ping" />
           </span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <div>
-            <span className="flex gap-2">
+            <span className="flex items-center gap-2 text-sm text-muted-foreground">
               <span
-                className={`h-4 w-4 border rounded-full ${getStatusColor(job.status as Status)}`}
-              />
-              <p className="text-sm  mb-1">Status</p>
+                className={`h-4 w-4 ${getStatusColor(job.status)} rounded-full`}
+              ></span>
+              Status
             </span>
-            <p className="font-medium text-lg">{job.status}</p>
+            <p className="font-semibold text-lg">{job.status}</p>
           </div>
+
           <div>
-            <p className="text-sm  mb-1">Job Type</p>
-            <p className="font-medium text-lg">{job.jobType}</p>
+            <span className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Briefcase size={16} />
+              Job Type
+            </span>
+            <p className="font-semibold text-lg">{job.jobType}</p>
           </div>
+
           <div>
-            <p className="text-sm  mb-1">Work Type</p>
-            <p className="font-medium text-lg">{job.workType}</p>
+            <span className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Laptop size={16} />
+              Work Type
+            </span>
+            <p className="font-semibold text-lg">{job.workType}</p>
           </div>
+
           {job.interviewType && (
             <div>
-              <p className="text-sm  mb-1">Interview Type</p>
-              <p className="font-medium text-lg">{job.interviewType}</p>
+              <span className="flex items-center gap-2 text-sm text-muted-foreground">
+                <ClipboardList size={16} />
+                Interview Type
+              </span>
+              <p className="font-semibold text-lg">{job.interviewType}</p>
             </div>
           )}
+
           {job.appliedAt && (
             <div>
-              <p className="text-sm  mb-1">Applied At</p>
-              <p className="font-medium text-lg">{formatedAppliedAtDate}</p>
+              <span className="flex items-center gap-2 text-sm text-muted-foreground">
+                <CalendarCheck size={16} />
+                Applied At
+              </span>
+              <p className="font-semibold text-lg">{formatedAppliedAtDate}</p>
             </div>
           )}
 
           <div>
-            <p className="text-sm  mb-1 flex items-center ">
-              <DollarSign size={17} />
+            <span className="flex items-center gap-2 text-sm text-muted-foreground">
+              <DollarSign size={16} />
               Salary Range
-            </p>
+            </span>
             <NumericFormat
-              className="font-medium text-lg"
+              className="font-semibold text-lg"
               value={job.salaryRange}
               thousandSeparator
-              // prefix="$"
             />
           </div>
         </div>
       </div>
 
       {job.feedback && (
-        <div className=" border border-gray-200 rounded-xl p-6 shadow-sm">
-          <h3 className="text-lg font-semibold mb-3">Feedback</h3>
-          <p className="text-gray-700 leading-relaxed">{job.feedback}</p>
+        <div className="mt-6 bg-card border rounded-2xl p-6 shadow-sm">
+          <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
+            <MessageSquare />
+            Feedback
+          </h3>
+          <p className="text-muted-foreground leading-relaxed">
+            {job.feedback}
+          </p>
         </div>
       )}
     </div>
