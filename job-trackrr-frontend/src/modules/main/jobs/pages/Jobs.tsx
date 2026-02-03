@@ -3,26 +3,34 @@ import TableView from "./views/table-view";
 import CardView from "./views/card-view";
 import { ArrowRight, LayoutGrid, Table } from "lucide-react";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
-import { useJobs } from "../hooks/useJobs";
+import { useGetJobs } from "../hooks/useGetJobs";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import NoJobs from "./error/NoJobs";
+import { useJobs } from "../store/useJobs";
 
 const Jobs = () => {
-  const { jobs, error, loading } = useJobs();
+  const { jobs, error, loading } = useGetJobs();
+  const { setJob } = useJobs();
+
   if (error) {
     return (
-      <div className="h-screen w-full justify-center items-center border">
-        Failed to get all jobs
+      <div className="h-screen rounded-xl w-full flex justify-center items-center border">
+        <h1 className="text-3xl"> Failed to get all jobs</h1>
       </div>
     );
   }
+
   if (loading) {
     return <LoadingContainer />;
+  }
+  if (jobs) {
+    setJob(jobs);
   }
 
   if (jobs?.length === 0) {
     return <NoJobs />;
   }
+
   return (
     <div className="h-full w-full flex flex-col gap-5 p-3">
       <div>

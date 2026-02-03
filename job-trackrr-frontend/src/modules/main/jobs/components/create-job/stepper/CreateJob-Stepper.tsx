@@ -33,7 +33,7 @@ import {
 } from "../utils/utils";
 import { useCreateJob } from "../../../hooks/useCreateJob";
 import MoneyInput from "../input/salary-range";
-import { useJobs } from "../../../hooks/useJobs";
+import { useJobs } from "../../../store/useJobs";
 import type { Job } from "../../../types/job";
 import { useEffect } from "react";
 import { useEditJobs } from "../../../hooks/useEditJob";

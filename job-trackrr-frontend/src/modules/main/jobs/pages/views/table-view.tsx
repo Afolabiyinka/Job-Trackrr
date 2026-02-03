@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/table";
 import { getStatusColor } from "../../libs/utils";
 import { useNavigate } from "react-router-dom";
-import { useJobs } from "../../hooks/useJobs";
+import { useJobs } from "../../store/useJobs";
 
 const TableView = () => {
   const navigate = useNavigate();

@@ -12,6 +12,10 @@ const login = async (payload: LoginPayload): Promise<SuccessResponse> => {
     credentials: "include",
   });
 
+  if (!res.ok) {
+    throw new Error();
+  }
+
   const data = await res.json();
 
   return data;
@@ -26,6 +30,10 @@ const signup = async (payload: SignupPayload): Promise<SuccessResponse> => {
     body: JSON.stringify(payload),
     credentials: "include",
   });
+
+  if (!res.ok) {
+    throw new Error();
+  }
 
   const data = await res.json();
 

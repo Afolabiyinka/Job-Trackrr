@@ -15,6 +15,7 @@ const Settings = lazy(() => import("@/modules/main/settings/pages/Settings"));
 const ComponentExample = lazy(() => import("@/components/component-example"));
 const Login = lazy(() => import("@/modules/auth/pages/Login"));
 const SignUp = lazy(() => import("@/modules/auth/pages/SignUp"));
+const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
 
 export const routes: RouteObject[] = [
   {
@@ -45,6 +46,10 @@ export const routes: RouteObject[] = [
       {
         path: "interviews",
         Component: ComponentExample,
+      },
+      {
+        path: "contacts",
+        Component: Contacts,
       },
       {
         path: "settings",

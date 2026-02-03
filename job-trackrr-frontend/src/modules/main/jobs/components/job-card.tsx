@@ -36,7 +36,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
             jobs?.map((job, i) => (
               <span
                 key={i}
-                className="font-medium flex gap-2 items-center hover:bg-primary hover:text-white p-2 rounded-2xl cursor-pointer"
+                className="font-medium flex gap-2 items-center hover:bg-primary/80 hover:text-white p-2 rounded-2xl cursor-pointer"
                 onClick={() => navigate(`/jobs/${job.id}`)}
               >
                 <span className="h-16 w-16 bg-gray-300 rounded-full border animate-pulse" />

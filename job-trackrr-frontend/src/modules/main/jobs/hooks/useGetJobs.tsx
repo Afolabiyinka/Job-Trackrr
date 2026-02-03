@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllJobs } from "../services/request";
 
-export const useJobs = () => {
+export const useGetJobs = () => {
   const {
     data: jobs = [],
     isLoading,

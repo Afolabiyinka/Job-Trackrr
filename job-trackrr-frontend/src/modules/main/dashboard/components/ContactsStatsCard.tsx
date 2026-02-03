@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import ContactCard from "../../contacts/ContactCard";
+import ContactCard from "../../contacts/components/ContactCard";
 
 const ContactsStatsCard = () => {
   const navigate = useNavigate();

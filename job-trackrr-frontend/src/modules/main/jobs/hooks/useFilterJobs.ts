@@ -1,4 +1,4 @@
-import { useJobs } from "./useJobs";
+import { useJobs } from "../store/useJobs";
 
 export const useFilterJobs = () => {
   const { jobs } = useJobs();

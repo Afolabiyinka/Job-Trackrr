@@ -19,8 +19,9 @@ export const useLogin = () => {
       toastSuccess(data.message);
       navigate("/");
     },
-    onError: (err) => {
-      toastError(err.message);
+    onError: (error) => {
+      alert(error.message);
+      toastError(error.message);
     },
   });
 

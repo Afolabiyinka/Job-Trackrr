@@ -8,9 +8,9 @@ import { useFetchUser } from "@/modules/main/settings/hooks/useFetchUser";
 const MainLayout = () => {
   const { error } = useFetchUser();
 
-  if (error) {
-    return <Navigate to="/auth/login" replace />;
-  }
+  // if (error) {
+  //   return <Navigate to="/auth/login" replace />;
+  // }
 
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">

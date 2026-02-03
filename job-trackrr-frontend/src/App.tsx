@@ -32,22 +32,18 @@ export function App() {
     }
   }, [theme]);
 
-  // if (loading) {
-  //   return <LoadingContainer />;
-  // }
-  // React.useEffect(() => {
-  //   if (error) {
-  //     window.location.href = "/auth/login";
-  //   }
-  // }, [error]);
-
   return (
     <div className="font-[Geist]">
       <RoutesConfig />
       <Toaster
         position="top-right"
         theme={theme}
-        toastOptions={{ style: { borderRadius: "20px" } }}
+        toastOptions={{
+          style: {
+            borderRadius: "20px",
+            background: `${theme === "light" ? "white" : "#161616"}`,
+          },
+        }}
       />
     </div>
   );
