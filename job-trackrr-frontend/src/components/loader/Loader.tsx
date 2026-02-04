@@ -3,273 +3,102 @@ import styled from "styled-components";
 const Loader = () => {
   return (
     <StyledWrapper>
-      <svg viewBox="0 0 240 240" height={240} width={240} className="pl">
-        <circle
-          strokeLinecap="round"
-          strokeDashoffset={-330}
-          strokeDasharray="0 660"
-          strokeWidth={20}
-          stroke="#000"
-          fill="none"
-          r={105}
-          cy={120}
-          cx={120}
-          className="pl__ring pl__ring--a"
-        />
-        <circle
-          strokeLinecap="round"
-          strokeDashoffset={-110}
-          strokeDasharray="0 220"
-          strokeWidth={20}
-          stroke="#000"
-          fill="none"
-          r={35}
-          cy={120}
-          cx={120}
-          className="pl__ring pl__ring--b"
-        />
-        <circle
-          strokeLinecap="round"
-          strokeDasharray="0 440"
-          strokeWidth={20}
-          stroke="#000"
-          fill="none"
-          r={70}
-          cy={120}
-          cx={85}
-          className="pl__ring pl__ring--c"
-        />
-        <circle
-          strokeLinecap="round"
-          strokeDasharray="0 440"
-          strokeWidth={20}
-          stroke="#000"
-          fill="none"
-          r={70}
-          cy={120}
-          cx={155}
-          className="pl__ring pl__ring--d"
-        />
-      </svg>
+      <div className="loader" />
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .pl {
-    width: 6em;
-    height: 6em;
+  .loader {
+    position: relative;
+    width: 2.5em;
+    height: 2.5em;
+    transform: rotate(165deg);
   }
 
-  .pl__ring {
-    animation: ringA 2s linear infinite;
+  .loader:before,
+  .loader:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 0.5em;
+    height: 0.5em;
+    border-radius: 0.25em;
+    transform: translate(-50%, -50%);
   }
 
-  .pl__ring--a {
-    stroke: #000000;
+  .loader:before {
+    animation: before8 2s infinite;
   }
 
-  .pl__ring--b {
-    animation-name: ringB;
-    stroke: #7e7e7e;
+  .loader:after {
+    animation: after6 2s infinite;
   }
 
-  .pl__ring--c {
-    animation-name: ringC;
-    stroke: #686868;
-  }
-
-  .pl__ring--d {
-    animation-name: ringD;
-    stroke: #000000;
-  }
-
-  /* Animations */
-  @keyframes ringA {
-    from,
-    4% {
-      stroke-dasharray: 0 660;
-      stroke-width: 20;
-      stroke-dashoffset: -330;
+  @keyframes before8 {
+    0% {
+      width: 0.5em;
+      box-shadow:
+        1em -0.5em rgba(225, 20, 98, 0.75),
+        -1em 0.5em rgba(111, 202, 220, 0.75);
     }
 
-    12% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -335;
-    }
-
-    32% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -595;
-    }
-
-    40%,
-    54% {
-      stroke-dasharray: 0 660;
-      stroke-width: 20;
-      stroke-dashoffset: -660;
-    }
-
-    62% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -665;
-    }
-
-    82% {
-      stroke-dasharray: 60 600;
-      stroke-width: 30;
-      stroke-dashoffset: -925;
-    }
-
-    90%,
-    to {
-      stroke-dasharray: 0 660;
-      stroke-width: 20;
-      stroke-dashoffset: -990;
-    }
-  }
-
-  @keyframes ringB {
-    from,
-    12% {
-      stroke-dasharray: 0 220;
-      stroke-width: 20;
-      stroke-dashoffset: -110;
-    }
-
-    20% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -115;
-    }
-
-    40% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -195;
-    }
-
-    48%,
-    62% {
-      stroke-dasharray: 0 220;
-      stroke-width: 20;
-      stroke-dashoffset: -220;
+    35% {
+      width: 2.5em;
+      box-shadow:
+        0 -0.5em rgba(225, 20, 98, 0.75),
+        0 0.5em rgba(111, 202, 220, 0.75);
     }
 
     70% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -225;
+      width: 0.5em;
+      box-shadow:
+        -1em -0.5em rgba(225, 20, 98, 0.75),
+        1em 0.5em rgba(111, 202, 220, 0.75);
     }
 
-    90% {
-      stroke-dasharray: 20 200;
-      stroke-width: 30;
-      stroke-dashoffset: -305;
-    }
-
-    98%,
-    to {
-      stroke-dasharray: 0 220;
-      stroke-width: 20;
-      stroke-dashoffset: -330;
+    100% {
+      box-shadow:
+        1em -0.5em rgba(225, 20, 98, 0.75),
+        -1em 0.5em rgba(111, 202, 220, 0.75);
     }
   }
 
-  @keyframes ringC {
-    from {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: 0;
+  @keyframes after6 {
+    0% {
+      height: 0.5em;
+      box-shadow:
+        0.5em 1em rgba(61, 184, 143, 0.75),
+        -0.5em -1em rgba(233, 169, 32, 0.75);
     }
 
-    8% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -5;
+    35% {
+      height: 2.5em;
+      box-shadow:
+        0.5em 0 rgba(61, 184, 143, 0.75),
+        -0.5em 0 rgba(233, 169, 32, 0.75);
     }
 
-    28% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -175;
+    70% {
+      height: 0.5em;
+      box-shadow:
+        0.5em -1em rgba(61, 184, 143, 0.75),
+        -0.5em 1em rgba(233, 169, 32, 0.75);
     }
 
-    36%,
-    58% {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -220;
-    }
-
-    66% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -225;
-    }
-
-    86% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -395;
-    }
-
-    94%,
-    to {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -440;
+    100% {
+      box-shadow:
+        0.5em 1em rgba(61, 184, 143, 0.75),
+        -0.5em -1em rgba(233, 169, 32, 0.75);
     }
   }
 
-  @keyframes ringD {
-    from,
-    8% {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: 0;
-    }
-
-    16% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -5;
-    }
-
-    36% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -175;
-    }
-
-    44%,
-    50% {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -220;
-    }
-
-    58% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -225;
-    }
-
-    78% {
-      stroke-dasharray: 40 400;
-      stroke-width: 30;
-      stroke-dashoffset: -395;
-    }
-
-    86%,
-    to {
-      stroke-dasharray: 0 440;
-      stroke-width: 20;
-      stroke-dashoffset: -440;
-    }
+  .loader {
+    position: absolute;
+    top: calc(50% - 1.25em);
+    left: calc(50% - 1.25em);
   }
 `;
 

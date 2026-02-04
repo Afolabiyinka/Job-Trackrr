@@ -10,9 +10,9 @@ const MainLayout = () => {
   const { user } = useUser();
   const { loading } = useFetchUser();
 
-  if (!user && !loading) {
-    return <Navigate to={`/auth/login`} replace />;
-  }
+  // if (!user && !loading) {
+  //   return <Navigate to={`/auth/login`} replace />;
+  // }
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">
       <aside className="lg:w-80">

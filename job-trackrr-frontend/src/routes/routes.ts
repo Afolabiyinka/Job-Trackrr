@@ -55,10 +55,6 @@ export const routes: RouteObject[] = [
         path: "settings",
         Component: Settings,
       },
-      {
-        path: "random",
-        Component: LoadingContainer,
-      },
     ],
   },
   {
@@ -76,5 +72,9 @@ export const routes: RouteObject[] = [
         Component: SignUp,
       },
     ],
+  },
+  {
+    path: "random",
+    Component: LoadingContainer,
   },
 ];
