@@ -4,12 +4,13 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
 import { useUser } from "../main/settings/store/useUser";
+import { useLogout } from "../auth/hooks/useLogout";
 
 const DesktopNav = () => {
   const location = useLocation();
 
   // });
-  const { logout } = useUser();
+  const { handleLogout } = useLogout();
   return (
     <nav className="h-full w-full lg:flex hidden flex-col gap-6 rounded-xl p-3 ">
       <h1 className="text-2xl tracking-wider font-[Inter] font-bold capitalize">
@@ -58,7 +59,7 @@ const DesktopNav = () => {
         <Button
           className="justify-start gap-3"
           size={`lg`}
-          onClick={() => logout()}
+          onClick={() => handleLogout()}
         >
           <LogOut className="h-10 w-10" />
           Log out

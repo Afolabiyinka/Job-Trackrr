@@ -1,14 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import NavLayout from "./NavLayout";
 import Greeting from "@/modules/nav/Greeting";
 import Header from "@/modules/nav/Header";
 import { motion } from "framer-motion";
+import { useUser } from "@/modules/main/settings/store/useUser";
+import { useFetchUser } from "@/modules/main/settings/hooks/useFetchUser";
 
 const MainLayout = () => {
-  // if (error) {
-  //   return <Navigate to="/auth/login" replace />;
-  // }
+  const { user } = useUser();
+  const { loading } = useFetchUser();
 
+  if (!user && !loading) {
+    return <Navigate to={`/auth/login`} replace />;
+  }
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">
       <aside className="lg:w-80">

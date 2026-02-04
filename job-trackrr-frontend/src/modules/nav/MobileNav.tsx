@@ -5,11 +5,11 @@ import { Link, NavLink } from "react-router-dom";
 import MenuButton from "./components/MenuButton";
 import { LogOut, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useUser } from "../main/settings/store/useUser";
+import { useLogout } from "../auth/hooks/useLogout";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
-  const { logout } = useUser();
+  const { handleLogout } = useLogout();
 
   return (
     <div className="p-3 flex flex-col justify-between relative">
@@ -54,10 +54,7 @@ const MobileNav = () => {
                       pathMatch ? "bg-primary/10 p-2.5" : ""
                     }`}
                   >
-                    <Icon
-                      className={`h-5 w-5`}
-                      // fill={`${pathMatch ? "white" : "none"}`}
-                    />
+                    <Icon className={`h-5 w-5`} />
                     <p>{name}</p>
                   </NavLink>
                 </motion.span>
@@ -76,7 +73,7 @@ const MobileNav = () => {
               <Button
                 className="justify-start gap-3"
                 size={`lg`}
-                onClick={() => logout()}
+                onClick={() => handleLogout()}
               >
                 <LogOut className="h-10 w-10" />
                 Log out
