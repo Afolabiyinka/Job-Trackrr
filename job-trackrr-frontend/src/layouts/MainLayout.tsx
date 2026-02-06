@@ -1,14 +1,14 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import NavLayout from "./NavLayout";
 import Greeting from "@/modules/nav/Greeting";
 import Header from "@/modules/nav/Header";
 import { motion } from "framer-motion";
-import { useUser } from "@/modules/main/settings/store/useUser";
-import { useFetchUser } from "@/modules/main/settings/hooks/useFetchUser";
+// import { useUser } from "@/modules/main/settings/store/useUser";
+// import { useFetchUser } from "@/modules/main/settings/hooks/useFetchUser";
 
 const MainLayout = () => {
-  const { user } = useUser();
-  const { loading } = useFetchUser();
+  // const { user } = useUser();
+  // const { loading } = useFetchUser();
 
   // if (!user && !loading) {
   //   return <Navigate to={`/auth/login`} replace />;

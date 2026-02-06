@@ -3,7 +3,6 @@ import { LogOut, Settings } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
-import { useUser } from "../main/settings/store/useUser";
 import { useLogout } from "../auth/hooks/useLogout";
 
 const DesktopNav = () => {
