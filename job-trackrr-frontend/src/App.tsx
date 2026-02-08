@@ -6,7 +6,7 @@ import { useUser } from "./modules/main/settings/store/useUser";
 import { useFetchUser } from "./modules/main/settings/hooks/useFetchUser";
 
 export function App() {
-  const { fetchedUser, error } = useFetchUser();
+  const { fetchedUser } = useFetchUser();
   const { setUser } = useUser();
   const { theme } = useTheme();
 
@@ -14,7 +14,7 @@ export function App() {
     if (fetchedUser?.user) {
       setUser(fetchedUser.user);
     }
-  }, [fetchedUser, setUser, error]);
+  }, [fetchedUser, setUser]);
 
   // Handle theme
   React.useEffect(() => {

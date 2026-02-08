@@ -4,6 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "../services/request";
 import useToastMessage from "@/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
+import { queryClient } from "@/constants/queryClient";
 export const useLogin = () => {
   const [loginData, setLoginData] = React.useState<LoginPayload>({
     email: "",
@@ -16,6 +17,9 @@ export const useLogin = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (payload: LoginPayload) => login(payload),
     onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: ["user"],
+      });
       toastSuccess(data.message);
       navigate("/");
     },

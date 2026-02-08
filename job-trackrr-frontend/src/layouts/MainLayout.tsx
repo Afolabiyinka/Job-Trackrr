@@ -3,16 +3,19 @@ import NavLayout from "./NavLayout";
 import Greeting from "@/modules/nav/Greeting";
 import Header from "@/modules/nav/Header";
 import { motion } from "framer-motion";
-// import { useUser } from "@/modules/main/settings/store/useUser";
-// import { useFetchUser } from "@/modules/main/settings/hooks/useFetchUser";
+import { useGetJobs } from "@/modules/main/jobs/hooks/useGetJobs";
+import { useJobs } from "@/modules/main/jobs/store/useJobs";
+import { useEffect } from "react";
 
 const MainLayout = () => {
-  // const { user } = useUser();
-  // const { loading } = useFetchUser();
+  const { jobs } = useGetJobs();
+  const { setJobs } = useJobs();
 
-  // if (!user && !loading) {
-  //   return <Navigate to={`/auth/login`} replace />;
-  // }
+  useEffect(() => {
+    if (jobs) {
+      setJobs(jobs);
+    }
+  }, [jobs, setJobs]);
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">
       <aside className="lg:w-80">

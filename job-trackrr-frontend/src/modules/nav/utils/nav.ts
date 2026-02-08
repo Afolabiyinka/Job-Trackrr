@@ -1,7 +1,7 @@
 import {
   Briefcase,
   CalendarClock,
-  Flag,
+  File,
   LayoutDashboard,
   User,
 } from "lucide-react";
@@ -10,7 +10,7 @@ const NAVLINKS = [
   { name: "Jobs", icon: Briefcase, path: "/jobs" },
   { name: "Interviews", icon: CalendarClock, path: "/interviews" },
   { name: "Contacts", icon: User, path: "/contacts" },
-  { name: "Goals", icon: Flag, path: "/resume" },
+  { name: "Resume", icon: File, path: "/resume" },
 ];
 
 export { NAVLINKS };

@@ -166,6 +166,14 @@ const CreateJobStepper = ({
             activeBgColor: "#5ea500",
             completedBgColor: "#5ea500",
             inactiveBgColor: "gray",
+            activeTextColor: "white",
+            borderRadius: "50px",
+            circleFontSize: "",
+            completedTextColor: "",
+            fontWeight: "bold",
+            inactiveTextColor: "",
+            labelFontSize: "",
+            size: "2rem",
           }}
         >
           <Step />

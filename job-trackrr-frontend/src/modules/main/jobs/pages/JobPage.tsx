@@ -41,7 +41,7 @@ const JobPage = () => {
     <div className="mx-auto p-3">
       <Button
         onClick={() => navigate(-1)}
-        variant="ghost"
+        variant="secondary"
         size="lg"
         className="mb-4 gap-2"
       >

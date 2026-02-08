@@ -96,9 +96,9 @@ const StyledWrapper = styled.div`
   }
 
   .loader {
-    position: absolute;
-    top: calc(50% - 1.25em);
-    left: calc(50% - 1.25em);
+    // position: absolute;
+    // top: calc(50% - 1.25em);
+    // left: calc(50% - 1.25em);
   }
 `;
 

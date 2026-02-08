@@ -14,7 +14,6 @@ const createJob = async (payload: Job) => {
 
   const data = await res.json();
   if (!res.ok) {
-    window.location.href = "/auth/login";
     throw new Error(data.message);
   }
   return data;
@@ -32,7 +31,6 @@ const editJob = async (payload: Partial<Job>, id: number | string) => {
 
   const data = await res.json();
   if (!res.ok) {
-    window.location.href = "/auth/login";
     throw new Error(data.message);
   }
 
@@ -49,7 +47,6 @@ const getAllJobs = async (): Promise<Job[]> => {
 
   const data = await res.json();
   if (!res.ok) {
-    window.location.href = "/auth/login";
     throw new Error(data.message);
   }
 

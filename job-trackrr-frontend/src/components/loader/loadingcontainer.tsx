@@ -2,8 +2,7 @@ import Loader from "./Loader";
 
 const LoadingContainer = () => {
   return (
-    <div className="h-full shadow flex flex-col justify-center items-center">
-      {/* <Loader2 className="animate-spin h-16 w-16" /> */}
+    <div className="shadow h-screen w-full flex justify-center items-center">
       <Loader />
     </div>
   );

@@ -6,18 +6,9 @@ import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper
 import { useGetJobs } from "../hooks/useGetJobs";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import NoJobs from "./error/NoJobs";
-import { useJobs } from "../store/useJobs";
-import { useEffect } from "react";
 
 const Jobs = () => {
   const { jobs, error, loading } = useGetJobs();
-  const { setJobs } = useJobs();
-
-  useEffect(() => {
-    if (jobs) {
-      setJobs(jobs);
-    }
-  }, [jobs, setJobs]);
 
   if (error) {
     return (

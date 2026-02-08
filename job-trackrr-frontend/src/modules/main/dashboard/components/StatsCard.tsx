@@ -1,0 +1,32 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Briefcase } from "lucide-react";
+import { useJobs } from "../../jobs/store/useJobs";
+import { formatDate } from "../../jobs/libs/utils";
+
+const StatsCard = () => {
+  const { jobs } = useJobs();
+
+  const todaysDate = formatDate(new Date());
+  return (
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>{todaysDate}</CardTitle>
+      </CardHeader>
+      <CardContent className="grid md:grid-cols-3 lg:grid-cols-4">
+        <div className="border p-3 rounded-lg">
+          <span className="flex justify-between">
+            <span className="flex items-center gap-3">
+              <h1 className="text-xl font-bold">{jobs.length}</h1>
+              <p className="text-lg">Job Applications</p>
+            </span>
+            <span className="bg-foreground/10 flex justify-center items-center p-2 rounded-lg">
+              <Briefcase />
+            </span>
+          </span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default StatsCard;

@@ -4,6 +4,7 @@ import type { SignupPayload } from "../types/types";
 import { useNavigate } from "react-router-dom";
 import useToastMessage from "@/lib/toastMsg";
 import { signup } from "../services/request";
+import { queryClient } from "@/constants/queryClient";
 
 export const useSignup = () => {
   const [signupData, setSignUpData] = React.useState<SignupPayload>({
@@ -19,6 +20,9 @@ export const useSignup = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: (payload: SignupPayload) => signup(payload),
     onSuccess: (data) => {
+      queryClient.invalidateQueries({
+        queryKey: ["user"],
+      });
       toastSuccess(data.message);
       navigate("/");
     },
