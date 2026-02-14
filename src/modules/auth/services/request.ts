@@ -15,8 +15,7 @@ const login = async (payload: LoginPayload): Promise<Response> => {
   const data = await res.json();
 
   if (!res.ok) {
-    const message = data?.message || "Login failed";
-    throw new Error(message);
+    throw new Error(data.message);
   }
 
   return data;
