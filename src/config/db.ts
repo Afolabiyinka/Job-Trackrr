@@ -1,23 +1,29 @@
 import { Sequelize } from "sequelize";
 import { configDotenv } from "dotenv";
+
 configDotenv();
 
-export const sequelize = new Sequelize(
-  process.env.DATABASE_NAME as string,
-  process.env.DATABASE_USERNAME as string,
-  process.env.DATABASE_PASSWORD as string,
-  {
-    port: Number(process.env.DATABASE_HOST),
-    host: process.env.DATABASE_HOST as string,
-    dialect: "postgres",
-    logging: false,
-  }
-);
+const DATABASE_URL = process.env.DATABASE_URL;
+
+if (!DATABASE_URL) {
+  throw new Error("DATABASE_URL environment variable is not defined");
+}
+
+export const sequelize = new Sequelize(DATABASE_URL, {
+  dialect: "postgres",
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
+});
 export const connectDb = async () => {
   try {
     await sequelize.authenticate();
-    console.log("Postgres Sql connected succesfully");
+    console.log("Neon Postgres connected successfully");
   } catch (err) {
-    console.log("Unable to connect to db", err);
+    console.error("Unable to connect to DB", err);
   }
 };
