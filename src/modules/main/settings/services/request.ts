@@ -3,19 +3,17 @@ import axios from "axios";
 import type { EditUserPayload } from "../types/types";
 
 const getUser = async () => {
-  const res = await fetch(`${prodEndpoint}api/auth/user`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error();
-  }
+  try {
+    const res = await fetch(`${prodEndpoint}api/auth/user`, {
+      credentials: "include",
+    });
 
-  return data;
+    if (!res.ok) return null;
+
+    return await res.json();
+  } catch {
+    return null;
+  }
 };
 
 const editUser = async (payload: EditUserPayload) => {

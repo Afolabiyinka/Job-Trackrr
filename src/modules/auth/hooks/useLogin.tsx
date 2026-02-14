@@ -5,6 +5,7 @@ import { login } from "../services/request";
 import useToastMessage from "@/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/constants/queryClient";
+import { toast } from "sonner";
 export const useLogin = () => {
   const [loginData, setLoginData] = React.useState<LoginPayload>({
     email: "",
@@ -24,7 +25,8 @@ export const useLogin = () => {
       navigate("/");
     },
     onError: (error) => {
-      toastError(error.message || "Something went wrong");
+      toast(``);
+      // toastError(error.message || "Something went wrong");
     },
   });
 

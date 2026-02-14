@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import NavLayout from "./NavLayout";
 import Greeting from "@/modules/nav/Greeting";
 import Header from "@/modules/nav/Header";
@@ -6,8 +6,10 @@ import { motion } from "framer-motion";
 import { useGetJobs } from "@/modules/main/jobs/hooks/useGetJobs";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";
 import { useEffect } from "react";
+import { useUser } from "@/modules/main/settings/store/useUser";
 
 const MainLayout = () => {
+  const { user } = useUser();
   const { jobs } = useGetJobs();
   const { setJobs } = useJobs();
 
@@ -16,6 +18,11 @@ const MainLayout = () => {
       setJobs(jobs);
     }
   }, [jobs, setJobs]);
+
+  if (user === null) {
+    return <Navigate to="/auth/login" replace />;
+  }
+
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">
       <aside className="lg:w-80">

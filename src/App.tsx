@@ -13,6 +13,8 @@ export function App() {
   React.useEffect(() => {
     if (fetchedUser?.user) {
       setUser(fetchedUser.user);
+    } else {
+      setUser(null);
     }
   }, [fetchedUser, setUser]);
 
@@ -38,12 +40,14 @@ export function App() {
       <Toaster
         position="top-right"
         theme={theme}
-        toastOptions={{
-          style: {
-            borderRadius: "20px",
-            background: `${theme === "light" ? "white" : "#161616"}`,
-          },
-        }}
+        toastOptions={
+          {
+            // style: {
+            //   borderRadius: "20px",
+            //   background: `${theme === "light" ? "white" : "#161616"}`,
+            // },
+          }
+        }
       />
     </div>
   );
