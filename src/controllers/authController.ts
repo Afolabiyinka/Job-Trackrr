@@ -8,8 +8,8 @@ import { AuthenticatedRequest } from "../types/request/types";
 const jwtSecret = process.env.JWT_SECRET!;
 const cookieOptions = {
   httpOnly: true,
-  secure: process.env.NODE_ENV === "production",
-  sameSite: "strict" as const,
+  secure: true,
+  sameSite: "none" as const,
   maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
@@ -80,7 +80,7 @@ const logout = async (req: AuthenticatedRequest, res: Response) => {
   res.clearCookie("token", {
     httpOnly: true,
     secure: true,
-    sameSite: "lax",
+    sameSite: "none",
   });
 
   res.json({ message: "Logged out" });
