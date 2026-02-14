@@ -24,7 +24,7 @@ export const useLogin = () => {
       navigate("/");
     },
     onError: (error) => {
-      toastError(error.message);
+      toastError(error.message || "Something went wrong");
     },
   });
 

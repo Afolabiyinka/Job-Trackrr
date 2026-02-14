@@ -1,9 +1,9 @@
-import { testingEndpoint } from "@/constants/api-data";
+import { prodEndpoint } from "@/constants/api-data";
 import axios from "axios";
 import type { EditUserPayload } from "../types/types";
 
 const getUser = async () => {
-  const res = await fetch(`${testingEndpoint}api/auth/user`, {
+  const res = await fetch(`${prodEndpoint}api/auth/user`, {
     method: "GET",
     credentials: "include",
     headers: {
@@ -20,13 +20,9 @@ const getUser = async () => {
 
 const editUser = async (payload: EditUserPayload) => {
   try {
-    const res = await axios.put(
-      `${testingEndpoint}api/auth/edit-user`,
-      payload,
-      {
-        withCredentials: true,
-      },
-    );
+    const res = await axios.put(`${prodEndpoint}api/auth/edit-user`, payload, {
+      withCredentials: true,
+    });
 
     return res.data;
   } catch (err) {

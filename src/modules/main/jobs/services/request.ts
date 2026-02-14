@@ -1,9 +1,9 @@
-import { testingEndpoint } from "@/constants/api-data";
+import { prodEndpoint } from "@/constants/api-data";
 import axios from "axios";
 import type { Job } from "../types/job";
 
 const createJob = async (payload: Job) => {
-  const res = await fetch(`${testingEndpoint}api/jobs/create`, {
+  const res = await fetch(`${prodEndpoint}api/jobs/create`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -20,7 +20,7 @@ const createJob = async (payload: Job) => {
 };
 
 const editJob = async (payload: Partial<Job>, id: number | string) => {
-  const res = await fetch(`${testingEndpoint}api/jobs/update/${id}`, {
+  const res = await fetch(`${prodEndpoint}api/jobs/update/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const editJob = async (payload: Partial<Job>, id: number | string) => {
 };
 
 const getAllJobs = async (): Promise<Job[]> => {
-  const res = await fetch(`${testingEndpoint}api/jobs`, {
+  const res = await fetch(`${prodEndpoint}api/jobs`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -55,7 +55,7 @@ const getAllJobs = async (): Promise<Job[]> => {
 
 const getParticularJob = async (id: string): Promise<Job> => {
   try {
-    const res: any = await axios.get(`${testingEndpoint}api/jobs/${id}`, {
+    const res: any = await axios.get(`${prodEndpoint}api/jobs/${id}`, {
       withCredentials: true,
     });
     return res.data.job;
@@ -65,7 +65,7 @@ const getParticularJob = async (id: string): Promise<Job> => {
 };
 const deleteJob = async (id: string) => {
   try {
-    const res = await axios.delete(`${testingEndpoint}api/jobs/delete`, {
+    const res = await axios.delete(`${prodEndpoint}api/jobs/delete`, {
       withCredentials: true,
       data: { id },
     });

@@ -9,7 +9,7 @@ const Greeting = () => {
         {user ? (
           <p>{user?.username}</p>
         ) : (
-          <span className="p-5 w-64  rounded-xl bg-gray-100 animate-pulse" />
+          <span className="p-3 w-48  rounded-xl bg-gray-100 animate-pulse" />
         )}
         👋
       </h1>

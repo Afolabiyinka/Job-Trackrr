@@ -1,4 +1,4 @@
-import { testingEndpoint } from "@/constants/api-data";
+import { prodEndpoint } from "@/constants/api-data";
 import { queryClient } from "@/constants/queryClient";
 import { useUser } from "@/modules/main/settings/store/useUser";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +7,7 @@ export const useLogout = () => {
   const navigate = useNavigate();
   async function handleLogout() {
     try {
-      const res = await fetch(`${testingEndpoint}api/auth/logout`, {
+      const res = await fetch(`${prodEndpoint}api/auth/logout`, {
         credentials: "include",
         method: "POST",
       });
