@@ -1,8 +1,8 @@
 import { prodEndpoint } from "@/constants/api-data";
 import type { LoginPayload, SignupPayload } from "../types/types";
-import type { SuccessResponse } from "@/types/types";
+import type { Response } from "@/types/types";
 
-const login = async (payload: LoginPayload): Promise<SuccessResponse> => {
+const login = async (payload: LoginPayload): Promise<Response> => {
   const res = await fetch(`${prodEndpoint}api/auth/login`, {
     method: "POST",
     headers: {
@@ -12,16 +12,17 @@ const login = async (payload: LoginPayload): Promise<SuccessResponse> => {
     credentials: "include",
   });
 
-  if (!res.ok) {
-    throw new Error();
-  }
-
   const data = await res.json();
+
+  if (!res.ok) {
+    const message = data?.message || "Login failed";
+    throw new Error(message);
+  }
 
   return data;
 };
 
-const signup = async (payload: SignupPayload): Promise<SuccessResponse> => {
+const signup = async (payload: SignupPayload): Promise<Response> => {
   const res = await fetch(`${prodEndpoint}api/auth/signup`, {
     method: "POST",
     headers: {
@@ -30,12 +31,12 @@ const signup = async (payload: SignupPayload): Promise<SuccessResponse> => {
     body: JSON.stringify(payload),
     credentials: "include",
   });
+  const data = await res.json();
 
   if (!res.ok) {
-    throw new Error();
+    const message = data?.message || "Login failed";
+    throw new Error(message);
   }
-
-  const data = await res.json();
 
   return data;
 };

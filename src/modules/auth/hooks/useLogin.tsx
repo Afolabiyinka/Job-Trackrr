@@ -23,8 +23,8 @@ export const useLogin = () => {
       toastSuccess(data.message);
       navigate("/");
     },
-    onError: (error) => {
-      toastError(error.message || "Something went wrong");
+    onError: (error: any) => {
+      toastError(error.message);
     },
   });
 

@@ -8,10 +8,11 @@ export const useGetJob = ({ id }: { id: string }) => {
     queryKey: ["job", id],
     queryFn: () => getParticularJob(id),
     refetchOnWindowFocus: true,
+    retry: false,
     enabled: !!user,
   });
   return {
-    job: data,
+    job: data ?? null,
     loading: isLoading,
     error,
   };
