@@ -1,14 +1,14 @@
-import DesktopNav from "@/modules/nav/DesktopNav";
-import MobileNav from "@/modules/nav/MobileNav";
 import { useIsMobile } from "@/hooks/useMobile";
-
+import MobileNav from "./MobileNav";
+import NavBar from "./NavBar";
 const NavLayout = () => {
-  const isMobile = useIsMobile();
-
+  const isMobile = useIsMobile(1024);
   return (
-    <header className="h-full">
-      {isMobile ? <MobileNav /> : <DesktopNav />}
-    </header>
+    <div className="h-full">
+      <NavBar />
+
+      {isMobile && <MobileNav />}
+    </div>
   );
 };
 
