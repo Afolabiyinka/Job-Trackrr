@@ -3,11 +3,14 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import HomePageImage from "@/assets/HomePage.png";
+import LightScreenMode from "@/assets/Light Screenshot.png";
+import DarkScreenshot from "@/assets/Dark Screenshot.png";
+import { useTheme } from "@/modules/theme/useTheme";
 
 const Home = () => {
+  const { theme } = useTheme();
   return (
-    <div className="h-full w-full  flex-col flex justify-center items-center rounded-lg text-center p-3 md:p-10">
+    <div className="h-full w-full  flex-col flex justify-center items-center rounded-lg text-center p-3 md:p-10 bg-gradient-to-b from-background to-muted/20">
       <Badge variant={`outline`} className="mb-4">
         <h1 className="md:text-lg">
           ✨ The simplest way to track job applications
@@ -17,7 +20,7 @@ const Home = () => {
         initial={{ y: 50, opacity: 0.8 }}
         animate={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeIn" }}
-        className="text-2xl md:text-6xl font-extrabold tracking-widest"
+        className="text-3xl md:text-6xl font-bold tracking-tight leading-tight"
       >
         Track your Progress, <br />
         No Distractions
@@ -35,7 +38,7 @@ const Home = () => {
         initial={{ y: 50, opacity: 0.8 }}
         animate={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
-        className="flex gap-6 items-center mt-3 mb-5"
+        className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-6"
       >
         <Link to={`/explore`}>
           <Button size={`lg`} variant={`outline`}>
@@ -54,9 +57,12 @@ const Home = () => {
         initial={{ y: 40, opacity: 0.8 }}
         animate={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.3, ease: "linear", delay: 1 }}
-        className="h-full w-full border rounded-xl bg-background overflow-hidden border-r-muted border-r-8 border-b-muted border-b-8"
+        className="w-full mt-10 rounded-2xl overflow-hidden shadow-2xl border bg-background backdrop-blur"
       >
-        <img src={HomePageImage} alt="Job Trackrr Ui" />
+        <img
+          src={`${theme === "light" ? LightScreenMode : DarkScreenshot}`}
+          alt="Job Trackrr Ui"
+        />
       </motion.span>
     </div>
   );

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { NAVLINKS } from "../utils/nav";
 import { NavLink } from "react-router-dom";
 import MenuButton from "@/modules/nav/components/MenuButton";
+import Logo from "@/components/logo/Logo";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -10,9 +11,7 @@ const MobileNav = () => {
   return (
     <div className="p-3 flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
-        <h1 className="text-2xl tracking-wider font-[Inter] font-bold capitalize">
-          JobTrackrr
-        </h1>
+        <Logo />
         <MenuButton open={open} onClick={() => setOpen(!open)} />
       </span>
       <AnimatePresence>

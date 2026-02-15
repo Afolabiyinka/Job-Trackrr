@@ -4,6 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
 import { useLogout } from "../auth/hooks/useLogout";
+import Logo from "@/components/logo/Logo";
 
 const DesktopNav = () => {
   const location = useLocation();
@@ -12,9 +13,10 @@ const DesktopNav = () => {
   const { handleLogout } = useLogout();
   return (
     <nav className="h-full w-full lg:flex hidden flex-col gap-6 rounded-xl p-3 ">
-      <h1 className="text-2xl tracking-wider font-[Inter] font-bold capitalize">
+      {/* <h1 className="text-2xl tracking-wider font-[Inter] font-bold capitalize">
         JobTrackrr
-      </h1>
+      </h1> */}
+      <Logo />
       <hr />
 
       <div className="flex flex-col gap-4 w-full">

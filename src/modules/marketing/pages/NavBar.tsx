@@ -2,12 +2,12 @@ import { NavLink, Link } from "react-router-dom";
 import { NAVLINKS } from "../utils/nav";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import Logo from "@/components/logo/Logo";
 
 const NavBar = () => {
   return (
-    <div className="p-4 w-full hidden md:flex justify-around items-center">
-      <a className="text-2xl text-primary font-semibold">Job Trackrr</a>
-
+    <div className="p-3 w-full hidden md:flex justify-around items-center">
+      <Logo />
       <span className="flex gap-10">
         {NAVLINKS.map(({ name, path, icon: Icon }) => (
           <NavLink

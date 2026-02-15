@@ -6,6 +6,7 @@ import MenuButton from "./components/MenuButton";
 import { LogOut, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../auth/hooks/useLogout";
+import Logo from "@/components/logo/Logo";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -14,9 +15,7 @@ const MobileNav = () => {
   return (
     <div className="p-3 flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
-        <h1 className="text-2xl tracking-wider font-[Inter] font-bold capitalize">
-          JobTrackrr
-        </h1>
+        <Logo />
         <MenuButton open={open} onClick={() => setOpen(!open)} />
       </span>
       <AnimatePresence>

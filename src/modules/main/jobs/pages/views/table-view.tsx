@@ -12,7 +12,13 @@ import { useJobs } from "../../store/useJobs";
 import { useFilterJobs } from "../../hooks/useFilterJobs";
 import { useState } from "react";
 import type { Job } from "../../types/job";
-import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const TableView = () => {
   const navigate = useNavigate();
@@ -20,58 +26,54 @@ const TableView = () => {
   const { appliedJobs, interviewJobs, offeredJobs, rejectedJobs } =
     useFilterJobs();
 
-  const [filterJobs, setFilterJobs] = useState<Job[]>(jobs);
-  const [activeFilter, setActiveFilter] = useState<boolean>(false);
+  const [activeFilter, setActiveFilter] = useState<
+    "all" | "applied" | "interview" | "offer" | "rejected"
+  >("all");
+  const counts = {
+    all: jobs.length,
+    applied: appliedJobs.length,
+    interview: interviewJobs.length,
+    offer: offeredJobs.length,
+    rejected: rejectedJobs.length,
+  };
+
+  const filteredJobs = {
+    all: jobs,
+    applied: appliedJobs,
+    interview: interviewJobs,
+    offer: offeredJobs,
+    rejected: rejectedJobs,
+  }[activeFilter];
 
   return (
     <div className="h-full w-full flex flex-col gap-3">
-      <div className="p-2 w-full border rounded-full grid grid-cols-10">
-        <Badge
-          onClick={() => {
-            setFilterJobs(jobs);
-            setActiveFilter(true);
-          }}
-          variant={`${activeFilter ? "default" : "outline"}`}
+      <div className="w-full flex justify-end">
+        <Select
+          value={activeFilter}
+          onValueChange={(value) =>
+            setActiveFilter(
+              value as "all" | "applied" | "interview" | "offer" | "rejected",
+            )
+          }
         >
-          All
-        </Badge>
-        <Badge
-          onClick={() => {
-            setFilterJobs(appliedJobs);
-            setActiveFilter(true);
-          }}
-          variant={`${activeFilter ? "default" : "outline"}`}
-        >
-          Applied
-        </Badge>
-        <Badge
-          onClick={() => {
-            setFilterJobs(interviewJobs);
-            setActiveFilter(true);
-          }}
-          variant={`${activeFilter ? "default" : "outline"}`}
-        >
-          Interview
-        </Badge>
-        <Badge
-          onClick={() => {
-            setFilterJobs(offeredJobs);
-            setActiveFilter(true);
-          }}
-          variant={`${activeFilter ? "default" : "outline"}`}
-        >
-          Offer
-        </Badge>
-        <Badge
-          onClick={() => {
-            setFilterJobs(rejectedJobs);
-            setActiveFilter(true);
-          }}
-          variant={`${activeFilter ? "default" : "outline"}`}
-        >
-          Rejected
-        </Badge>
+          <SelectTrigger className="w-50">
+            <SelectValue placeholder="Filter jobs" />
+          </SelectTrigger>
+
+          <SelectContent>
+            <SelectItem value="all">All ({counts.all})</SelectItem>
+            <SelectItem value="applied">Applied ({counts.applied})</SelectItem>
+            <SelectItem value="interview">
+              Interview ({counts.interview})
+            </SelectItem>
+            <SelectItem value="offer">Offer ({counts.offer})</SelectItem>
+            <SelectItem value="rejected">
+              Rejected ({counts.rejected})
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
+
       <Table className="h-full w-full">
         <TableHeader>
           <TableRow>
@@ -82,11 +84,11 @@ const TableView = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filterJobs.map((job: Job) => {
+          {filteredJobs.map((job: Job) => {
             return (
               <TableRow
                 key={job.id}
-                onClick={() => navigate(`/jobs/${job.id}`)}
+                onClick={() => navigate(`/app/jobs/${job.id}`)}
               >
                 <TableCell className="font-medium flex gap-2 items-center">
                   <span className="h-6 w-6 border rounded-full  animate-pulse" />
