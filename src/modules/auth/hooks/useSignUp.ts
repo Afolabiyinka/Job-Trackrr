@@ -24,7 +24,7 @@ export const useSignup = () => {
         queryKey: ["user"],
       });
       toastSuccess(data.message);
-      navigate("/");
+      navigate("/app");
     },
     onError: (err) => {
       toastError(err.message);

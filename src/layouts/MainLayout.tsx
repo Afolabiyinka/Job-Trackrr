@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import NavLayout from "./NavLayout";
+import NavLayout from "../modules/nav/NavLayout";
 import Greeting from "@/modules/nav/Greeting";
 import Header from "@/modules/nav/Header";
 import { motion } from "framer-motion";
@@ -19,9 +19,9 @@ const MainLayout = () => {
     }
   }, [jobs, setJobs]);
 
-  if (user === null) {
-    return <Navigate to="/auth/login" replace />;
-  }
+  // if (user === null) {
+  //   return <Navigate to="/auth/login" replace />;
+  // }
 
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">

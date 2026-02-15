@@ -65,7 +65,7 @@ const MobileNav = () => {
               <Link
                 onClick={() => setOpen(false)}
                 className="flex gap-2 mb-2 p-2 rounded-xl cursor-pointer"
-                to={`/settings`}
+                to={`settings`}
               >
                 <Settings />
                 Settings

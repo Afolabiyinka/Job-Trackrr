@@ -19,7 +19,7 @@ const DesktopNav = () => {
 
       <div className="flex flex-col gap-4 w-full">
         {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
-          const pathMatch = location.pathname === path;
+          const pathMatch = location.pathname.includes(path);
           return (
             <motion.span
               whileTap={{ scale: 0.95 }}
@@ -50,7 +50,7 @@ const DesktopNav = () => {
       <div className="mt-auto flex flex-col gap-3 border-t pt-4">
         <Link
           className="flex gap-2 mb-2 p-2 rounded-xl cursor-pointer"
-          to={`/settings`}
+          to={`settings`}
         >
           <Settings />
           Settings

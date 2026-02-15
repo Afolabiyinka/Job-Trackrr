@@ -22,7 +22,7 @@ function NotFound() {
           The page you’re looking for doesn’t exist or is still being built.
         </p>
 
-        <Button className="mt-6" size="lg" onClick={() => navigate("/")}>
+        <Button className="mt-6" size="lg" onClick={() => navigate(-1)}>
           <ArrowLeft className="mr-2 h-4 w-4" />
           Go Home
         </Button>

@@ -3,6 +3,7 @@ import { lazy } from "react";
 import MainLayout from "@/layouts/MainLayout";
 import AuthLayout from "@/layouts/AuthLayout";
 import LoadingContainer from "@/components/loader/loadingcontainer";
+import MarkettingLayout from "@/layouts/MarkettingLayout";
 
 // Lazy-loaded pages
 const Dashboard = lazy(
@@ -24,10 +25,15 @@ export const routes: RouteObject[] = [
   },
   {
     path: "/",
+    Component: MarkettingLayout,
+  },
+  {
+    path: "app",
     Component: MainLayout,
     children: [
       {
         index: true,
+        path: "dashboard",
         Component: Dashboard,
       },
       {
