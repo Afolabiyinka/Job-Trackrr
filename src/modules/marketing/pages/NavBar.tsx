@@ -31,7 +31,7 @@ const NavBar = () => {
 
         <Link to={`/auth/signup`}>
           <Button size={`lg`}>
-            Sign In
+            Sign Up
             <ArrowRight />
           </Button>
         </Link>
