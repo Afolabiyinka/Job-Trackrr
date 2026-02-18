@@ -42,6 +42,7 @@ export const routes: RouteObject[] = [
           {
             index: true,
             Component: Jobs,
+            handle: { title: "Jobs" },
           },
           {
             path: ":id",

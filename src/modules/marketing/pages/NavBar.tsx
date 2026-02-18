@@ -13,7 +13,7 @@ const NavBar = () => {
           <NavLink
             to={path}
             className={({ isActive }) =>
-              `${isActive ? "underline underline-offset-8 text-primary" : ""} flex items-center gap-2`
+              `${isActive ? "underline underline-offset-8 text-primary" : ""} flex items-center gap-2 hover:text-primary`
             }
           >
             <Icon size={18} />

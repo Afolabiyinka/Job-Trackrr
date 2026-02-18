@@ -10,7 +10,7 @@ import { useTheme } from "@/modules/theme/useTheme";
 const Home = () => {
   const { theme } = useTheme();
   return (
-    <div className="h-full w-full  flex-col flex justify-center items-center rounded-lg text-center p-3 md:p-10 bg-gradient-to-b from-background to-muted/20">
+    <div className="h-full w-full  flex-col flex justify-center items-center rounded-lg text-center p-3 md:p-10 bg-gradient-to-b from-background to-muted/20 shadow">
       <Badge variant={`outline`} className="mb-4">
         <h1 className="md:text-lg">
           ✨ The simplest way to track job applications
@@ -62,6 +62,7 @@ const Home = () => {
         <img
           src={`${theme === "light" ? LightScreenMode : DarkScreenshot}`}
           alt="Job Trackrr Ui"
+          fetchPriority="high"
         />
       </motion.span>
     </div>
