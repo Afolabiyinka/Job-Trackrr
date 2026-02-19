@@ -19,6 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { FilterIcon } from "lucide-react";
 
 const TableView = () => {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ const TableView = () => {
   const [activeFilter, setActiveFilter] = useState<
     "all" | "applied" | "interview" | "offer" | "rejected"
   >("all");
+
   const counts = {
     all: jobs.length,
     applied: appliedJobs.length,
@@ -49,14 +51,15 @@ const TableView = () => {
     <div className="h-full w-full flex flex-col gap-3">
       <div className="w-full flex justify-end">
         <Select
-          value={activeFilter}
+          // value={activeFilter}
           onValueChange={(value) =>
             setActiveFilter(
               value as "all" | "applied" | "interview" | "offer" | "rejected",
             )
           }
         >
-          <SelectTrigger className="w-50">
+          <SelectTrigger className="flex">
+            <FilterIcon />
             <SelectValue placeholder="Filter jobs" />
           </SelectTrigger>
 
@@ -84,29 +87,33 @@ const TableView = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filteredJobs.map((job: Job) => {
-            return (
-              <TableRow
-                key={job.id}
-                onClick={() => navigate(`/app/jobs/${job.id}`)}
-              >
-                <TableCell className="font-medium flex gap-2 items-center">
-                  <span className="h-6 w-6 border rounded-full  animate-pulse" />
-                  {job.company}
-                </TableCell>
-                <TableCell>{job.role}</TableCell>
-                <TableCell className="flex gap-2 items-center">
-                  <span
-                    className={`h-4 w-4 border rounded-full ${getStatusColor(
-                      job.status,
-                    )}`}
-                  ></span>
-                  {job.status}
-                </TableCell>
-                <TableCell>{job.companyEmail}</TableCell>
-              </TableRow>
-            );
-          })}
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map((job: Job) => {
+              return (
+                <TableRow
+                  key={job.id}
+                  onClick={() => navigate(`/app/jobs/${job.id}`)}
+                >
+                  <TableCell className="font-medium flex gap-2 items-center">
+                    <span className="h-6 w-6 border rounded-full  animate-pulse" />
+                    {job.company}
+                  </TableCell>
+                  <TableCell>{job.role}</TableCell>
+                  <TableCell className="flex gap-2 items-center">
+                    <span
+                      className={`h-4 w-4 border rounded-full ${getStatusColor(
+                        job.status,
+                      )}`}
+                    ></span>
+                    {job.status}
+                  </TableCell>
+                  <TableCell>{job.companyEmail}</TableCell>
+                </TableRow>
+              );
+            })
+          ) : (
+            <div className="p-6 text-xl">No {activeFilter} jobs found</div>
+          )}
         </TableBody>
       </Table>
     </div>

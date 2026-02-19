@@ -7,6 +7,7 @@ import { LogOut, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
+import SearchInput from "./components/SearchInput";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -27,6 +28,8 @@ const MobileNav = () => {
               open ? "max-h-96 py-4" : "max-h-0"
             }`}
           >
+            <SearchInput />
+
             {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
               const pathMatch = location.pathname === path;
               return (

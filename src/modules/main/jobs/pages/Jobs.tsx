@@ -37,16 +37,16 @@ const Jobs = () => {
       </div>
       <Tabs defaultValue={`card`}>
         <TabsList className="border">
-          <TabsTrigger value="table">
-            <span className="flex items-center gap-1">
-              <Table className="h-4 w-4" />
-              Table View
-            </span>
-          </TabsTrigger>
           <TabsTrigger value="card">
             <span className="flex items-center gap-1">
               <LayoutGrid className="h-4 w-4" />
               Card View
+            </span>
+          </TabsTrigger>
+          <TabsTrigger value="table">
+            <span className="flex items-center gap-1">
+              <Table className="h-4 w-4" />
+              Table View
             </span>
           </TabsTrigger>
         </TabsList>

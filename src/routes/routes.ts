@@ -50,10 +50,10 @@ export const routes: RouteObject[] = [
           },
         ],
       },
-      {
-        path: "interviews",
-        Component: ComponentExample,
-      },
+      // {
+      //   path: "interviews",
+      //   Component: ComponentExample,
+      // },
       {
         path: "contacts",
         Component: Contacts,

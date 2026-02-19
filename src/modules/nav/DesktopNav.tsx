@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
 import { useLogout } from "../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
+import SearchInput from "./components/SearchInput";
 
 const DesktopNav = () => {
   const location = useLocation();
@@ -18,6 +19,8 @@ const DesktopNav = () => {
       </h1> */}
       <Logo />
       <hr />
+
+      <SearchInput />
 
       <div className="flex flex-col gap-4 w-full">
         {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
