@@ -16,6 +16,7 @@ const createJob = async (req: AuthenticatedRequest, res: Response) => {
     status,
     workType,
     interviewType,
+    feedback,
   } = req.body as Job;
 
   const userId = req.user?.id;
@@ -49,6 +50,7 @@ const createJob = async (req: AuthenticatedRequest, res: Response) => {
       workType,
       interviewType: interviewType || null,
       userId,
+      feedback,
     });
 
     return res.status(201).json({ message: "Job created successfully" });
@@ -70,6 +72,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
     status,
     workType,
     interviewType,
+    feedback,
   } = req.body as Partial<Job>;
 
   const userId = req.user?.id;
@@ -91,6 +94,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
       status,
       workType,
       interviewType,
+      feedback,
     });
 
     return res.status(200).json({ message: "Job updated successfully" });

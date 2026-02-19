@@ -17,7 +17,8 @@ export interface Job {
   workType: WorkType;
   interviewDate: Date | string;
   companyEmail: string;
-salaryRange: number;
+  salaryRange: number;
+  feedback?: string;
 }
 
 export interface ParticularJobPayload {

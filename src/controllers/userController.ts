@@ -63,4 +63,13 @@ const editUser = async (req: AuthenticatedRequest, res: Response) => {
     return res.status(500).json({ message: "Something went wrong" });
   }
 };
-export { getUser, editUser };
+
+const deleteAccount = async (req: AuthenticatedRequest, res: Response) => {
+  const id = req.user?.id
+  if(!id){
+    return res.status(400).json({
+      message: "User id is required"
+    })
+  }
+}
+export { getUser, editUser, deleteAccount };
