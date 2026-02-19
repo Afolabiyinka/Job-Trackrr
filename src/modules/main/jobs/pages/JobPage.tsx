@@ -15,7 +15,11 @@ import {
   User,
 } from "lucide-react";
 import { CopyButton } from "@/components/ui/copy-button";
-import { formatDate, getStatusColor } from "../libs/utils";
+import {
+  formatDate,
+  getStatusColor,
+  showInterviewIndicator,
+} from "../libs/utils";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import DeleteJobModal from "../components/delete-job/delete-job";
 import { NumericFormat } from "react-number-format";
@@ -34,8 +38,9 @@ const JobPage = () => {
   if (error) return <div>Failed to load job</div>;
   if (!job) return <div>Job not found</div>;
 
-  const formatedInterviewDate = formatDate(job.interviewDate);
   const formatedAppliedAtDate = formatDate(job?.appliedAt);
+
+  const interviewIndicator = showInterviewIndicator(job.interviewDate);
 
   return (
     <div className="mx-auto p-3">
@@ -85,9 +90,13 @@ const JobPage = () => {
           </h3>
 
           <span className="flex items-center gap-2 bg-muted px-4 py-2 rounded-full text-sm font-medium">
-            <CalendarClockIcon />
-            {formatedInterviewDate}
-            <span className="h-2 w-2 bg-primary rounded-full animate-ping" />
+            <CalendarClockIcon className="stroke-[1px]" />
+            {interviewIndicator.message}
+            {interviewIndicator.upcoming ? (
+              <span className="h-2 w-2 bg-primary rounded-full animate-ping" />
+            ) : (
+              <span className="h-2 w-2 bg-red-500 rounded-full animate-ping" />
+            )}
           </span>
         </div>
 

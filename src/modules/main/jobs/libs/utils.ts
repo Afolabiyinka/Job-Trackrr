@@ -26,4 +26,32 @@ function formatDate(date: Date | string | null) {
   return formattedDate;
 }
 
-export { getStatusColor, formatDate };
+function showInterviewIndicator(interviewDate: Date | string | null): {
+  upcoming: boolean;
+  message: string;
+} {
+  if (!interviewDate) {
+    return { upcoming: false, message: "No interview scheduled" };
+  }
+
+  const currentDate = new Date();
+  const interviewDateObj = new Date(interviewDate);
+
+  const timeDifference = interviewDateObj.getTime() - currentDate.getTime();
+  const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+  if (daysDifference > 7) {
+    return {
+      upcoming: true,
+      message: "Interview scheduled in more than a week",
+    };
+  } else if (daysDifference > 0) {
+    return { upcoming: true, message: `Interview in ${daysDifference} day(s)` };
+  } else if (daysDifference === 0) {
+    return { upcoming: true, message: "Interview is today!" };
+  } else {
+    return { upcoming: false, message: "Interview date has passed" };
+  }
+}
+
+export { getStatusColor, formatDate, showInterviewIndicator };
