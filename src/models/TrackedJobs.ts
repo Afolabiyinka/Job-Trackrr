@@ -31,7 +31,7 @@ export const TrackedJobs = sequelize.define(
     salaryRange: {
       type: DataTypes.INTEGER,
     },
-    personalRating: {
+    feedback: {
       type: DataTypes.STRING,
     },
     appliedAt: {
