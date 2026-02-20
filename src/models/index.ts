@@ -4,7 +4,7 @@ import { User } from "./User";
 
 export const syncModels = async () => {
   try {
-    await sequelize.sync({ force: false }); // Use { force: true } in development to drop and recreate tables
+    await sequelize.sync({ alter: true }); // Use { force: true } in development to drop and recreate tables
     console.log("All models synchronized successfully.");
   } catch (error) {
     console.error("Error syncing models:", error);
