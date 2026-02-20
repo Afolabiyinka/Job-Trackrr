@@ -4,6 +4,8 @@ import MainLayout from "@/layouts/MainLayout";
 import AuthLayout from "@/layouts/AuthLayout";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import MarkettingLayout from "@/layouts/MarkettingLayout";
+import LandingPage from "@/modules/marketing/LandingPage";
+import Testimonials from "@/modules/marketing/pages/Testimonials";
 
 // Lazy-loaded pages
 const Dashboard = lazy(
@@ -13,7 +15,6 @@ const NotFound = lazy(() => import("@/modules/NotFound"));
 const Jobs = lazy(() => import("@/modules/main/jobs/pages/Jobs"));
 const JobPage = lazy(() => import("@/modules/main/jobs/pages/JobPage"));
 const Settings = lazy(() => import("@/modules/main/settings/pages/Settings"));
-const ComponentExample = lazy(() => import("@/components/component-example"));
 const Login = lazy(() => import("@/modules/auth/pages/Login"));
 const SignUp = lazy(() => import("@/modules/auth/pages/SignUp"));
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
@@ -26,6 +27,16 @@ export const routes: RouteObject[] = [
   {
     path: "/",
     Component: MarkettingLayout,
+    children: [
+      {
+        index: true,
+        Component: LandingPage,
+      },
+      {
+        path: "testimonials",
+        Component: Testimonials,
+      },
+    ],
   },
   {
     path: "app",
@@ -50,10 +61,7 @@ export const routes: RouteObject[] = [
           },
         ],
       },
-      // {
-      //   path: "interviews",
-      //   Component: ComponentExample,
-      // },
+
       {
         path: "contacts",
         Component: Contacts,

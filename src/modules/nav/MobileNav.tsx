@@ -29,25 +29,20 @@ const MobileNav = () => {
             }`}
           >
             <SearchInput />
-
             {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
-              const pathMatch = location.pathname === path;
+              const pathMatch = location.pathname.includes(path);
               return (
                 <motion.span
-                  onClick={() => setOpen(false)}
                   whileTap={{ scale: 0.95 }}
                   key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3, delay: i * 0.05 }}
+                  onClick={() => setOpen(!open)}
                   className="flex gap-3 "
                 >
                   <motion.span
                     initial={{ height: 0 }}
                     animate={{ height: "100%" }}
                     transition={{}}
-                    className={`${pathMatch ? "border-l-2 border-l-primary rounded-full" : ""}`}
+                    className={`${pathMatch ? "border-l-4 border-l-primary rounded-full" : ""}`}
                   />
 
                   <NavLink

@@ -1,13 +1,11 @@
-import About from "@/modules/marketing/pages/About";
-import Home from "@/modules/marketing/pages/Home";
 import NavLayout from "@/modules/marketing/pages/NavLayout";
+import { Outlet } from "react-router-dom";
 
 const MarkettingLayout = () => {
   return (
     <div className="p-2 h-full w-full">
       <NavLayout />
-      <Home />
-      <About />
+      <Outlet />
     </div>
   );
 };

@@ -10,15 +10,15 @@ import { useTheme } from "@/modules/theme/useTheme";
 const Home = () => {
   const { theme } = useTheme();
   return (
-    <div className="h-full w-full  flex-col flex justify-center items-center rounded-lg text-center p-3 md:p-10 bg-gradient-to-b from-background to-muted/20 shadow">
+    <div className="h-full w-full  flex-col flex justify-center items-center rounded-lg text-center p-3 md:p-10 bg-linear-to-b from-background to-muted/20 shadow">
       <Badge variant={`outline`} className="mb-4">
         <h1 className="md:text-lg">
           ✨ The simplest way to track job applications
         </h1>
       </Badge>
       <motion.h1
-        initial={{ y: 50, opacity: 0.8 }}
-        animate={{ y: 1, opacity: 1 }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeIn" }}
         className="text-3xl md:text-6xl font-bold tracking-tight leading-tight"
       >
@@ -27,7 +27,7 @@ const Home = () => {
       </motion.h1>
       <motion.p
         initial={{ y: 50, opacity: 0.8 }}
-        animate={{ y: 1, opacity: 1 }}
+        whileInView={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className="text-md md:text-2xl leading-relaxed mt-5 text-muted-foreground"
       >
@@ -36,7 +36,7 @@ const Home = () => {
       </motion.p>
       <motion.span
         initial={{ y: 50, opacity: 0.8 }}
-        animate={{ y: 1, opacity: 1 }}
+        whileInView={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}
         className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-6"
       >
@@ -55,7 +55,7 @@ const Home = () => {
 
       <motion.span
         initial={{ y: 40, opacity: 0.8 }}
-        animate={{ y: 1, opacity: 1 }}
+        whileInView={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.3, ease: "linear", delay: 1 }}
         className="w-full mt-10 rounded-2xl overflow-hidden shadow-2xl border bg-background backdrop-blur"
       >
