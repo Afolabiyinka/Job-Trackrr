@@ -1,4 +1,4 @@
-import { prodEndpoint, testingEndpoint } from "@/constants/api-data";
+import { prodEndpoint } from "@/constants/api-data";
 import axios from "axios";
 import type { EditUserPayload } from "../types/types";
 

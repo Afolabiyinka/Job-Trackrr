@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -20,7 +19,7 @@ export default function NoJobs() {
 
         <EmptyTitle className="text-2xl">No Jobs Added Yet</EmptyTitle>
 
-        <EmptyDescription className="text-md">
+        <EmptyDescription className="">
           Add your first job application to start tracking your job search in
           one place.
         </EmptyDescription>

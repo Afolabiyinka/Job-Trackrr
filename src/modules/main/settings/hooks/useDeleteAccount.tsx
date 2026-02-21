@@ -1,14 +1,12 @@
 import useToastMessage from "@/lib/toastMsg";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { deleteAccount } from "../services/request";
 import { useUser } from "../store/useUser";
 
 export const useDeleteAccount = () => {
   const { toastError, toastSuccess } = useToastMessage();
   const { logout } = useUser();
-  const navigate = useNavigate();
   const deletePhrase = "delete-my-account";
   const [deleteInput, setDeleteInput] = useState("");
 

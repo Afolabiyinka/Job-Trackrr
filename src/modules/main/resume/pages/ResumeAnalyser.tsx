@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -7,7 +6,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { Upload, UploadCloud } from "lucide-react";
+import { Upload } from "lucide-react";
 import UploadResume from "../components/UploadResume";
 
 const ResumeAnalyser = () => {
