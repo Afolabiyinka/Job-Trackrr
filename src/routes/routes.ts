@@ -1,13 +1,16 @@
 import type { RouteObject } from "react-router-dom";
 import { lazy } from "react";
+
+//Layouts
 import MainLayout from "@/layouts/MainLayout";
 import AuthLayout from "@/layouts/AuthLayout";
-import LoadingContainer from "@/components/loader/loadingcontainer";
+
+//Landing page
 import MarkettingLayout from "@/layouts/MarkettingLayout";
 import LandingPage from "@/modules/marketing/LandingPage";
 import Testimonials from "@/modules/marketing/pages/Testimonials";
 
-// Lazy-loaded pages
+// Lazy-loaded  main pages
 const Dashboard = lazy(
   () => import("@/modules/main/dashboard/pages/DashBoard"),
 );
@@ -18,6 +21,9 @@ const Settings = lazy(() => import("@/modules/main/settings/pages/Settings"));
 const Login = lazy(() => import("@/modules/auth/pages/Login"));
 const SignUp = lazy(() => import("@/modules/auth/pages/SignUp"));
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
+const ResumeAnalyser = lazy(
+  () => import("@/modules/main/resume/pages/ResumeAnalyser"),
+);
 
 export const routes: RouteObject[] = [
   {
@@ -67,6 +73,10 @@ export const routes: RouteObject[] = [
         Component: Contacts,
       },
       {
+        path: "resume",
+        Component: ResumeAnalyser,
+      },
+      {
         path: "settings",
         Component: Settings,
       },
@@ -87,9 +97,5 @@ export const routes: RouteObject[] = [
         Component: SignUp,
       },
     ],
-  },
-  {
-    path: "random",
-    Component: LoadingContainer,
   },
 ];

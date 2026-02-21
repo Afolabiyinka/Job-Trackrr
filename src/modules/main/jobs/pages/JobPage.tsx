@@ -31,9 +31,13 @@ const JobPage = () => {
   if (!id) {
     return <div>Invalid job ID</div>;
   }
+
   const navigate = useNavigate();
   const { job, error, loading } = useGetJob({ id });
 
+  if (job) {
+    document.title = `${job.role} at ${job.company}`;
+  }
   if (loading) return <LoadingContainer />;
   if (error) return <div>Failed to load job</div>;
   if (!job) return <div>Job not found</div>;

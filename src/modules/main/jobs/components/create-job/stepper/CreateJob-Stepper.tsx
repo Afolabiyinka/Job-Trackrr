@@ -144,7 +144,6 @@ const CreateJobStepper = ({
       open={open}
       onOpenChange={(isOpen) => {
         setOpen(isOpen);
-        // if (!isOpen) reset();
       }}
     >
       <DialogTrigger asChild>

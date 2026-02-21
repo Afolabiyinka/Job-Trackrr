@@ -12,7 +12,7 @@ const StatsCard = () => {
       <CardHeader>
         <CardTitle>{todaysDate}</CardTitle>
       </CardHeader>
-      <CardContent className="grid md:grid-cols-3 lg:grid-cols-4">
+      <CardContent className="grid md:grid-cols-2 lg:grid-cols-3">
         <div className="border p-3 rounded-lg">
           <span className="flex justify-between">
             <span className="flex items-center gap-3">
