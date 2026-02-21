@@ -19,9 +19,9 @@ const MainLayout = () => {
     }
   }, [jobs, setJobs]);
 
-  if (user === null) {
-    return <Navigate to="/auth/login" replace />;
-  }
+  // if (user === null) {
+  //   return <Navigate to="/auth/login" replace />;
+  // }
 
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">
@@ -29,7 +29,7 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-3 flex flex-col border rounded-xl">
+    <main className="w-full gap-3 flex flex-col border rounded-xl">
         <span className="w-full shadow">
           <Greeting />
           <Header />

@@ -1,19 +1,24 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TableView from "./views/table-view";
 import CardView from "./views/card-view";
-import { ArrowRight, LayoutGrid, Table } from "lucide-react";
+import { ArrowRight, LayoutGrid, RefreshCcw, Table } from "lucide-react";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import { useGetJobs } from "../hooks/useGetJobs";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import NoJobs from "./error/NoJobs";
+import { Button } from "@/components/ui/button";
 
 const Jobs = () => {
-  const { jobs, error, loading } = useGetJobs();
+  const { jobs, error, loading, refetch } = useGetJobs();
 
   if (error) {
     return (
-      <div className="h-screen rounded-xl w-full flex justify-center items-center border">
+      <div className="h-screen rounded-xl w-full flex flex-col justify-center items-center border">
         <h1 className="text-3xl"> Failed to get all jobs</h1>
+        <Button className="" size={`lg`} onClick={() => refetch()}>
+          <RefreshCcw />
+          Retry
+        </Button>
       </div>
     );
   }

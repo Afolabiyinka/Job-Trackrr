@@ -3,7 +3,7 @@ import ThemeToggle from "@/modules/theme/theme-toggle";
 
 const ChangeTheme = () => {
   return (
-    <Card className="mt-3">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-xl">
           Change the appearance of the app

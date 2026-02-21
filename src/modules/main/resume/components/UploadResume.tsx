@@ -35,7 +35,9 @@ const UploadResume = () => {
             Drag & drop your resume here, or click to browse.
           </p>
 
-          <Button variant="secondary">Choose File</Button>
+          <Button variant="secondary" size={`lg`}>
+            Choose File
+          </Button>
         </div>
       </DialogContent>
     </Dialog>

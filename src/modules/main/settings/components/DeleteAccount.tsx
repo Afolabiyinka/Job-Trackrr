@@ -10,7 +10,7 @@ import DeleteAccountModal from "./delete-modal";
 
 const DeleteAccount = () => {
   return (
-    <Card className="mt-3">
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="">Danger Zone</CardTitle>
         <CardDescription>
