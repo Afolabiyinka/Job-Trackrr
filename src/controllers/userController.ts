@@ -65,11 +65,19 @@ const editUser = async (req: AuthenticatedRequest, res: Response) => {
 };
 
 const deleteAccount = async (req: AuthenticatedRequest, res: Response) => {
-  const id = req.user?.id
-  if(!id){
+  const id = req.user?.id;
+  if (!id) {
     return res.status(400).json({
-      message: "User id is required"
-    })
+      message: "User id is required",
+    });
   }
-}
+  try {
+    const user = await User.findByPk(id);
+    await user?.destroy();
+    res.status(200).json({ message: "Account deleted Succesfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong" });
+    console.log(err);
+  }
+};
 export { getUser, editUser, deleteAccount };
