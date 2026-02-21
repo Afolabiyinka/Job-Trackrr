@@ -29,13 +29,6 @@ export default function NoJobs() {
       <EmptyContent className="flex-row justify-center gap-2">
         <CreateJobStepper title="Add a new job" icon={<ArrowRight />} />
       </EmptyContent>
-
-      <Button
-        variant="link"
-        asChild
-        size="sm"
-        className="mx-auto text-muted-foreground"
-      ></Button>
     </Empty>
   );
 }

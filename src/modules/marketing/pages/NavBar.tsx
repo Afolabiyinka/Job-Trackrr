@@ -6,7 +6,7 @@ import Logo from "@/components/logo/Logo";
 
 const NavBar = () => {
   return (
-    <div className="p-3 w-full hidden md:flex justify-around items-center">
+    <div className="p-1.5 w-full hidden md:flex justify-around items-center">
       <Logo />
       <span className="flex gap-10">
         {NAVLINKS.map(({ name, path, icon: Icon }) => (

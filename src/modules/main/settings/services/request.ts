@@ -1,10 +1,10 @@
-import { prodEndpoint } from "@/constants/api-data";
+import { prodEndpoint, testingEndpoint } from "@/constants/api-data";
 import axios from "axios";
 import type { EditUserPayload } from "../types/types";
 
 const getUser = async () => {
   try {
-    const res = await fetch(`${prodEndpoint}api/auth/user`, {
+    const res = await fetch(`${prodEndpoint}api/auth/check-auth`, {
       credentials: "include",
     });
 
@@ -29,4 +29,15 @@ const editUser = async (payload: EditUserPayload) => {
   }
 };
 
-export { getUser, editUser };
+const deleteAccount = async () => {
+  try {
+    const res = await axios.delete(`${prodEndpoint}api/auth/delete`, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (err) {
+    throw new Error("Failed to delete Account");
+  }
+};
+
+export { getUser, editUser, deleteAccount };

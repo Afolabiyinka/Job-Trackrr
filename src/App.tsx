@@ -4,46 +4,40 @@ import React from "react";
 import { Toaster } from "sonner";
 import { useUser } from "./modules/main/settings/store/useUser";
 import { useFetchUser } from "./modules/main/settings/hooks/useFetchUser";
+import LoadingContainer from "./components/loader/loadingcontainer";
 
 export function App() {
-  const { fetchedUser } = useFetchUser();
+  const { fetchedUser, loading } = useFetchUser();
   const { setUser } = useUser();
   const { theme } = useTheme();
 
+  // Always call hooks first
   React.useEffect(() => {
-    if (fetchedUser?.user) {
-      setUser(fetchedUser.user);
-    } else {
-      setUser(null);
-    }
-  }, [fetchedUser, setUser]);
+    setUser(fetchedUser?.user ?? null);
+  }, [fetchedUser?.user, setUser]);
 
-  // Handle theme
   React.useEffect(() => {
+    const appliedTheme =
+      theme === "system"
+        ? window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light"
+        : theme;
+
     document.body.classList.remove("light", "dark");
-
-    if (theme === "system") {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-        .matches
-        ? "dark"
-        : "light";
-
-      document.body.classList.add(systemTheme);
-    } else {
-      document.body.classList.add(theme);
-    }
+    document.body.classList.add(appliedTheme);
   }, [theme]);
 
   return (
     <div className="font-[Geist]">
-      <RoutesConfig />
+      {loading ? <LoadingContainer /> : <RoutesConfig />}
       <Toaster
         position="top-right"
         theme={theme}
         toastOptions={{
           style: {
             borderRadius: "20px",
-            // background: `${theme === "light" ? "white" : "#161616"}`,
+            background: theme === "light" ? "white" : "#161616",
           },
         }}
       />
