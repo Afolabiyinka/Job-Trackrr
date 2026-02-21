@@ -56,7 +56,7 @@ const createJob = async (req: AuthenticatedRequest, res: Response) => {
     return res.status(201).json({ message: "Job created successfully" });
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ message: "Something went wrong" });
+    return res.status(500).json({ message: "Something went wrong", err });
   }
 };
 
