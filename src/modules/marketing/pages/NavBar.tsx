@@ -9,8 +9,9 @@ const NavBar = () => {
     <div className="p-1.5 w-full hidden md:flex justify-around items-center">
       <Logo />
       <span className="flex gap-10">
-        {NAVLINKS.map(({ name, path, icon: Icon }) => (
+        {NAVLINKS.map(({ name, path, icon: Icon }, i) => (
           <NavLink
+            key={i}
             to={path}
             className={({ isActive }) =>
               `${isActive ? "underline underline-offset-8 text-primary" : ""} flex items-center gap-2 hover:text-primary`

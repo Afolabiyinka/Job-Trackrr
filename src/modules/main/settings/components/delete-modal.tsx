@@ -21,7 +21,7 @@ const DeleteAccountModal = () => {
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
+      <AlertDialogTrigger asChild>
         <Button variant="destructive" size="lg">
           <Trash className="mr-2" />
           Delete Account

@@ -23,8 +23,9 @@ const MobileNav = () => {
               open ? "max-h-96 py-4" : "max-h-0"
             }`}
           >
-            {NAVLINKS.map(({ name, path, icon: Icon }) => (
+            {NAVLINKS.map(({ name, path, icon: Icon }, i) => (
               <NavLink
+                key={i}
                 to={path}
                 className={({ isActive }) =>
                   `${isActive ? "underline underline-offset-8 text-primary" : ""} flex items-center gap-2`
