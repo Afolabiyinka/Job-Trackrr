@@ -10,10 +10,25 @@ if (!apiKey) {
 console.log(apiKey);
 const ai = new GoogleGenAI({ apiKey: apiKey });
 
-export async function gemini() {
+export async function gemini(content: string) {
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
-    contents: "Explain how AI works in a few words",
+    contents: `${content}`,
+    config: {
+      systemInstruction: `
+You are a professional resume analyzer.
+Analyze the resume text I send.
+Return the output as a proper JSON object (not a string) with the following keys:
+{
+  "strengths": [ ... ],
+  "weaknesses": [ ... ],
+  "improvements": [ ... ]
+}
+Do not include any extra text, greetings, or explanations.
+The response must be valid JSON.
+`,
+    },
   });
-  console.log(response.text);
+
+  return response.text;
 }

@@ -8,7 +8,7 @@ import { AuthRouter } from "./routes/authRouter";
 import { JobRouter } from "./routes/jobRouter";
 import { authMiddleware } from "./middleware/authMiddleware";
 import { sendEmail } from "./config/email";
-import { gemini } from "./utils/gemini";
+import { ResumeRouter } from "./routes/resumeRouter";
 
 configDotenv();
 const PORT = process.env.PORT || 5000;
@@ -30,12 +30,11 @@ app.use(
 // Database
 connectDb();
 syncModels();
-// sendEmail();
-// gemini();
 
 // Routes
 app.use("/api/auth", AuthRouter);
 app.use("/api/jobs", authMiddleware, JobRouter);
+app.use("/api/resume", authMiddleware, ResumeRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
