@@ -8,8 +8,10 @@ import { AuthenticatedRequest } from "../types/request/types";
 const jwtSecret = process.env.JWT_SECRET!;
 const cookieOptions = {
   httpOnly: true,
-  secure: true,
-  sameSite: "none" as const,
+  secure: process.env.NODE_ENV === "production",
+  sameSite: (process.env.NODE_ENV === "production" ? "none" : "lax") as
+    | "none"
+    | "lax",
   maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
@@ -77,12 +79,7 @@ const signup = async (req: Request, res: Response) => {
 };
 
 const logout = async (req: AuthenticatedRequest, res: Response) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    secure: true,
-    sameSite: "none",
-  });
-
+  res.clearCookie("token", cookieOptions);
   res.json({ message: "Logged out" });
 };
 
