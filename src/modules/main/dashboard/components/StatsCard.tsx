@@ -20,7 +20,7 @@ const StatsCard = () => {
               <p className="text-lg">Job Applications</p>
             </span>
             <span className="bg-foreground/10 flex justify-center items-center p-2 rounded-lg">
-              <Briefcase />
+              <Briefcase className="stroke-[1px]" />
             </span>
           </span>
         </div>

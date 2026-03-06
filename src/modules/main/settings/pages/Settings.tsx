@@ -6,7 +6,7 @@ const Settings = () => {
   return (
     <div className="p-2">
       <EditInfo />
-      <div className="flex w-full border justify-center items-center p-3 mt-3 gap-6 rounded-lg">
+      <div className="flex flex-col md:flex-row w-full border justify-center items-center p-3 mt-3 gap-6 rounded-lg">
         <ChangeTheme />
         <DeleteAccount />
       </div>

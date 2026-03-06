@@ -12,6 +12,7 @@ const Logo = () => {
         alt="Job Trackrr Logo"
         className="w-9 h-9 "
         fetchPriority="high"
+        loading="eager"
       />
       <span className="text-2xl font-semibold tracking-tight">Job Trackrr</span>
     </Link>

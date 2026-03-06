@@ -14,9 +14,6 @@ const DesktopNav = () => {
   const { handleLogout } = useLogout();
   return (
     <nav className="h-full w-full lg:flex hidden flex-col gap-6 rounded-xl p-3 ">
-      {/* <h1 className="text-2xl tracking-wider font-[Inter] font-bold capitalize">
-        JobTrackrr
-      </h1> */}
       <Logo />
       <hr />
 
@@ -41,10 +38,10 @@ const DesktopNav = () => {
               <NavLink
                 to={path}
                 className={`flex gap-2 items-center rounded-xl p-1.5 text-md  transition w-full ${
-                  pathMatch ? "bg-primary/10 p-2.5" : ""
+                  pathMatch ? "bg-primary/10 p-2.5" : "hover:bg-muted p-2.5"
                 }`}
               >
-                <Icon className={`h-5 w-5`} />
+                <Icon className={`h-5 w-5 ${pathMatch && "text-primary"}`} />
                 <p>{name}</p>
               </NavLink>
             </motion.span>

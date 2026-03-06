@@ -17,7 +17,7 @@ export const JOB_TYPES: JobType[] = [
   "Contract",
   "Internship",
   "Part_Time",
-  "Full Time",
+  "Full_Time",
 ];
 
 export const WORK_TYPES: WorkType[] = ["Hybrid", "On-Site", "Remote"];

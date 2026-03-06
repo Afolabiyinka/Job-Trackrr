@@ -24,6 +24,7 @@
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
     "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^5.5.207",
     "radix-ui": "^1.4.3",
     "react": "^19.2.0",
     "react-countup": "^6.5.3",

@@ -7,9 +7,9 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { Upload } from "lucide-react";
-import UploadResume from "../components/UploadResume";
+import UploadResume from "../../components/UploadResume";
 
-const ResumeAnalyser = () => {
+const EmptyResume = () => {
   return (
     <Empty className="h-full border border-dashed">
       <EmptyHeader>
@@ -32,4 +32,4 @@ const ResumeAnalyser = () => {
   );
 };
 
-export default ResumeAnalyser;
+export default EmptyResume;

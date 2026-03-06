@@ -9,6 +9,8 @@ import AuthLayout from "@/layouts/AuthLayout";
 import MarkettingLayout from "@/layouts/MarkettingLayout";
 import LandingPage from "@/modules/marketing/LandingPage";
 import Testimonials from "@/modules/marketing/pages/Testimonials";
+import Resume from "@/modules/main/resume/pages/Resume";
+import Results from "@/modules/main/resume/pages/sub-pages/Results";
 
 // Lazy-loaded  main pages
 const Dashboard = lazy(
@@ -21,9 +23,6 @@ const Settings = lazy(() => import("@/modules/main/settings/pages/Settings"));
 const Login = lazy(() => import("@/modules/auth/pages/Login"));
 const SignUp = lazy(() => import("@/modules/auth/pages/SignUp"));
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
-const ResumeAnalyser = lazy(
-  () => import("@/modules/main/resume/pages/ResumeAnalyser"),
-);
 
 export const routes: RouteObject[] = [
   {
@@ -74,7 +73,16 @@ export const routes: RouteObject[] = [
       },
       {
         path: "resume",
-        Component: ResumeAnalyser,
+        children: [
+          {
+            index: true,
+            Component: Resume,
+          },
+          {
+            path: "results",
+            Component: Results,
+          },
+        ],
       },
       {
         path: "settings",
