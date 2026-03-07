@@ -23,9 +23,10 @@ const MobileNav = () => {
         {open && (
           <motion.div
             initial={{ translateY: -20 }}
+            exit={{ translateY: -1 }}
             animate={{ translateY: 1 }}
-            className={`transform overflow-hidden flex flex-col gap-3  ${
-              open ? "max-h-96 py-4" : "max-h-0"
+            className={`transform overflow-hidden flex flex-col gap-3  border p-2 rounded-lg ${
+              open ? "max-h-full py-4" : "max-h-0"
             }`}
           >
             <SearchInput />
@@ -36,22 +37,24 @@ const MobileNav = () => {
                   whileTap={{ scale: 0.95 }}
                   key={i}
                   onClick={() => setOpen(!open)}
-                  className="flex gap-3 "
+                  className="flex"
                 >
                   <motion.span
                     initial={{ height: 0 }}
                     animate={{ height: "100%" }}
                     transition={{}}
-                    className={`${pathMatch ? "border-l-4 border-l-primary rounded-full" : ""}`}
+                    className={`${pathMatch ? "rounded-full" : ""}`}
                   />
 
                   <NavLink
                     to={path}
-                    className={`flex gap-2 items-center rounded-xl p-1.5 text-md  transition w-full ${
-                      pathMatch ? "bg-primary/10 p-2.5" : ""
+                    className={`flex gap-2 items-center rounded-xl p-2.5 text-md  transition w-full ${
+                      pathMatch ? "bg-primary/10" : ""
                     }`}
                   >
-                    <Icon className={`h-5 w-5`} />
+                    <Icon
+                      className={`h-5 w-5 ${pathMatch && "text-primary"}`}
+                    />
                     <p>{name}</p>
                   </NavLink>
                 </motion.span>

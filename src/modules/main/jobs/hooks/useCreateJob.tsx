@@ -54,19 +54,7 @@ export const useCreateJob = () => {
         interviewType,
         workType,
       });
-      console.log({
-        appliedAt,
-        company,
-        role,
-        companyEmail,
-        feedback,
-        status,
-        jobType,
-        salaryRange,
-        interviewDate,
-        interviewType,
-        workType,
-      });
+
       return true;
     } catch (err) {
       return false;

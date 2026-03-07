@@ -7,19 +7,23 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useResume } from "../../store/useResume";
-import LoadingContainer from "@/components/loader/loadingcontainer";
-import { CheckCircle, AlertTriangle, Wrench, RefreshCcw } from "lucide-react";
+import {
+  CheckCircle,
+  AlertTriangle,
+  Wrench,
+  RefreshCcw,
+  Loader2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navigate } from "react-router-dom";
 
 const Results = () => {
-  const { error, loading } = useAnalyseResume();
+  const { error, loading, handleAnalyse } = useAnalyseResume();
   const { analysis } = useResume();
 
-  if (loading) return <LoadingContainer />;
   if (error) return <div>Something went wrong</div>;
 
-  if (!analysis) {
+  if (!analysis && !loading) {
     return <Navigate to={`/app/resume`} replace />;
   }
 
@@ -33,8 +37,9 @@ const Results = () => {
         <h2 className="text-3xl font-bold text-center">
           Resume Analysis Results
         </h2>
-        <Button size={`lg`}>
-          Try Again <RefreshCcw />
+        <Button size="lg" onClick={handleAnalyse} disabled={loading}>
+          {loading ? <Loader2 className="animate-spin h-8 w-6" /> : "Try Again"}
+          <RefreshCcw />
         </Button>
       </span>
 

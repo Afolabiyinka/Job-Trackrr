@@ -10,10 +10,10 @@ const StatsCard = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>{todaysDate}</CardTitle>
+        <CardTitle className="">{todaysDate}</CardTitle>
       </CardHeader>
       <CardContent className="grid md:grid-cols-2 lg:grid-cols-3">
-        <div className="border p-3 rounded-lg">
+        <div className="border p-3 rounded-xl">
           <span className="flex justify-between">
             <span className="flex items-center gap-3">
               <h1 className="text-xl font-bold">{jobs.length}</h1>

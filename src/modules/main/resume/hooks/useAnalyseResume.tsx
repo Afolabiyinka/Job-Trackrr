@@ -19,7 +19,6 @@ export const useAnalyseResume = () => {
 
   async function handleAnalyse() {
     mutate(resumeText);
-    console.log(resumeText);
   }
   return { handleAnalyse, loading: isPending, error };
 };
