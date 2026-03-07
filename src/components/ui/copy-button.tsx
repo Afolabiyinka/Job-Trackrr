@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import useToastMessage from "@/lib/toastMsg";
+import useToastMessage from "@/shared/lib/toastMsg";
 import { TooltipContent, Tooltip, TooltipTrigger } from "./tooltip";
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 

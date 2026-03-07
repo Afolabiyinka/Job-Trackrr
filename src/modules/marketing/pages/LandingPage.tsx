@@ -1,10 +1,12 @@
-import Home from "./pages/Home";
-import About from "./pages/Testimonials";
+import Features from "./Features";
+import Home from "./Home";
+import About from "./Testimonials";
 
 const LandingPage = () => {
   return (
     <div>
       <Home />
+      <Features />
       <About />
     </div>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { jobMotivations } from "../main/jobs/libs/motivation";
+import { jobMotivations } from "../jobs/libs/motivation";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Header = () => {

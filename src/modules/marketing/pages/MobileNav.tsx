@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { NAVLINKS } from "../utils/nav";
 import { NavLink } from "react-router-dom";
-import MenuButton from "@/modules/nav/components/MenuButton";
+import MenuButton from "@/modules/main/nav/components/MenuButton";
 import Logo from "@/components/logo/Logo";
 
 const MobileNav = () => {

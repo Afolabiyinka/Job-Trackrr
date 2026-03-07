@@ -1,6 +1,6 @@
-import DesktopNav from "@/modules/nav/DesktopNav";
-import { useIsMobile } from "@/hooks/useMobile";
-import MobileNav from "@/modules/nav/MobileNav";
+import DesktopNav from "@/modules/main/nav/DesktopNav";
+import { useIsMobile } from "@/shared/hooks/useMobile";
+import MobileNav from "@/modules/main/nav/MobileNav";
 const NavLayout = () => {
   const isMobile = useIsMobile(1024);
   return (

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import type { AuthUser, EditUserPayload } from "../types/types";
 import { editUser } from "../services/request";
-import useToastMessage from "@/lib/toastMsg";
+import useToastMessage from "@/shared/lib/toastMsg";
 import React from "react";
 import { queryClient } from "@/constants/queryClient";
 

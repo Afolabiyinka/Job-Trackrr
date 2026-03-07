@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
-import NavLayout from "../modules/nav/NavLayout";
-import Greeting from "@/modules/nav/Greeting";
-import Header from "@/modules/nav/Header";
+import NavLayout from "./nav/NavLayout";
+import Greeting from "@/modules/main/nav/Greeting";
+import Header from "@/modules/main/nav/Header";
 import { motion } from "framer-motion";
 import { useGetJobs } from "@/modules/main/jobs/hooks/useGetJobs";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";

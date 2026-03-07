@@ -1,4 +1,4 @@
-import { useIsMobile } from "@/hooks/useMobile";
+import { useIsMobile } from "@/shared/hooks/useMobile";
 import MobileNav from "./MobileNav";
 import NavBar from "./NavBar";
 const NavLayout = () => {

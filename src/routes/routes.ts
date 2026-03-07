@@ -2,15 +2,16 @@ import type { RouteObject } from "react-router-dom";
 import { lazy } from "react";
 
 //Layouts
-import MainLayout from "@/layouts/MainLayout";
-import AuthLayout from "@/layouts/AuthLayout";
+import MainLayout from "@/modules/main/MainLayout";
+import AuthLayout from "@/modules/auth/AuthLayout";
 
 //Landing page
-import MarkettingLayout from "@/layouts/MarkettingLayout";
-import LandingPage from "@/modules/marketing/LandingPage";
+import MarkettingLayout from "@/modules/marketing/MarkettingLayout";
+import LandingPage from "@/modules/marketing/pages/LandingPage";
 import Testimonials from "@/modules/marketing/pages/Testimonials";
 import Resume from "@/modules/main/resume/pages/Resume";
 import Results from "@/modules/main/resume/pages/sub-pages/Results";
+import Features from "@/modules/marketing/pages/Features";
 
 // Lazy-loaded  main pages
 const Dashboard = lazy(
@@ -40,6 +41,10 @@ export const routes: RouteObject[] = [
       {
         path: "testimonials",
         Component: Testimonials,
+      },
+      {
+        path: "features",
+        Component: Features,
       },
     ],
   },

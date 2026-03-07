@@ -2,7 +2,7 @@ import React from "react";
 import type { LoginPayload } from "../types/types";
 import { useMutation } from "@tanstack/react-query";
 import { login } from "../services/request";
-import useToastMessage from "@/lib/toastMsg";
+import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/constants/queryClient";
 export const useLogin = () => {

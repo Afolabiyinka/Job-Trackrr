@@ -1,4 +1,4 @@
-import { useUser } from "../main/settings/store/useUser";
+import { useUser } from "../settings/store/useUser";
 const Greeting = () => {
   const { user } = useUser();
 

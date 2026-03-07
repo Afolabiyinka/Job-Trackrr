@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/shared/lib/utils";
 import { Button } from "@/components/ui/button";
 import { XIcon } from "lucide-react";
 
@@ -38,7 +38,7 @@ function DialogOverlay({
       data-slot="dialog-overlay"
       className={cn(
         "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs fixed inset-0 isolate z-50",
-        className
+        className,
       )}
       {...props}
     />
@@ -60,7 +60,7 @@ function DialogContent({
         data-slot="dialog-content"
         className={cn(
           "bg-inherit data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 ring-foreground/10 grid max-w-[calc(100%-2rem)] gap-6 rounded-xl p-6 text-sm ring-1 duration-100 sm:max-w-md fixed top-1/2 left-1/2 z-50 w-full -translate-x-1/2 -translate-y-1/2",
-          className
+          className,
         )}
         {...props}
       >
@@ -105,7 +105,7 @@ function DialogFooter({
       data-slot="dialog-footer"
       className={cn(
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-        className
+        className,
       )}
       {...props}
     >
@@ -141,7 +141,7 @@ function DialogDescription({
       data-slot="dialog-description"
       className={cn(
         "text-muted-foreground *:[a]:hover:text-foreground text-sm *:[a]:underline *:[a]:underline-offset-3",
-        className
+        className,
       )}
       {...props}
     />

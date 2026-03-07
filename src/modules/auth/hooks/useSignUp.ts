@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import type { SignupPayload } from "../types/types";
 import { useNavigate } from "react-router-dom";
-import useToastMessage from "@/lib/toastMsg";
+import useToastMessage from "@/shared/lib/toastMsg";
 import { signup } from "../services/request";
 import { queryClient } from "@/constants/queryClient";
 

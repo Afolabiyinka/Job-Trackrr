@@ -1,6 +1,6 @@
 import { prodEndpoint } from "@/constants/api-data";
 import type { LoginPayload, SignupPayload } from "../types/types";
-import type { Response } from "@/types/types";
+import type { Response } from "@/shared/types/types";
 
 const login = async (payload: LoginPayload): Promise<Response> => {
   const res = await fetch(`${prodEndpoint}api/auth/login`, {

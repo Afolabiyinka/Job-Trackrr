@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import type { Job } from "../types/job";
 import { createJob } from "../services/request";
-import useToastMessage from "@/lib/toastMsg";
+import useToastMessage from "@/shared/lib/toastMsg";
 import { useSetJob } from "../store/useAddJob";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/constants/queryClient";

@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react";
-import useToastMessage from "@/lib/toastMsg";
+import useToastMessage from "@/shared/lib/toastMsg";
 import { extractTextFromPdf } from "../libs/utils";
 import { useResume } from "../store/useResume";
 
