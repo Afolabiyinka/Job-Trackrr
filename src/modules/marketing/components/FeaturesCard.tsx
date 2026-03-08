@@ -17,7 +17,7 @@ const FeaturesCard = ({ desc, icon: Icon, title }: Props) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeIn" }}
     >
-      <span className="border flex justify-center items-center w-12.5 h-12.5 rounded-full">
+      <span className="shadow flex justify-center items-center w-12.5 h-12.5 rounded-full">
         <Icon className="text-primary stroke-[1px]" size={30} />
       </span>
       <h3 className="font-semibold">{title}</h3>

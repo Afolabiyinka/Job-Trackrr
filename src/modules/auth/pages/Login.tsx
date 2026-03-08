@@ -16,7 +16,7 @@ const Login = () => {
   return (
     <div className="h-full w-full border flex justify-center items-center">
       <form className="md:min-w-md" onSubmit={onSubmit}>
-        <h1 className="text-3xl mb-9 text-center flex gap-3 items-center justify-center">
+        <h1 className="text-2xl mb-9 text-center flex gap-3 items-center justify-center">
           <User size={30} />
           Login to your account
         </h1>

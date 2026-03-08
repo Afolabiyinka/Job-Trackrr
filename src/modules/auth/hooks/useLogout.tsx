@@ -13,7 +13,7 @@ export const useLogout = () => {
       });
       const data = res.json();
       logout();
-      navigate("/auth/login");
+      navigate("/");
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });

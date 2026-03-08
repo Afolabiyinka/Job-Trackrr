@@ -4,7 +4,6 @@ import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
-  CommandInput,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
@@ -12,6 +11,7 @@ import { useJobs } from "@/modules/main/jobs/store/useJobs";
 import { Building2, Search } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import CustomInput from "../../jobs/components/create-job/input/custom-input";
 
 export default function SearchInput() {
   const [open, setOpen] = React.useState(false);
@@ -29,18 +29,20 @@ export default function SearchInput() {
         onClick={() => setOpen(true)}
         className=""
         size={`lg`}
-        variant={`secondary`}
+        variant={`outline`}
       >
         <Search />
         Search Jobs
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <Command>
-          <CommandInput
+        <Command className="p-2">
+          <CustomInput
             placeholder="Search jobs..."
             value={query}
-            onValueChange={setQuery}
+            onChange={setQuery}
+            type="search"
+            icon={<Search />}
           />
 
           <CommandList>

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import { useJobs } from "../../jobs/store/useJobs";
 import { formatDate } from "../../jobs/libs/utils";
 
@@ -20,7 +20,7 @@ const StatsCard = () => {
               <p className="text-lg">Job Applications</p>
             </span>
             <span className="bg-muted flex justify-center items-center p-2 rounded-lg">
-              <Briefcase className="stroke-[1px]" />
+              <TrendingUp className="stroke-[1px] text-green-600" size={30} />
             </span>
           </span>
         </div>

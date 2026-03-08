@@ -29,7 +29,7 @@ export function App() {
   }, [theme]);
 
   return (
-    <div className="font-[Geist]">
+    <div className="font-[Montserrat]">
       {loading ? <LoadingContainer /> : <RoutesConfig />}
       <Toaster
         position="top-right"

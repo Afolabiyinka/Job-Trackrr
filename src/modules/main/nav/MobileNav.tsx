@@ -25,7 +25,7 @@ const MobileNav = () => {
             initial={{ translateY: -20 }}
             exit={{ translateY: -1 }}
             animate={{ translateY: 1 }}
-            className={`transform overflow-hidden flex flex-col gap-3  border p-2 rounded-lg ${
+            className={`transform overflow-hidden flex flex-col gap-3 p-2 rounded-lg ${
               open ? "max-h-full py-4" : "max-h-0"
             }`}
           >

@@ -3,7 +3,7 @@ import { features } from "../utils/features";
 
 const Features = () => {
   return (
-    <div className="h-full w-full flex flex-col justify-center items-center p-3 md:p-10 gap-10">
+    <div className="h-full w-full flex flex-col justify-center items-center p-3 md:p-16 gap-10">
       <span className="flex justify-center items-center flex-col text-center">
         <h1 className="text-3xl md:text-6xl font-bold tracking-tight leading-tight">
           Everything you need to <br /> land your Dream job

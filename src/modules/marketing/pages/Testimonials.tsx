@@ -6,13 +6,18 @@ import { motion } from "framer-motion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, FreeMode } from "swiper/modules";
+import StarRating from "../components/StarRating";
 
 const Testimonials = () => {
   return (
     <div className="min-h-screen rounded-lg p-2 md:p-10 w-full text-center">
-      <motion.h1 className="text-2xl md:text-6xl font-bold mb-8 text-center leading-snug">
-        What Our Users Are Saying <br /> About Their Experience
+      <motion.h1 className="text-2xl md:text-6xl font-bold mb-2 text-center leading-snug">
+        Loved by Job Seekers
       </motion.h1>
+      <motion.p className="text-md md:text-2xl leading-relaxed mb-8 text-muted-foreground">
+        Join thousands of proffesionals that landed their dream job using
+        JobTrackrr
+      </motion.p>
       <Swiper
         className="flex items-center justify-center w-full"
         modules={[Autoplay, FreeMode]}
@@ -30,10 +35,11 @@ const Testimonials = () => {
       >
         {reviews.map((review, index) => (
           <SwiperSlide key={index} className="w-auto">
-            <div className="h-full p-6 md:p-10  bg-background rounded-2xl border flex flex-col justify-between gap-6">
+            <div className="h-full p-6 md:p-10  bg-muted rounded-2xl border flex flex-col justify-between items-center gap-4">
               <div className="space-y-4">
                 <p className="text-lg">{review.comment}</p>
               </div>
+              <StarRating rating={review.rating} />
               <div>
                 <p className="text-2xl">{review.name}</p>
                 <p className="text-sm">{review.role}</p>

@@ -38,10 +38,10 @@ const DesktopNav = () => {
               <NavLink
                 to={path}
                 className={`flex gap-2 items-center rounded-xl p-1.5 text-md  transition w-full ${
-                  pathMatch ? "bg-primary/10 p-3" : "hover:bg-muted p-2.5"
+                  pathMatch ? "bg-muted p-3" : "hover:bg-muted p-3"
                 }`}
               >
-                <Icon className={`h-5 w-5 ${pathMatch && "text-primary"}`} />
+                <Icon className={`h-5 w-5`} />
                 <p>{name}</p>
               </NavLink>
             </motion.span>
@@ -60,6 +60,7 @@ const DesktopNav = () => {
         <Button
           className="justify-start gap-3"
           size={`lg`}
+          variant={"destructive"}
           onClick={() => handleLogout()}
         >
           <LogOut className="h-10 w-10" />
