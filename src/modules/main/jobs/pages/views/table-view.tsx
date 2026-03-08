@@ -63,7 +63,7 @@ const TableView = () => {
             <SelectValue placeholder="Filter jobs" />
           </SelectTrigger>
 
-          <SelectContent>
+          <SelectContent className="p-1">
             <SelectItem value="all">All ({counts.all})</SelectItem>
             <SelectItem value="applied">Applied ({counts.applied})</SelectItem>
             <SelectItem value="interview">

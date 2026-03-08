@@ -21,7 +21,7 @@ const ContactsStatsCard = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="">
-        <Button size={`lg`} onClick={() => navigate("/contacts")}>
+        <Button size={`lg`} onClick={() => navigate("/app/contacts")}>
           <User />
           Manage Contacts
         </Button>

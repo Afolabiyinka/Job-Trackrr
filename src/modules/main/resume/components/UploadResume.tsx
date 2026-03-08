@@ -12,7 +12,11 @@ import { useUploadResume } from "../hooks/useUploadResume";
 import { useNavigate } from "react-router-dom";
 import { useAnalyseResume } from "../hooks/useAnalyseResume";
 
-const UploadResume = () => {
+interface Props {
+  title: string;
+}
+
+const UploadResume = ({ title }: Props) => {
   const { handlePdfUpload, uploadedResume, loading } = useUploadResume();
   const { handleAnalyse } = useAnalyseResume();
   const navigate = useNavigate();
@@ -21,7 +25,7 @@ const UploadResume = () => {
       <DialogTrigger asChild>
         <Button variant="default" className="mx-auto" size={`lg`}>
           <UploadCloud className="mr-2 h-4 w-4" />
-          Upload Resume
+          {title}
         </Button>
       </DialogTrigger>
 

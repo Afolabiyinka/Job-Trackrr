@@ -1,5 +1,5 @@
 import { Laptop, Moon, Sun } from "lucide-react";
-import { useTheme } from "@/modules/theme/useTheme";
+import { useTheme } from "@/modules/main/theme/useTheme";
 import {
   DropdownMenu,
   DropdownMenuContent,

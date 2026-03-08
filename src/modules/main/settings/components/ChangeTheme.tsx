@@ -5,7 +5,7 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import ThemeToggle from "@/modules/theme/theme-toggle";
+import ThemeToggle from "@/modules/main/theme/theme-toggle";
 
 const ChangeTheme = () => {
   return (

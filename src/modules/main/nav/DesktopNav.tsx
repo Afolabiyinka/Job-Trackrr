@@ -32,7 +32,7 @@ const DesktopNav = () => {
                 initial={{ height: 0 }}
                 animate={{ height: "100%" }}
                 transition={{}}
-                className={`${pathMatch ? "border-l-4 border-l-primary rounded-full" : ""}`}
+                className={`${pathMatch ? "border-l-4 border-l-primary/70 rounded-full" : ""}`}
               />
 
               <NavLink

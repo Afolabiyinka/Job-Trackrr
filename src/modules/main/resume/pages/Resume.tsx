@@ -10,9 +10,15 @@ import { Upload } from "lucide-react";
 import UploadResume from "../components/UploadResume";
 import { useResume } from "../store/useResume";
 import { Navigate } from "react-router-dom";
+import { useAnalyseResume } from "../hooks/useAnalyseResume";
+import LoadingContainer from "@/components/loader/loadingcontainer";
 
 const Resume = () => {
   const { analysis } = useResume();
+  const { loading } = useAnalyseResume();
+  if (loading) {
+    return <LoadingContainer />;
+  }
   if (analysis) return <Navigate to={`/app/resume/results`} />;
   return (
     <Empty className="h-full border border-dashed">
@@ -24,13 +30,13 @@ const Resume = () => {
         <EmptyTitle className="text-2xl">No Resume Uploaded</EmptyTitle>
 
         <EmptyDescription className="">
-          Upload your resume to get instant feedback, ATS score, and improvement
-          suggestions tailored to your target role.
+          Add your resume to get instant feedback, an ATS score, and tips to
+          help improve your chances of landing interviews.
         </EmptyDescription>
       </EmptyHeader>
 
       <EmptyContent className="flex-row justify-center gap-2">
-        <UploadResume />
+        <UploadResume title="Upload Resume" />
       </EmptyContent>
     </Empty>
   );

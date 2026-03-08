@@ -1,4 +1,11 @@
 import { MoreHorizontal } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import { Eye, Edit, Trash2 } from "lucide-react";
 
 const ContactCard = () => {
   return (
@@ -8,7 +15,22 @@ const ContactCard = () => {
           <span className="flex items-center">
             <p className="text tracking-wide">Marcus Gold</p>
           </span>
-          <MoreHorizontal />
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <MoreHorizontal />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <Eye className=" h-4 w-4" /> View
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Edit className="h-4 w-4" /> Edit
+              </DropdownMenuItem>
+              <DropdownMenuItem variant="destructive">
+                <Trash2 className="h-4 w-4" /> Delete
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </span>
         <span>
           <h3 className="text-md text-muted-foreground">Ux Designer @ Meta</h3>

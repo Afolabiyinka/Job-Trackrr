@@ -82,7 +82,7 @@ const Footer = () => {
         </div>
 
         {/* BOTTOM */}
-        <div className="border-t border-slate-800 mt-12 pt-6 text-sm text-slate-500 text-center">
+        <div className="border-t  mt-12 pt-6 text-sm  text-center">
           © {new Date().getFullYear()} JobTrackr. All rights reserved.
         </div>
       </div>

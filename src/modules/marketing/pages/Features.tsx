@@ -13,9 +13,9 @@ const Features = () => {
           your success rate
         </p>
       </span>
-      <div className="grid md:grid-cols-3 gap-10 p-10">
-        {features.map(({ description, icon, title }) => (
-          <FeaturesCard icon={icon} desc={description} title={title} />
+      <div className="grid md:grid-cols-3 gap-10 md:p-10">
+        {features.map(({ description, icon, title }, i) => (
+          <FeaturesCard icon={icon} desc={description} title={title} key={i} />
         ))}
       </div>
     </div>

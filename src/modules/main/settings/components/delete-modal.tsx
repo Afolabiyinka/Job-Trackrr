@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2, Trash } from "lucide-react";
 
 import { useDeleteAccount } from "../hooks/useDeleteAccount";
-import { Input } from "@/components/ui/input";
+import CustomInput from "../../jobs/components/create-job/input/custom-input";
 
 const DeleteAccountModal = () => {
   const { handleDelete, loading, deleteInput, setDeleteInput, deletePhrase } =
@@ -34,8 +34,8 @@ const DeleteAccountModal = () => {
           <AlertDialogDescription>
             This action cannot be undone. Your account and all data will be
             permanently removed. <br />
-            <h1 className="flex gap-1 items-center">
-              Please type{" "}
+            <h1 className="flex flex-col md:flex-row gap-1 md:items-center mt-2">
+              Please type
               <p className="border rounded bg-muted p-0.5">{deletePhrase}</p> to
               confirm.
             </h1>{" "}
@@ -43,12 +43,11 @@ const DeleteAccountModal = () => {
         </AlertDialogHeader>
 
         <div className="">
-          <Input
+          <CustomInput
             type="text"
-            placeholder={`Type ${deletePhrase} to confirm`}
+            placeholder={deletePhrase}
             value={deleteInput}
-            onChange={(e) => setDeleteInput(e.target.value)}
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+            onChange={(e) => setDeleteInput(e)}
           />
         </div>
 

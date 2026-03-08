@@ -1,5 +1,5 @@
 import RoutesConfig from "./routes/routes-config";
-import { useTheme } from "./modules/theme/useTheme";
+import { useTheme } from "./modules/main/theme/useTheme";
 import React from "react";
 import { Toaster } from "sonner";
 import { useUser } from "./modules/main/settings/store/useUser";
@@ -34,6 +34,7 @@ export function App() {
       <Toaster
         position="top-right"
         theme={theme}
+        richColors
         toastOptions={{
           style: {
             borderRadius: "20px",

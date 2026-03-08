@@ -16,10 +16,16 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Navigate } from "react-router-dom";
+import LoadingContainer from "@/components/loader/loadingcontainer";
+import UploadResume from "../../components/UploadResume";
 
 const Results = () => {
   const { error, loading, handleAnalyse } = useAnalyseResume();
   const { analysis } = useResume();
+
+  if (loading) {
+    return <LoadingContainer />;
+  }
 
   if (error) return <div>Something went wrong</div>;
 
@@ -33,17 +39,25 @@ const Results = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-10 space-y-8">
-      <span className="flex border p-4 justify-between rounded-xl">
+      <span className="flex flex-col md:flex-row shadow p-4 justify-between rounded-xl">
         <h2 className="text-3xl font-bold text-center">
           Resume Analysis Results
         </h2>
-        <Button size="lg" onClick={handleAnalyse} disabled={loading}>
-          {loading ? <Loader2 className="animate-spin h-8 w-6" /> : "Try Again"}
-          <RefreshCcw />
-        </Button>
+        <span className="flex items-center gap-2">
+          <UploadResume title="Upload a new resume" />
+          <Button
+            size="icon"
+            onClick={handleAnalyse}
+            disabled={loading}
+            className="flex items-center gap-2"
+          >
+            {loading && <Loader2 className="animate-spin h-6 w-6" />}
+            {!loading && <RefreshCcw />}
+          </Button>
+        </span>
       </span>
 
-      <div className="grid gap-6 md:grid-cols-1">
+      <div className="grid gap-6 md:grid-cols-3">
         {/* Strengths */}
         <Card className="border-green-200 hover:shadow-lg transition">
           <CardHeader className="flex flex-row items-center gap-2">

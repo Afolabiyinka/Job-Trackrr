@@ -1,11 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import LightScreenMode from "@/assets/Light Screenshot.png";
 import DarkScreenshot from "@/assets/Dark Screenshot.png";
-import { useTheme } from "@/modules/theme/useTheme";
+import { useTheme } from "@/modules/main/theme/useTheme";
 
 const Home = () => {
   const { theme } = useTheme();
@@ -47,7 +47,7 @@ const Home = () => {
         <Link to={`/auth/login`}>
           <Button size={`lg`}>
             Get Started
-            <ArrowUpRight />
+            <ArrowRight />
           </Button>
         </Link>
       </motion.span>
