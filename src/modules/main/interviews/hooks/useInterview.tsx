@@ -11,11 +11,13 @@ export const useInterviews = () => {
     (job) => job.status === "interview",
   ).length;
 
+  const now = new Date();
+
   const upcomingInterviews = jobs.filter(
     (job) =>
       job.status === "interview" &&
       job.interviewDate &&
-      job.interviewDate > new Date(),
+      new Date(job.interviewDate) > now,
   ).length;
 
   return {
