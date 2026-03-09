@@ -17,10 +17,10 @@ const FeaturesCard = ({ desc, icon: Icon, title }: Props) => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeIn" }}
     >
-      <span className="shadow flex justify-center items-center w-12.5 h-12.5 rounded-full">
-        <Icon className="text-primary stroke-[1px]" size={30} />
+      <span className="flex justify-center items-center w-12.5 h-12.5 rounded-full">
+        <Icon className="text-primary stroke-[1px]" size={35} />
       </span>
-      <h3 className="font-semibold">{title}</h3>
+      <h3 className="font-semibold text-lg">{title}</h3>
       <p className="text-sm text-gray-500">{desc}</p>
     </motion.div>
   );

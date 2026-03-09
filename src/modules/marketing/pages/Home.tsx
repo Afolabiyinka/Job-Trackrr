@@ -39,7 +39,7 @@ const Home = () => {
         transition={{ duration: 0.6, delay: 0.6 }}
         className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-6"
       >
-        <Link to={`/explore`}>
+        <Link to={`/how-it-works`}>
           <Button size={`lg`} variant={`outline`}>
             Learn More
           </Button>

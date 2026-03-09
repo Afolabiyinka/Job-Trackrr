@@ -9,7 +9,7 @@ import { Eye, Edit, Trash2 } from "lucide-react";
 
 const ContactCard = () => {
   return (
-    <div className="grid p-4 w-64 rounded-xl border cursor-pointer">
+    <div className="grid p-4 w-64 rounded-xl border">
       <div className="">
         <span className="flex justify-between items-center">
           <span className="flex items-center">

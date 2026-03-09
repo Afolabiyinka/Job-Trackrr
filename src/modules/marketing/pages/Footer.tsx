@@ -7,26 +7,26 @@ const Footer = () => {
     <footer className="">
       <div className="max-w-7xl mx-auto px-6 py-4">
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-4">
           {/* BRAND */}
-          <div>
+          <div className="p-2 mr-1">
             <Logo />
 
-            <p className="text-sm text-slate-400 mb-5">
+            <p className="text-lg text-foreground mb-5">
               The ultimate tool to organize and track your job applications.
             </p>
 
             <div className="flex gap-4">
-              <Twitter className="w-5 h-5 cursor-pointer hover:text-white" />
-              <Linkedin className="w-5 h-5 cursor-pointer hover:text-white" />
-              <Github className="w-5 h-5 cursor-pointer hover:text-white" />
+              <Twitter className="w-5 h-5 cursor-pointer" />
+              <Linkedin className="w-5 h-5 cursor-pointer" />
+              <Github className="w-5 h-5 cursor-pointer" />
             </div>
           </div>
 
           {/* PRODUCT */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Product</h3>
-            <ul className="space-y-3 text-sm">
+          <div className="">
+            <h3 className="text-white font-semibold ">Product</h3>
+            <ul className="space-y-3 text-lg">
               <li>
                 <Link to="#">Features</Link>
               </li>
@@ -43,9 +43,9 @@ const Footer = () => {
           </div>
 
           {/* COMPANY */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Company</h3>
-            <ul className="space-y-3 text-sm">
+          <div className="">
+            <h3 className="text-white font-semibold">Company</h3>
+            <ul className="space-y-3 text-lg">
               <li>
                 <Link to="#">About</Link>
               </li>
@@ -62,9 +62,9 @@ const Footer = () => {
           </div>
 
           {/* RESOURCES */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Resources</h3>
-            <ul className="space-y-3 text-sm">
+          <div className="">
+            <h3 className="text-white font-semibold">Resources</h3>
+            <ul className="space-y-3 text-lg">
               <li>
                 <Link to="#">Help Center</Link>
               </li>
@@ -82,7 +82,7 @@ const Footer = () => {
         </div>
 
         {/* BOTTOM */}
-        <div className="border-t  mt-12 pt-6 text-sm  text-center">
+        <div className="border-t  mt-12 pt-6 text-lg text-center">
           © {new Date().getFullYear()} JobTrackr. All rights reserved.
         </div>
       </div>

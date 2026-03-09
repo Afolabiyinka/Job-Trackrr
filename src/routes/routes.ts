@@ -12,6 +12,7 @@ import Testimonials from "@/modules/marketing/pages/Testimonials";
 import Resume from "@/modules/main/resume/pages/Resume";
 import Results from "@/modules/main/resume/pages/sub-pages/Results";
 import Features from "@/modules/marketing/pages/Features";
+import HowItWorks from "@/modules/marketing/pages/How-It-works";
 
 // Lazy-loaded  main pages
 const Dashboard = lazy(
@@ -37,6 +38,11 @@ export const routes: RouteObject[] = [
       {
         index: true,
         Component: LandingPage,
+      },
+      {
+        index: true,
+        path: "how-it-works",
+        Component: HowItWorks,
       },
       {
         path: "testimonials",

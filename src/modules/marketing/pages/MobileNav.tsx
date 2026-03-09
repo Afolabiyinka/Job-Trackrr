@@ -27,6 +27,7 @@ const MobileNav = () => {
               <NavLink
                 key={i}
                 to={path}
+                onClick={() => setOpen(false)}
                 className={({ isActive }) =>
                   `${isActive ? "underline underline-offset-8 text-primary" : ""} flex items-center gap-2`
                 }
