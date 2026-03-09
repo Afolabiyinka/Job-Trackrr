@@ -7,25 +7,36 @@ const apiKey = process.env.GEMINI_API_KEY!;
 if (!apiKey) {
   throw new Error("Api key not found");
 }
-console.log(apiKey);
-const ai = new GoogleGenAI({ apiKey: apiKey });
+
+const ai = new GoogleGenAI({ apiKey });
 
 export async function gemini(content: string) {
   const response = await ai.models.generateContent({
     model: "gemini-3-flash-preview",
-    contents: `${content}`,
+    contents: content,
     config: {
       systemInstruction: `
 You are a professional resume analyzer.
+
 Analyze the resume text I send.
-Return the output as a proper JSON object (not a string) with the following keys:
+
+Return the output as a proper JSON object (not a string) with the following structure:
+
 {
+  "score": number, 
   "strengths": [ ... ],
   "weaknesses": [ ... ],
   "improvements": [ ... ]
 }
+
+Rules:
+- "score" must be a number from 0 to 100 representing the overall resume quality.
+- Strengths should list the good parts of the resume.
+- Weaknesses should list problems or missing elements.
+- Improvements should give actionable suggestions.
+
 Do not include any extra text, greetings, or explanations.
-The response must be valid JSON.
+Return ONLY valid JSON.
 `,
     },
   });
