@@ -32,7 +32,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
       <CardContent className="flex flex-col justify-center">
         <div className="flex flex-col gap-3">
           {jobs.length === 0 ? (
-            <div>No {title} found</div>
+            <div className="text-center">No {title} found</div>
           ) : (
             jobs.slice(0, 3)?.map((job, i) => (
               <span

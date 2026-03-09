@@ -29,7 +29,7 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-3 flex flex-col border border-primary/20 rounded-xl overflow-hidden">
+      <main className="w-full gap-3 flex flex-col border border-primary/20 rounded-xl">
         <span className="w-full">
           <Greeting />
           <Header />
