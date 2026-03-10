@@ -25,7 +25,7 @@ const ContactsStatsCard = () => {
           <User />
           Manage Contacts
         </Button>
-        <div className="grid grid-flow-col-dense gap-5 mt-3 p-2  overflow-x-scroll">
+        <div className="grid grid-flow-col-dense gap-5 mt-3 p-2  overflow-x-scroll no-scrollbar">
           {[...Array(10)].map((_, i) => (
             <ContactCard key={i} />
           ))}

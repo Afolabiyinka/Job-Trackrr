@@ -12,7 +12,7 @@ interface Props {
 const FeaturesCard = ({ desc, icon: Icon, title }: Props) => {
   return (
     <motion.div
-      className="p-6 border rounded-xl"
+      className="p-6 shadow rounded-xl"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeIn" }}

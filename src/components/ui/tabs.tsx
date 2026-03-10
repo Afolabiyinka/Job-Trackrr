@@ -69,7 +69,7 @@ function TabsTrigger({
         "group-data-[orientation=vertical]/tabs:w-full group-data-[orientation=vertical]/tabs:justify-start",
 
         /* 🔥 ACTIVE STATE */
-        "data-[state=active]:bg-secondary  data-[state=active]:text-white",
+        "data-[state=active]:bg-primary  data-[state=active]:text-white",
         "data-[state=active]:shadow-sm",
 
         "after:bg-primary after:absolute after:opacity-0 after:transition-opacity",

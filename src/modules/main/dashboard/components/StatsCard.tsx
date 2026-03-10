@@ -20,7 +20,7 @@ const StatsCard = () => {
     label: string;
     icon: React.ReactNode;
   }) => (
-    <div className="border rounded-xl p-4 flex justify-between items-center">
+    <div className="border rounded-xl p-4 flex justify-between items-center h-full">
       {/* Left: Stat */}
       <div className="flex items-center gap-3">
         <h1 className="text-xl font-bold">{value}</h1>
@@ -36,7 +36,7 @@ const StatsCard = () => {
   );
 
   return (
-    <Card className="w-full">
+    <Card className="w-full h-full">
       <CardHeader>
         <CardTitle>{todaysDate}</CardTitle>
       </CardHeader>

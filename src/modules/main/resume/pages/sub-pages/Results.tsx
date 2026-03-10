@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Navigate } from "react-router-dom";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import UploadResume from "../../components/UploadResume";
+import { Badge } from "@/components/ui/badge";
 
 const Results = () => {
   const { error, loading, handleAnalyse } = useAnalyseResume();
@@ -56,6 +57,16 @@ const Results = () => {
           </Button>
         </span>
       </span>
+
+      <div className="border rounded-xl p-2 flex items-center gap-4 justify-between px-4">
+        <p className="text-lg">Your resume score</p>
+        <Badge
+          variant={"outline"}
+          // className="px-3 py-1 rounded-md bg-primary text-white font-semibold"
+        >
+          <p className="md:text-lg font-bold">{analysis?.score}/100</p>
+        </Badge>
+      </div>
 
       <div className="grid gap-6 md:grid-cols-3">
         {/* Strengths */}
