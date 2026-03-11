@@ -1,10 +1,10 @@
 import GoalsStatsCard from "../components/goals/GoalsStatsCard";
 import ContactsStatsCard from "../components/ContactsStatsCard";
-import StatsCard from "../components/StatsCard";
+import StatsCard from "../components/stats/StatsCard";
 
 const DashBoard = () => {
   return (
-    <div className="h-full  w-full flex flex-col  gap-4 p-2">
+    <div className="h-full  w-full flex flex-col  gap-4 p-3">
       <div className="w-full h-full">
         <StatsCard />
       </div>

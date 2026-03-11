@@ -15,16 +15,20 @@ const ContactsStatsCard = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Manage Contacts</CardTitle>
-        <CardDescription>
-          You have 120 contacts saved on your account
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="">
+        <CardTitle className="flex justify-between flex-col md:flex-row  items-center">Manage Contacts
+
         <Button size={`lg`} onClick={() => navigate("/app/contacts")}>
           <User />
           Manage Contacts
         </Button>
+        </CardTitle>
+        <CardDescription>
+          You have 120 contacts saved on your account
+        </CardDescription>
+      
+      </CardHeader>
+      <CardContent className="">
+     
         <div className="grid grid-flow-col-dense gap-5 mt-3 p-2  overflow-x-scroll no-scrollbar">
           {[...Array(10)].map((_, i) => (
             <ContactCard key={i} />
