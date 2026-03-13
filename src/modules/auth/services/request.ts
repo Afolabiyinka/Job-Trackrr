@@ -1,4 +1,4 @@
-import { prodEndpoint } from "@/constants/api-data";
+import { prodEndpoint } from "@/shared/constants/api-data";
 import type { LoginPayload, SignupPayload } from "../types/types";
 import type { Response } from "@/shared/types/types";
 

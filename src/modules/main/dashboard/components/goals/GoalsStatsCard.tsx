@@ -25,7 +25,7 @@ const GoalsStatsCard = () => {
           <Flag />
           Set My Goals
         </Button>
-        <div className="flex flex-col gap-3 p-3 mt-3">
+        <div className="grid md:grid-cols-3 gap-3  md:p-5 gap-3 md:gap-10 mt-3">
           {mockgoals.map((goal, i) => (
             <GoalCard goal={goal} key={i} />
           ))}

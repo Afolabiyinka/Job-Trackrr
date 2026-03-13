@@ -13,13 +13,12 @@ const StatsCard = () => {
 
   // Reusable CardItem component
 
-
   return (
     <Card className="w-full h-full ring-0">
       <CardHeader>
         <CardTitle>{todaysDate}</CardTitle>
       </CardHeader>
-      <CardContent className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <CardContent className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-0 md:p-3">
         <StatsCardItem
           value={jobs.length}
           label="Job Applications"

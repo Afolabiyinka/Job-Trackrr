@@ -1,9 +1,3 @@
-export interface AuthUser {
-  email: string;
-  _id: string;
-  username: string;
-  [key: string]: any;
-}
 
 export interface SignupPayload {
   username: string;
@@ -17,8 +11,3 @@ export interface LoginPayload {
   password: string;
 }
 
-export type UpdateUserPayload = {
-  username: string;
-  email: string;
-  id: string;
-};

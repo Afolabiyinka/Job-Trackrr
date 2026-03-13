@@ -1,4 +1,4 @@
-import { prodEndpoint } from "@/constants/api-data";
+import { prodEndpoint } from "@/shared/constants/api-data";
 import axios from "axios";
 import type { Job } from "../types/job";
 

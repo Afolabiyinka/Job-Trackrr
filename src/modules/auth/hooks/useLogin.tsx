@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "../services/request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
-import { queryClient } from "@/constants/queryClient";
+import { queryClient } from "@/shared/constants/queryClient";
 export const useLogin = () => {
   const [loginData, setLoginData] = React.useState<LoginPayload>({
     email: "",

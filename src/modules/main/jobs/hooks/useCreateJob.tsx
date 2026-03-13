@@ -4,7 +4,7 @@ import { createJob } from "../services/request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useSetJob } from "../store/useAddJob";
 import { useNavigate } from "react-router-dom";
-import { queryClient } from "@/constants/queryClient";
+import { queryClient } from "@/shared/constants/queryClient";
 
 export const useCreateJob = () => {
   const { toastError, toastSuccess } = useToastMessage();

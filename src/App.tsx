@@ -1,4 +1,4 @@
-import RoutesConfig from "./routes/routes-config";
+import RoutesConfig from "./shared/routes/routes-config";
 import { useTheme } from "./modules/main/theme/useTheme";
 import React from "react";
 import { Toaster } from "sonner";
@@ -11,7 +11,6 @@ export function App() {
   const { setUser } = useUser();
   const { theme } = useTheme();
 
-  // Always call hooks first
   React.useEffect(() => {
     setUser(fetchedUser?.user ?? null);
   }, [fetchedUser?.user, setUser]);

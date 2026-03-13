@@ -9,8 +9,8 @@ const DashBoard = () => {
         <StatsCard />
       </div>
       <section className="grid md:grid-cols-1 w-full gap-6 mb-4 h-full">
-        <ContactsStatsCard />
         <GoalsStatsCard />
+        <ContactsStatsCard />
       </section>
     </div>
   );

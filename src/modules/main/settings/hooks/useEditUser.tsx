@@ -3,7 +3,7 @@ import type { AuthUser, EditUserPayload } from "../types/types";
 import { editUser } from "../services/request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import React from "react";
-import { queryClient } from "@/constants/queryClient";
+import { queryClient } from "@/shared/constants/queryClient";
 
 export const useEditUser = () => {
   const { toastError, toastSuccess } = useToastMessage();

@@ -3,7 +3,7 @@ import { useSetJob } from "../store/useAddJob";
 import type { Job } from "../types/job";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { editJob } from "../services/request";
-import { queryClient } from "@/constants/queryClient";
+import { queryClient } from "@/shared/constants/queryClient";
 
 export const useEditJobs = () => {
   const { toastError, toastSuccess } = useToastMessage();

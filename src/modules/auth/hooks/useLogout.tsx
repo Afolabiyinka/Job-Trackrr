@@ -1,5 +1,5 @@
-import { prodEndpoint } from "@/constants/api-data";
-import { queryClient } from "@/constants/queryClient";
+import { prodEndpoint } from "@/shared/constants/api-data";
+import { queryClient } from "@/shared/constants/queryClient";
 import { useUser } from "@/modules/main/settings/store/useUser";
 import { useNavigate } from "react-router-dom";
 export const useLogout = () => {

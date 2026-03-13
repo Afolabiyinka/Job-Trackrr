@@ -4,11 +4,11 @@ import About from "./Testimonials";
 
 const LandingPage = () => {
   return (
-    <div>
+    <>
       <Home />
       <Features />
       <About />
-    </div>
+    </>
   );
 };
 
