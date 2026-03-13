@@ -1,20 +1,20 @@
-import logoImage from "@/assets/logo.png";
+import logoImage from "@/assets/green-logo.png";
 import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
     <Link
       to="/"
-      className="flex items-center gap-1 justify-start p-2 px-3 rounded-3xl  text-primary"
+      className="flex items-center gap-1 justify-start p-2 px-4 rounded-3xl bg-background"
     >
       <img
         src={logoImage}
         alt="Job Trackrr Logo"
-        className="w-9 h-9 "
+        className="w-10 h-10"
         fetchPriority="high"
         loading="eager"
       />
-      <span className="text-2xl font-semibold tracking-tight">Job Trackrr</span>
+      <span className="text-2xl font-bold tracking-wide">Job Trackrr</span>
     </Link>
   );
 };

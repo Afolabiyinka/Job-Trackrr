@@ -29,7 +29,7 @@ export default function SearchInput() {
         onClick={() => setOpen(true)}
         className=""
         size={`lg`}
-        variant={`outline`}
+        // variant={`outline`}
       >
         <Search />
         Search Jobs
