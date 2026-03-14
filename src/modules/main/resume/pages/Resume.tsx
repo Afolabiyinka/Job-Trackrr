@@ -14,12 +14,12 @@ import { useAnalyseResume } from "../hooks/useAnalyseResume";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 
 const Resume = () => {
-  const { analysis, resumeText } = useResume();
+  const { analysis } = useResume();
   const { loading } = useAnalyseResume();
   if (loading) {
     return <LoadingContainer />;
   }
-  if (analysis || resumeText) return <Navigate to={`/app/resume/results`} />;
+  if (analysis || loading) return <Navigate to={`/app/resume/results`} />;
   return (
     <Empty className="h-full border border-dashed">
       <EmptyHeader>

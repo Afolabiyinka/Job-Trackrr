@@ -11,10 +11,20 @@ import StarRating from "../components/StarRating";
 const Testimonials = () => {
   return (
     <div className="min-h-screen rounded-lg p-2 md:p-10 w-full text-center">
-      <motion.h1 className="text-2xl md:text-6xl font-bold mb-2 text-center leading-snug">
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeIn" }}
+        className="text-2xl md:text-6xl font-bold mb-2 text-center leading-snug"
+      >
         Loved by Job Seekers
       </motion.h1>
-      <motion.p className="text-md md:text-2xl leading-relaxed mb-8 text-muted-foreground">
+      <motion.p
+        initial={{ y: 50, opacity: 0.8 }}
+        whileInView={{ y: 1, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="text-md md:text-2xl leading-relaxed mb-8 text-muted-foreground"
+      >
         Join thousands of proffesionals that landed their dream job using
         JobTrackrr
       </motion.p>
