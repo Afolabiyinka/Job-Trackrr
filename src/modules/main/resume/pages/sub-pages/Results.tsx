@@ -15,7 +15,6 @@ import {
   Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Navigate } from "react-router-dom";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import UploadResume from "../../components/UploadResume";
 import { Badge } from "@/components/ui/badge";
