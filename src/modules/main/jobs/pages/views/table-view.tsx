@@ -60,7 +60,7 @@ const TableView = () => {
         >
           <SelectTrigger className="flex">
             <FilterIcon />
-            <SelectValue placeholder="Filter jobs" />
+            <SelectValue placeholder="Status" />
           </SelectTrigger>
 
           <SelectContent className="p-1">

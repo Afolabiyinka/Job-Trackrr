@@ -57,7 +57,7 @@ const Home = () => {
         transition={{ duration: 0.3, ease: "linear", delay: 1 }}
         className="w-full h-full mt-10 rounded-2xl overflow-hidden shadow-2xl border bg-background backdrop-blur"
       >
-        <img
+        <motion.img
           src={`${theme === "light" ? LightScreenShot : DarkScreenshot}`}
           alt="Job Trackrr Ui"
           fetchPriority="high"
