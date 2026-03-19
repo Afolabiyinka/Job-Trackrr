@@ -26,7 +26,7 @@ const GoalsStatsCard = () => {
           Set My Goals
         </Button>
         <div className="grid md:grid-cols-3   md:p-5 gap-3 md:gap-10 mt-3">
-          {mockgoals.map((goal, i) => (
+          {mockgoals.slice(0, 3).map((goal, i) => (
             <GoalCard goal={goal} key={i} />
           ))}
         </div>

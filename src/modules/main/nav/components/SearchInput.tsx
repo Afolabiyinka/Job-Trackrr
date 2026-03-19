@@ -25,12 +25,7 @@ export default function SearchInput() {
 
   return (
     <div className="flex flex-col gap-4">
-      <Button
-        onClick={() => setOpen(true)}
-        className=""
-        size={`lg`}
-        // variant={`outline`}
-      >
+      <Button onClick={() => setOpen(true)} className="" size={`lg`}>
         <Search />
         Search Jobs
       </Button>
