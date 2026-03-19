@@ -23,7 +23,7 @@ const ContactsStatsCard = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="">
-        <Button size={`lg`} onClick={() => navigate("/app/contacts")}>
+        <Button size={`lg`} onClick={() => navigate("/contacts")}>
           <User />
           Manage Contacts
         </Button>

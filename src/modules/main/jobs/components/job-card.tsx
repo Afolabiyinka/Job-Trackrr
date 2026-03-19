@@ -38,7 +38,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
               <span
                 key={i}
                 className="font-medium flex gap-2 items-center hover:bg-primary/80 hover:text-white p-2 rounded-2xl cursor-pointer  "
-                onClick={() => navigate(`/app/jobs/${job.id}`)}
+                onClick={() => navigate(`/jobs/${job.id}`)}
               >
                 <span className="h-12 w-12 bg-gray-300 rounded-full border animate-pulse" />
                 <span>

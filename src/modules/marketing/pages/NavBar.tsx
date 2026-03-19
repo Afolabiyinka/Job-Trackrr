@@ -6,7 +6,7 @@ import Logo from "@/components/logo/Logo";
 
 const NavBar = () => {
   return (
-    <div className="p-1.5 w-full hidden md:flex justify-around items-center">
+    <div className="p-1.5 w-full hidden lg:flex justify-around items-center">
       <Logo />
       <span className="flex gap-10">
         {NAVLINKS.map(({ name, path, icon: Icon }, i) => (
@@ -24,13 +24,13 @@ const NavBar = () => {
       </span>
 
       <span className="flex gap-1">
-        <Link to={`/auth/login`}>
+        <Link to={`/login`}>
           <Button variant={`link`} size={`lg`}>
             Log In
           </Button>
         </Link>
 
-        <Link to={`/auth/signup`}>
+        <Link to={`/signup`}>
           <Button size={`lg`}>
             Sign Up
             <ArrowRight />

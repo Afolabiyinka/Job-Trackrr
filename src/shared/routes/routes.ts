@@ -26,12 +26,12 @@ export const routes: RouteObject[] = [
     children: marketingRoutes
   },
   {
-    path: "app",
+    path: "/",
     Component: MainLayout,
     children: mainRoutes
   },
   {
-    path: "auth",
+    path: "/",
     Component: AuthLayout,
     children: authRoutes
   }

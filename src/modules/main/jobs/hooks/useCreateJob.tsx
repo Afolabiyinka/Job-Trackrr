@@ -32,7 +32,7 @@ export const useCreateJob = () => {
         queryKey: ["jobs"],
       });
 
-      navigate("/app/jobs");
+      navigate("/jobs");
     },
     onError: (err: any) => {
       toastError(err.message || "Something went wrong");

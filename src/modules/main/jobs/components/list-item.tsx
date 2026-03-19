@@ -8,7 +8,7 @@ const ListItem = ({ job }: { job: Job }) => {
   return (
     <div
       className="flex flex-col md:flex-row gap-2 justify-between items-center border rounded-xl hover:bg-muted cursor-pointer p-4"
-      onClick={() => navigate(`/app/jobs/${job.id}`)}
+      onClick={() => navigate(`/jobs/${job.id}`)}
     >
       <div className="flex gap-2 items-center">
         <span className="h-6 w-6 border rounded-full animate-pulse" />

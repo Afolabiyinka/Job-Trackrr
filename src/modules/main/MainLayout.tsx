@@ -20,7 +20,7 @@ const MainLayout = () => {
   }, [jobs, setJobs]);
 
   if (user === null) {
-    return <Navigate to="/auth/login" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return (

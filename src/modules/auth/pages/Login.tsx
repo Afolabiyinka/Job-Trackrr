@@ -53,7 +53,7 @@ const Login = () => {
         </div>
         <p className="text-center mt-4">
           New to JobTrackrr?
-          <Link to={`/auth/signup`} className="text-primary cursor-pointer">
+          <Link to={`/signup`} className="text-primary cursor-pointer">
             Create account
           </Link>
         </p>

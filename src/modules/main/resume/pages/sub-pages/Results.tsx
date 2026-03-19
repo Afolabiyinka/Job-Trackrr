@@ -30,7 +30,7 @@ const Results = () => {
   if (error) return <div>Something went wrong</div>;
 
   // if (!analysis && !loading) {
-  //   return <Navigate to={`/app/resume`} replace />;
+  //   return <Navigate to={`/resume`} replace />;
   // }
 
   const strengths = analysis?.strengths || [];

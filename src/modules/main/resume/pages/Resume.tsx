@@ -19,7 +19,7 @@ const Resume = () => {
   if (loading) {
     return <LoadingContainer />;
   }
-  if (analysis || loading) return <Navigate to={`/app/resume/results`} />;
+  if (analysis || loading) return <Navigate to={`/resume/results`} />;
   return (
     <Empty className="h-full border border-dashed">
       <EmptyHeader>

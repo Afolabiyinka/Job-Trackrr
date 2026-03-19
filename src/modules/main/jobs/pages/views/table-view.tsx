@@ -92,7 +92,7 @@ const TableView = () => {
               return (
                 <TableRow
                   key={job.id}
-                  onClick={() => navigate(`/app/jobs/${job.id}`)}
+                  onClick={() => navigate(`/jobs/${job.id}`)}
                 >
                   <TableCell className="font-medium flex gap-2 items-center">
                     <span className="h-6 w-6 border rounded-full  animate-pulse" />

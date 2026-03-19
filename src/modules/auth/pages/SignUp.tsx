@@ -70,7 +70,7 @@ const SignUp = () => {
         </div>
         <p className="text-center mt-4">
           Already have an account?{" "}
-          <Link to={`/auth/login`} className="text-primary cursor-pointer">
+          <Link to={`/login`} className="text-primary cursor-pointer">
             Login
           </Link>
         </p>

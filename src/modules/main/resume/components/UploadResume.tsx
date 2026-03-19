@@ -54,7 +54,7 @@ const UploadResume = ({ title }: Props) => {
                 ) : (
                   <Button
                     onClick={() => {
-                      navigate("/app/resume/results");
+                      navigate("/resume/results");
                       handleAnalyse();
                     }}
                   >

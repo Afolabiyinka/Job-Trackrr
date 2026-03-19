@@ -11,31 +11,33 @@ const StatsCard = () => {
 
   const todaysDate = formatDate(new Date());
 
-  // Reusable CardItem component
+  // Correcting grammar
+  const interviewText = totalInterviews === 1 ? "interview" : "interviews";
+  const applicationText = jobs.length === 1 ? "application" : "applications";
 
   return (
     <Card className="w-full h-full ring-0">
       <CardHeader>
-        <CardTitle>{todaysDate}</CardTitle>
+        <CardTitle className="text-lg font-semibold">{todaysDate}</CardTitle>
       </CardHeader>
       <CardContent className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-0 md:p-3">
         <StatsCardItem
           value={jobs.length}
-          label="Job Applications"
+          label={`Job ${applicationText}`}
           icon={
             <TrendingUp className="stroke-[1px] text-green-600" size={30} />
           }
         />
         <StatsCardItem
           value={totalInterviews}
-          label="Total Interviews"
+          label={`Total ${interviewText}`}
           icon={
             <CalendarCheck2 className="stroke-[1px] text-blue-600" size={30} />
           }
         />
         <StatsCardItem
           value={upcomingInterviews}
-          label="Upcoming Interviews"
+          label={`Upcoming ${interviewText}`}
           icon={<Clock className="stroke-[1px] text-orange-600" size={30} />}
         />
       </CardContent>

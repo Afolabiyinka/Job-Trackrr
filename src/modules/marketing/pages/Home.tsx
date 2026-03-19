@@ -43,7 +43,7 @@ const Home = () => {
             Learn More
           </Button>
         </Link>
-        <Link to={`/auth/login`}>
+        <Link to={`/login`}>
           <Button size={`lg`}>
             Get Started
             <ArrowRight />
