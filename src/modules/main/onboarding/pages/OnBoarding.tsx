@@ -1,17 +1,29 @@
 import { useEffect, useState } from "react";
 import welcome_img from "@/assets/welcome.svg";
-
+import add_img from "@/assets/add.svg";
+import Confetti from "react-confetti";
 import { motion } from "framer-motion";
 import { useUser } from "../../settings/store/useUser";
 import WavingHand from "@/components/waving-hand";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useWindowSize } from "react-use";
 import CreateJobStepper from "../../jobs/components/create-job/stepper/CreateJob-Stepper";
 const OnBoarding = () => {
   const [activeStep, setActiveStep] = useState(0);
   const nextStep = () => {
     setActiveStep((prev) => Math.min(prev + 1, 2));
   };
+
+  const [showConfetti, setShowConfetti] = useState(false);
+  const { height, width } = useWindowSize();
+  useEffect(() => {
+    setShowConfetti(true);
+
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 4000);
+  }, []);
 
   const { user } = useUser();
 
@@ -24,37 +36,47 @@ const OnBoarding = () => {
     <div className="p-4 min-h-screen flex w-full">
       {/* First Step */}
 
-      <motion.div
-        className="w-full md:w-1/2 flex justify-center"
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <img src={welcome_img} alt="Welcome" className="w-full md:w-1/2" />
-      </motion.div>
-
       <div
-        className="w-full md:w-1/2
+        className="w-full
       "
       >
         {activeStep === 0 && (
-          <div className="h-full w-full flex flex-col md:flex-row  gap-10 p-2 px-4 md:px-10">
+          <div className="h-full w-full flex flex-col md:flex-row shadow rounded-2xl  gap-10 p-2 px-4 md:px-10">
             <motion.div
-              className="w-full  flex flex-col gap-6 text-center md:text-left justify-center"
+              className="w-full md:w-1/2 flex justify-center"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <img
+                src={welcome_img}
+                alt="Welcome"
+                className="w-full md:w-1/2"
+              />
+            </motion.div>
+            <motion.div
+              className="w-full  md:w-1/2 flex flex-col gap-6 text-center md:text-left justify-center"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
+              {showConfetti && (
+                <Confetti
+                  numberOfPieces={200}
+                  gravity={0.3}
+                  recycle={false}
+                  width={width}
+                  height={height}
+                />
+              )}{" "}
               <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-2">
                 Welcome {user?.username} <WavingHand />
               </h1>
-
               <p className="text-foreground tracking-widest text-sm md:text-xl">
                 Every opportunity starts somewhere. Let’s take the first step by
                 adding your first job application and building your
                 journey.{" "}
               </p>
-
               <span className="">
                 <Button size={`lg`} onClick={nextStep}>
                   Next
@@ -68,7 +90,15 @@ const OnBoarding = () => {
         {activeStep === 1 && (
           <div className="h-full w-full flex flex-col md:flex-row  gap-10 p-2 px-4 md:px-10">
             <motion.div
-              className="w-full  flex flex-col gap-6 text-center md:text-left justify-center"
+              className="w-full md:w-1/2 flex justify-center"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <img src={add_img} alt="Welcome" className="w-full md:w-1/2" />
+            </motion.div>
+            <motion.div
+              className="w-full md:w-1/2 flex flex-col gap-6 text-center md:text-left justify-center"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
