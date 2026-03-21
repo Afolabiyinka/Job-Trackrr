@@ -124,7 +124,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    /* @apply bg-background text-foreground; */
     /* color: rgb(57, 54, 54); */
   }
   html {
@@ -132,7 +132,7 @@
   }
 }
 
-.dark {
+/* .dark {
   background: #161616;
   color: white;
 }
@@ -140,7 +140,7 @@
 .light {
   background: white;
   color: #252525;
-}
+} */
 
 * {
   scroll-behavior: smooth;

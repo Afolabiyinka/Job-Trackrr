@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import welcome_img from "@/assets/welcome.svg";
 
 import { motion } from "framer-motion";
@@ -15,6 +15,11 @@ const OnBoarding = () => {
 
   const { user } = useUser();
 
+  useEffect(() => {
+    if (activeStep === 1) {
+      localStorage.setItem("onboarded", "true");
+    }
+  }, [activeStep]);
   return (
     <div className="p-4 min-h-screen flex w-full">
       {/* First Step */}

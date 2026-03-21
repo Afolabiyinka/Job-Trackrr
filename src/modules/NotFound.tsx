@@ -7,7 +7,7 @@ function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <div className="h-screen w-full flex flex-col items-center justify-center px-6 text-center">
+    <div className="h-screen w-full flex flex-col items-center justify-center px-6 text-center bg-white text-black dark:bg-[#161616] dark:text-white">
       <motion.div
         initial={{ opacity: 0, scale: 0.9, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}

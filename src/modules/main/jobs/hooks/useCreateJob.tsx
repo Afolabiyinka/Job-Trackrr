@@ -23,6 +23,7 @@ export const useCreateJob = () => {
     interviewType,
     workType,
   } = useSetJob();
+  const hasOnboarded = localStorage.getItem("onboarded") === "true";
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (payload: Job) => createJob(payload),
@@ -32,9 +33,9 @@ export const useCreateJob = () => {
         queryKey: ["jobs"],
       });
 
-      navigate("/jobs");
+      !hasOnboarded ? navigate("/jobs") : navigate("/dashboard");
     },
-    onError: (err: any) => {
+    onError: (err) => {
       toastError(err.message || "Something went wrong");
     },
   });
