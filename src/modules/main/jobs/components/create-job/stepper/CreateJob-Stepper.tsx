@@ -130,6 +130,7 @@ const CreateJobStepper = ({
       setStatus(job.status ?? null);
       setWorkType(job.workType ?? null);
       setJobType(job.jobType ?? null);
+      setFeedback(job.feedback ?? "");
     }
   }, [editing, job]);
 

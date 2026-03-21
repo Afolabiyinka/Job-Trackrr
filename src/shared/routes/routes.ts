@@ -13,6 +13,7 @@ import { mainRoutes } from "@/modules/main/main.routes";
 import { marketingRoutes } from "@/modules/marketing/marketing.routes";
 
 const NotFound = lazy(() => import("@/modules/NotFound"));
+const OnBoarding = lazy(() => import("@/modules/main/onboarding/pages/OnBoarding"));
 
 
 export const routes: RouteObject[] = [
@@ -34,6 +35,10 @@ export const routes: RouteObject[] = [
     path: "/",
     Component: AuthLayout,
     children: authRoutes
+  },
+  {
+    path: "/onboarding",
+    Component: OnBoarding,
   }
 
 ];

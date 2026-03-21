@@ -28,36 +28,43 @@ const Testimonials = () => {
         Join thousands of proffesionals that landed their dream job using
         JobTrackrr
       </motion.p>
-      <Swiper
-        className="flex items-center justify-center w-full"
-        modules={[Autoplay, FreeMode]}
-        freeMode
-        loop={true}
-        speed={4000}
-        slidesPerView="auto"
-        spaceBetween={20}
-        autoplay={{ delay: 0, disableOnInteraction: false }}
-        breakpoints={{
-          1024: { slidesPerView: 3, spaceBetween: 20 },
-          600: { slidesPerView: 2, spaceBetween: 15 },
-          320: { slidesPerView: 1, spaceBetween: 10 },
-        }}
+      <motion.div
+        className="w-full"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeIn", delay: 0.5 }}
       >
-        {reviews.map((review, index) => (
-          <SwiperSlide key={index} className="w-auto">
-            <div className="h-full p-6 md:p-10  bg-muted rounded-2xl border flex flex-col justify-between items-center gap-4">
-              <div className="space-y-4">
-                <p className="text-lg">{review.comment}</p>
+        <Swiper
+          className="flex items-center justify-center w-full"
+          modules={[Autoplay, FreeMode]}
+          freeMode
+          loop={true}
+          speed={4000}
+          slidesPerView="auto"
+          spaceBetween={20}
+          autoplay={{ delay: 0, disableOnInteraction: false }}
+          breakpoints={{
+            1024: { slidesPerView: 3, spaceBetween: 20 },
+            600: { slidesPerView: 2, spaceBetween: 15 },
+            320: { slidesPerView: 1, spaceBetween: 10 },
+          }}
+        >
+          {reviews.map((review, index) => (
+            <SwiperSlide key={index} className="w-auto">
+              <div className="h-full p-6 md:p-10  bg-muted rounded-2xl border flex flex-col justify-between items-center gap-4">
+                <div className="space-y-4">
+                  <p className="text-lg">{review.comment}</p>
+                </div>
+                <StarRating rating={review.rating} />
+                <div>
+                  <p className="text-2xl">{review.name}</p>
+                  <p className="text-sm">{review.role}</p>
+                </div>
               </div>
-              <StarRating rating={review.rating} />
-              <div>
-                <p className="text-2xl">{review.name}</p>
-                <p className="text-sm">{review.role}</p>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </motion.div>
     </div>
   );
 };

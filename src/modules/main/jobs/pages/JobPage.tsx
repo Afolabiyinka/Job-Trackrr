@@ -1,5 +1,4 @@
 import { useParams, useNavigate } from "react-router-dom";
-import LoadingContainer from "@/components/loader/loadingcontainer";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
@@ -24,6 +23,7 @@ import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper
 import DeleteJobModal from "../components/delete-job/delete-job";
 import { NumericFormat } from "react-number-format";
 import { useGetJob } from "../hooks/useGetJob";
+import JobPageSkeleton from "../components/loading-skeleton";
 
 const JobPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -38,7 +38,7 @@ const JobPage = () => {
   if (job) {
     document.title = `${job.role} at ${job.company}`;
   }
-  if (loading) return <LoadingContainer />;
+  if (loading) return <JobPageSkeleton />;
   if (error) return <div>Failed to load job</div>;
   if (!job) return <div>Job not found</div>;
 
