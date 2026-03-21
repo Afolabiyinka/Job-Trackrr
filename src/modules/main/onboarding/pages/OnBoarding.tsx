@@ -72,7 +72,7 @@ const OnBoarding = () => {
               <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-2">
                 Welcome {user?.username} <WavingHand />
               </h1>
-              <p className="text-foreground tracking-widest text-sm md:text-xl">
+              <p className="tracking-widest text-sm md:text-xl">
                 Every opportunity starts somewhere. Let’s take the first step by
                 adding your first job application and building your
                 journey.{" "}
@@ -107,7 +107,7 @@ const OnBoarding = () => {
                 Add your first job application
               </h2>
 
-              <p className="text-foreground text-sm md:text-xl tracking-widest">
+              <p className="text-sm md:text-xl tracking-widest">
                 Start tracking your opportunities by adding your first job.
                 Include the company name, role, and status so you can stay
                 organized from day one.
