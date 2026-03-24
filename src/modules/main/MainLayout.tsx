@@ -24,12 +24,12 @@ const MainLayout = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen p-2 bg-white text-black dark:bg-[#161616] dark:text-white">
+    <div className="flex flex-col lg:flex-row h-screen p-2">
       <aside className="lg:w-80">
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-3 flex flex-col border rounded-xl">
+      <main className="w-full gap-3 flex flex-col border rounded-xl p-1">
         <span className="w-full">
           <Greeting />
           <Header />

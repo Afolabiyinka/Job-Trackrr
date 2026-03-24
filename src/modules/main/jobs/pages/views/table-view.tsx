@@ -112,7 +112,7 @@ const TableView = () => {
               );
             })
           ) : (
-            <div className="p-6 text-xl">No {activeFilter} jobs found</div>
+            <div className="p-6 text-xl">No {activeFilter} jobs</div>
           )}
         </TableBody>
       </Table>

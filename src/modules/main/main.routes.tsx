@@ -25,7 +25,6 @@ const mainRoutes: RouteObject[] = [
       {
         index: true,
         Component: Jobs,
-        handle: { title: "Jobs" },
       },
       {
         path: ":id",
