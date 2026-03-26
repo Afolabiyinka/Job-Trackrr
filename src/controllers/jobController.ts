@@ -2,14 +2,14 @@ import { TrackedJobs } from "../models/TrackedJobs";
 import { User } from "../models/User";
 import { Job } from "../types/job";
 import { AuthenticatedRequest } from "../types/request/types";
-import { Response, Request } from "express";
+import { Response, } from "express";
 
 const createJob = async (req: AuthenticatedRequest, res: Response) => {
   const {
     appliedAt,
     company,
     companyEmail,
-    interviewDate: rawInterviewDate,
+    interviewDate,
     jobType,
     salaryRange,
     role,
@@ -36,19 +36,18 @@ const createJob = async (req: AuthenticatedRequest, res: Response) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    const interviewDate = rawInterviewDate ? new Date(rawInterviewDate) : null;
 
     await TrackedJobs.create({
       appliedAt,
       company,
-      companyEmail: companyEmail || null,
+      companyEmail,
       interviewDate,
       jobType,
-      salaryRange: salaryRange || null,
+      salaryRange,
       role,
       status,
       workType,
-      interviewType: interviewType || null,
+      interviewType,
       userId,
       feedback,
     });
@@ -65,7 +64,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
     appliedAt,
     company,
     companyEmail,
-    interviewDate: rawInterviewDate,
+    interviewDate,
     jobType,
     salaryRange,
     role,
@@ -73,7 +72,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
     workType,
     interviewType,
     feedback,
-  } = req.body as Partial<Job>;
+  } = req.body as Job;
 
   const userId = req.user?.id;
   const { id } = req.params;
@@ -87,7 +86,7 @@ const updateJobDetails = async (req: AuthenticatedRequest, res: Response) => {
       appliedAt,
       company,
       companyEmail,
-      interviewDate: rawInterviewDate ? new Date(rawInterviewDate) : null,
+      interviewDate,
       jobType,
       salaryRange,
       role,
@@ -114,7 +113,7 @@ const deleteJob = async (req: AuthenticatedRequest, res: Response) => {
     if (!job) return res.status(404).json({ message: "Job not found" });
 
     await job.destroy();
-    res.status(200).json({ message: "Job Deleted Succesfully" });
+    res.status(200).json({ message: "Job Deleted" });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ message: "Something went wrong" });
@@ -141,7 +140,7 @@ const getParticularJob = async (req: AuthenticatedRequest, res: Response) => {
   const userId = req.user?.id;
   const { id } = req.params;
   if (!userId) return res.status(401).json({ message: "Unauthorized" });
-
+  if (!id) return res.status(401).json({ message: "Job Id is not provided" })
   try {
     const job = await TrackedJobs.findByPk(id);
     res.status(200).json({ job });

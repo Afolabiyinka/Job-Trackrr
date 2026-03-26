@@ -33,6 +33,6 @@ const analyseResume = async (req: AuthenticatedRequest, res: Response) => {
   }
 };
 
-const deleteResume = async (req: AuthenticatedRequest, res: Response) => {};
 
-export { analyseResume, deleteResume };
+
+export { analyseResume };

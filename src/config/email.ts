@@ -11,6 +11,13 @@ if (!resend_api_key) {
 
 const resend = new Resend(resend_api_key);
 
+
+interface EmailProps {
+  from: string,
+  to: string,
+  subject: string;
+  html: string
+}
 export async function sendEmail() {
   const { data, error } = await resend.emails.send({
     from: "onboarding@resend.dev",

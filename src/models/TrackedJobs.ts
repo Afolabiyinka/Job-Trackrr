@@ -1,9 +1,40 @@
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../config/db";
 import { User } from "./User";
+import { InterviewType, Job, JobType, Status, WorkType } from "../types/job";
+import { models } from "../types/models";
 
-export const TrackedJobs = sequelize.define(
-  "TrackedJobs",
+
+interface JobAttributes extends Job {
+  userId?: string | number;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+
+export class TrackedJobs extends Model<JobAttributes> implements JobAttributes {
+  public id!: string | number;
+  public company!: string;
+  public role!: string;
+  public appliedAt!: string | Date;
+  public status!: Status;
+  public interviewType!: InterviewType;
+  public jobType!: JobType;
+  public workType!: WorkType;
+  public interviewDate!: string | Date;
+  public companyEmail!: string;
+  public salaryRange!: number;
+  public feedback!: string;
+
+  static associate(models: models) {
+    this.belongsTo(models.User, {
+      as: "user", foreignKey: "userId"
+    })
+  }
+
+}
+
+TrackedJobs.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -30,9 +61,11 @@ export const TrackedJobs = sequelize.define(
     },
     salaryRange: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     feedback: {
       type: DataTypes.STRING,
+      allowNull: true
     },
     appliedAt: {
       type: DataTypes.DATE,
@@ -58,5 +91,8 @@ export const TrackedJobs = sequelize.define(
   },
   {
     timestamps: true,
+    sequelize,
+    modelName: "User",
+    tableName: "Users"
   },
-);
+)

@@ -19,6 +19,7 @@ export const sequelize = new Sequelize(DATABASE_URL, {
     },
   },
 });
+
 export const connectDb = async () => {
   try {
     await sequelize.authenticate();
@@ -27,3 +28,4 @@ export const connectDb = async () => {
     console.error("Unable to connect to DB", err);
   }
 };
+
