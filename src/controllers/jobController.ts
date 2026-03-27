@@ -122,13 +122,26 @@ const deleteJob = async (req: AuthenticatedRequest, res: Response) => {
 const getAllJobs = async (req: AuthenticatedRequest, res: Response) => {
   const id = req.user?.id;
 
+  // get page & limit from query params
+  const page = parseInt(req.query.page as string) || 1;
+  const limit = parseInt(req.query.limit as string) || 10;
+
+  const offset = (page - 1) * limit;
+
   try {
-    const jobs = await TrackedJobs.findAll({
+    const { rows, count } = await TrackedJobs.findAndCountAll({
       where: { userId: id },
       attributes: { exclude: ["userId"] },
+      limit,
+      offset,
     });
 
-    return res.status(200).json(jobs);
+    return res.status(200).json({
+      jobs: rows,
+      total: count,
+      currentPage: page,
+      totalPages: Math.ceil(count / limit),
+    });
   } catch (err) {
     console.error(err);
     return res.status(500).json({
