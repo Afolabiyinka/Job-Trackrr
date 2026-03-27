@@ -43,11 +43,10 @@ TrackedJobs.init(
     },
     company: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: ''
     },
     role: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     status: {
       type: DataTypes.ENUM("applied", "interview", "offer", "rejected"),
@@ -92,7 +91,7 @@ TrackedJobs.init(
   {
     timestamps: true,
     sequelize,
-    modelName: "User",
-    tableName: "Users"
+    modelName: "TrackedJobs",
+    tableName: "TrackedJobs"
   },
-)
+);

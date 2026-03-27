@@ -2,7 +2,7 @@ export type Status = "interview" | "applied" | "offer" | "rejected";
 
 export type InterviewType = "Virtual" | "In_Person";
 
-export type JobType = "Full Time" | "Part_Time" | "Contract" | "Internship";
+export type JobType = "Full_Time" | "Part_Time" | "Contract" | "Internship";
 
 export type WorkType = "Remote" | "Hybrid" | "On-Site";
 

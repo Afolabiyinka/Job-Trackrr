@@ -56,7 +56,7 @@ const addContact = async (req: AuthenticatedRequest, res: Response) => {
         }
 
         await Contacts.create({
-            email, name, phoneNumber, role, socialLinks
+            email, name, phoneNumber, role, socialLinks,
         })
         return res.status(201).json({ message: "Contact added succesfully" })
     } catch (err) {

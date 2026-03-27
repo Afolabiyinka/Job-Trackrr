@@ -11,11 +11,12 @@ interface ContactAttributes extends ContactPayload {
 }
 
 export class Contacts extends Model<ContactAttributes> implements ContactAttributes {
-  public name!: string;
   public id!: string | number;
+  public userId!: string | number;
+  public name!: string;
   public role!: string;
   public email!: string;
-  public phoneNumber!: string;
+  public phoneNumber!: string | number;
   public socialLinks!: string[];
 
 }
@@ -28,6 +29,14 @@ Contacts.init(
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+    },
+    userId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: User,
+        key: "id",
+      },
     },
     name: {
       type: DataTypes.STRING,

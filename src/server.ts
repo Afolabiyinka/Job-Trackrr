@@ -35,7 +35,7 @@ syncModels();
 app.use("/api/auth", AuthRouter);
 app.use("/api/jobs", authMiddleware, JobRouter);
 app.use("/api/resume", authMiddleware, ResumeRouter);
-app.use("/api/contacts", authMiddleware, ContactRouter)
+app.use("/api/contacts", authMiddleware, ContactRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);

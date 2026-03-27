@@ -48,8 +48,7 @@ User.init(
   }, {
   timestamps: true,
   sequelize,
-  modelName: "Tracked Job",
-  tableName: "Tracked Jobs"
-}
-)
+  modelName: "User",
+  tableName: "Users"
+});
 

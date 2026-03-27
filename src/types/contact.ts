@@ -3,6 +3,6 @@ export interface ContactPayload {
     name: string;
     role: string;
     email: string;
-    phoneNumber: string;
+    phoneNumber: string | number;
     socialLinks: string[];
 } 
