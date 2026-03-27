@@ -4,7 +4,6 @@ import {
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
-  EmptyTitle,
 } from "@/components/ui/empty";
 import { Upload } from "lucide-react";
 import UploadResume from "../components/UploadResume";
@@ -27,10 +26,10 @@ const Resume = () => {
           <Upload aria-hidden />
         </EmptyMedia>
 
-        <EmptyTitle className="text-2xl">No Resume Uploaded</EmptyTitle>
+        {/* <EmptyTitle className="text-2xl">No Resume Uploaded</EmptyTitle> */}
 
         <EmptyDescription className="">
-          Add your resume to get instant feedback, an ATS score, and tips to
+          Add your resume to get an instant feedback, an ATS score, and tips to
           help improve your chances of landing interviews.
         </EmptyDescription>
       </EmptyHeader>

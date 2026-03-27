@@ -14,7 +14,7 @@ const MobileNav = () => {
   const { handleLogout } = useLogout();
 
   return (
-    <div className="p-3 flex flex-col justify-between relative">
+    <div className="p-2  flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
         <Logo />
         <MenuButton open={open} onClick={() => setOpen(!open)} />

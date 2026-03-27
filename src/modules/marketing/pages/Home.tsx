@@ -3,8 +3,11 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import LightScreenShot from "@/assets/screenshots/Light-Screenshot.png";
+import DarkScreenshot from "@/assets/screenshots/Dark Screenshot.png";
+import { useTheme } from "@/modules/main/theme/useTheme";
 
 const Home = () => {
+  const { theme } = useTheme();
   return (
     <div className="h-full w-full  flex-col flex justify-center items-center rounded-lg text-center p-3 md:p-10">
       {/* <Badge variant={`outline`} className="mb-4">
@@ -55,7 +58,7 @@ const Home = () => {
         className="w-full h-full mt-10 rounded-2xl overflow-hidden shadow-2xl  bg-background backdrop-blur"
       >
         <motion.img
-          src={`${LightScreenShot}`}
+          src={`${theme === "light" ? LightScreenShot : DarkScreenshot}`}
           alt="Job Trackrr Ui"
           fetchPriority="high"
         />

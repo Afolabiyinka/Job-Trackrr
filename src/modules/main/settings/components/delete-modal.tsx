@@ -14,6 +14,7 @@ import { Loader2, Trash } from "lucide-react";
 
 import { useDeleteAccount } from "../hooks/useDeleteAccount";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
+import { CopyButton } from "@/components/ui/copy-button";
 
 const DeleteAccountModal = () => {
   const { handleDelete, loading, deleteInput, setDeleteInput, deletePhrase } =
@@ -34,11 +35,12 @@ const DeleteAccountModal = () => {
           <AlertDialogDescription>
             This action cannot be undone. Your account and all data will be
             permanently removed. <br />
-            <h1 className="flex flex-col md:flex-row gap-1 md:items-center mt-2">
+            <h1 className="flex flex-col md:flex-row gap-1 md:items-center mt-2 ">
               Please type
               <p className="border rounded bg-muted p-0.5">{deletePhrase}</p> to
               confirm.
-            </h1>{" "}
+              <CopyButton value={deletePhrase} />
+            </h1>
           </AlertDialogDescription>
         </AlertDialogHeader>
 

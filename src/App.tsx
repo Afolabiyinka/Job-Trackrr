@@ -4,10 +4,9 @@ import React from "react";
 import { Toaster } from "sonner";
 import { useUser } from "./modules/main/settings/store/useUser";
 import { useFetchUser } from "./modules/main/settings/hooks/useFetchUser";
-import LoadingContainer from "./components/loader/loadingcontainer";
 
 export function App() {
-  const { fetchedUser, loading } = useFetchUser();
+  const { fetchedUser } = useFetchUser();
   const { setUser } = useUser();
   const { theme } = useTheme();
 
@@ -29,7 +28,7 @@ export function App() {
 
   return (
     <div className="font-[Montserrat]">
-      {loading ? <LoadingContainer /> : <RoutesConfig />}
+      <RoutesConfig />
       <Toaster
         position="top-right"
         theme={theme}

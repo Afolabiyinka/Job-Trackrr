@@ -9,10 +9,10 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 
 interface CopyButtonProps {
   value: string;
-  className?: string;
+  tooltip?: string;
 }
 
-export function CopyButton({ value }: CopyButtonProps) {
+export function CopyButton({ value, tooltip }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = useState(false);
 
   const { toastSuccess } = useToastMessage();
@@ -58,7 +58,7 @@ export function CopyButton({ value }: CopyButtonProps) {
           </AnimatePresence>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Copy to clipboard</p>
+          <p>{tooltip ? tooltip : "Copy to clipboard"}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

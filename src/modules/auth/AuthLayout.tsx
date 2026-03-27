@@ -1,8 +1,11 @@
 import { useUser } from "@/modules/main/settings/store/useUser";
 import { Navigate, Outlet } from "react-router-dom";
+import { useFetchUser } from "../main/settings/hooks/useFetchUser";
+import LoadingContainer from "@/components/loader/loadingcontainer";
 
 const AuthLayout = () => {
   const { user } = useUser();
+  const { loading } = useFetchUser();
   const hasOnboarded = localStorage.getItem("onboarded");
   if (user) {
     if (!hasOnboarded) {
@@ -10,9 +13,10 @@ const AuthLayout = () => {
     }
     return <Navigate to={`/dashboard`} replace />;
   }
+
   return (
     <div className="h-screen  w-screen flex flex-col justify-center items-center">
-      <Outlet />
+      {loading ? <LoadingContainer /> : <Outlet />}
     </div>
   );
 };
