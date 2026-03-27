@@ -58,7 +58,7 @@ const JobPage = () => {
         Back
       </Button>
 
-      <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between bg-card border rounded-2xl p-4 shadow-sm">
+      <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between  rounded-2xl p-4">
         <div className="flex items-center gap-4">
           <div className="h-16 w-16 rounded-full border flex items-center justify-center bg-muted">
             <Building2 size={36} />
@@ -86,7 +86,7 @@ const JobPage = () => {
         </div>
       </div>
 
-      <div className="mt-6 bg-card border rounded-2xl p-5 shadow-sm">
+      <div className="mt-6 bg-card rounded-2xl border p-5 shadow-sm">
         <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between border-b pb-4 mb-6">
           <h3 className="text-2xl md:text-3xl font-bold flex items-center gap-2">
             <User />

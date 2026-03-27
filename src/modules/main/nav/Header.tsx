@@ -8,7 +8,7 @@ const Header = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % jobMotivations.length);
-    }, 60000);
+    }, 70000);
     return () => clearInterval(interval);
   }, []);
   return (

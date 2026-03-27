@@ -8,7 +8,8 @@ import {
 import { getStatusColor } from "../libs/utils";
 import type { Job, Status } from "../types/job";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+
+import ViewAllJobs from "./view-all-jobs";
 interface Props {
   jobs: Job[];
   title: string;
@@ -37,26 +38,24 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
             jobs.slice(0, 3)?.map((job, i) => (
               <span
                 key={i}
-                className="font-medium flex gap-2 items-center hover:bg-primary/80 hover:text-white p-2 rounded-2xl cursor-pointer  "
+                className="flex gap-2 items-center hover:bg-primary/80 hover:text-white p-1 rounded-2xl cursor-pointer  "
                 onClick={() => navigate(`/jobs/${job.id}`)}
               >
-                <span className="h-12 w-12 bg-gray-300 rounded-full border animate-pulse" />
+                <span className="h-10 w-10 bg-gray-300 rounded-full border animate-pulse" />
                 <span>
-                  <p className="text-lg font-bold tracking-wide line-clamp-1">
+                  <p className="text-md font-bold tracking-wide line-clamp-1">
                     {job.company}
                   </p>
-                  <p className="text-muted-foreground">{job.companyEmail}</p>
+                  <p className="text-muted-foreground text-sm">
+                    {job.companyEmail}
+                  </p>
                 </span>
               </span>
             ))
           )}
         </div>
         <span className="mt-4 flex justify-center">
-          {jobs.length === 3 && (
-            <Button variant={`outline`} size={`lg`}>
-              View more
-            </Button>
-          )}
+          {jobs.length === 3 && <ViewAllJobs />}
         </span>
       </CardContent>
     </Card>

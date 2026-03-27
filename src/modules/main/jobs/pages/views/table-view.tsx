@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/table";
 import { getStatusColor } from "../../libs/utils";
 import { useNavigate } from "react-router-dom";
-import { useJobs } from "../../store/useJobs";
 import { useFilterJobs } from "../../hooks/useFilterJobs";
 import { useState } from "react";
 import type { Job } from "../../types/job";
@@ -20,10 +19,16 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FilterIcon } from "lucide-react";
+import Pagination from "@/components/pagination";
+import { usePagination } from "../../hooks/usePagination";
+import { useGetJobs } from "../../hooks/useGetJobs";
+import Loader from "@/components/loader/Loader";
 
 const TableView = () => {
   const navigate = useNavigate();
-  const { jobs } = useJobs();
+  const { currentPage, handleNextPage, handlePrevPage } = usePagination();
+  const { jobs, loading } = useGetJobs(currentPage);
+
   const { appliedJobs, interviewJobs, offeredJobs, rejectedJobs } =
     useFilterJobs();
 
@@ -32,7 +37,7 @@ const TableView = () => {
   >("all");
 
   const counts = {
-    all: jobs.length,
+    all: jobs?.jobs.length,
     applied: appliedJobs.length,
     interview: interviewJobs.length,
     offer: offeredJobs.length,
@@ -40,7 +45,7 @@ const TableView = () => {
   };
 
   const filteredJobs = {
-    all: jobs,
+    all: jobs?.jobs,
     applied: appliedJobs,
     interview: interviewJobs,
     offer: offeredJobs,
@@ -51,7 +56,6 @@ const TableView = () => {
     <div className="h-full w-full flex flex-col gap-3">
       <div className="w-full flex justify-end">
         <Select
-          // value={activeFilter}
           onValueChange={(value) =>
             setActiveFilter(
               value as "all" | "applied" | "interview" | "offer" | "rejected",
@@ -77,7 +81,7 @@ const TableView = () => {
         </Select>
       </div>
 
-      <Table className="h-full w-full">
+      <Table className="h-full w-full mb-3">
         <TableHeader>
           <TableRow>
             <TableHead>Company</TableHead>
@@ -86,9 +90,13 @@ const TableView = () => {
             <TableHead>Company email</TableHead>
           </TableRow>
         </TableHeader>
-        <TableBody>
-          {filteredJobs.length > 0 ? (
-            filteredJobs.map((job: Job) => {
+        <TableBody className="w-full">
+          {loading ? (
+            <div className="h-full w-full flex justify-center items-center border">
+              <Loader />
+            </div>
+          ) : (
+            filteredJobs?.map((job: Job) => {
               return (
                 <TableRow
                   key={job.id}
@@ -111,11 +119,14 @@ const TableView = () => {
                 </TableRow>
               );
             })
-          ) : (
-            <div className="p-6 text-xl">No {activeFilter} jobs</div>
           )}
         </TableBody>
       </Table>
+      <Pagination
+        currentPage={currentPage}
+        handleNextPage={handleNextPage}
+        handlePrevPage={handlePrevPage}
+      />
     </div>
   );
 };

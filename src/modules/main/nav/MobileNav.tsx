@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NAVLINKS } from "./utils/nav";
 import { Link, NavLink } from "react-router-dom";
 import MenuButton from "./components/MenuButton";
-import { LogOut, Settings } from "lucide-react";
+import { Bell, LogOut, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
@@ -17,7 +17,12 @@ const MobileNav = () => {
     <div className="p-2  flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
         <Logo />
-        <MenuButton open={open} onClick={() => setOpen(!open)} />
+        <div className="flex gap-3 items-center">
+          <Button variant={`secondary`}>
+            <Bell />
+          </Button>
+          <MenuButton open={open} onClick={() => setOpen(!open)} />
+        </div>
       </span>
       <AnimatePresence>
         {open && (

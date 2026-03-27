@@ -20,7 +20,7 @@ export default function SearchInput() {
   const navigate = useNavigate();
 
   const filteredJobs = jobs.filter((job) =>
-    job.company.toLowerCase().includes(query.toLowerCase()),
+    job.company.trim().toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
@@ -48,23 +48,21 @@ export default function SearchInput() {
           <CommandList>
             <CommandEmpty>No jobs found.</CommandEmpty>
 
-            {filteredJobs.length > 0 && (
-              <CommandGroup heading="Jobs">
-                {filteredJobs.map((job) => (
-                  <CommandItem
-                    className="cursor-pointer"
-                    key={job.id}
-                    onSelect={() => {
-                      navigate(`jobs/${job.id}`);
-                      setOpen(false);
-                    }}
-                  >
-                    <Building2 />
-                    {job.company}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            )}
+            <CommandGroup heading="Jobs">
+              {filteredJobs.slice(0, 3).map((job) => (
+                <CommandItem
+                  className="cursor-pointer"
+                  key={job.id}
+                  onSelect={() => {
+                    navigate(`jobs/${job.id}`);
+                    setOpen(false);
+                  }}
+                >
+                  <Building2 />
+                  {job.company}
+                </CommandItem>
+              ))}
+            </CommandGroup>
           </CommandList>
         </Command>
       </CommandDialog>

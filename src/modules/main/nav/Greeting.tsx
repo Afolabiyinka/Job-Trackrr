@@ -7,16 +7,15 @@ const Greeting = () => {
 
   return (
     <div className="w-full flex flex-col md:flex-row gap-5 md:items-center  p-3 ml-2 justify-between md:px-6">
-      <h1 className="md:text-xl  tracking-wider font-semibold flex flex-col md:flex-row gap-2 items-center">
-        Welcome back,{" "}
+      <h1 className="text-lg md:text-xl font-semibold tracking-tight flex items-center gap-2">
+        Welcome back,
         {user ? (
-          <p>{user?.username}</p>
+          <span className="truncate  max-w-[130px]">{user.username}</span>
         ) : (
-          <span className="p-3 w-48  rounded-xl bg-gray-100 animate-pulse" />
+          <span className="inline-block h-6 w-32 rounded-md bg-gray-200 animate-pulse" />
         )}
         👋
       </h1>
-
       <div className="md:flex gap-3 items-center hidden">
         <SearchInput />
         <Button>

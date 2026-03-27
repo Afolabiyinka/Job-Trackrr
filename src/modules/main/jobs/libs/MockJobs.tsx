@@ -1,34 +1,144 @@
-// import { type Job } from "../types/job";
+import type { Job } from "../types/job";
 
-// const statuses = ["interview", "applied", "offer", "rejected"] as const;
-// const interviewTypes = ["Virtual", "In_Person"] as const;
-// const jobTypes = ["Full Time", "Part_Time", "Contract", "Internship"] as const;
-// const workTypes = ["Remote", "Hybrid", "On-Site"] as const;
-
-// export const mockJobs: Job[] = Array.from({ length: 10 }, (_, i) => {
-//   const randomStatus = statuses[Math.floor(Math.random() * statuses.length)];
-//   const randomInterviewType =
-//     interviewTypes[Math.floor(Math.random() * interviewTypes.length)];
-//   const randomJobType = jobTypes[Math.floor(Math.random() * jobTypes.length)];
-//   const randomWorkType =
-//     workTypes[Math.floor(Math.random() * workTypes.length)];
-
-//   return {
-//     id: `job-${i + 1}`,
-//     company: `Company ${i + 1}`,
-//     role: `Frontend Developer ${i + 1}`,
-//     status: randomStatus,
-//     interviewType: randomStatus === "interview" ? randomInterviewType : null,
-//     jobType: randomJobType,
-//     workType: randomWorkType,
-//     appliedAt: new Date(2025, 0, (i % 28) + 1),
-//     interviewDate:
-//       randomStatus === "interview" ? new Date(2025, 1, (i % 28) + 1) : null,
-//     companyEmail: `hr${i + 1}@company${i + 1}.com`,
-//     salaryRange: 50000 + i * 1000,
-//     feedback:
-//       randomStatus === "rejected"
-//         ? "Unfortunately, we decided to move forward with other candidates."
-//         : null,
-//   };
-// });
+export const mockJobs: Job[] = [
+  {
+    id: "1",
+    appliedAt: new Date(),
+    company: "Google",
+    role: "Frontend Developer",
+    status: "applied",
+    interviewType: null,
+    jobType: "Full_Time",
+    workType: "Remote",
+    interviewDate: null,
+    companyEmail: "careers@google.com",
+    salaryRange: 120000,
+    feedback: null,
+  },
+  {
+    id: "2",
+    appliedAt: new Date(),
+    company: "Microsoft",
+    role: "Software Engineer",
+    status: "interview",
+    interviewType: "Virtual",
+    jobType: "Full_Time",
+    workType: "Hybrid",
+    interviewDate: new Date(),
+    companyEmail: "jobs@microsoft.com",
+    salaryRange: 110000,
+    feedback: null,
+  },
+  {
+    id: "3",
+    appliedAt: new Date(),
+    company: "Amazon",
+    role: "Backend Engineer",
+    status: "rejected",
+    interviewType: "Virtual",
+    jobType: "Full_Time",
+    workType: "Remote",
+    interviewDate: new Date(),
+    companyEmail: "recruiting@amazon.com",
+    salaryRange: 105000,
+    feedback: "Need more system design practice",
+  },
+  {
+    id: "4",
+    appliedAt: new Date(),
+    company: "Netflix",
+    role: "UI Engineer",
+    status: "offer",
+    interviewType: "Virtual",
+    jobType: "Full_Time",
+    workType: "Remote",
+    interviewDate: new Date(),
+    companyEmail: "jobs@netflix.com",
+    salaryRange: 130000,
+    feedback: null,
+  },
+  {
+    id: "5",
+    appliedAt: new Date(),
+    company: "Meta",
+    role: "React Developer",
+    status: "applied",
+    interviewType: null,
+    jobType: "Full_Time",
+    workType: "Remote",
+    interviewDate: null,
+    companyEmail: "careers@meta.com",
+    salaryRange: 115000,
+    feedback: null,
+  },
+  {
+    id: "6",
+    appliedAt: new Date(),
+    company: "Stripe",
+    role: "Frontend Engineer",
+    status: "interview",
+    interviewType: "Virtual",
+    jobType: "Contract",
+    workType: "Remote",
+    interviewDate: new Date(),
+    companyEmail: "jobs@stripe.com",
+    salaryRange: 100000,
+    feedback: null,
+  },
+  {
+    id: "7",
+    appliedAt: new Date(),
+    company: "Shopify",
+    role: "Fullstack Developer",
+    status: "applied",
+    interviewType: null,
+    jobType: "Full_Time",
+    workType: "Remote",
+    interviewDate: null,
+    companyEmail: "jobs@shopify.com",
+    salaryRange: 95000,
+    feedback: null,
+  },
+  {
+    id: "8",
+    appliedAt: new Date(),
+    company: "Andela",
+    role: "Software Engineer",
+    status: "offer",
+    interviewType: "Virtual",
+    jobType: "Full_Time",
+    workType: "Remote",
+    interviewDate: new Date(),
+    companyEmail: "talent@andela.com",
+    salaryRange: 80000,
+    feedback: "Strong communication skills",
+  },
+  {
+    id: "9",
+    appliedAt: new Date(),
+    company: "Flutterwave",
+    role: "Frontend Developer",
+    status: "interview",
+    interviewType: "In_Person",
+    jobType: "Full_Time",
+    workType: "On-Site",
+    interviewDate: new Date(),
+    companyEmail: "jobs@flutterwave.com",
+    salaryRange: 70000,
+    feedback: null,
+  },
+  {
+    id: "10",
+    appliedAt: new Date(),
+    company: "Paystack",
+    role: "React Engineer",
+    status: "applied",
+    interviewType: null,
+    jobType: "Full_Time",
+    workType: "Hybrid",
+    interviewDate: null,
+    companyEmail: "careers@paystack.com",
+    salaryRange: 90000,
+    feedback: null,
+  },
+];

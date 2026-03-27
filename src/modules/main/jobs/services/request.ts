@@ -37,8 +37,19 @@ const editJob = async (payload: Partial<Job>, id: number | string) => {
   return data;
 };
 
-const getAllJobs = async (): Promise<Job[]> => {
-  const res = await fetch(`${prodEndpoint}api/jobs`, {
+type PaginatedJobs = {
+  jobs: Job[];
+  total: number;
+  currentPage: number;
+  totalPages: number;
+};
+
+const getAllJobs = async ({
+  page = 1,
+}: {
+  page?: number;
+}): Promise<PaginatedJobs> => {
+  const res = await fetch(`${prodEndpoint}api/jobs?page=${page}`, {
     headers: {
       "Content-Type": "application/json",
     },
@@ -46,6 +57,7 @@ const getAllJobs = async (): Promise<Job[]> => {
   });
 
   const data = await res.json();
+
   if (!res.ok) {
     throw new Error(data.message);
   }
