@@ -2,8 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Contact } from "lucide-react";
 import { MOCK_CONTACTS } from "../libs/mockContacts";
 import ContactCard from "../components/ContactCard";
+import EmptyContacts from "./EmptyContacts";
 
 const Contacts = () => {
+  if (MOCK_CONTACTS.length === 0) {
+    return <EmptyContacts />;
+  }
   return (
     <div className="h-full w-full p-2 space-y-6">
       <div className="flex md:justify-between md:items-center flex-col md:flex-row justify-start gap-3">
