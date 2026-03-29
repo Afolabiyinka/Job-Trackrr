@@ -9,6 +9,7 @@ import {
 import { User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ContactCard from "../../contacts/components/ContactCard";
+import { MOCK_CONTACTS } from "../../contacts/libs/mockContacts";
 
 const ContactsStatsCard = () => {
   const navigate = useNavigate();
@@ -25,9 +26,9 @@ const ContactsStatsCard = () => {
           <User />
           Manage Contacts
         </Button>
-        <div className="grid grid-flow-col-dense gap-5 mt-3 overflow-x-scroll no-scrollbar">
-          {[...Array(10)].map((_, i) => (
-            <ContactCard key={i} />
+        <div className="grid grid-flow-col-dense gap-5 mt-3 overflow-x-scroll ">
+          {MOCK_CONTACTS.slice(0, 3).map((contact, i) => (
+            <ContactCard key={i} contact={contact} />
           ))}
         </div>
       </CardContent>

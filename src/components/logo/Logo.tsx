@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 
 const Logo = () => {
   return (
-    <Link
-      to="/"
-      className="flex items-center  justify-start p-2 px-4 rounded-3xl"
-    >
+    <Link to="/" className="flex items-center  justify-start rounded-3xl">
       <img
         src={logoImage}
         alt="Job Trackrr Logo"
-        className="w-12 h-9 object-contain"
+        className="md:w-12 not-only: h-9 object-contain"
         fetchPriority="high"
         loading="eager"
       />

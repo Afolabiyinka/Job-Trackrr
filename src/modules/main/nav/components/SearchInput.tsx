@@ -28,11 +28,11 @@ export default function SearchInput() {
       <Button
         onClick={() => setOpen(true)}
         className=""
-        variant="secondary"
-        size={`lg`}
+        variant="outline"
+        size={`icon-lg`}
       >
-        Search
         <Search />
+        {/* Search */}
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>

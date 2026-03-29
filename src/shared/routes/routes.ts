@@ -13,7 +13,7 @@ import { mainRoutes } from "@/modules/main/main.routes";
 import { marketingRoutes } from "@/modules/marketing/marketing.routes";
 
 const NotFound = lazy(() => import("@/modules/NotFound"));
-const OnBoarding = lazy(() => import("@/modules/main/onboarding/pages/OnBoarding"));
+const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
 
 
 export const routes: RouteObject[] = [

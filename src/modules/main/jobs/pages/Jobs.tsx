@@ -57,7 +57,7 @@ const Jobs = () => {
   if (jobs?.jobs.length === 0) return <NoJobs />;
 
   return (
-    <div className="h-full w-full flex flex-col gap-5 p-3">
+    <div className="h-full w-full flex flex-col gap-5 p-2">
       <CreateJobStepper
         title="Add a new job"
         icon={<ArrowRight />}
@@ -65,7 +65,7 @@ const Jobs = () => {
       />
 
       <Tabs value={currentView} onValueChange={handleViewChange}>
-        <TabsList className="border p-0.5 ">
+        <TabsList className="border">
           <TabsTrigger value="card">
             <span className="flex items-center gap-1">
               <LayoutGrid className="h-4 w-4" />

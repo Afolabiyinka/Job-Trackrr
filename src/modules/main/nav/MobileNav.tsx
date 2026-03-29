@@ -17,7 +17,8 @@ const MobileNav = () => {
     <div className="p-2  flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
         <Logo />
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-2 items-center">
+          <SearchInput />
           <Button variant={`secondary`}>
             <Bell />
           </Button>
@@ -34,7 +35,6 @@ const MobileNav = () => {
               open ? "max-h-full py-4" : "max-h-0"
             }`}
           >
-            <SearchInput />
             {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
               const pathMatch = location.pathname.includes(path);
               return (

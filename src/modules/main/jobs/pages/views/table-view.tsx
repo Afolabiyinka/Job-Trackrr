@@ -122,11 +122,13 @@ const TableView = () => {
           )}
         </TableBody>
       </Table>
-      <Pagination
-        currentPage={currentPage}
-        handleNextPage={handleNextPage}
-        handlePrevPage={handlePrevPage}
-      />
+      {jobs?.jobs.length === 10 && (
+        <Pagination
+          currentPage={currentPage}
+          handleNextPage={handleNextPage}
+          handlePrevPage={handlePrevPage}
+        />
+      )}
     </div>
   );
 };
