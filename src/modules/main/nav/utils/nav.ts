@@ -4,7 +4,6 @@ import {
   File,
   Flag,
   LayoutDashboard,
-  User,
   Handshake
 } from "lucide-react";
 const NAVLINKS = [
