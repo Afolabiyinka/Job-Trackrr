@@ -3,12 +3,12 @@ import welcome_img from "@/assets/welcome.svg";
 import add_img from "@/assets/add.svg";
 import Confetti from "react-confetti";
 import { motion } from "framer-motion";
-import { useUser } from "../../settings/store/useUser";
 import WavingHand from "@/components/waving-hand";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useWindowSize } from "react-use";
-import CreateJobStepper from "../../jobs/components/create-job/stepper/CreateJob-Stepper";
+import { useUser } from "../settings/store/useUser";
+import CreateJobStepper from "../jobs/components/create-job/stepper/CreateJob-Stepper";
 const OnBoarding = () => {
   const [activeStep, setActiveStep] = useState(0);
   const nextStep = () => {

@@ -150,8 +150,8 @@ const CreateJobStepper = ({
       <DialogTrigger asChild>
         <span>
           <Button size={`lg`}>
+            <span className="h-4 w-4">{icon}</span>
             {title}
-            <span className="ml-3">{icon}</span>
           </Button>
         </span>
       </DialogTrigger>

@@ -1,13 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TableView from "./views/table-view";
 import CardView from "./views/card-view";
-import {
-  ArrowRight,
-  LayoutGrid,
-  LayoutList,
-  RefreshCcw,
-  Table,
-} from "lucide-react";
+import { LayoutGrid, LayoutList, Plus, RefreshCcw, Table } from "lucide-react";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import { useGetJobs } from "../hooks/useGetJobs";
 import LoadingContainer from "@/components/loader/loadingcontainer";
@@ -57,15 +51,17 @@ const Jobs = () => {
   if (jobs?.jobs.length === 0) return <NoJobs />;
 
   return (
-    <div className="h-full w-full flex flex-col gap-5 p-3">
-      <CreateJobStepper
-        title="Add a new job"
-        icon={<ArrowRight />}
-        editing={false}
-      />
-
+    <div className="h-full w-full flex flex-col gap-5 p-2">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl">Job Applications</h1>
+        <CreateJobStepper
+          title="Add a new job"
+          icon={<Plus />}
+          editing={false}
+        />
+      </div>
       <Tabs value={currentView} onValueChange={handleViewChange}>
-        <TabsList className="border p-0.5 ">
+        <TabsList className="border">
           <TabsTrigger value="card">
             <span className="flex items-center gap-1">
               <LayoutGrid className="h-4 w-4" />

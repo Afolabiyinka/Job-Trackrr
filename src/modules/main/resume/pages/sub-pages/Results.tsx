@@ -110,7 +110,7 @@ const Results = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Wrench className="text-blue-600" />
-              What You Can Improve
+              How You Can Improve Your Resume
             </CardTitle>
           </CardHeader>
           <CardContent>
