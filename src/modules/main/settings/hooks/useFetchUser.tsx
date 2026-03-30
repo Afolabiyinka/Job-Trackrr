@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getUser } from "../services/request";
 
 export const useFetchUser = () => {
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, isFetched, error } = useQuery({
     queryKey: ["user"],
     queryFn: getUser,
     retry: false,
@@ -12,6 +12,7 @@ export const useFetchUser = () => {
   return {
     fetchedUser: data,
     loading: isLoading,
+    isFetched,
     error,
   };
 };

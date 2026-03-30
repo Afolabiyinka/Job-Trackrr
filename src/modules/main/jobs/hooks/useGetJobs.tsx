@@ -8,7 +8,7 @@ export const useGetJobs = (page: number = 1) => {
   });
 
   return {
-    jobs: data,
+    data,
     loading: isLoading,
     error,
     refetch,

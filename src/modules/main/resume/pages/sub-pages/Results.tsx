@@ -22,8 +22,8 @@ import {
 const Results = () => {
   const { analysis } = useResume();
 
-  const { handleAnalyse, loading } = useAnalyseResume();
-  if (!analysis && !loading) {
+  const { handleAnalyse, isPending } = useAnalyseResume();
+  if (!analysis && !isPending) {
     return <Navigate to={`/resume`} />;
   }
 
@@ -43,10 +43,10 @@ const Results = () => {
             size="icon"
             variant={`outline`}
             onClick={handleAnalyse}
-            disabled={loading}
+            disabled={isPending}
             className="flex items-center gap-2"
           >
-            {loading ? (
+            {isPending ? (
               <Loader2 className="animate-spin h-6 w-6" />
             ) : (
               <RefreshCcw />

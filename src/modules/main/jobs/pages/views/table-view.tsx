@@ -27,7 +27,7 @@ import Loader from "@/components/loader/Loader";
 const TableView = () => {
   const navigate = useNavigate();
   const { currentPage, handleNextPage, handlePrevPage } = usePagination();
-  const { jobs, loading } = useGetJobs(currentPage);
+  const { data, loading } = useGetJobs(currentPage);
 
   const { appliedJobs, interviewJobs, offeredJobs, rejectedJobs } =
     useFilterJobs();
@@ -37,7 +37,7 @@ const TableView = () => {
   >("all");
 
   const counts = {
-    all: jobs?.jobs.length,
+    all: data?.jobs.length,
     applied: appliedJobs.length,
     interview: interviewJobs.length,
     offer: offeredJobs.length,
@@ -45,7 +45,7 @@ const TableView = () => {
   };
 
   const filteredJobs = {
-    all: jobs?.jobs,
+    all: data?.jobs,
     applied: appliedJobs,
     interview: interviewJobs,
     offer: offeredJobs,
@@ -122,7 +122,7 @@ const TableView = () => {
           )}
         </TableBody>
       </Table>
-      {jobs?.jobs.length === 10 && (
+      {data?.jobs.length === 10 && (
         <Pagination
           currentPage={currentPage}
           handleNextPage={handleNextPage}

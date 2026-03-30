@@ -7,19 +7,21 @@ import { useGetJobs } from "@/modules/main/jobs/hooks/useGetJobs";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";
 import { useEffect } from "react";
 import { useUser } from "@/modules/main/settings/store/useUser";
+import { useFetchUser } from "./settings/hooks/useFetchUser";
 
 const MainLayout = () => {
   const { user } = useUser();
-  const { jobs } = useGetJobs();
+  const { loading } = useFetchUser();
+  const { data } = useGetJobs();
   const { setJobs } = useJobs();
 
   useEffect(() => {
-    if (jobs) {
-      setJobs(jobs?.jobs);
+    if (data) {
+      setJobs(data?.jobs);
     }
-  }, [jobs, setJobs]);
+  }, [data, setJobs]);
 
-  if (user === null) {
+  if (!user && !loading) {
     return <Navigate to="/login" replace />;
   }
 

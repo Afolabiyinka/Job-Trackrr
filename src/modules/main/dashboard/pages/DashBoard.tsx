@@ -5,9 +5,9 @@ import { useGetJobs } from "../../jobs/hooks/useGetJobs";
 import Reminder from "./Reminder";
 
 const DashBoard = () => {
-  const { jobs } = useGetJobs();
+  const { data } = useGetJobs();
 
-  if (jobs?.jobs.length === 0) {
+  if (data?.jobs.length === 0) {
     return <Reminder />;
   }
 
