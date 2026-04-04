@@ -53,7 +53,7 @@ const TableView = () => {
   }[activeFilter];
 
   return (
-    <div className="h-full w-full flex flex-col gap-3">
+    <div className="h-full w-full flex flex-col gap-3 p-2">
       <div className="w-full flex justify-end">
         <Select
           onValueChange={(value) =>
@@ -81,7 +81,7 @@ const TableView = () => {
         </Select>
       </div>
 
-      <Table className="h-full w-full mb-3">
+      <Table className="">
         <TableHeader>
           <TableRow>
             <TableHead>Company</TableHead>

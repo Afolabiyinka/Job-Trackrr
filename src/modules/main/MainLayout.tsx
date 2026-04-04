@@ -11,7 +11,7 @@ import { useFetchUser } from "./settings/hooks/useFetchUser";
 
 const MainLayout = () => {
   const { user } = useUser();
-  const { loading } = useFetchUser();
+  const { loading, isFetched } = useFetchUser();
   const { data } = useGetJobs();
   const { setJobs } = useJobs();
 
@@ -21,7 +21,7 @@ const MainLayout = () => {
     }
   }, [data, setJobs]);
 
-  if (!user && !loading) {
+  if (!user && !loading && isFetched) {
     return <Navigate to="/login" replace />;
   }
 

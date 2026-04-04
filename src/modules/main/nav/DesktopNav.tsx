@@ -37,7 +37,7 @@ const DesktopNav = () => {
                   pathMatch ? "bg-primary/10 p-3" : "hover:bg-muted p-3"
                 }`}
               >
-                <Icon className={`h-5 w-5 stroke`} />
+                <Icon className={`h-4.5 w-4.5 stroke-[1px]`} />
                 <p>{name}</p>
               </NavLink>
             </motion.span>

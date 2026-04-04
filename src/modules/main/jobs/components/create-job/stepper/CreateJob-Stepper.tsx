@@ -43,11 +43,13 @@ const CreateJobStepper = ({
   icon,
   editing,
   id,
+  variant = "default",
 }: {
   title: string;
   icon?: React.ReactNode;
   editing?: boolean;
   id?: number | string;
+  variant?: "default" | "secondary";
 }) => {
   const { jobs } = useJobs();
   const job = jobs.find((job: Job) => job.id === id);
@@ -149,7 +151,7 @@ const CreateJobStepper = ({
     >
       <DialogTrigger asChild>
         <span>
-          <Button size={`lg`}>
+          <Button size={`lg`} variant={variant}>
             <span className="h-4 w-4">{icon}</span>
             {title}
           </Button>

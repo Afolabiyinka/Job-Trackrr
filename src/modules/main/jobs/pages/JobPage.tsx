@@ -47,7 +47,7 @@ const JobPage = () => {
   const interviewIndicator = showInterviewIndicator(job.interviewDate);
 
   return (
-    <div className="mx-auto p-3">
+    <div className="mx-auto p-1">
       <Button
         onClick={() => navigate(-1)}
         variant="secondary"
@@ -81,6 +81,7 @@ const JobPage = () => {
             icon={<Pencil />}
             editing
             id={job.id}
+            variant="secondary"
           />
           <DeleteJobModal id={id} />
         </div>
