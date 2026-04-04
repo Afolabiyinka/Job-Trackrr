@@ -19,7 +19,7 @@ const MobileNav = () => {
         <Logo />
         <div className="flex gap-2 items-center">
           <SearchInput />
-          <Button variant={`secondary`}>
+          <Button variant={`secondary`} size={`icon-lg`}>
             <Bell />
           </Button>
           <MenuButton open={open} onClick={() => setOpen(!open)} />

@@ -7,7 +7,7 @@ const JobPageSkeleton = () => {
       </div>
 
       {/* Header Card */}
-      <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between bg-card border rounded-2xl p-4 shadow-sm">
+      <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between bg-card rounded-2xl p-4">
         <div className="flex items-center gap-4">
           {/* Avatar */}
           <div className="h-16 w-16 rounded-full bg-muted" />
@@ -27,7 +27,7 @@ const JobPageSkeleton = () => {
       </div>
 
       {/* Main Details Card */}
-      <div className="mt-6 bg-card border rounded-2xl p-5 shadow-sm">
+      <div className="mt-6 bg-card  rounded-2xl p-5 ">
         {/* Title row */}
         <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between border-b pb-4 mb-6">
           <div className="h-7 w-60 bg-muted rounded" />
@@ -47,7 +47,7 @@ const JobPageSkeleton = () => {
       </div>
 
       {/* Feedback */}
-      <div className="mt-6 bg-card border rounded-2xl p-6 shadow-sm space-y-3">
+      <div className="mt-6 bg-card  rounded-2xl p-6  space-y-3">
         <div className="h-5 w-32 bg-muted rounded" />
         <div className="h-4 w-full bg-muted rounded" />
         <div className="h-4 w-5/6 bg-muted rounded" />

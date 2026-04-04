@@ -33,7 +33,7 @@ const Jobs = () => {
     }
   }
 
-  const { jobs, error, loading, refetch } = useGetJobs();
+  const { data, error, loading, refetch } = useGetJobs();
 
   if (error) {
     return (
@@ -48,11 +48,11 @@ const Jobs = () => {
   }
 
   if (loading) return <LoadingContainer />;
-  if (jobs?.jobs.length === 0) return <NoJobs />;
+  if (data?.jobs.length === 0) return <NoJobs />;
 
   return (
     <div className="h-full w-full flex flex-col gap-5 p-2">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between md:items-center flex-col  md:flex-row w-full items-start gap-3">
         <h1 className="text-2xl">Job Applications</h1>
         <CreateJobStepper
           title="Add a new job"
@@ -61,7 +61,7 @@ const Jobs = () => {
         />
       </div>
       <Tabs value={currentView} onValueChange={handleViewChange}>
-        <TabsList className="border">
+        <TabsList>
           <TabsTrigger value="card">
             <span className="flex items-center gap-1">
               <LayoutGrid className="h-4 w-4" />

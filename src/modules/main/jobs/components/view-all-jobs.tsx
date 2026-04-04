@@ -20,7 +20,7 @@ import { usePagination } from "../hooks/usePagination";
 const ViewAllJobs = () => {
   const navigate = useNavigate();
   const { currentPage, handleNextPage, handlePrevPage } = usePagination();
-  const { jobs, loading, error } = useGetJobs(currentPage);
+  const { data, loading, error } = useGetJobs(currentPage);
 
   return (
     <Dialog>
@@ -44,13 +44,13 @@ const ViewAllJobs = () => {
           )}
           {error && <p>Error loading jobs</p>}
 
-          {jobs?.jobs.length === 0 && (
+          {data?.jobs.length === 0 && (
             <div className="h-full w-full flex justify-center items-center text-3xl">
               No jobs Found
             </div>
           )}
 
-          {jobs?.jobs.map((job) => (
+          {data?.jobs.map((job) => (
             <span
               key={job.id}
               className="flex gap-2 items-center hover:bg-primary/80 hover:text-white p-1 rounded-2xl cursor-pointer justify-between"

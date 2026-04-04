@@ -5,7 +5,7 @@ import { Plus } from "lucide-react";
 
 const EmptyContacts = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center text-center py-10 h-full">
+    <div className="flex flex-col md:flex-row items-center justify-center text-center py-10 h-full rounded-xl shadow border">
       <motion.div
         className="w-full lg:w-1/2 flex justify-center items-center"
         initial={{ opacity: 0, y: 40 }}
