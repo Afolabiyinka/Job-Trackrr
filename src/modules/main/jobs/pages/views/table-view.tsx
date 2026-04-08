@@ -103,7 +103,9 @@ const TableView = () => {
                   onClick={() => navigate(`/jobs/${job.id}`)}
                 >
                   <TableCell className="font-medium flex gap-2 items-center">
-                    <span className="h-6 w-6 border rounded-full  animate-pulse" />
+                    <span className="h-6 w-6 border rounded-full  flex items-center justify-center">
+                      {job.company.charAt(0)}
+                    </span>
                     {job.company}
                   </TableCell>
                   <TableCell>{job.role}</TableCell>

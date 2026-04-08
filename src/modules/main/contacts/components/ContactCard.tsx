@@ -7,10 +7,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Phone, Mail, Globe, Trash2, Pencil } from "lucide-react";
+import { Phone, Mail, Globe } from "lucide-react";
 import type { ContactPayload } from "../types/types";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const ContactCard = ({ contact }: { contact: ContactPayload }) => {
   return (
@@ -79,16 +84,21 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
               </p>
               <div className="flex flex-wrap gap-2">
                 {contact.socialLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-1.5 text-xs bg-secondary hover:bg-secondary/80 px-3 py-1.5 rounded-full transition-colors border"
-                  >
-                    <Globe size={12} />
-                    <span>Link {index + 1}</span>
-                  </a>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <a
+                        key={index}
+                        href={link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-1.5 text-xs bg-secondary hover:bg-secondary/80 px-3 py-1.5 rounded-full transition-colors border"
+                      >
+                        <Globe size={12} />
+                        <span>Link {index + 1}</span>
+                      </a>
+                    </TooltipTrigger>
+                    <TooltipContent>{link}</TooltipContent>
+                  </Tooltip>
                 ))}
               </div>
             </div>
@@ -97,12 +107,10 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
 
         <DialogFooter>
           <Button variant="destructive" size="lg">
-            <Trash2 size={16} />
             Delete
           </Button>
 
           <Button variant="outline" size="lg">
-            <Pencil size={16} />
             Edit Contact
           </Button>
         </DialogFooter>

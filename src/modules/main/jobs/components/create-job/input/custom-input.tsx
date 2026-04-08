@@ -1,8 +1,3 @@
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/components/ui/input-group";
 import type { ReactNode } from "react";
 
 interface Props {
@@ -12,6 +7,7 @@ interface Props {
   type: "number" | "text" | "email" | "password" | "search";
   id?: string;
   value?: string;
+  className?: string;
 }
 
 const CustomInput = ({
@@ -21,21 +17,23 @@ const CustomInput = ({
   type,
   id,
   value,
+  className,
 }: Props) => {
   return (
-    <InputGroup className="h-12">
-      <InputGroupAddon align="inline-start">{icon}</InputGroupAddon>
-
-      <InputGroupInput
+    <div
+      className={`flex items-center h-14 w-full border overflow-hidden rounded-xl px-3 gap-2 focus-within:ring-2 focus-within:ring-muted transition ${className}`}
+    >
+      {icon && <span className="stroke-[1px] text-foreground">{icon}</span>}
+      <input
         placeholder={placeholder}
-        className="pl-1"
+        className="flex-1 h-full bg-transparent outline-none text-sm"
         type={type}
         id={id}
         value={value}
         required
         onChange={(e) => onChange?.(e.target.value)}
       />
-    </InputGroup>
+    </div>
   );
 };
 

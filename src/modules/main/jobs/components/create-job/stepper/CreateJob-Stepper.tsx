@@ -16,6 +16,7 @@ import {
   Briefcase,
   Building2,
   Loader2,
+  Mail,
   Pencil,
   User,
 } from "lucide-react";
@@ -303,6 +304,7 @@ const CreateJobStepper = ({
                     <div className="grid flex-1 gap-2">
                       <Label htmlFor="link">Company Email</Label>
                       <CustomInput
+                        icon={<Mail />}
                         placeholder={`e.g. Careers@company.com`}
                         type="email"
                         value={companyEmail}

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import CustomInput from "@/modules/main/jobs/components/create-job/input/custom-input";
-import { Loader2, Lock, LogIn, Mail, User } from "lucide-react";
+import { ArrowRight, Loader2, Lock, Mail, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSignup } from "../hooks/useSignUp";
 import type React from "react";
@@ -14,12 +14,14 @@ const SignUp = () => {
     handleSignup();
   }
   return (
-    <div className="h-full w-full border flex justify-center items-center">
+    <div className="h-full w-full  flex justify-center items-center">
       <form className="md:min-w-md" onSubmit={onSubmit}>
-        <h1 className="text-3xl mb-9 text-center flex gap-3 items-center justify-center">
-          <User size={30} />
-          Create an account
-        </h1>
+        <div className="mb-3">
+          <h1 className="text-3xl font-bold">New Here?</h1>
+          <p className="text-sm text-gray-500 mt-1">
+            Create an account to continue
+          </p>
+        </div>
         <div className="flex flex-col gap-4 w-full">
           <CustomInput
             type="text"
@@ -62,8 +64,8 @@ const SignUp = () => {
               <Loader2 className="animate-spin h-8 w-6" />
             ) : (
               <Button size={`lg`} className="w-full">
-                Create an account
-                <LogIn />
+                Create account
+                <ArrowRight />
               </Button>
             )}
           </span>

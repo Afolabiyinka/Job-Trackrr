@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import LightScreenShot from "@/assets/screenshots/Light-Screenshot.png";
@@ -40,6 +40,7 @@ const Home = () => {
       >
         <Link to={`/how-it-works`}>
           <Button size={`lg`} variant={`outline`}>
+            <Lightbulb />
             Learn More
           </Button>
         </Link>
@@ -53,7 +54,7 @@ const Home = () => {
 
       <motion.span
         initial={{ y: 40, opacity: 0.8 }}
-        whileInView={{ y: 1, opacity: 1 }}
+        animate={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.3, ease: "linear", delay: 1 }}
         className="w-full h-full mt-10 rounded-2xl overflow-hidden shadow-2xl  bg-background backdrop-blur"
       >

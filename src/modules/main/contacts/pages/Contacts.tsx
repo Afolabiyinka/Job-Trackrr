@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Contact } from "lucide-react";
 import { MOCK_CONTACTS } from "../libs/mockContacts";
 import ContactCard from "../components/ContactCard";
 import EmptyContacts from "./EmptyContacts";
@@ -14,7 +13,7 @@ const Contacts = () => {
         <h1 className="text-xl font-semibold">Contacts</h1>
         <Button size={`lg`}>
           Add a new contact
-          <Contact />
+          {/* <Contact /> */}
         </Button>
       </div>
       <div className="grid  md:justify-center md:grid-cols-4 gap-6 w-full">

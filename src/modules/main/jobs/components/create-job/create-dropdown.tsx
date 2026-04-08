@@ -27,7 +27,7 @@ const CreateDropdown = <T extends string>({
   return (
     <Select onValueChange={(value) => onSelect?.(value as T)} value={value}>
       <SelectTrigger className="w-full">
-        <SelectValue placeholder={placeholder} />
+        <SelectValue placeholder={placeholder} className="" />
       </SelectTrigger>
 
       <SelectContent className="w-full">

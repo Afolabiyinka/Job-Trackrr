@@ -11,7 +11,9 @@ const ListItem = ({ job }: { job: Job }) => {
       onClick={() => navigate(`/jobs/${job.id}`)}
     >
       <div className="flex gap-2 items-center">
-        <span className="h-6 w-6 border rounded-full animate-pulse" />
+        <span className="h-6 w-6 border rounded-full flex items-center justify-center">
+          {job.company.charAt(0)}
+        </span>
         <p className="text-md font-medium">
           {job.role} at {job.company}
         </p>

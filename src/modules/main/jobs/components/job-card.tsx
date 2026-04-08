@@ -41,7 +41,9 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
                 className="flex gap-2 items-center hover:bg-primary/80 hover:text-white p-1 rounded-2xl cursor-pointer  "
                 onClick={() => navigate(`/jobs/${job.id}`)}
               >
-                <span className="h-10 w-10 bg-gray-300 rounded-full border animate-pulse" />
+                <span className="h-10 w-10 flex justify-center items-center rounded-full border">
+                  {job.company.charAt(0)}
+                </span>
                 <span>
                   <p className="text-md font-bold tracking-wide line-clamp-1">
                     {job.company}

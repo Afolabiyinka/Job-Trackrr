@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import CustomInput from "@/modules/main/jobs/components/create-job/input/custom-input";
-import { Loader2, Lock, LogIn, Mail, User } from "lucide-react";
+import { ArrowRight, Loader2, Lock, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 
@@ -14,12 +14,14 @@ const Login = () => {
     handleLogin();
   }
   return (
-    <div className="h-full w-full border flex justify-center items-center">
+    <div className="h-full w-full flex justify-center items-center">
       <form className="md:min-w-md" onSubmit={onSubmit}>
-        <h1 className="text-2xl mb-9 text-center flex gap-3 items-center justify-center">
-          <User size={30} />
-          Login to your account
-        </h1>
+        <div className="mb-3">
+          <h1 className="text-3xl font-bold tracking-tight">Welcome back</h1>
+          <p className="text-md tracking-wider text-gray-500 mt-1">
+            Sign in to your account to continue
+          </p>
+        </div>
         <div className="flex flex-col gap-4 w-full">
           <CustomInput
             type="email"
@@ -40,19 +42,19 @@ const Login = () => {
             <Checkbox id="checkbox" className="w-4 h-4" />
             <Label htmlFor="checkbox">Remember me</Label>
           </span>
-          <span className="w-full border rounded-xl flex justify-center items-center">
+          <span className="w-full  rounded-xl flex justify-center items-center">
             {loading ? (
               <Loader2 className="animate-spin h-8 w-6" />
             ) : (
               <Button size={`lg`} className="w-full">
                 Log in
-                <LogIn />
+                <ArrowRight />
               </Button>
             )}
           </span>
         </div>
         <p className="text-center mt-4">
-          New to JobTrackrr?
+          New to JobTrackrr?{" "}
           <Link to={`/signup`} className="text-primary cursor-pointer">
             Create account
           </Link>

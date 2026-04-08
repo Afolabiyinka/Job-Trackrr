@@ -33,7 +33,7 @@ export function DatePicker({ title, inputtedDate, onSelect }: Props) {
           <Button
             variant="outline"
             id="date"
-            className="w-full h-12 justify-between font-normal"
+            className="w-full h-14 justify-between font-normal"
           >
             {inputtedDate ? formattedDate : "Select date"}
             <ChevronDownIcon />
