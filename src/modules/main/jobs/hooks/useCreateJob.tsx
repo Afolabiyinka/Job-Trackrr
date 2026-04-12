@@ -58,6 +58,7 @@ export const useCreateJob = () => {
 
       return true;
     } catch (err) {
+      console.error(err);
       return false;
     }
   }

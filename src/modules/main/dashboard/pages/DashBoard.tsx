@@ -2,13 +2,13 @@ import GoalsStatsCard from "../components/goals/GoalsStatsCard";
 import ContactsStatsCard from "../components/ContactsStatsCard";
 import StatsCard from "../components/stats/StatsCard";
 import { useGetJobs } from "../../jobs/hooks/useGetJobs";
-import Reminder from "./Reminder";
+import NoJobs from "../../jobs/pages/error/NoJobs";
 
 const DashBoard = () => {
   const { data } = useGetJobs();
 
   if (data?.jobs.length === 0) {
-    return <Reminder />;
+    return <NoJobs />;
   }
 
   return (

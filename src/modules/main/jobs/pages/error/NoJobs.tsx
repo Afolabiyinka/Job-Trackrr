@@ -5,7 +5,7 @@ import add_image from "@/assets/add_image.svg";
 import { Button } from "@/components/ui/button";
 export default function NoJobs() {
   return (
-    <div className="flex h-full w-full shadow rounded-2xl">
+    <div className="flex h-full flex-col md:flex-row shadow rounded-2xl">
       <motion.div
         className="w-full lg:w-1/2 flex justify-center items-center"
         initial={{ opacity: 0, y: 40 }}

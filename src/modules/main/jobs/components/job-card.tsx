@@ -38,7 +38,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
             jobs.slice(0, 3)?.map((job, i) => (
               <span
                 key={i}
-                className="flex gap-2 items-center hover:bg-primary/80 hover:text-white p-1 rounded-2xl cursor-pointer  "
+                className="flex gap-2 items-center hover:bg-primary/80 p-2 rounded-2xl cursor-pointer  "
                 onClick={() => navigate(`/jobs/${job.id}`)}
               >
                 <span className="h-10 w-10 flex justify-center items-center rounded-full border">

@@ -19,6 +19,7 @@ export const useLogout = () => {
       });
       return data;
     } catch (err) {
+      console.error(err);
       throw new Error();
     }
   }
