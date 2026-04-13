@@ -23,6 +23,7 @@ function DropdownMenuTrigger({
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
   return (
     <DropdownMenuPrimitive.Trigger
+      className="rounded-full"
       data-slot="dropdown-menu-trigger"
       {...props}
     />

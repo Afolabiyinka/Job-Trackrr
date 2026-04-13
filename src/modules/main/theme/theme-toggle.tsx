@@ -6,14 +6,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex gap-3 items-center border rounded-xl p-2 cursor-pointer">
-        <h1>Change Theme</h1>
-        <span>{theme === "light" ? <Sun /> : <Moon />}</span>
+      <DropdownMenuTrigger>
+        <Button size={`lg`} variant={`outline`}>
+          {theme === "light" ? <Sun /> : <Moon />}
+          Change Theme{" "}
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem onClick={() => setTheme("light")}>

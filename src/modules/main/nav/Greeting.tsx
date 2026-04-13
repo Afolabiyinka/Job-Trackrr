@@ -14,7 +14,7 @@ const Greeting = () => {
             {user.username}
           </span>
         ) : (
-          <span className="inline-block h-6 w-32 rounded-md bg-gray-200 animate-pulse" />
+          <span className="inline-block h-6 w-36 rounded-full bg-gray-200 animate-pulse" />
         )}
         👋
       </h1>

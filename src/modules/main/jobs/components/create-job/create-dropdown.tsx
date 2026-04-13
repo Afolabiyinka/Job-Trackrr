@@ -26,7 +26,7 @@ const CreateDropdown = <T extends string>({
 }: Props<T>) => {
   return (
     <Select onValueChange={(value) => onSelect?.(value as T)} value={value}>
-      <SelectTrigger className="w-full">
+      <SelectTrigger className="w-full rounded-full">
         <SelectValue placeholder={placeholder} className="" />
       </SelectTrigger>
 

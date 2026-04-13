@@ -42,7 +42,7 @@ export default function SearchInput() {
             value={query}
             onChange={setQuery}
             type="search"
-            icon={<Search />}
+            icon={`Search`}
           />
 
           <CommandList>

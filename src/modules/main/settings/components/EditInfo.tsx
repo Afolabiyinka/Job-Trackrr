@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Loader2, Mail, User } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { useUser } from "../store/useUser";
 import { useEditUser } from "../hooks/useEditUser";
@@ -26,7 +26,7 @@ const EditInfo = () => {
         <form className="p-1" onSubmit={onSubmit}>
           <div className="grid md:grid-cols-3 gap-6 grid-cols-1">
             <CustomInput
-              icon={<User />}
+              icon={`User`}
               placeholder="Username"
               type="text"
               id="username"
@@ -34,7 +34,7 @@ const EditInfo = () => {
               onChange={(e) => setEditData({ ...editData, username: e })}
             />
             <CustomInput
-              icon={<Mail />}
+              icon={`Mail`}
               placeholder="Email"
               type="text"
               id="email"
@@ -42,7 +42,7 @@ const EditInfo = () => {
               onChange={(e) => setEditData({ ...editData, email: e })}
             />
           </div>
-          <Button size={`lg`} className="mt-3" type="submit">
+          <Button size={`lg`} className="mt-3" type="submit" disabled={loading}>
             {loading && <Loader2 className="h-6 w-6 animate-spin" />}
             Update your Details
           </Button>

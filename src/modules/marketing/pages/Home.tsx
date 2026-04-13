@@ -56,7 +56,7 @@ const Home = () => {
         initial={{ y: 40, opacity: 0.8 }}
         animate={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.3, ease: "linear", delay: 1 }}
-        className="w-full h-full mt-10 rounded-2xl overflow-hidden shadow-2xl  bg-background backdrop-blur"
+        className="w-full h-full mt-10 rounded-lg overflow-hidden shadow-2xl  bg-background backdrop-blur"
       >
         <motion.img
           src={`${theme === "light" ? LightScreenShot : DarkScreenshot}`}
