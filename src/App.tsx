@@ -35,7 +35,7 @@ export function App() {
         richColors
         toastOptions={{
           style: {
-            borderRadius: "20px",
+            borderRadius: "100px",
             background: theme === "light" ? "white" : "#161616",
           },
         }}

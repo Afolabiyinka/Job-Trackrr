@@ -46,6 +46,7 @@ const DeleteAccountModal = () => {
 
         <div className="">
           <CustomInput
+            icon="CircleSlash"
             type="text"
             placeholder={deletePhrase}
             value={deleteInput}

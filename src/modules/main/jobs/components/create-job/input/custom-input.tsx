@@ -1,8 +1,10 @@
-import type { ReactNode } from "react";
+import { icons } from "lucide-react";
+
+type IconName = keyof typeof icons;
 
 interface Props {
   placeholder: string;
-  icon?: ReactNode;
+  icon: IconName;
   onChange?: (val: string) => void;
   type: "number" | "text" | "email" | "password" | "search";
   id?: string;
@@ -19,11 +21,13 @@ const CustomInput = ({
   value,
   className,
 }: Props) => {
+  const IconComponent = icons[icon];
+
   return (
     <div
-      className={`flex items-center h-14 w-full border overflow-hidden rounded-xl px-3 gap-2 focus-within:ring-2 focus-within:ring-muted transition ${className}`}
+      className={`flex items-center h-14 w-full border overflow-hidden rounded-full px-3 gap-2 focus-within:ring-2 focus-within:ring-muted transition ${className}`}
     >
-      {icon && <span className="stroke-[1px] text-foreground">{icon}</span>}
+      {icon && <IconComponent className="stroke-[1px]" />}
       <input
         placeholder={placeholder}
         className="flex-1 h-full bg-transparent outline-none text-sm"

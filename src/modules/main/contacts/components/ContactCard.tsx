@@ -21,7 +21,7 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="flex gap-3 items-center hover:bg-primary/10 transition-colors p-3 rounded-2xl cursor-pointer border group">
+        <div className="flex gap-3 items-center hover:bg-primary/10 transition-colors p-3 rounded-full cursor-pointer border group">
           <div className="h-10 w-10 bg-primary/80  text-white flex items-center justify-center rounded-full font-bold border">
             {contact.name.substring(0, 2)}
           </div>

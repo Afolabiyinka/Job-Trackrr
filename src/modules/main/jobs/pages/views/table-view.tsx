@@ -18,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { FilterIcon } from "lucide-react";
 import Pagination from "@/components/pagination";
 import { usePagination } from "../../hooks/usePagination";
 import { useGetJobs } from "../../hooks/useGetJobs";
@@ -62,9 +61,9 @@ const TableView = () => {
             )
           }
         >
-          <SelectTrigger className="flex">
-            <FilterIcon />
-            <SelectValue placeholder="Status" />
+          <SelectTrigger className="rounded-full">
+            {/* <FilterIcon /> */}
+            <SelectValue placeholder="Filter by Status" />
           </SelectTrigger>
 
           <SelectContent className="p-1">

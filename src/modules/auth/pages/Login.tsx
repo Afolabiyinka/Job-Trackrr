@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import CustomInput from "@/modules/main/jobs/components/create-job/input/custom-input";
-import { ArrowRight, Loader2, Lock, Mail } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 
@@ -13,6 +13,7 @@ const Login = () => {
     e.preventDefault();
     handleLogin();
   }
+
   return (
     <div className="h-full w-full flex justify-center items-center">
       <form className="md:min-w-md" onSubmit={onSubmit}>
@@ -26,32 +27,34 @@ const Login = () => {
           <CustomInput
             type="email"
             placeholder="Email"
-            icon={<Mail />}
+            icon={`Mail`}
             value={loginData.email}
             onChange={(e) => setLoginData({ ...loginData, email: e })}
           />
           <CustomInput
             type="password"
             placeholder="Password"
-            icon={<Lock />}
+            icon={`Lock`}
             value={loginData.password}
             onChange={(e) => setLoginData({ ...loginData, password: e })}
           />
 
-          <span className="flex gap-2  mt-3 w-fit items-center  justify-start">
-            <Checkbox id="checkbox" className="w-4 h-4" />
-            <Label htmlFor="checkbox">Remember me</Label>
+          <span className="flex items-center justify-between">
+            <span className="flex gap-2  mt-3 w-fit items-center  justify-start">
+              <Checkbox id="checkbox" className="w-4 h-4" />
+              <Label htmlFor="checkbox">Remember me</Label>
+            </span>
+
+            <Link
+              to={`/forgot-password`}
+              className="text-sm text-primary float-right"
+            >
+              Forgot password?
+            </Link>
           </span>
-          <span className="w-full  rounded-xl flex justify-center items-center">
-            {loading ? (
-              <Loader2 className="animate-spin h-8 w-6" />
-            ) : (
-              <Button size={`lg`} className="w-full">
-                Log in
-                <ArrowRight />
-              </Button>
-            )}
-          </span>
+          <Button size={`lg`} className="w-full" disabled={loading}>
+            {loading && <Loader2 className="animate-spin h-8 w-6" />} Log in
+          </Button>
         </div>
         <p className="text-center mt-4">
           New to JobTrackrr?{" "}

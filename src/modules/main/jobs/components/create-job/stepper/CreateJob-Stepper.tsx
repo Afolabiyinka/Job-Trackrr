@@ -14,11 +14,8 @@ import {
   ArrowLeft,
   ArrowRight,
   Briefcase,
-  Building2,
   Loader2,
-  Mail,
   Pencil,
-  User,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -200,7 +197,7 @@ const CreateJobStepper = ({
                         value={company}
                         onChange={(e) => setCompany(e)}
                         placeholder="E.g Google"
-                        icon={<Building2 />}
+                        icon="Building2"
                         type="text"
                       />
                     </div>
@@ -208,7 +205,7 @@ const CreateJobStepper = ({
                       <Label htmlFor="link">Role</Label>
                       <CustomInput
                         placeholder={`Frontend Engineer`}
-                        icon={<User />}
+                        icon={`User`}
                         type="email"
                         value={role}
                         onChange={(e) => setRole(e)}
@@ -304,7 +301,7 @@ const CreateJobStepper = ({
                     <div className="grid flex-1 gap-2">
                       <Label htmlFor="link">Company Email</Label>
                       <CustomInput
-                        icon={<Mail />}
+                        icon={`Mail`}
                         placeholder={`e.g. Careers@company.com`}
                         type="email"
                         value={companyEmail}
