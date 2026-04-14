@@ -1,9 +1,9 @@
 import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
 
+const VerifyOtp = lazy(() => import("./pages/VerifyOtp"));
 const Login = lazy(() => import("@/modules/auth/pages/Login"));
 const SignUp = lazy(() => import("@/modules/auth/pages/SignUp"));
-const Otp = lazy(() => import("@/modules/auth/pages/Otp"));
 const authRoutes: RouteObject[] = [
   {
     path: "login",
@@ -14,9 +14,10 @@ const authRoutes: RouteObject[] = [
     path: "signup",
     Component: SignUp,
   },
+
   {
-    path: "forgot-password",
-    Component: Otp,
+    path: "verify-otp",
+    Component: VerifyOtp,
   },
 ];
 

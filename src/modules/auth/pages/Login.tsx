@@ -5,6 +5,7 @@ import CustomInput from "@/modules/main/jobs/components/create-job/input/custom-
 import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
+import ForgetPassword from "./ForgetPassword";
 
 const Login = () => {
   const { handleLogin, loading, setLoginData, loginData } = useLogin();
@@ -39,19 +40,14 @@ const Login = () => {
             onChange={(e) => setLoginData({ ...loginData, password: e })}
           />
 
-          <span className="flex items-center justify-between">
-            <span className="flex gap-2  mt-3 w-fit items-center  justify-start">
+          <div className="flex items-center justify-between">
+            <span className="flex gap-2  mt-3 w-fit items-center justify-start">
               <Checkbox id="checkbox" className="w-4 h-4" />
               <Label htmlFor="checkbox">Remember me</Label>
             </span>
 
-            <Link
-              to={`/forgot-password`}
-              className="text-sm text-primary float-right"
-            >
-              Forgot password?
-            </Link>
-          </span>
+            <ForgetPassword />
+          </div>
           <Button size={`lg`} className="w-full" disabled={loading}>
             {loading && <Loader2 className="animate-spin h-8 w-6" />} Log in
           </Button>
