@@ -10,6 +10,7 @@ const JobPage = lazy(() => import("@/modules/main/jobs/pages/JobPage"));
 const Settings = lazy(() => import("@/modules/main/settings/pages/Settings"));
 import Resume from "@/modules/main/resume/pages/Resume";
 import Results from "@/modules/main/resume/pages/sub-pages/Results";
+import FeatureInDevelopment from "../ComingSoon";
 
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
 
@@ -53,6 +54,10 @@ const mainRoutes: RouteObject[] = [
   {
     path: "settings",
     Component: Settings,
+  },
+  {
+    path: "goals",
+    Component: FeatureInDevelopment,
   },
 ];
 

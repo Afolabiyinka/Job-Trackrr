@@ -24,22 +24,22 @@ const DesktopNav = () => {
               key={i}
               className="flex gap-2"
             >
-              <motion.span
-                initial={{ height: 0 }}
-                animate={{ height: "100%" }}
-                transition={{}}
-                className={`${pathMatch ? "border-l-4 border-l-primary/70 rounded-full" : ""}`}
-              />
+
 
               <NavLink
                 to={path}
-                className={`flex gap-2 items-center rounded-2xl p-1.5 text-md  transition w-full ${
-                  pathMatch ? "bg-primary/50 p-3" : "hover:bg-muted p-3"
-                }`}
+                className={`flex gap-2 items-center rounded-full p-1.5 text-md px-3  transition w-full ${pathMatch ? "bg-primary text-white p-3" : "hover:bg-muted p-3"
+                  }`}
               >
                 <Icon className={`h-4.5 w-4.5 stroke-[1.25px]`} />
                 <p>{name}</p>
               </NavLink>
+              <motion.span
+                initial={{ height: 0 }}
+                animate={{ height: "100%" }}
+                transition={{}}
+                className={`${pathMatch ? "border-l-4 border-l-primary rounded-full" : ""}`}
+              />
             </motion.span>
           );
         })}

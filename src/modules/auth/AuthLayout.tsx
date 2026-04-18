@@ -21,9 +21,9 @@ const AuthLayout = () => {
       {loading ? (
         <LoadingContainer />
       ) : (
-        <div className="h-full w-full flex flex-col md:flex-row gap-6">
+        <div className="h-full w-full flex flex-col md:flex-row gap-6 justify-center items-center">
           <motion.div
-            className="w-full md:w-1/2 md:flex justify-center border rounded-xl shadow-lg hidden"
+            className="w-full md:w-1/2 md:flex justify-center border rounded-xl shadow-lg hidden h-full"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
