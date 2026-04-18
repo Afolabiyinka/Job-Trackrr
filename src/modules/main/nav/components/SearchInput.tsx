@@ -46,7 +46,7 @@ export default function SearchInput() {
           />
 
           <CommandList>
-            <CommandEmpty>No jobs found.</CommandEmpty>
+            <CommandEmpty></CommandEmpty>
 
             <CommandGroup heading="Jobs">
               {filteredJobs.slice(0, 3).map((job) => (
