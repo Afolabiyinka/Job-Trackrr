@@ -37,7 +37,7 @@ const FeatureInDevelopment = () => {
                     transition={{ delay: 0.3 }}
                 >
                     This feature is currently under construction. We’re working hard to
-                    bring it to you soon. Stay tuned 🚀
+                    bring it to you soon. Stay tuned s
                 </motion.p>
 
                 <motion.div

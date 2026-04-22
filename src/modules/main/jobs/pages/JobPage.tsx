@@ -20,10 +20,10 @@ import {
   showInterviewIndicator,
 } from "../libs/utils";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
-import DeleteJobModal from "../components/delete-job/delete-job";
 import { NumericFormat } from "react-number-format";
 import { useGetJob } from "../hooks/useGetJob";
 import JobPageSkeleton from "../components/loading-skeleton";
+import DeleteJobModal from "../components/delete-job";
 
 const JobPage = () => {
   const { id } = useParams<{ id: string }>();

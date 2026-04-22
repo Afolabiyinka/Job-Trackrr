@@ -12,19 +12,22 @@ const marketingRoutes: RouteObject[] = [
   {
     index: true,
     Component: LandingPage,
+    handle: { title: "Welcome" },
   },
   {
-    index: true,
     path: "how-it-works",
     Component: HowItWorks,
+    handle: { title: "How It Works" },
   },
   {
     path: "testimonials",
     Component: Testimonials,
+    handle: { title: "Testimonials" },
   },
   {
     path: "features",
     Component: Features,
+    handle: { title: "Features" },
   },
 ];
 

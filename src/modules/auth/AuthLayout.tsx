@@ -16,6 +16,7 @@ const AuthLayout = () => {
     return <Navigate to={`/dashboard`} replace />;
   }
 
+
   return (
     <div className="h-screen  w-screen flex flex-col justify-center items-center p-4 md:p-10">
       {loading ? (
