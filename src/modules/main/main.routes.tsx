@@ -19,9 +19,11 @@ const mainRoutes: RouteObject[] = [
     index: true,
     path: "dashboard",
     Component: Dashboard,
+    handle: { title: "Dashboard" },
   },
   {
     path: "jobs",
+    handle: { title: "Jobs" },
     children: [
       {
         index: true,
@@ -33,13 +35,14 @@ const mainRoutes: RouteObject[] = [
       },
     ],
   },
-
   {
     path: "contacts",
     Component: Contacts,
+    handle: { title: "Contacts" },
   },
   {
     path: "resume",
+    handle: { title: "Resume" },
     children: [
       {
         index: true,
@@ -48,16 +51,19 @@ const mainRoutes: RouteObject[] = [
       {
         path: "results",
         Component: Results,
+        handle: { title: "Resume Results" },
       },
     ],
   },
   {
     path: "settings",
     Component: Settings,
+    handle: { title: "Settings" },
   },
   {
     path: "goals",
     Component: FeatureInDevelopment,
+    handle: { title: "Goals" },
   },
 ];
 

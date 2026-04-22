@@ -9,15 +9,19 @@ const authRoutes: RouteObject[] = [
     path: "login",
     index: true,
     Component: Login,
+    handle: { title: "Login" }
   },
   {
     path: "signup",
     Component: SignUp,
+    handle: { title: "Sign Up" }
+
   },
 
   {
     path: "verify-otp",
     Component: VerifyOtp,
+    handle: { title: "Verify Otp" }
   },
 ];
 

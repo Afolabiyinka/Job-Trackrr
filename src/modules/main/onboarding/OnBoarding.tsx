@@ -5,7 +5,7 @@ import Confetti from "react-confetti";
 import { motion } from "framer-motion";
 import WavingHand from "@/components/waving-hand";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 import { useWindowSize } from "react-use";
 import { useUser } from "../settings/store/useUser";
 import CreateJobStepper from "../jobs/components/create-job/stepper/CreateJob-Stepper";
@@ -22,7 +22,7 @@ const OnBoarding = () => {
 
     setTimeout(() => {
       setShowConfetti(false);
-    }, 4000);
+    }, 5000);
   }, []);
 
   const { user } = useUser();
@@ -56,9 +56,7 @@ const OnBoarding = () => {
             </motion.div>
             <motion.div
               className="w-full  md:w-1/2 flex flex-col gap-6 text-center md:text-left justify-center"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+
             >
               {showConfetti && (
                 <Confetti
@@ -69,17 +67,24 @@ const OnBoarding = () => {
                   height={height}
                 />
               )}{" "}
-              <h1 className="text-4xl md:text-5xl font-bold flex items-center gap-2">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-4xl md:text-5xl font-bold flex items-center gap-2">
                 Welcome {user?.username} <WavingHand />
-              </h1>
-              <p className="tracking-widest text-sm md:text-xl">
+              </motion.h1>
+              <motion.p className="tracking-widest text-sm md:text-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}>
                 Every opportunity starts somewhere. Let’s take the first step by
                 adding your first job application and building your
                 journey.{" "}
-              </p>
-              <span className="">
+              </motion.p>
+              <span className="flex">
                 <Button size={`lg`} onClick={nextStep}>
-                  Next
+                  Get Started
                   <ArrowRight />
                 </Button>
               </span>
@@ -99,20 +104,22 @@ const OnBoarding = () => {
             </motion.div>
             <motion.div
               className="w-full md:w-1/2 flex flex-col gap-6 text-center md:text-left justify-center"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Add your first job application
-              </h2>
 
-              <p className="text-sm md:text-xl tracking-widest">
+            >
+              <motion.h2 className="text-3xl md:text-4xl font-bold" initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}>
+                Add your first job application
+              </motion.h2>
+
+              <motion.p className="text-sm md:text-xl tracking-widest" initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}>
                 Start tracking your opportunities by adding your first job.
                 Include the company name, role, and status so you can stay
                 organized from day one.
-              </p>
-              <CreateJobStepper title="Add your first job" />
+              </motion.p>
+              <CreateJobStepper title="Add your first job" icon={<Plus />} />
             </motion.div>
           </div>
         )}

@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, } from "react-router-dom";
 import NavLayout from "./nav/NavLayout";
 import Greeting from "@/modules/main/nav/Greeting";
 import Header from "@/modules/main/nav/Header";
@@ -11,7 +11,7 @@ import { useFetchUser } from "./settings/hooks/useFetchUser";
 
 const MainLayout = () => {
   const { user } = useUser();
-  const { loading, isFetched } = useFetchUser();
+  const { loading } = useFetchUser();
   const { data } = useGetJobs();
   const { setJobs } = useJobs();
 
@@ -21,9 +21,12 @@ const MainLayout = () => {
     }
   }, [data, setJobs]);
 
-  if (!user && !loading && isFetched) {
-    return <Navigate to="/login" replace />;
-  }
+  //Redirecting if user is not logged in
+  // if (!user && !loading) {
+  //   return <Navigate to="/login" replace />;
+  // }
+
+
 
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">
