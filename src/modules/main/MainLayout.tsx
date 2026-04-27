@@ -21,7 +21,7 @@ const MainLayout = () => {
     }
   }, [data, setJobs]);
 
-  //Redirecting if user is not logged in
+  //Redirecting if user is not logged in  
   if (!user && !loading) {
     return <Navigate to="/login" replace />;
   }
