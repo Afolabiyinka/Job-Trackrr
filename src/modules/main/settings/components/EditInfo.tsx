@@ -23,7 +23,7 @@ const EditInfo = () => {
     <Card>
       <CardHeader className="text-2xl">Edit your details</CardHeader>
       <CardContent>
-        <form className="p-1" onSubmit={onSubmit}>
+        <form className="" onSubmit={onSubmit}>
           <div className="grid md:grid-cols-3 gap-6 grid-cols-1">
             <CustomInput
               icon={`User`}

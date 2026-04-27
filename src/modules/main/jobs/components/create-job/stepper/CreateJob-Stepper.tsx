@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
-import { Step, Stepper } from "react-form-stepper";
 import CustomInput from "../input/custom-input";
 import {
   ArrowLeft,
@@ -17,7 +16,6 @@ import {
   Loader2,
   Pencil,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import CreateDropdown from "../create-dropdown";
 import { DatePicker } from "../date-picker";
@@ -36,6 +34,21 @@ import type { Job } from "../../../types/job";
 import { useEffect } from "react";
 import { useEditJobs } from "../../../hooks/useEditJob";
 
+const STEPS = ["Basics", "Compensation", "Interview", "Status"];
+
+const FieldGroup = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <div className="flex flex-col gap-2">
+    <Label className="text-sm font-medium">{label}</Label>
+    {children}
+  </div>
+);
+
 const CreateJobStepper = ({
   title,
   icon,
@@ -47,22 +60,16 @@ const CreateJobStepper = ({
   icon?: React.ReactNode;
   editing?: boolean;
   id?: number | string;
-  variant?: "default" | "secondary";
+  variant?: "default" | "secondary" | "outline" | "ghost";
 }) => {
   const { jobs } = useJobs();
   const job = jobs.find((job: Job) => job.id === id);
 
   const [activeStep, setActiveStep] = useState(0);
-
   const [open, setOpen] = useState(false);
 
-  const nextStep = () => {
-    setActiveStep((prev) => Math.min(prev + 1, 3));
-  };
-
-  const prevStep = () => {
-    setActiveStep((prev) => Math.max(prev - 1, 0));
-  };
+  const nextStep = () => setActiveStep((prev) => Math.min(prev + 1, 3));
+  const prevStep = () => setActiveStep((prev) => Math.max(prev - 1, 0));
 
   const {
     company,
@@ -76,7 +83,6 @@ const CreateJobStepper = ({
     workType,
     jobType,
     appliedAt,
-
     setApplied,
     setCompany,
     setInterviewType,
@@ -96,13 +102,8 @@ const CreateJobStepper = ({
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
     if (editing) {
-      if (!id) {
-        console.error("Editing without ID");
-        return;
-      }
-
+      if (!id) return;
       const success = await handleEdit({ id });
       if (success) {
         reset();
@@ -110,7 +111,6 @@ const CreateJobStepper = ({
       }
       return;
     }
-
     const success = await handleCreate();
     if (success) {
       reset();
@@ -135,249 +135,244 @@ const CreateJobStepper = ({
   }, [editing, job]);
 
   useEffect(() => {
-    if (!editing) {
-      reset();
-    }
+    if (!editing) reset();
   }, [job]);
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={(isOpen) => {
-        setOpen(isOpen);
-      }}
-    >
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <span>
-          <Button size={`lg`} variant={variant}>
-            <span className="h-4 w-4">{icon}</span>
-            {title}
-          </Button>
-        </span>
+        <Button size="lg" variant={variant} className="gap-1.5">
+          <span className="h-3.5 w-3.5">{icon}</span>
+          {title}
+        </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-xl">
-        <DialogHeader>
-          <DialogTitle>{title}</DialogTitle>
+      <DialogContent className="sm:max-w-lg p-3 overflow-hidden">
+        {/* Header */}
+        <DialogHeader className="px-6 pt-6 pb-0">
+          <DialogTitle className="text-lg font-bold">{title}</DialogTitle>
         </DialogHeader>
-        <Stepper
-          activeStep={activeStep}
-          styleConfig={{
-            activeBgColor: "#5ea500",
-            completedBgColor: "#5ea500",
-            inactiveBgColor: "gray",
-            activeTextColor: "white",
-            borderRadius: "50px",
-            circleFontSize: "",
-            completedTextColor: "",
-            fontWeight: "bold",
-            inactiveTextColor: "",
-            labelFontSize: "",
-            size: "2rem",
-          }}
-        >
-          <Step />
-          <Step />
-          <Step />
-          <Step />
-        </Stepper>
-        <form onSubmit={(e) => handleSubmit(e)}>
-          {/* //Main Step Content */}
-          <div>
+
+        {/* Step indicator */}
+        <div className="px-6 pt-4">
+          <div className="flex items-center gap-0">
+            {STEPS.map((label, i) => (
+              <React.Fragment key={i}>
+                <div className="flex flex-col items-center gap-1.5">
+                  <div
+                    className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${i < activeStep
+                      ? "bg-primary text-primary-foreground"
+                      : i === activeStep
+                        ? "bg-primary text-primary-foreground ring-4 ring-primary/20"
+                        : "bg-muted text-muted-foreground"
+                      }`}
+                  >
+                    {i < activeStep ? (
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                      >
+                        <path
+                          d="M2 6l3 3 5-5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    ) : (
+                      i + 1
+                    )}
+                  </div>
+                  <span
+                    className={`text-[10px] font-medium tracking-wide ${i === activeStep
+                      ? "text-foreground"
+                      : "text-muted-foreground"
+                      }`}
+                  >
+                    {label}
+                  </span>
+                </div>
+                {i < STEPS.length - 1 && (
+                  <div
+                    className={`flex-1 h-px mx-1 mb-5 transition-colors ${i < activeStep ? "bg-primary" : "bg-border"
+                      }`}
+                  />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit}>
+          <div className="px-6 py-4   min-h-[240px]">
             {activeStep === 0 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle></CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1  items-center gap-5">
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link">Company name</Label>
-                      <CustomInput
-                        value={company}
-                        onChange={(e) => setCompany(e)}
-                        placeholder="E.g Google"
-                        icon="Building2"
-                        type="text"
-                      />
-                    </div>
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link">Role</Label>
-                      <CustomInput
-                        placeholder={`Frontend Engineer`}
-                        icon={`User`}
-                        type="email"
-                        value={role}
-                        onChange={(e) => setRole(e)}
-                      />
-                    </div>
-                    <div className="grid flex-1 gap-2">
-                      <DatePicker
-                        title="Applied at"
-                        onSelect={(val) => val && setApplied(val)}
-                        inputtedDate={appliedAt ?? undefined}
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="flex flex-col gap-4">
+                <FieldGroup label="Company name">
+                  <CustomInput
+                    value={company}
+                    onChange={(e) => setCompany(e)}
+                    placeholder="e.g. Google"
+                    icon="Building2"
+                    type="text"
+                  />
+                </FieldGroup>
+                <FieldGroup label="Role">
+                  <CustomInput
+                    placeholder="e.g. Frontend Engineer"
+                    icon="User"
+                    type="text"
+                    value={role}
+                    onChange={(e) => setRole(e)}
+                  />
+                </FieldGroup>
+                <FieldGroup label="Applied at">
+                  <DatePicker
+                    title=""
+                    onSelect={(val) => val && setApplied(val)}
+                    inputtedDate={appliedAt ?? undefined}
+                  />
+                </FieldGroup>
+              </div>
             )}
-          </div>
-          {/* Second Step */}
-          <div>
+
             {activeStep === 1 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle></CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1  items-center gap-5">
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link" className="">
-                        Job Type
-                      </Label>
-                      <CreateDropdown
-                        dropdownItems={JOB_TYPES}
-                        placeholder="Select job type"
-                        hasColor={false}
-                        value={jobType ?? undefined}
-                        onSelect={(e) => setJobType(e)}
-                      />
-                    </div>
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link">Work Type</Label>
-                      <CreateDropdown
-                        dropdownItems={WORK_TYPES}
-                        placeholder="Select work type"
-                        hasColor={false}
-                        value={workType ?? undefined}
-                        onSelect={(e) => setWorkType(e)}
-                      />
-                    </div>
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link">
-                        Salary Expectation (Optional)
-                      </Label>
-                      <MoneyInput
-                        value={salaryRange ?? null}
-                        onChange={(value) => {
-                          setSalaryRange(value);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="flex flex-col gap-4">
+                <FieldGroup label="Job type">
+                  <CreateDropdown
+                    dropdownItems={JOB_TYPES}
+                    placeholder="Select job type"
+                    hasColor={false}
+                    value={jobType ?? undefined}
+                    onSelect={(e) => setJobType(e)}
+                  />
+                </FieldGroup>
+                <FieldGroup label="Work type">
+                  <CreateDropdown
+                    dropdownItems={WORK_TYPES}
+                    placeholder="Select work type"
+                    hasColor={false}
+                    value={workType ?? undefined}
+                    onSelect={(e) => setWorkType(e)}
+                  />
+                </FieldGroup>
+                <FieldGroup label="Salary expectation (optional)">
+                  <MoneyInput
+                    value={salaryRange ?? null}
+                    onChange={(value) => setSalaryRange(value)}
+                  />
+                </FieldGroup>
+              </div>
             )}
-          </div>
-          {/* The third Step */}
-          <div>
+
             {activeStep === 2 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle></CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1  items-center gap-5">
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link" className="">
-                        Interview Type
-                      </Label>
-                      <CreateDropdown
-                        dropdownItems={INTERVIEW_TYPES}
-                        placeholder="Select interview type"
-                        hasColor={false}
-                        value={interviewType ?? undefined}
-                        onSelect={(e) => setInterviewType(e)}
-                      />
-                    </div>
-                    <div className="grid flex-1 gap-2">
-                      <DatePicker
-                        title="Interview Date"
-                        inputtedDate={interviewDate ?? undefined}
-                        onSelect={(val) => val && setInterviewDate(val)}
-                      />
-                    </div>
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link">Company Email</Label>
-                      <CustomInput
-                        icon={`Mail`}
-                        placeholder={`e.g. Careers@company.com`}
-                        type="email"
-                        value={companyEmail}
-                        onChange={(e) => setCompanyEmail(e)}
-                      />
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="flex flex-col gap-4">
+                <FieldGroup label="Interview type">
+                  <CreateDropdown
+                    dropdownItems={INTERVIEW_TYPES}
+                    placeholder="Select interview type"
+                    hasColor={false}
+                    value={interviewType ?? undefined}
+                    onSelect={(e) => setInterviewType(e)}
+                  />
+                </FieldGroup>
+                <FieldGroup label="Interview date">
+                  <DatePicker
+                    title=""
+                    inputtedDate={interviewDate ?? undefined}
+                    onSelect={(val) => val && setInterviewDate(val)}
+                  />
+                </FieldGroup>
+                <FieldGroup label="Company email">
+                  <CustomInput
+                    icon="Mail"
+                    placeholder="e.g. careers@company.com"
+                    type="email"
+                    value={companyEmail}
+                    onChange={(e) => setCompanyEmail(e)}
+                  />
+                </FieldGroup>
+              </div>
+            )}
+
+            {activeStep === 3 && (
+              <div className="flex flex-col gap-4">
+                <FieldGroup label="Status">
+                  <CreateDropdown
+                    value={status ?? undefined}
+                    dropdownItems={STATUS_TYPES}
+                    placeholder="Select current status"
+                    hasColor={false}
+                    onSelect={(e) => setStatus(e)}
+                  />
+                </FieldGroup>
+                <FieldGroup label="Notes">
+                  <Textarea
+                    placeholder="Feedback, impressions, or anything to remember..."
+                    value={feedback}
+                    onChange={(e) => setFeedback(e.target.value)}
+                    className="resize-none min-h-[90px]"
+                  />
+                </FieldGroup>
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={loading}
+                  className="gap-1.5 min-w-[120px]"
+                >
+                  {loading ? (
+                    <Loader2 size={14} className="animate-spin" />
+                  ) : editing ? (
+                    <>
+                      <Pencil size={14} /> Save changes
+                    </>
+                  ) : (
+                    <>
+                      <Briefcase size={14} /> Create job
+                    </>
+                  )}
+                </Button>
+
+
+
+              </div>
             )}
           </div>
 
-          {/* The 4th Step */}
-          <div>
-            {activeStep === 3 && (
-              <Card>
-                <CardHeader>
-                  <CardTitle></CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1  items-center gap-5">
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link" className="">
-                        Status
-                      </Label>
-                      <CreateDropdown
-                        value={status ?? undefined}
-                        dropdownItems={STATUS_TYPES}
-                        placeholder="Select current status"
-                        hasColor={false}
-                        onSelect={(e) => setStatus(e)}
-                      />
-                    </div>
-                    <div className="grid flex-1 gap-2">
-                      <Label htmlFor="link">Notes</Label>
-                      <Textarea
-                        placeholder="Feedback or impressions"
-                        value={feedback}
-                        onChange={(e) => setFeedback(e.target.value)}
-                      />
-                    </div>
-                    <span className="w-full shadow rounded-xl flex justify-center items-center">
-                      {loading ? (
-                        <Loader2 className="animate-spin h-8 w-6" />
-                      ) : (
-                        <>
-                          {editing ? (
-                            <Button size={`lg`} className="w-full">
-                              Edit Job Details
-                              <Pencil />
-                            </Button>
-                          ) : (
-                            <Button size={`lg`} className="w-full">
-                              Create Job
-                              <Briefcase />
-                            </Button>
-                          )}
-                        </>
-                      )}
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+          {/* Footer nav */}
+          <div className="px-6 py-4 flex items-center justify-between gap-3">
+            <Button
+              type="button"
+              onClick={prevStep}
+              disabled={activeStep === 0}
+              variant="outline"
+              size="lg"
+              className="gap-1.5"
+            >
+              <ArrowLeft size={14} /> Back
+            </Button>
+
+            <span className="text-xs text-muted-foreground">
+              {activeStep + 1} / {STEPS.length}
+            </span>
+
+
+            <Button
+              type="button"
+              onClick={nextStep}
+              size="lg"
+              className="gap-1.5"
+              disabled={activeStep === 3}
+            >
+              Next <ArrowRight size={14} />
+            </Button>
+
           </div>
         </form>
-
-        <div className="flex justify-between">
-          <Button onClick={prevStep} disabled={activeStep === 0} size={`lg`}>
-            <ArrowLeft /> Back
-          </Button>
-
-          <Button onClick={nextStep} disabled={activeStep === 3} size={`lg`}>
-            Next <ArrowRight />
-          </Button>
-        </div>
       </DialogContent>
     </Dialog>
   );
