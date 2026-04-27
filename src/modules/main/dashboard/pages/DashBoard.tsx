@@ -11,8 +11,6 @@ const DashBoard = () => {
     return <NoJobs />;
   }
 
-
-
   return (
     <div className="h-full  w-full flex flex-col  gap-4 p-1">
       <div className="w-full h-full">

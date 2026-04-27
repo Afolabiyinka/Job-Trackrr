@@ -12,7 +12,7 @@ import GoalCard from "./GoalCard";
 
 const GoalsStatsCard = () => {
   return (
-    <Card className="w-full">
+    <Card className="w-full ring-0 shadow-none">
       <CardHeader className="">
         <CardTitle>Goals</CardTitle>
         <CardDescription>
