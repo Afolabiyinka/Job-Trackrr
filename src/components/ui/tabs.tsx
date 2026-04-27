@@ -70,7 +70,7 @@ function TabsTrigger({
 
         /* 🔥 ACTIVE STATE */
         "data-[state=active]:bg-primary  data-[state=active]:text-white",
-        "data-[state=active]:shadow-sm",
+        "",
 
         "after:bg-primary after:absolute after:opacity-0 after:transition-opacity",
         "group-data-[orientation=horizontal]/tabs:after:inset-x-0 group-data-[orientation=horizontal]/tabs:after:bottom-[-5px] group-data-[orientation=horizontal]/tabs:after:h-0.5",

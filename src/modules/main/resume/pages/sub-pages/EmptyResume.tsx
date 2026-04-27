@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const EmptyResume = () => {
   return (
-    <div className="w-full h-full border flex flex-col lg:flex-row shadow rounded-2xl p-6 gap-6">
+    <div className="w-full h-full  flex flex-col lg:flex-row  rounded-2xl p-6 gap-6">
       <motion.div
         className="w-full lg:w-1/2 flex justify-center items-center"
         initial={{ opacity: 0, y: 50 }}

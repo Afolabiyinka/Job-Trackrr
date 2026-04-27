@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import contact_image from "@/assets/contact_image.svg";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import AddContact from "../components/AddContact";
 
 const EmptyContacts = () => {
   return (
@@ -45,10 +46,11 @@ const EmptyContacts = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <Button size={`lg`}>
+          {/* <Button size={`lg`}>
             <Plus className="mr-2 h-4 w-4" />
             Add Contact
-          </Button>
+          </Button> */}
+          <AddContact />
         </motion.div>
       </motion.div>
     </div>

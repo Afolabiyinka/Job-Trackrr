@@ -20,7 +20,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
   const navigate = useNavigate();
 
   return (
-    <Card className={``}>
+    <Card className={` ring-0 shadow-none`}>
       <CardHeader>
         <CardTitle className="flex justify-between">
           {title}

@@ -14,7 +14,7 @@ import { MOCK_CONTACTS } from "../../contacts/libs/mockContacts";
 const ContactsStatsCard = () => {
   const navigate = useNavigate();
   return (
-    <Card className="w-full">
+    <Card className="w-full  ring-0 shadow-none">
       <CardHeader>
         <CardTitle>Manage Contacts</CardTitle>
         <CardDescription>
