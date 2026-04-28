@@ -19,7 +19,7 @@ const ContactsStatsCard = () => {
       <CardHeader>
         <CardTitle>Manage Contacts</CardTitle>
         <CardDescription>
-          You have 120 contacts saved on your account
+          You have ${contacts.length} contacts saved on your account
         </CardDescription>
       </CardHeader>
       <CardContent className="">
