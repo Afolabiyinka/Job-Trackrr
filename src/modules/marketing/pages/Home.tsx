@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import LightScreenShot from "@/assets/screenshots/Light-Screenshot.png";
+import LightScreenShot from "@/assets/screenshots/Light Screenshot.png";
 import DarkScreenshot from "@/assets/screenshots/Dark Screenshot.png";
 import { useTheme } from "@/modules/main/theme/useTheme";
 
@@ -56,7 +56,7 @@ const Home = () => {
         initial={{ y: 40, opacity: 0.8 }}
         animate={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.3, ease: "linear", delay: 1 }}
-        className="md:w-[80%] h-full mt-10 rounded-xl overflow-hidden shadow-2xl  bg-background backdrop-blur"
+        className="md:w-[80%] h-full mt-10 rounded-xl overflow-hidden border bg-background backdrop-blur"
       >
         <motion.img
           src={`${theme === "light" ? LightScreenShot : DarkScreenshot}`}

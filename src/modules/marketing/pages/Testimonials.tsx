@@ -51,7 +51,7 @@ const Testimonials = () => {
         >
           {reviews.map((review, index) => (
             <SwiperSlide key={index} className="w-auto">
-              <div className="h-full p-6 md:p-10  bg-muted rounded-2xl border flex flex-col justify-between items-center gap-4">
+              <div className="h-full p-6 md:p-6  bg-muted rounded-2xl border flex flex-col justify-between items-center gap-4">
                 <div className="space-y-4">
                   <p className="text-lg">{review.comment}</p>
                 </div>

@@ -9,10 +9,11 @@ import {
 import { User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ContactCard from "../../contacts/components/ContactCard";
-import { MOCK_CONTACTS } from "../../contacts/libs/mockContacts";
+import { useGetContacts } from "../../contacts/hooks/useGetContacts";
 
 const ContactsStatsCard = () => {
   const navigate = useNavigate();
+  const { contacts } = useGetContacts()
   return (
     <Card className="w-full  ring-0 shadow-none">
       <CardHeader>
@@ -27,7 +28,7 @@ const ContactsStatsCard = () => {
           Manage Contacts
         </Button>
         <div className="grid grid-flow-col-dense gap-5 mt-3 overflow-x-scroll ">
-          {MOCK_CONTACTS.slice(0, 3).map((contact, i) => (
+          {contacts.slice(0, 3).map((contact, i) => (
             <ContactCard key={i} contact={contact} />
           ))}
         </div>

@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import contact_image from "@/assets/contact_image.svg";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+
 import AddContact from "../components/AddContact";
 
 const EmptyContacts = () => {
@@ -50,7 +49,7 @@ const EmptyContacts = () => {
             <Plus className="mr-2 h-4 w-4" />
             Add Contact
           </Button> */}
-          <AddContact />
+          <AddContact title="Add Contact" />
         </motion.div>
       </motion.div>
     </div>

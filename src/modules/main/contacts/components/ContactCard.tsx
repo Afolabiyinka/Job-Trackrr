@@ -1,13 +1,12 @@
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Phone, Mail, Globe } from "lucide-react";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  SheetFooter,
+} from "@/components/ui/sheet";
+import { Phone, Mail, Globe, Loader2 } from "lucide-react";
 import type { ContactPayload } from "../types/types";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Button } from "@/components/ui/button";
@@ -16,85 +15,107 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useDeleteContact } from "../hooks/useDeleteContacts";
+import AddContact from "./AddContact";
 
 const ContactCard = ({ contact }: { contact: ContactPayload }) => {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <div className="flex gap-3 items-center hover:bg-primary/10 transition-colors p-3 rounded-full cursor-pointer border group">
-          <div className="h-10 w-10 bg-primary/80  text-white flex items-center justify-center rounded-full font-bold border">
-            {contact.name.substring(0, 2)}
+  if (!contact.id) return null;
+  const { handleDelete, isPending } = useDeleteContact({ id: contact.id }); return (
+    <Sheet>
+      <SheetTrigger asChild>
+        <div className="flex gap-3 items-center p-3 rounded-full border bg-background hover:bg-muted/60 transition-all cursor-pointer hover:shadow-sm">
+
+          {/* Avatar */}
+          <div className="h-10 w-10 bg-primary/90 text-white flex items-center justify-center rounded-full font-semibold">
+            {contact.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")
+              .slice(0, 2)}
           </div>
 
-          <div className="flex flex-col items-start overflow-hidden">
-            <p className="text-sm font-bold tracking-tight line-clamp-1">
+          {/* Info */}
+          <div className="flex flex-col overflow-hidden">
+            <p className="text-sm font-semibold truncate">
               {contact.name}
             </p>
-            <p className="text-muted-foreground text-xs truncate w-full">
+            <p className="text-xs text-muted-foreground truncate">
               {contact.role}
             </p>
           </div>
         </div>
-      </DialogTrigger>
+      </SheetTrigger>
 
-      <DialogContent className="">
-        <DialogHeader>
+      {/* Drawer */}
+      <SheetContent side="right" className="w-95 sm:w-105 p-0 flex flex-col">
+
+        {/* Header */}
+        <SheetHeader className="px-6 pt-6 pb-4 border-b">
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 bg-primary/80 text-white flex items-center justify-center rounded-full font-bold border">
-              {contact.name.substring(0, 2)}
+            <div className="h-12 w-12 bg-primary/90 text-white flex items-center justify-center rounded-full font-semibold">
+              {contact.name
+                .split(" ")
+                .map((n) => n[0])
+                .join("")
+                .slice(0, 2)}
             </div>
+
             <div>
-              <DialogTitle className="text-xl">{contact.name}</DialogTitle>
-              <DialogDescription>{contact.role}</DialogDescription>
+              <SheetTitle className="text-lg font-semibold">
+                {contact.name}
+              </SheetTitle>
+              <p className="text-sm text-muted-foreground">
+                {contact.role}
+              </p>
             </div>
           </div>
-        </DialogHeader>
+        </SheetHeader>
 
-        <div className="grid gap-4 py-4 border-t mt-4">
-          {contact.phoneNumber && (
-            <div className="flex items-center gap-3 text-sm">
-              <div className="flex gap-2">
-                <Phone size={16} className="text-muted-foreground" />
-                <span className="font-medium">Phone:</span>
-                <span className="text-muted-foreground">
-                  {contact.phoneNumber}
-                </span>
+        {/* Body */}
+        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
+
+          {/* Contact Info */}
+          <div className="space-y-3">
+            {contact.phoneNumber && (
+              <div className="flex items-center justify-between text-sm">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Phone size={14} />
+                  <span>{contact.phoneNumber}</span>
+                </div>
+                <CopyButton value={String(contact.phoneNumber)} />
               </div>
+            )}
 
-              <CopyButton value={String(contact.phoneNumber)} />
-            </div>
-          )}
-
-          {contact.email && (
-            <div className="flex items-center gap-3 text-sm">
-              <div className="flex gap-2">
-                <Mail size={16} className="text-muted-foreground" />
-                <span className="font-medium">Email:</span>
-                <span className="text-muted-foreground">{contact.email}</span>
+            {contact.email && (
+              <div className="flex items-center justify-between text-sm">
+                <div className="flex items-center gap-2 text-muted-foreground">
+                  <Mail size={14} />
+                  <span>{contact.email}</span>
+                </div>
+                <CopyButton value={String(contact.email)} />
               </div>
+            )}
+          </div>
 
-              <CopyButton value={String(contact.email)} />
-            </div>
-          )}
-
+          {/* Socials */}
           {contact.socialLinks.length > 0 && (
-            <div className="space-y-2 mt-2">
-              <p className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest">
-                Social Profiles
+            <div className="space-y-2">
+              <p className="text-xs font-medium text-muted-foreground">
+                Socials
               </p>
+
               <div className="flex flex-wrap gap-2">
                 {contact.socialLinks.map((link, index) => (
-                  <Tooltip>
-                    <TooltipTrigger>
+                  <Tooltip key={index}>
+                    <TooltipTrigger asChild>
                       <a
-                        key={index}
                         href={link}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center gap-1.5 text-xs bg-secondary hover:bg-secondary/80 px-3 py-1.5 rounded-full transition-colors border"
+                        className="flex items-center gap-1.5 text-xs bg-muted hover:bg-muted/80 px-3 py-1.5 rounded-full transition"
                       >
                         <Globe size={12} />
-                        <span>Link {index + 1}</span>
+                        Open
                       </a>
                     </TooltipTrigger>
                     <TooltipContent>{link}</TooltipContent>
@@ -105,17 +126,17 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
           )}
         </div>
 
-        <DialogFooter>
-          <Button variant="destructive" size="lg">
-            Delete
-          </Button>
+        {/* Footer */}
+        <SheetFooter className="px-6 py-4 border-t flex justify-between">
 
-          <Button variant="outline" size="lg">
-            Edit Contact
+          <AddContact title="Edit" editing id={contact.id} />
+
+          <Button variant="destructive" size="lg" onClick={() => handleDelete()}>
+            {isPending ? <Loader2 className="animate-spin" /> : " Delete"}
           </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
   );
 };
 

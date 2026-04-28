@@ -20,7 +20,7 @@ const EditInfo = () => {
     }
   }, [user]);
   return (
-    <Card>
+    <Card className="shadow-none ring-0">
       <CardHeader className="text-2xl">Edit your details</CardHeader>
       <CardContent>
         <form className="" onSubmit={onSubmit}>

@@ -61,7 +61,7 @@ const Jobs = () => {
         />
       </div>
       <Tabs value={currentView} onValueChange={handleViewChange}>
-        <TabsList>
+        <TabsList className="space-x-4">
           <TabsTrigger value="card">
             <span className="flex items-center gap-1">
               <LayoutGrid className="h-4 w-4" />

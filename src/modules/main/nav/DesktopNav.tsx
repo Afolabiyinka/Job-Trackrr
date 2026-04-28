@@ -28,7 +28,7 @@ const DesktopNav = () => {
 
               <NavLink
                 to={path}
-                className={`flex gap-2 items-center rounded-xl p-1.5 text-md px-3  transition w-full ${pathMatch ? "bg-primary text-white p-3" : "hover:bg-muted p-3"
+                className={`flex gap-2 items-center rounded-3xl p-1.5 text-md px-3  transition w-full ${pathMatch ? "bg-primary text-white p-3" : "hover:bg-muted p-3"
                   }`}
               >
                 <Icon className={`h-4.5 w-4.5 stroke-[1.25px]`} />

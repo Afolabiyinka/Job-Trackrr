@@ -20,10 +20,10 @@ const Pagination = ({
         onClick={handlePrevPage}
         color="secondary"
         variant="outline"
-        // isCircular
-        size="lg"
+
+        size="icon-lg"
         disabled={currentPage === 1}
-        className="disabled:bg-gray-400 px-5 py-1 rounded-3xl"
+        className="disabled:bg-gray-400"
       >
         <ArrowLeft className="h-6 w-6" />
       </Button>
@@ -35,9 +35,9 @@ const Pagination = ({
         onClick={handleNextPage}
         color="secondary"
         variant="outline"
-        size="lg"
+        size="icon-lg"
         disabled={currentPage === maxPages}
-        className="disabled:bg-gray-400 px-5 py-1 rounded-3xl "
+        className="disabled:bg-gray-400"
       >
         <ArrowRight className="h-6 w-6" />
       </Button>

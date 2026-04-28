@@ -143,7 +143,7 @@ const JobPage = () => {
         </div>
 
         {/* Detail grid */}
-        <div className="p-5 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-5">
+        <div className="p-5 grid md:grid-cols-3 gap-x-6 gap-y-5">
           <DetailItem icon={<Briefcase size={13} />} label="Job type">
             {job.jobType}
           </DetailItem>

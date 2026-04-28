@@ -8,8 +8,9 @@ interface Props {
   onChange?: (val: string) => void;
   type: "number" | "text" | "email" | "password" | "search";
   id?: string;
-  value?: string;
+  value?: string | number;
   className?: string;
+  required?: false
 }
 
 const CustomInput = ({
@@ -19,7 +20,7 @@ const CustomInput = ({
   type,
   id,
   value,
-  className,
+  className, required
 }: Props) => {
   const IconComponent = icons[icon];
 
@@ -34,7 +35,7 @@ const CustomInput = ({
         type={type}
         id={id}
         value={value}
-        required
+        required={required}
         onChange={(e) => onChange?.(e.target.value)}
       />
     </div>

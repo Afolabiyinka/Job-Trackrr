@@ -7,11 +7,11 @@ const ListItem = ({ job }: { job: Job }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="flex flex-col md:flex-row gap-2 justify-between items-center border rounded-xl hover:bg-muted cursor-pointer p-4"
+      className="flex flex-col md:flex-row gap-2 justify-between items-center border rounded-full hover:bg-muted cursor-pointer p-4"
       onClick={() => navigate(`/jobs/${job.id}`)}
     >
       <div className="flex gap-2 items-center">
-        <span className="h-6 w-6 border rounded-full flex items-center justify-center">
+        <span className="h-10 w-10 border rounded-full flex items-center justify-center">
           {job.company.charAt(0)}
         </span>
         <p className="text-md font-medium">

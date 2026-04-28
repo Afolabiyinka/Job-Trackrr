@@ -7,7 +7,7 @@ const getContacts = async (): Promise<ContactPayload[]> => {
 }
 
 const createContact = async (payload: ContactPayload) => {
-    const res = await fetch(`${prodEndpoint}api/contacts/add`, {
+    const res = await fetch(`${prodEndpoint}api/contacts/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -23,4 +23,40 @@ const createContact = async (payload: ContactPayload) => {
     return data;
 };
 
-export { getContacts, createContact }
+const deleteContact = async (id: string | number) => {
+
+    const res = await fetch(`${prodEndpoint}api/contacts/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        }
+
+    })
+    const data = await res.json()
+
+    if (!res.ok) {
+        throw new Error(data.message || "Something went wrong");
+    }
+    return data;
+}
+
+const editContact = async (id: string | number, payload: ContactPayload) => {
+    const res = await fetch(`${prodEndpoint}api/contacts/${id}`, {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+
+    })
+    const data = await res.json()
+
+    if (!res.ok) {
+        throw new Error(data.message || "Something went wrong");
+    }
+    return data;
+}
+
+export { getContacts, createContact, deleteContact, editContact }
