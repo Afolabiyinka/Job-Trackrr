@@ -4,7 +4,7 @@ import type { EditUserPayload } from "../types/types";
 
 const getUser = async () => {
   try {
-    const res = await fetch(`${prodEndpoint}api/user`, {
+    const res = await fetch(`${prodEndpoint}api/me`, {
       credentials: "include",
     });
 
@@ -18,7 +18,7 @@ const getUser = async () => {
 
 const editUser = async (payload: EditUserPayload) => {
   try {
-    const res = await axios.put(`${prodEndpoint}api/user`, payload, {
+    const res = await axios.put(`${prodEndpoint}api/me`, payload, {
       withCredentials: true,
     });
 
@@ -31,7 +31,7 @@ const editUser = async (payload: EditUserPayload) => {
 
 const deleteAccount = async () => {
   try {
-    const res = await axios.delete(`${prodEndpoint}api/user`, {
+    const res = await axios.delete(`${prodEndpoint}api/me`, {
       withCredentials: true,
     });
     return res.data;
