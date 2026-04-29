@@ -124,11 +124,10 @@
     @apply border-border outline-ring/50;
   }
   body {
-    /* @apply bg-background text-foreground; */
-    /* color: rgb(57, 54, 54); */
+    @apply bg-background text-foreground;
+    color: rgb(57, 54, 54);
   }
   html {
-    @apply font-sans;
   }
 }
 

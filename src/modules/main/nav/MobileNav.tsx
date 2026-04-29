@@ -31,9 +31,8 @@ const MobileNav = () => {
             initial={{ translateY: -20 }}
             exit={{ translateY: -1 }}
             animate={{ translateY: 1 }}
-            className={`transform overflow-hidden flex flex-col gap-3 p-2 rounded-lg ${
-              open ? "max-h-full py-4" : "max-h-0"
-            }`}
+            className={`transform overflow-hidden flex flex-col gap-3 p-2 rounded-lg ${open ? "max-h-full py-4" : "max-h-0"
+              }`}
           >
             {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
               const pathMatch = location.pathname.includes(path);
@@ -53,13 +52,10 @@ const MobileNav = () => {
 
                   <NavLink
                     to={path}
-                    className={`flex gap-2 items-center rounded-xl p-2.5 text-md  transition w-full ${
-                      pathMatch ? "bg-primary/10" : ""
-                    }`}
+                    className={`flex gap-2 items-center rounded-3xl p-1.5 text-md px-3  transition w-full ${pathMatch ? "bg-primary text-white p-3" : "hover:bg-muted p-3"
+                      }`}
                   >
-                    <Icon
-                      className={`h-5 w-5 ${pathMatch && "text-primary"}`}
-                    />
+                    <Icon className={`h-4.5 w-4.5 stroke-[1.25px]`} />
                     <p>{name}</p>
                   </NavLink>
                 </motion.span>
@@ -78,6 +74,7 @@ const MobileNav = () => {
               <Button
                 className="justify-start gap-3"
                 size={`lg`}
+                variant={`destructive`}
                 onClick={() => handleLogout()}
               >
                 <LogOut className="h-10 w-10" />

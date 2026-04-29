@@ -14,12 +14,14 @@ import { useGetContacts } from "../../contacts/hooks/useGetContacts";
 const ContactsStatsCard = () => {
   const navigate = useNavigate();
   const { contacts } = useGetContacts()
+
+  const contactsText = contacts.length === 1 ? "Contact" : "Contacts"
   return (
     <Card className="w-full  ring-0 shadow-none">
       <CardHeader>
         <CardTitle>Manage Contacts</CardTitle>
         <CardDescription>
-          You have ${contacts.length} contacts saved on your account
+          You have {contacts.length} {contactsText}  saved on your account
         </CardDescription>
       </CardHeader>
       <CardContent className="">
