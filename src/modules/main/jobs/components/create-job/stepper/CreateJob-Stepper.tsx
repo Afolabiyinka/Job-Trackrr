@@ -147,7 +147,7 @@ const CreateJobStepper = ({
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-lg p-3 overflow-hidden">
+      <DialogContent className="flex flex-col  p-3 overflow-hidden">
         {/* Header */}
         <DialogHeader className="px-6 pt-6 pb-0">
           <DialogTitle className="text-lg font-bold">{title}</DialogTitle>

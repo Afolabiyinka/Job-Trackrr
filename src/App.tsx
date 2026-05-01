@@ -8,13 +8,16 @@ import { useFetchUser } from "./modules/main/settings/hooks/useFetchUser";
 
 
 export function App() {
-  const { fetchedUser } = useFetchUser();
-  const { setUser } = useUser();
+  const { fetchedUser, loading } = useFetchUser();
+  const { setUser, setAuthResolved } = useUser();
   const { theme } = useTheme();
 
   React.useEffect(() => {
-    setUser(fetchedUser?.user ?? null);
-  }, [fetchedUser?.user, setUser]);
+    if (!loading) {
+      setUser(fetchedUser.user || null);
+      setAuthResolved(true);
+    }
+  }, [fetchedUser, loading, setUser, setAuthResolved]);
 
   React.useEffect(() => {
     const appliedTheme =

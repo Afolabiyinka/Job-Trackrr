@@ -7,11 +7,9 @@ import { useGetJobs } from "@/modules/main/jobs/hooks/useGetJobs";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";
 import { useEffect } from "react";
 import { useUser } from "@/modules/main/settings/store/useUser";
-import { useFetchUser } from "./settings/hooks/useFetchUser";
 
 const MainLayout = () => {
-  const { user } = useUser();
-  const { loading } = useFetchUser();
+  const { user, isAuthResolved } = useUser();
   const { data } = useGetJobs();
   const { setJobs } = useJobs();
 
@@ -21,8 +19,13 @@ const MainLayout = () => {
     }
   }, [data, setJobs]);
 
-  //Redirecting if user is not logged in
-  if (!user && !loading) {
+  if (!isAuthResolved) {
+    return (
+      <div className="h-screen w-full flex justify-center items-center">Loading..</div>
+    );
+  }
+
+  if (!user) {
     return <Navigate to="/login" replace />;
   }
 
