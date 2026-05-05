@@ -7,7 +7,7 @@ const ListItem = ({ job }: { job: Job }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="flex flex-col md:flex-row gap-2 justify-between items-center border rounded-full hover:bg-muted cursor-pointer p-4"
+      className="flex flex-col md:flex-row gap-2 justify-between items-center border rounded-3xl md:rounded-full hover:bg-muted cursor-pointer p-4"
       onClick={() => navigate(`/jobs/${job.id}`)}
     >
       <div className="flex gap-2 items-center">
@@ -27,7 +27,7 @@ const ListItem = ({ job }: { job: Job }) => {
         )}
       </span>
       {/* Status + Badge + Interview Date */}
-      <div className="flex flex-col md:flex-row gap-2 items-center">
+      <div className="flex flex-row gap-2 items-center">
         <span
           className={`h-4 w-4 ${getStatusColor(job.status)} rounded-full`}
         />

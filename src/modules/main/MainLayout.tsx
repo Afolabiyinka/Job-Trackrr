@@ -7,6 +7,7 @@ import { useGetJobs } from "@/modules/main/jobs/hooks/useGetJobs";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";
 import { useEffect } from "react";
 import { useUser } from "@/modules/main/settings/store/useUser";
+import LoadingContainer from "@/components/loader/loadingcontainer";
 
 const MainLayout = () => {
   const { user, isAuthResolved } = useUser();
@@ -21,7 +22,7 @@ const MainLayout = () => {
 
   if (!isAuthResolved) {
     return (
-      <div className="h-screen w-full flex justify-center items-center">Loading..</div>
+      <LoadingContainer />
     );
   }
 

@@ -13,27 +13,38 @@ import { useGetContacts } from "../../contacts/hooks/useGetContacts";
 
 const ContactsStatsCard = () => {
   const navigate = useNavigate();
-  const { contacts } = useGetContacts()
+  const { contacts } = useGetContacts();
 
-  const contactsText = contacts.length === 1 ? "Contact" : "Contacts"
+  const count = contacts.length;
+  const label = count === 1 ? "Contact" : "Contacts";
+
   return (
-    <Card className="w-full  ring-0 shadow-none">
+    <Card className="w-full ring-0 shadow-none">
       <CardHeader>
         <CardTitle>Manage Contacts</CardTitle>
         <CardDescription>
-          You have {contacts.length} {contactsText}  saved on your account
+          You have {count} {label} saved on your account
         </CardDescription>
       </CardHeader>
-      <CardContent className="">
-        <Button size={`lg`} onClick={() => navigate("/contacts")}>
-          <User />
+      <CardContent className="space-y-3">
+        <Button size="lg" onClick={() => navigate("/contacts")}>
+          <User className="mr-2 h-4 w-4" />
           Manage Contacts
         </Button>
-        <div className="grid grid-flow-col-dense gap-5 mt-3 overflow-x-scroll ">
-          {contacts.slice(0, 3).map((contact, i) => (
-            <ContactCard key={i} contact={contact} />
-          ))}
-        </div>
+
+        {count === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            No contacts yet. Add one to get started.
+          </p>
+        ) : (
+          <div className="flex gap-4 overflow-x-auto pb-2">
+            {contacts.slice(0, 3).map((contact) => (
+              <div key={contact.id} className="min-w-50">
+                <ContactCard contact={contact} />
+              </div>
+            ))}
+          </div>
+        )}
       </CardContent>
     </Card>
   );
