@@ -1,17 +1,41 @@
 import logoImage from "@/assets/logo/logo.png";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
-const Logo = () => {
+interface LogoProps {
+  collapsed?: boolean;
+}
+
+const Logo = ({ collapsed = false }: LogoProps) => {
   return (
-    <Link to="/" className="flex items-center  justify-start rounded-3xl">
+    <Link
+      to="/"
+      className="flex items-center justify-start rounded-3xl overflow-hidden"
+      aria-label="Job Trackrr - Home"
+    >
       <img
         src={logoImage}
         alt="Job Trackrr Logo"
-        className="md:w-12 not-only: h-9 object-contain"
+        className="h-9 w-auto object-contain flex-shrink-0"
         fetchPriority="high"
         loading="eager"
       />
-      <span className="text-2xl font-bold tracking-wide">Job Trackrr</span>
+
+      <motion.span
+        initial={false}
+        animate={{
+          width: collapsed ? 0 : "auto",
+          opacity: collapsed ? 0 : 1,
+          marginLeft: collapsed ? 0 : "0.5rem"
+        }}
+        transition={{
+          duration: 0.3,
+          ease: [0.4, 0, 0.2, 1]
+        }}
+        className="text-2xl font-bold tracking-wide whitespace-nowrap overflow-hidden"
+      >
+        Job Trackrr
+      </motion.span>
     </Link>
   );
 };

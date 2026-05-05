@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Loader2, Minus } from "lucide-react";
+import { Loader2, Trash2 } from "lucide-react";
 import { useDeleteJob } from "../hooks/useDeleteJob";
 import {
   Tooltip,
@@ -26,7 +26,7 @@ const DeleteJobModal = ({ id }: { id: string }) => {
         <Tooltip>
           <TooltipTrigger>
             <Button size={`icon-lg`} variant={`destructive`}>
-              <Minus />
+              <Trash2 />
             </Button>
           </TooltipTrigger>
           <TooltipContent>

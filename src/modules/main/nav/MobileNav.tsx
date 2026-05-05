@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NAVLINKS } from "./utils/nav";
 import { Link, NavLink } from "react-router-dom";
 import MenuButton from "./components/MenuButton";
-import { Bell, LogOut, Settings } from "lucide-react";
+import { Bell, Loader2, LogOut, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
@@ -11,8 +11,9 @@ import SearchInput from "./components/SearchInput";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
-  const { handleLogout } = useLogout();
-
+  const { logoutLoading,
+    logoutMutate
+  } = useLogout();
   return (
     <div className="p-2  flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
@@ -72,13 +73,20 @@ const MobileNav = () => {
                 Settings
               </Link>
               <Button
-                className="justify-start gap-3"
-                size={`lg`}
-                variant={`destructive`}
-                onClick={() => handleLogout()}
+                className="relative justify-start gap-3"
+                size="lg"
+                variant="destructive"
+                onClick={() => logoutMutate()}
+                disabled={logoutLoading}
               >
-                <LogOut className="h-10 w-10" />
-                Log out
+                {logoutLoading && (
+                  <Loader2 className="absolute inset-0 m-auto h-5 w-5 animate-spin" />
+                )}
+
+                <span className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}>
+                  <LogOut className="h-4.5 w-4.5" />
+                  Logout
+                </span>
               </Button>
             </div>
           </motion.div>

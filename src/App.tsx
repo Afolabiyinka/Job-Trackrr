@@ -13,7 +13,7 @@ export function App() {
   const { theme } = useTheme();
 
   React.useEffect(() => {
-    if (!loading) {
+    if (!loading && fetchedUser) {
       setUser(fetchedUser.user || null);
       setAuthResolved(true);
     }

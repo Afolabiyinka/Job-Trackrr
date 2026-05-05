@@ -10,25 +10,42 @@ import { Button } from "@/components/ui/button";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
+
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Button size={`lg`} variant={`outline`}>
-          {theme === "light" ? <Sun /> : <Moon />}
-          Change Theme{" "}
+      <DropdownMenuTrigger asChild>
+        <Button size="lg" variant="outline">
+          {theme === "light" ? (
+            <Sun className="w-4 h-4 mr-2" />
+          ) : (
+            <Moon className="w-4 h-4 mr-2" />
+          )}
+          Change Theme
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          <Sun />
+
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem
+          onClick={() => setTheme("light")}
+          className="gap-2"
+        >
+          <Sun className="w-4 h-4" />
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          <Moon />
+
+        <DropdownMenuItem
+          onClick={() => setTheme("dark")}
+          className="gap-2"
+        >
+          <Moon className="w-4 h-4" />
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          <Laptop />
+
+        <DropdownMenuItem
+          onClick={() => setTheme("system")}
+          className="gap-2"
+        >
+          <Laptop className="w-4 h-4" />
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

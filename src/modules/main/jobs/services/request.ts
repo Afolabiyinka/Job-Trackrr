@@ -13,9 +13,11 @@ const createJob = async (payload: Job) => {
   });
 
   const data = await res.json();
+
   if (!res.ok) {
-    throw new Error(data.message);
+    throw data;
   }
+
   return data;
 };
 

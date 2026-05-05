@@ -2,69 +2,45 @@ import { useMutation } from "@tanstack/react-query";
 import type { Job } from "../types/job";
 import { createJob } from "../services/request";
 import useToastMessage from "@/shared/lib/toastMsg";
-import { useSetJob } from "../store/useAddJob";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/constants/queryClient";
+import { getErrorMessage } from "@/shared/lib/errorMsg";
 
 export const useCreateJob = () => {
   const { toastError, toastSuccess } = useToastMessage();
   const navigate = useNavigate();
 
-  const {
-    appliedAt,
-    company,
-    role,
-    companyEmail,
-    feedback,
-    status,
-    jobType,
-    salaryRange,
-    interviewDate,
-    interviewType,
-    workType,
-  } = useSetJob();
   const hasOnboarded = localStorage.getItem("onboarded") === "true";
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (payload: Job) => createJob(payload),
+
     onSuccess: (data) => {
       toastSuccess(data.message);
+
       queryClient.invalidateQueries({
         queryKey: ["jobs"],
       });
 
-      !hasOnboarded ? navigate("/jobs") : navigate("/dashboard");
+      navigate(hasOnboarded ? "/dashboard" : "/jobs");
     },
+
     onError: (err) => {
-      toastError(err.message || "Something went wrong");
+      toastError(getErrorMessage(err));
     },
   });
 
-  async function handleCreate(): Promise<boolean> {
+  const handleCreate = async (payload: Job): Promise<boolean> => {
     try {
-      await mutateAsync({
-        appliedAt,
-        company,
-        role,
-        companyEmail,
-        feedback,
-        status,
-        jobType,
-        salaryRange,
-        interviewDate,
-        interviewType,
-        workType,
-      });
-
+      await mutateAsync(payload);
       return true;
-    } catch (err) {
-      console.error(err);
+    } catch {
       return false;
     }
-  }
+  };
 
   return {
     handleCreate,
-    loading: isPending,
+    createLoading: isPending,
   };
 };

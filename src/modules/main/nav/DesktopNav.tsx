@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { LogOut, Settings } from "lucide-react";
+import { Loader2, LogOut, Settings } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
@@ -8,59 +8,68 @@ import Logo from "@/components/logo/Logo";
 
 const DesktopNav = () => {
   const location = useLocation();
+  const { logoutLoading,
+    logoutMutate
+  } = useLogout();
 
-  const { handleLogout } = useLogout();
   return (
-    <nav className="h-full w-full lg:flex hidden flex-col gap-6  p-3 ">
+    <nav className="h-full w-full lg:flex hidden flex-col gap-6 p-3">
       <Logo />
       <hr />
 
       <div className="flex flex-col gap-4 w-full">
         {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
-          const pathMatch = location.pathname.includes(path);
+          const isActive = location.pathname.includes(path);
           return (
-            <motion.span
-              whileTap={{ scale: 0.95 }}
-              key={i}
-              className="flex gap-2"
-            >
+            <div key={i} className="relative flex items-center gap-2">
+              <motion.div whileTap={{ scale: 0.95 }} className="flex-1">
+                <NavLink
+                  to={path}
+                  className={`flex gap-2 items-center rounded-3xl px-3 py-3 text-md transition w-full ${isActive
+                    ? "bg-primary text-white"
+                    : "hover:bg-muted"
+                    }`}
+                >
+                  <Icon className="h-4.5 w-4.5 stroke-[1.25px]" />
+                  <p>{name}</p>
+                </NavLink>
+              </motion.div>
 
-
-              <NavLink
-                to={path}
-                className={`flex gap-2 items-center rounded-3xl p-1.5 text-md px-3  transition w-full ${pathMatch ? "bg-primary text-white p-3" : "hover:bg-muted p-3"
-                  }`}
-              >
-                <Icon className={`h-4.5 w-4.5 stroke-[1.25px]`} />
-                <p>{name}</p>
-              </NavLink>
-              <motion.span
-                initial={{ height: 0 }}
-                animate={{ height: "100%" }}
-                transition={{}}
-                className={`${pathMatch ? "border-l-4 border-l-primary rounded-full" : ""}`}
-              />
-            </motion.span>
+              {isActive && (
+                <motion.div
+                  layoutId="active-indicator"
+                  className="absolute -right-3 h-full w-1 bg-primary rounded-full"
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                />
+              )}
+            </div>
           );
         })}
       </div>
 
       <div className="mt-auto flex flex-col gap-3 border-t pt-4">
         <Link
-          className="flex gap-2 mb-2 p-2 rounded-xl cursor-pointer"
-          to={`settings`}
+          className="flex gap-2 items-center p-3 rounded-3xl hover:bg-muted transition"
+          to="settings"
         >
-          <Settings />
-          Settings
+          <Settings className="h-4.5 w-4.5" />
+          <span>Settings</span>
         </Link>
         <Button
-          className="justify-start gap-3"
-          size={`lg`}
-          variant={"destructive"}
-          onClick={() => handleLogout()}
+          className="relative justify-start gap-3"
+          size="lg"
+          variant="destructive"
+          onClick={() => logoutMutate()}
+          disabled={logoutLoading}
         >
-          <LogOut className="h-10 w-10" />
-          Log out
+          {logoutLoading && (
+            <Loader2 className="absolute inset-0 m-auto h-5 w-5 animate-spin" />
+          )}
+
+          <span className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}>
+            <LogOut className="h-4.5 w-4.5" />
+            Logout
+          </span>
         </Button>
       </div>
     </nav>

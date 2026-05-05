@@ -20,5 +20,6 @@ export const useUser = create<UserStore>((set) => ({
   },
   logout: () => {
     set({ user: null });
+    set({ isAuthResolved: true });
   },
 }));

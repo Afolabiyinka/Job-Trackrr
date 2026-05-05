@@ -60,10 +60,10 @@ const JobPage = () => {
   const interviewIndicator = showInterviewIndicator(job.interviewDate);
 
   return (
-    <div className="mx-auto  p-4 space-y-4">
+    <div className="mx-auto  p-2 md:p-4 space-y-4">
 
       {/* Top bar */}
-      <div className="flex items-center justify-between">
+      <div className="flex md:items-center justify-between">
         <Button
           onClick={() => navigate(-1)}
           variant="ghost"
@@ -121,9 +121,9 @@ const JobPage = () => {
       </div>
 
       {/* Role + details */}
-      <div className="  rounded-2xl divide-y">
+      <div className="rounded-2xl">
         {/* Role header */}
-        <div className="p-5 flex flex-col sm:flex-row sm:items-center gap-3">
+        <div className="p-1 md:p-5 flex flex-col sm:flex-row sm:items-center gap-3">
           <div className="flex items-center gap-3 flex-1">
             <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center shrink-0">
               <User size={18} className="text-muted-foreground" />

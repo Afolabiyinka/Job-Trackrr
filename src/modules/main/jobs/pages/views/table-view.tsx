@@ -7,7 +7,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { getStatusColor } from "../../libs/utils";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFilterJobs } from "../../hooks/useFilterJobs";
 import { useState } from "react";
 import type { Job } from "../../types/job";
@@ -22,6 +22,12 @@ import Pagination from "@/components/pagination";
 import { usePagination } from "../../hooks/usePagination";
 import { useGetJobs } from "../../hooks/useGetJobs";
 import Loader from "@/components/loader/Loader";
+import { formatDistanceToNow } from "date-fns";
+import { Briefcase, Plus, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+// Add after the loading check
+
 
 const TableView = () => {
   const navigate = useNavigate();
@@ -30,6 +36,9 @@ const TableView = () => {
 
   const { appliedJobs, interviewJobs, offeredJobs, rejectedJobs } =
     useFilterJobs();
+
+
+
 
   const [activeFilter, setActiveFilter] = useState<
     "all" | "applied" | "interview" | "offer" | "rejected"
@@ -50,6 +59,45 @@ const TableView = () => {
     offer: offeredJobs,
     rejected: rejectedJobs,
   }[activeFilter];
+
+
+  {
+    !loading && filteredJobs?.length === 0 && (
+      <TableRow>
+        <TableCell colSpan={4} className="h-96">
+          <div className="flex flex-col items-center justify-center gap-3 text-center">
+            {activeFilter === "all" ? (
+              <>
+                <Briefcase className="h-16 w-16 text-muted-foreground" />
+                <div>
+                  <h3 className="font-semibold text-lg">No jobs yet</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Get started by adding your first job application
+                  </p>
+                </div>
+                <Button asChild>
+                  <Link to="/applications/new">
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add New Job
+                  </Link>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Search className="h-16 w-16 text-muted-foreground" />
+                <div>
+                  <h3 className="font-semibold text-lg">No {activeFilter} jobs</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Try a different filter or add more applications
+                  </p>
+                </div>
+              </>
+            )}
+          </div>
+        </TableCell>
+      </TableRow>
+    )
+  }
 
   return (
     <div className="h-full w-full flex flex-col gap-3 p-2">
@@ -87,6 +135,7 @@ const TableView = () => {
             <TableHead>Role</TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Company email</TableHead>
+            <TableHead>Date Applied</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="w-full">
@@ -117,7 +166,13 @@ const TableView = () => {
                     {job.status}
                   </TableCell>
                   <TableCell>{job.companyEmail}</TableCell>
-                </TableRow>
+                  <TableCell className="text-muted-foreground text-sm">
+                    {job.interviewDate
+                      ? formatDistanceToNow(new Date(job.interviewDate), {
+                        addSuffix: true,
+                      })
+                      : "Not scheduled"}
+                  </TableCell>                </TableRow>
               );
             })
           )}

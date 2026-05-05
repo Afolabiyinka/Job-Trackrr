@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -97,22 +98,45 @@ const CreateJobStepper = ({
     reset,
   } = useSetJob();
 
-  const { handleCreate, loading } = useCreateJob();
-  const { handleEdit } = useEditJobs();
+  const { handleCreate, createLoading } = useCreateJob();
+  const { handleEdit, editLoading } = useEditJobs();
+
+  const isLoading = createLoading || editLoading;
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (editing) {
       if (!id) return;
-      const success = await handleEdit({ id });
-      if (success) {
-        reset();
+      const success = await handleEdit(id, {
+        appliedAt,
+        company,
+        role,
+        companyEmail,
+        feedback,
+        status,
+        jobType,
+        salaryRange,
+        interviewDate,
+        interviewType,
+        workType,
+      }); if (success) {
         setOpen(false);
       }
       return;
     }
-    const success = await handleCreate();
-    if (success) {
+    const success = await handleCreate({
+      appliedAt,
+      company,
+      role,
+      companyEmail,
+      feedback,
+      status,
+      jobType,
+      salaryRange,
+      interviewDate,
+      interviewType,
+      workType,
+    }); if (success) {
       reset();
       setOpen(false);
     }
@@ -147,11 +171,14 @@ const CreateJobStepper = ({
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="flex flex-col  p-3 overflow-hidden">
-        {/* Header */}
+      <DialogContent className="flex flex-col  p-1 overflow-hidden">
         <DialogHeader className="px-6 pt-6 pb-0">
           <DialogTitle className="text-lg font-bold">{title}</DialogTitle>
-        </DialogHeader>
+          <DialogDescription>
+            {editing
+              ? "Update the details for this job application."
+              : "Track a new job application across basics, compensation, interview, and status."}
+          </DialogDescription>        </DialogHeader>
 
         {/* Step indicator */}
         <div className="px-6 pt-4">
@@ -314,18 +341,22 @@ const CreateJobStepper = ({
                     placeholder="Feedback, impressions, or anything to remember..."
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
-                    className="resize-none min-h-[90px]"
+                    className="resize-none text-xs min-h-[90px]"
                   />
                 </FieldGroup>
+
 
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={loading}
-                  className="gap-1.5 min-w-[120px]"
+                  disabled={isLoading}
+                  className="gap-2 min-w-[140px]"
                 >
-                  {loading ? (
-                    <Loader2 size={14} className="animate-spin" />
+                  {isLoading ? (
+                    <div className="flex items-center gap-2">
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <span>Saving...</span>
+                    </div>
                   ) : editing ? (
                     <>
                       <Pencil size={14} /> Save changes
@@ -338,39 +369,38 @@ const CreateJobStepper = ({
                 </Button>
 
 
-
               </div>
             )}
           </div>
 
           {/* Footer nav */}
-          <div className="px-6 py-4 flex items-center justify-between gap-3">
+          <div className="px-4 sm:px-6 py-4 flex items-center justify-between gap-2 sm:gap-3">
             <Button
               type="button"
               onClick={prevStep}
               disabled={activeStep === 0}
               variant="outline"
               size="lg"
-              className="gap-1.5"
+              className="gap-1.5 min-w-[80px] sm:min-w-[100px]"
             >
-              <ArrowLeft size={14} /> Back
+              <ArrowLeft size={14} />
+              <span className="hidden xs:inline">Back</span>
             </Button>
 
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-muted-foreground shrink-0">
               {activeStep + 1} / {STEPS.length}
             </span>
-
 
             <Button
               type="button"
               onClick={nextStep}
               size="lg"
-              className="gap-1.5"
+              className="gap-1.5 min-w-[80px] sm:min-w-[100px]"
               disabled={activeStep === 3}
             >
-              Next <ArrowRight size={14} />
+              <span className="hidden xs:inline">Next</span>
+              <ArrowRight size={14} />
             </Button>
-
           </div>
         </form>
       </DialogContent>

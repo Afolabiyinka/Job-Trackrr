@@ -1,66 +1,45 @@
 import { useMutation } from "@tanstack/react-query";
-import { useSetJob } from "../store/useAddJob";
 import type { Job } from "../types/job";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { editJob } from "../services/request";
 import { queryClient } from "@/shared/constants/queryClient";
+import { getErrorMessage } from "@/shared/lib/errorMsg";
+
 
 export const useEditJobs = () => {
   const { toastError, toastSuccess } = useToastMessage();
 
-  const {
-    appliedAt,
-    company,
-    role,
-    companyEmail,
-    feedback,
-    status,
-    jobType,
-    salaryRange,
-    interviewDate,
-    interviewType,
-    workType,
-  } = useSetJob();
-
   const { mutateAsync, isPending } = useMutation({
     mutationFn: ({ id, payload }: { id: number | string; payload: Job }) =>
       editJob(payload, id),
+
     onSuccess: (data) => {
       toastSuccess(data.message);
+
       queryClient.invalidateQueries({
         queryKey: ["job"],
       });
     },
-    onError: (err: any) => {
-      toastError(err.message || "Something went wrong");
+
+    onError: (err) => {
+      toastError(getErrorMessage(err));
     },
   });
-  async function handleEdit({ id }: { id: number | string }): Promise<boolean> {
-    try {
-      await mutateAsync({
-        id,
-        payload: {
-          appliedAt,
-          company,
-          role,
-          companyEmail,
-          feedback,
-          status,
-          jobType,
-          salaryRange,
-          interviewDate,
-          interviewType,
-          workType,
-        },
-      });
 
+  const handleEdit = async (
+    id: number | string,
+    payload: Job
+  ): Promise<boolean> => {
+    try {
+      await mutateAsync({ id, payload });
       return true;
-    } catch (err) {
+    } catch {
       return false;
     }
-  }
+  };
+
   return {
     handleEdit,
-    loading: isPending,
+    editLoading: isPending,
   };
 };
