@@ -11,7 +11,7 @@ const StatsCardItem = ({ value, label, icon }: Props) => {
   const { loading } = useGetJobs();
 
   return (
-    <div className="border rounded-2xl h-full overflow-hidden">
+    <div className="border rounded-3xl h-full overflow-hidden">
       {loading ? (
         <div className="h-full w-full p-2 animate-pulse flex justify-between items-center">
           <div className="flex items-center gap-3 mb-3 h-">

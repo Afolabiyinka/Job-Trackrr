@@ -171,7 +171,7 @@ const CreateJobStepper = ({
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="flex flex-col  p-1 overflow-hidden">
+      <DialogContent className="flex flex-col  p-1 overflow-hidden sm:w-3xl">
         <DialogHeader className="px-6 pt-6 pb-0">
           <DialogTitle className="text-lg font-bold">{title}</DialogTitle>
           <DialogDescription>
@@ -181,7 +181,7 @@ const CreateJobStepper = ({
           </DialogDescription>        </DialogHeader>
 
         {/* Step indicator */}
-        <div className="px-6 pt-4">
+        <div className="px-6   pt-4">
           <div className="flex items-center gap-0">
             {STEPS.map((label, i) => (
               <React.Fragment key={i}>

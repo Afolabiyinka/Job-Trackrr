@@ -15,7 +15,7 @@ const ContactsStatsCard = () => {
   const navigate = useNavigate();
   const { contacts } = useGetContacts();
 
-  const count = contacts.length;
+  const count = contacts.length || contacts.length === 0 && "no";
   const label = count === 1 ? "Contact" : "Contacts";
 
   return (

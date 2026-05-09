@@ -48,7 +48,7 @@ const Jobs = () => {
   }
 
   if (loading) return <LoadingContainer />;
-  if (data?.jobs.length === 0) return <NoJobs />;
+  if (data?.data.length === 0) return <NoJobs />;
 
   return (
     <div className="h-full w-full flex flex-col gap-5 p-2">

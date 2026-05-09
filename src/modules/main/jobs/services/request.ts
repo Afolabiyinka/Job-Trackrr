@@ -40,7 +40,7 @@ const editJob = async (payload: Partial<Job>, id: number | string) => {
 };
 
 type PaginatedJobs = {
-  jobs: Job[];
+  data: Job[];
   total: number;
   currentPage: number;
   totalPages: number;

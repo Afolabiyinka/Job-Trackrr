@@ -7,7 +7,7 @@ import NoJobs from "../../jobs/pages/error/NoJobs";
 const DashBoard = () => {
   const { data } = useGetJobs();
 
-  if (data?.jobs.length === 0) {
+  if (data?.data.length === 0) {
     return <NoJobs />;
   }
 

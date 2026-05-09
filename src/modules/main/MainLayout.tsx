@@ -16,7 +16,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     if (data) {
-      setJobs(data?.jobs);
+      setJobs(data?.data);
     }
   }, [data, setJobs]);
 

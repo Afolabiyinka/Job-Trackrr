@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useFetchUser } from "../main/settings/hooks/useFetchUser";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 import { motion } from "framer-motion";
-import signup_img from "@/assets/sign-up_image.svg";
+import signup_img from "@/assets/login_image.svg";
 
 const AuthLayout = () => {
   const { user } = useUser();
@@ -24,7 +24,7 @@ const AuthLayout = () => {
       ) : (
         <div className="h-full w-full flex flex-col md:flex-row gap-6 justify-center items-center">
           <motion.div
-            className="w-full md:w-1/2 md:flex justify-center border rounded-xl shadow-lg hidden h-full"
+            className="w-full md:w-1/2 md:flex justify-center border rounded-xl shadow-lg hidden h-full bg-background"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
