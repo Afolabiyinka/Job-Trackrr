@@ -45,7 +45,7 @@ const TableView = () => {
   >("all");
 
   const counts = {
-    all: data?.jobs.length,
+    all: data?.data.length,
     applied: appliedJobs.length,
     interview: interviewJobs.length,
     offer: offeredJobs.length,
@@ -53,7 +53,7 @@ const TableView = () => {
   };
 
   const filteredJobs = {
-    all: data?.jobs,
+    all: data?.data,
     applied: appliedJobs,
     interview: interviewJobs,
     offer: offeredJobs,
@@ -178,7 +178,7 @@ const TableView = () => {
           )}
         </TableBody>
       </Table>
-      {data?.jobs.length === 10 && (
+      {data?.data.length === 10 && (
         <Pagination
           currentPage={currentPage}
           handleNextPage={handleNextPage}
