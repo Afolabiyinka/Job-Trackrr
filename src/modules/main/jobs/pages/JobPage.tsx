@@ -60,7 +60,7 @@ const JobPage = () => {
   const interviewIndicator = showInterviewIndicator(job.interviewDate);
 
   return (
-    <div className="mx-auto  p-2 md:p-4 space-y-4">
+    <div className="mx-auto  p-1 md:p-4 space-y-4">
 
       {/* Top bar */}
       <div className="flex md:items-center justify-between">
@@ -85,7 +85,7 @@ const JobPage = () => {
       </div>
 
       {/* Company header */}
-      <div className="  rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+      <div className="  rounded-2xl md:p-5 p-2 flex flex-col sm:flex-row sm:items-center gap-4">
         <div className="flex items-center gap-4 flex-1 min-w-0">
           <div className="h-14 w-14 shrink-0 rounded-full  bg-muted flex items-center justify-center">
             <Building2 size={28} className="text-muted-foreground" />
