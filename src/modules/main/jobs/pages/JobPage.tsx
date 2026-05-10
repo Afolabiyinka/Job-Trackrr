@@ -66,7 +66,7 @@ const JobPage = () => {
       <div className="flex md:items-center justify-between">
         <Button
           onClick={() => navigate(-1)}
-          variant="ghost"
+          variant="secondary"
           size="lg"
         >
           <ArrowLeft size={16} />

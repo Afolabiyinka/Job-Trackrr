@@ -1,5 +1,4 @@
 import ScoreCircle from "../../components/ScoreCircle";
-import { useResume } from "../../store/useResume";
 import { useAnalyseResume } from "../../hooks/useAnalyseResume";
 import { Navigate } from "react-router-dom";
 import UploadResume from "../../components/UploadResume";
@@ -20,11 +19,13 @@ import {
 } from "@/components/ui/card";
 
 const Results = () => {
-  const { analysis } = useResume();
 
-  const { handleAnalyse, isPending } = useAnalyseResume();
-  if (!analysis && !isPending) {
-    return <Navigate to={`/resume`} />;
+  const { handleAnalyse, isPending, analysis } = useAnalyseResume();
+
+
+
+  if (!analysis) {
+    return <Navigate to="/resume" replace />;
   }
 
   const strengths = analysis?.strengths || [];
@@ -61,7 +62,7 @@ const Results = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-green-600">
                 <CheckCircle />
-                What You’re Doing Well{" "}
+                What You’re Doing Well
               </CardTitle>
               <CardDescription>
                 Nice work — these parts of your resume are already doing well.

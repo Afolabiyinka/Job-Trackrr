@@ -12,7 +12,7 @@ interface Props {
 const FeaturesCard = ({ desc, icon: Icon, title }: Props) => {
   return (
     <motion.div
-      className="p-4 rounded-xl flex justify-center items-center gap-3"
+      className="p-4 rounded-2xl flex justify-center items-center gap-3 bg-background"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeIn" }}
@@ -22,7 +22,7 @@ const FeaturesCard = ({ desc, icon: Icon, title }: Props) => {
       </span>
       <div className="flex flex-col">
         <h3 className="font-semibold text-lg">{title}</h3>
-        <p className="text-sm text-gray-500">{desc}</p>
+        <p className="text-sm text-muted-foreground">{desc}</p>
       </div>
     </motion.div>
   );

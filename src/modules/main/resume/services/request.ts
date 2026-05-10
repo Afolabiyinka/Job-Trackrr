@@ -1,7 +1,8 @@
 import { prodEndpoint } from "@/shared/constants/api-data";
 import axios from "axios";
+import type { AnalysisType } from "../types/types";
 
-async function analyseResume(resumeText: string) {
+async function analyseResume(resumeText: string): Promise<AnalysisType> {
   try {
     const res = await axios.post(
       `${prodEndpoint}api/resume`,

@@ -26,7 +26,7 @@ const CustomInput = ({
 
   return (
     <div
-      className={`flex items-center h-14 w-full border overflow-hidden rounded-full px-3 gap-2 focus-within:ring-2 focus-within:ring-muted transition ${className}`}
+      className={`flex items-center h-14 w-full bg-background border overflow-hidden rounded-full px-3 gap-2 focus-within:ring-2 focus-within:ring-muted transition ${className}`}
     >
       {icon && <IconComponent className="stroke-[1px]" />}
       <input
