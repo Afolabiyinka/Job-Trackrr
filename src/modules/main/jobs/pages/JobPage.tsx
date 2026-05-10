@@ -87,8 +87,8 @@ const JobPage = () => {
       {/* Company header */}
       <div className="  rounded-2xl md:p-5 p-2 flex flex-col sm:flex-row sm:items-center gap-4">
         <div className="flex items-center gap-4 flex-1 min-w-0">
-          <div className="h-14 w-14 shrink-0 rounded-full  bg-muted flex items-center justify-center">
-            <Building2 size={28} className="text-muted-foreground" />
+          <div className="h-14 w-14 shrink-0 rounded-full text-2xl  bg-muted flex items-center justify-center">
+            {job.company.charAt(0)}
           </div>
           <div className="min-w-0">
 
