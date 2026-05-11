@@ -6,6 +6,7 @@ import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import ForgetPassword from "./ForgetPassword";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const { handleLogin, loading, setLoginData, loginData } = useLogin();
@@ -16,49 +17,101 @@ const Login = () => {
   }
 
   return (
-    <div className="h-full w-full flex justify-center items-center">
-      <form className="md:min-w-md" onSubmit={onSubmit}>
-        <div className="mb-3">
-          <h1 className="text-3xl font-bold tracking-tight">Welcome back</h1>
-          <p className="text-md tracking-wider text-gray-500 mt-1">
-            Sign in to your account to continue
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 w-full">
-          <CustomInput
-            type="email"
-            placeholder="Email"
-            icon={`Mail`}
-            value={loginData.email}
-            onChange={(e) => setLoginData({ ...loginData, email: e })}
-          />
-          <CustomInput
-            type="password"
-            placeholder="Password"
-            icon={`Lock`}
-            value={loginData.password}
-            onChange={(e) => setLoginData({ ...loginData, password: e })}
-          />
+    <div className="h-full w-full flex justify-center items-center py-8">
+      <motion.div
+        className="w-full max-w-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <form onSubmit={onSubmit} className="space-y-6">
+          {/* Header */}
+          <div className="text-center space-y-2">
+            <h1 className="text-4xl font-bold tracking-tight">Welcome back</h1>
+            <p className="text-muted-foreground">
+              Sign in to your account and continue tracking your applications
+            </p>
+          </div>
 
-          <div className="flex items-center justify-between">
-            <span className="flex gap-2  mt-3 w-fit items-center justify-start">
-              <Checkbox id="checkbox" className="w-4 h-4" />
-              <Label htmlFor="checkbox">Remember me</Label>
-            </span>
+          {/* Form Fields */}
+          <div className="space-y-4">
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="text-sm font-medium">
+                Email address
+              </Label>
+              <CustomInput
+                type="email"
+                placeholder="you@example.com"
+                icon="Mail"
+                id="email"
+                value={loginData.email}
+                onChange={(e) => setLoginData({ ...loginData, email: e })}
+                required
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <Label htmlFor="password" className="text-sm font-medium">
+                Password
+              </Label>
+              <CustomInput
+                type="password"
+                placeholder="Enter your password"
+                icon="Lock"
+                id="password"
+                value={loginData.password}
+                onChange={(e) => setLoginData({ ...loginData, password: e })}
+                required
+              />
+            </div>
+          </div>
+
+          {/* Remember Me & Forgot Password */}
+          <div className="flex items-center justify-between pt-2">
+            <div className="flex items-center gap-2">
+              <Checkbox id="remember" className="w-4 h-4" />
+              <Label
+                htmlFor="remember"
+                className="text-sm font-normal cursor-pointer"
+              >
+                Remember me
+              </Label>
+            </div>
 
             <ForgetPassword />
           </div>
-          <Button size={`lg`} className="w-full" disabled={loading}>
-            {loading && <Loader2 className="animate-spin h-8 w-6" />} Log in
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            size="lg"
+            className="w-full"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                Signing in...
+              </>
+            ) : (
+              "Sign in"
+            )}
           </Button>
-        </div>
-        <p className="text-center mt-4">
-          New to JobTrackrr?{" "}
-          <Link to={`/signup`} className="text-primary cursor-pointer">
-            Create account
-          </Link>
-        </p>
-      </form>
+
+          {/* Footer */}
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground">
+              New to JobTrackrr?{" "}
+              <Link
+                to="/signup"
+                className="text-primary font-medium hover:underline"
+              >
+                Create an account
+              </Link>
+            </p>
+          </div>
+        </form>
+      </motion.div>
     </div>
   );
 };

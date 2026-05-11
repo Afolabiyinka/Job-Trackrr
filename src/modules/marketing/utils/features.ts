@@ -1,4 +1,4 @@
-import { Target, BarChart3, TrendingUp, Users } from "lucide-react";
+import { Target, BarChart3, TrendingUp, Users, Sparkles } from "lucide-react";
 
 export const features = [
   {
@@ -19,12 +19,12 @@ export const features = [
       "Visualize your job search progress with powerful analytics and metrics.",
     icon: BarChart3,
   },
-  // {
-  //   title: "Document Management",
-  //   description:
-  //     "Store and organize resumes, cover letters, and other documents in one place.",
-  //   icon: FileText,
-  // },
+  {
+    title: "AI Document Insights",
+    description:
+      "Get AI-powered analysis of your CV and job documents with improvement suggestions and application scoring.",
+    icon: Sparkles,
+  },
   {
     title: "Progress Tracking",
     description:

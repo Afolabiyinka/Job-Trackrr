@@ -10,7 +10,7 @@ interface Props {
   id?: string;
   value?: string | number;
   className?: string;
-  required?: false
+  required?: boolean
 }
 
 const CustomInput = ({
@@ -26,7 +26,7 @@ const CustomInput = ({
 
   return (
     <div
-      className={`flex items-center h-14 w-full bg-background border overflow-hidden rounded-full px-3 gap-2 focus-within:ring-2 focus-within:ring-muted transition ${className}`}
+      className={`flex items-center h-14 w-full overflow-hidden rounded-full px-3 gap-2 border border-muted focus-within:border-primary/50 focus-within:ring-2 focus-within:ring-muted/50 transition  ${className}`}
     >
       {icon && <IconComponent className="stroke-[1px]" />}
       <input

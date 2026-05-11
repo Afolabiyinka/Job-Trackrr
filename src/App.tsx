@@ -32,7 +32,7 @@ export function App() {
   }, [theme]);
 
   return (
-    <div className="font-[Montserrat]">
+    <div className="font-[Montserrat] min-h-screen">
       <RoutesConfig />
       <Toaster
         position="top-right"

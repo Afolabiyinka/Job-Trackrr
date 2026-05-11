@@ -4,9 +4,11 @@ import Footer from "./pages/Footer";
 
 const MarkettingLayout = () => {
   return (
-    <div className={`p-2 h-full w-full`}>
+    <div className="w-full relative">
       <NavLayout />
-      <Outlet />
+      <div className="pt-16">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
