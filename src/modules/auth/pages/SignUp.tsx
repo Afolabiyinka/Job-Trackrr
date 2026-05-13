@@ -25,7 +25,7 @@ const SignUp = () => {
       >
         <form onSubmit={onSubmit} className="space-y-6">
           {/* Header */}
-          <div className="text-center space-y-2">
+          <div className="text-left space-y-2">
             <h1 className="text-4xl font-bold tracking-tight">New here?</h1>
             <p className="text-muted-foreground">
               Create your account and start tracking your job applications today
@@ -79,7 +79,7 @@ const SignUp = () => {
               />
             </div>
 
-            <div className="space-y-1.5">
+            {/* <div className="space-y-1.5">
               <Label htmlFor="confirm-password" className="text-sm font-medium">
                 Confirm password
               </Label>
@@ -94,7 +94,7 @@ const SignUp = () => {
                 }
                 required
               />
-            </div>
+            </div> */}
           </div>
 
 

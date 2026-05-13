@@ -1,53 +1,131 @@
-import {
-  RiUserAddLine,
-  RiFileSearchLine,
-  RiBarChartBoxLine,
-} from "@remixicon/react";
-import { motion } from "motion/react"
+import { Button } from "@/components/ui/button";
+
+import { User, Search, ChartBar } from "lucide-react"
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const steps = [
   {
+    step: "01",
     title: "Create an account",
-    description: "Sign up in seconds and set up your job search profile.",
-    icon: RiUserAddLine,
+    description: "Sign up in seconds and set up your job search profile. No credit card required.",
+    icon: User,
   },
   {
+    step: "02",
     title: "Track applications",
-    description: "Add and organize every job you apply to in one place.",
-    icon: RiFileSearchLine,
+    description: "Add and organize every job you apply to in one place. Drag and drop between stages.",
+    icon: Search,
   },
   {
+    step: "03",
     title: "Analyze progress",
-    description: "Get insights on your job search performance and improve faster.",
-    icon: RiBarChartBoxLine,
+    description: "Get insights on your job search performance and improve faster with AI-powered suggestions.",
+    icon: ChartBar,
   },
 ];
 
 const HowItWorks = () => {
   return (
-    <section className="w-full py-20 px-6 md:px-16">
-      <div className="text-center mb-12">
-        <motion.h2 className="text-3xl md:text-5xl font-bold">
-          How It Works
-        </motion.h2>
-        <p className="text-muted-foreground mt-3">
-          A simple workflow to manage your job search efficiently.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-8">
-        {steps.map(({ title, description, icon: Icon }) => (
+    <section className="w-full min-h-screen flex items-center justify-center py-20 px-6 md:px-16 bg-muted/30">
+      <div className="max-w-7xl w-full">
+        {/* Header */}
+        <div className="text-center mb-16 space-y-4">
           <motion.div
-            key={title}
-            className="border rounded-xl p-6 flex flex-col items-start gap-2 hover:shadow-md transition"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary"
           >
-            <Icon className="w-6 h-6 text-primary" />
-            <h3 className="text-xl font-semibold">{title}</h3>
-            <p className="text-muted-foreground  leading-relaxed">
-              {description}
-            </p>
+            Simple and powerful
           </motion.div>
-        ))}
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-6xl font-bold tracking-tight"
+          >
+            How it works
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+          >
+            Get started with JobTrackrr in three simple steps. From signup to insights in minutes.
+          </motion.p>
+        </div>
+
+        {/* Steps Grid */}
+        <div className="grid md:grid-cols-3 gap-8 relative">
+          {/* Connecting line (desktop only) */}
+          <div className="hidden md:block absolute top-16 left-1/2 -translate-x-1/2 w-[calc(100%-200px)] h-0.5 bg-gradient-to-r from-primary/50 via-primary to-primary/50" />
+
+          {steps.map(({ step, title, description, icon: Icon }, index) => (
+            <motion.div
+              key={title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative"
+            >
+              <div className="bg-background border rounded-2xl p-8 flex flex-col items-start gap-4 hover:shadow-xl hover:border-primary/50 transition-all duration-300 h-full group">
+                {/* Step number badge */}
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                  {step}
+                </div>
+
+                {/* Icon */}
+                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-7 h-7 text-primary" />
+                </div>
+
+                {/* Content */}
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold">{title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {description}
+                  </p>
+                </div>
+
+                {/* Arrow indicator (mobile only) */}
+                {index < steps.length - 1 && (
+                  <div className="md:hidden w-full flex justify-center mt-4">
+                    <div className="w-0.5 h-8 bg-gradient-to-b from-primary to-transparent" />
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <p className="text-muted-foreground mb-6">
+            Ready to take control of your job search?
+          </p>
+          <Link to="/signup">
+
+            <Button
+              size={`lg`}
+            >
+              Get started now
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

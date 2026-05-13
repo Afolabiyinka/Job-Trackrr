@@ -56,7 +56,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0"
+            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 "
           >
             Organize, track, and manage all your job applications in one place.
             Stay on top of every opportunity with powerful insights and
@@ -86,7 +86,7 @@ const Home = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4"
           >
             <Link to="/signup">
-              <Button size="lg" className="w-full sm:w-auto shadow-lg shadow-primary/25">
+              <Button size="lg" className="w-full sm:w-auto">
                 Get started for free
                 <RiArrowRightLine className="ml-2 h-4 w-4" />
               </Button>

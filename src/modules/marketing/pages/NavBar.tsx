@@ -21,7 +21,7 @@ const NavBar = () => {
                 }`
               }
             >
-              <Icon className="w-4.5 h-4.5" />
+              <Icon className="w-4 h-4" />
               {name}
             </NavLink>
           ))}

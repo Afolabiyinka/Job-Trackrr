@@ -22,13 +22,7 @@ const AuthLayout = () => {
         <LoadingContainer />
       ) : (
         <div className="h-full w-full flex flex-col md:flex-row gap-6 justify-center items-center p-4 md:p-10">
-          <div className="w-full md:w-1/2 md:flex justify-center hidden h-full">
-            <img
-              src={signup_img}
-              alt="Welcome"
-              className="w-full h-full object-contain p-10"
-            />
-          </div>
+
 
           <motion.div
             className="w-full h-full md:w-1/2 rounded-lg"
@@ -36,6 +30,13 @@ const AuthLayout = () => {
           >
             <Outlet />
           </motion.div>
+          <div className="w-full md:w-1/2 md:flex justify-center hidden h-full">
+            <img
+              src={signup_img}
+              alt="Welcome"
+              className="w-full h-full object-contain p-10"
+            />
+          </div>
         </div>
       )}
     </div>

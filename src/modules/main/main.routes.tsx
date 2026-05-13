@@ -65,6 +65,11 @@ const mainRoutes: RouteObject[] = [
     Component: FeatureInDevelopment,
     handle: { title: "Goals" },
   },
+  {
+    path: "interviews",
+    Component: FeatureInDevelopment,
+    handle: { title: "Interviews" },
+  },
 ];
 
 export { mainRoutes };

@@ -1,5 +1,6 @@
 import Features from "./Features";
 import Home from "./Home";
+import HowItWorks from "./How-It-works";
 import About from "./Testimonials";
 
 const LandingPage = () => {
@@ -7,6 +8,7 @@ const LandingPage = () => {
     <>
       <Home />
       <Features />
+      <HowItWorks />
       <About />
     </>
   );

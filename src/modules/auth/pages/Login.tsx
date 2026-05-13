@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import CustomInput from "@/modules/main/jobs/components/create-job/input/custom-input";
 import { Loader2 } from "lucide-react";
@@ -24,15 +23,14 @@ const Login = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <form onSubmit={onSubmit} className="space-y-6">
+        <form onSubmit={onSubmit} className="space-y-4">
           {/* Header */}
-          <div className="text-center space-y-2">
+          <div className="text-left space-y-2">
             <h1 className="text-4xl font-bold tracking-tight">Welcome back</h1>
             <p className="text-muted-foreground">
-              Sign in to your account and continue tracking your applications
+              Continue tracking your job applications
             </p>
           </div>
-
           {/* Form Fields */}
           <div className="space-y-4">
             <div className="space-y-1.5">
@@ -67,16 +65,8 @@ const Login = () => {
           </div>
 
           {/* Remember Me & Forgot Password */}
-          <div className="flex items-center justify-between pt-2">
-            <div className="flex items-center gap-2">
-              <Checkbox id="remember" className="w-4 h-4" />
-              <Label
-                htmlFor="remember"
-                className="text-sm font-normal cursor-pointer"
-              >
-                Remember me
-              </Label>
-            </div>
+          <div className="flex items-center justify-end">
+
 
             <ForgetPassword />
           </div>
