@@ -5,6 +5,7 @@ import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { useUser } from "../store/useUser";
 import { useEditUser } from "../hooks/useEditUser";
 import React, { useEffect } from "react";
+import { Label } from "@/components/ui/label";
 
 const EditInfo = () => {
   const { user } = useUser();
@@ -24,27 +25,37 @@ const EditInfo = () => {
       <CardHeader className="text-2xl">Edit your details</CardHeader>
       <CardContent>
         <form className="" onSubmit={onSubmit}>
-          <div className="grid md:grid-cols-3 gap-6 grid-cols-1">
-            <CustomInput
-              icon={`User`}
-              placeholder="Username"
-              type="text"
-              id="username"
-              value={editData.username}
-              onChange={(e) => setEditData({ ...editData, username: e })}
-            />
-            <CustomInput
-              icon={`Mail`}
-              placeholder="Email"
-              type="text"
-              id="email"
-              value={editData.email}
-              onChange={(e) => setEditData({ ...editData, email: e })}
-            />
+          <div className="grid md:grid-cols-2 gap-6 grid-cols-1">
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="text-sm font-medium">
+                Username
+              </Label>
+              <CustomInput
+                icon={`User`}
+                placeholder="Username"
+                type="text"
+                id="username"
+                value={editData.username}
+                onChange={(e) => setEditData({ ...editData, username: e })}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="text-sm font-medium">
+                Email
+              </Label>
+              <CustomInput
+                icon={`Mail`}
+                placeholder="Email"
+                type="text"
+                id="email"
+                value={editData.email}
+                onChange={(e) => setEditData({ ...editData, email: e })}
+              />
+            </div>
           </div>
           <Button size={`lg`} className="mt-3" type="submit" disabled={loading}>
             {loading && <Loader2 className="h-6 w-6 animate-spin" />}
-            Update your Details
+            Save Changes
           </Button>
         </form>
       </CardContent>

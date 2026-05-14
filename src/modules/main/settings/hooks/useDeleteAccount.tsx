@@ -2,11 +2,11 @@ import useToastMessage from "@/shared/lib/toastMsg";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { deleteAccount } from "../services/request";
-import { useUser } from "../store/useUser";
+import { useLogout } from "@/modules/auth/hooks/useLogout";
 
 export const useDeleteAccount = () => {
   const { toastError, toastSuccess } = useToastMessage();
-  const { logout } = useUser();
+  const { logoutMutate } = useLogout();
   const deletePhrase = "delete-my-account";
   const [deleteInput, setDeleteInput] = useState("");
 
@@ -14,7 +14,7 @@ export const useDeleteAccount = () => {
     mutationFn: deleteAccount,
     onSuccess: () => {
       toastSuccess("Account deleted successfully");
-      logout();
+      logoutMutate();
     },
     onError: (err: any) => {
       toastError(err.message || "Failed to delete account");

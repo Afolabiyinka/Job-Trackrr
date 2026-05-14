@@ -8,7 +8,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";
-import { Building2, Search } from "lucide-react";
+import { Briefcase, Building2, Search } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
@@ -46,8 +46,18 @@ export default function SearchInput() {
           />
 
           <CommandList>
-            <CommandEmpty></CommandEmpty>
 
+            <CommandEmpty className="py-12">
+              <div className="flex flex-col items-center justify-center text-center">
+                <div className="rounded-full bg-muted p-3 mb-3">
+                  <Briefcase className="h-6 w-6 text-muted-foreground" />
+                </div>
+                <p className="text-sm font-medium mb-1">No jobs found</p>
+                <p className="text-xs text-muted-foreground max-w-[240px]">
+                  Try a different search term or check your filters
+                </p>
+              </div>
+            </CommandEmpty>
             <CommandGroup heading="Jobs">
               {filteredJobs.slice(0, 3).map((job) => (
                 <CommandItem

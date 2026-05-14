@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import ForgetPassword from "./ForgetPassword";
 import { motion } from "framer-motion";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const { handleLogin, loading, setLoginData, loginData } = useLogin();
@@ -31,6 +32,30 @@ const Login = () => {
               Continue tracking your job applications
             </p>
           </div>
+
+          {/* Google Login - FIRST */}
+          <div className="w-full pt-2">
+            <GoogleLogin
+              shape="pill"
+              size="large"
+
+              text="signin_with"
+              onSuccess={(data) => { console.log(data) }}
+            />
+          </div>
+
+          {/* Divider */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background  px-2 p-1 rounded-full text-muted-foreground">
+                Or
+              </span>
+            </div>
+          </div>
+
           {/* Form Fields */}
           <div className="space-y-4">
             <div className="space-y-1.5">
@@ -64,10 +89,8 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Remember Me & Forgot Password */}
+          {/* Forgot Password */}
           <div className="flex items-center justify-end">
-
-
             <ForgetPassword />
           </div>
 
@@ -89,7 +112,7 @@ const Login = () => {
           </Button>
 
           {/* Footer */}
-          <div className="text-center">
+          <div className="text-center pt-2">
             <p className="text-sm text-muted-foreground">
               New to JobTrackrr?{" "}
               <Link

@@ -41,7 +41,7 @@ const FeatureInDevelopment = () => {
                 </motion.p>
 
                 <motion.div
-                    className="flex flex-col gap-3"
+                    className="flex flex-col md:flex-row  gap-3"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
@@ -53,7 +53,7 @@ const FeatureInDevelopment = () => {
 
                     <Button
                         size="lg"
-                        variant="ghost"
+                        variant="secondary"
                         onClick={() => navigate("/dashboard")}
                     >
                         Return to Dashboard
