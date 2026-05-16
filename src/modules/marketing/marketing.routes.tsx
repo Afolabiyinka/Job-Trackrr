@@ -20,9 +20,9 @@ const marketingRoutes: RouteObject[] = [
     handle: { title: "How It Works" },
   },
   {
-    path: "testimonials",
+    path: "reviews",
     Component: Testimonials,
-    handle: { title: "Testimonials" },
+    handle: { title: "Reviews" },
   },
   {
     path: "features",

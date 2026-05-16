@@ -13,17 +13,18 @@ const Settings = () => {
 
   const settingsTabs = [
     {
-      value: "account",
-      label: "Account",
-      icon: User,
-      content: "account",
-    },
-    {
       value: "theme",
       label: "Theme",
       icon: Palette,
       content: "theme",
     },
+    {
+      value: "account",
+      label: "Account",
+      icon: User,
+      content: "account",
+    },
+
     {
       value: "security",
       label: "Security",
@@ -38,13 +39,13 @@ const Settings = () => {
     },
   ];
   return (
-    <Tabs defaultValue="account" orientation={isMobile ? "horizontal" : "vertical"} className="w-full h-full">
+    <Tabs defaultValue={settingsTabs[0].value} orientation={isMobile ? "horizontal" : "vertical"} className="w-full h-full">
       <TabsList
         className={`
     flex
     ${isMobile
             ? "w-full overflow-x-auto gap-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-            : "flex-col items-stretch h-fit min-w-[220px] gap-1"
+            : "flex-col items-stretch h-fit min-w-55 gap-1"
           }
   `}
       >        {settingsTabs.map((tab) => (

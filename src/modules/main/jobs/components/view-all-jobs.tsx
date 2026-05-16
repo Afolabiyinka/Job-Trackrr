@@ -19,7 +19,7 @@ import { usePagination } from "../hooks/usePagination";
 
 const ViewAllJobs = () => {
   const navigate = useNavigate();
-  const { currentPage, handleNextPage, handlePrevPage } = usePagination();
+  const { currentPage, handleNextPage, handlePrevPage, } = usePagination();
   const { data, loading, error } = useGetJobs(currentPage);
 
   return (
@@ -78,6 +78,8 @@ const ViewAllJobs = () => {
             currentPage={currentPage}
             handleNextPage={handleNextPage}
             handlePrevPage={handlePrevPage}
+            maxPages={data?.pagination.totalPages}
+
           />
         </DialogFooter>
       </DialogContent>

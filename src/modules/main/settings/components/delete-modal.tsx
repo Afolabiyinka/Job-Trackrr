@@ -24,8 +24,8 @@ const DeleteAccountModal = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="destructive" size="lg">
-          <Trash className="mr-2" />
-          Delete Account
+          {loading ? <Loader2 className="animate-spin" /> : <span className="flex  items-center"><Trash className="mr-2" />
+            Delete Account</span>}
         </Button>
       </AlertDialogTrigger>
 

@@ -17,7 +17,7 @@ const MobileNav = () => {
   return (
     <div className="p-2  flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
-        <Logo />
+        <Logo collapsed />
         <div className="flex gap-2 items-center">
           <SearchInput />
           <Button variant={`secondary`} size={`icon-lg`}>

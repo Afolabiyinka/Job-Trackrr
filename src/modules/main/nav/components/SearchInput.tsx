@@ -58,7 +58,7 @@ export default function SearchInput() {
                 </p>
               </div>
             </CommandEmpty>
-            <CommandGroup heading="Jobs">
+            <CommandGroup heading="Jobs" className="">
               {filteredJobs.slice(0, 3).map((job) => (
                 <CommandItem
                   className="cursor-pointer"

@@ -12,7 +12,7 @@ interface Props {
 const FeaturesCard = ({ desc, icon: Icon, title }: Props) => {
   return (
     <motion.div
-      className="p-4 rounded-2xl flex justify-center items-center gap-3 bg-background"
+      className="p-4 rounded-2xl flex justify-center items-center gap-3 bg-muted/50"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeIn" }}

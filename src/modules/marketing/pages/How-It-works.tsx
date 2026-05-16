@@ -64,8 +64,6 @@ const HowItWorks = () => {
 
         {/* Steps Grid */}
         <div className="grid md:grid-cols-3 gap-8 relative">
-          {/* Connecting line (desktop only) */}
-          <div className="hidden md:block absolute top-16 left-1/2 -translate-x-1/2 w-[calc(100%-200px)] h-0.5 bg-gradient-to-r from-primary/50 via-primary to-primary/50" />
 
           {steps.map(({ step, title, description, icon: Icon }, index) => (
             <motion.div
@@ -76,9 +74,9 @@ const HowItWorks = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="bg-background border rounded-2xl p-8 flex flex-col items-start gap-4 hover:shadow-xl hover:border-primary/50 transition-all duration-300 h-full group">
+              <div className="bg-muted/50 z-50 border rounded-2xl p-8 flex flex-col items-start gap-4 hover:shadow-xl hover:border-primary/50 transition-all duration-300 h-full group">
                 {/* Step number badge */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary/50 text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
                   {step}
                 </div>
 

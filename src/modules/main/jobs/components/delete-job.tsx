@@ -26,7 +26,7 @@ const DeleteJobModal = ({ id }: { id: string }) => {
         <Tooltip>
           <TooltipTrigger>
             <Button size={`icon-lg`} variant={`destructive`}>
-              <Trash2 />
+              {loading ? <Loader2 className="animate-spin" /> : <Trash2 />}
             </Button>
           </TooltipTrigger>
           <TooltipContent>

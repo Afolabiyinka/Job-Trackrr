@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Construction, ArrowLeft } from "lucide-react";
+import { Construction } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
@@ -7,8 +7,8 @@ const FeatureInDevelopment = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="h-full flex items-center justify-center bg-background px-4 rounded-2xl shadow">
-            <div className="text-center max-w-md">
+        <div className="h-full flex items-center justify-center bg-muted/50 px-4 rounded-xl">
+            <div className="text-center max-w-md flex flex-col items-center justify-center">
 
                 <motion.div
                     className="flex justify-center mb-6"
@@ -46,18 +46,19 @@ const FeatureInDevelopment = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                 >
+
                     <Button size="lg" onClick={() => navigate(-1)}>
-                        <ArrowLeft className="mr-2 h-4 w-4" />
+                        {/* <ArrowLeft className="mr-2 h-4 w-4" /> */}
                         Go Back
                     </Button>
-
                     <Button
                         size="lg"
                         variant="secondary"
                         onClick={() => navigate("/dashboard")}
                     >
-                        Return to Dashboard
+                        Dashboard
                     </Button>
+
                 </motion.div>
             </div>
         </div>

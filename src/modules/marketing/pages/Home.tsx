@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import LightScreenShot from "@/assets/screenshots/Light Screenshot.png";
 import DarkScreenshot from "@/assets/screenshots/Dark Screenshot.png";
 import { useTheme } from "@/modules/main/theme/useTheme";
+import { Badge } from "@/components/ui/badge";
 
 const Home = () => {
   const { theme } = useTheme();
@@ -27,26 +28,23 @@ const Home = () => {
           className="space-y-8 text-center lg:text-left"
         >
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary"
+          <Badge
+            variant={`secondary`}
+            // initial={{ opacity: 0, y: 20 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // transition={{ duration: 0.5, delay: 0.1 }}
+            className="inline-flex items-center gap-2 p-3 h-12 px-6 text-sm font-medium"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-            </span>
+
             Your job search, simplified
-          </motion.div>
+          </Badge>
 
           {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]"
-          >
+            className="text-5xl md:text-7xl font-bold leading-[1.1] max-w-2xl"          >
             Never lose track of your{" "}
             <span className="text-primary">job applications</span>
           </motion.h1>
@@ -72,7 +70,7 @@ const Home = () => {
           >
             {features.map((feature, index) => (
               <div key={index} className="flex items-center gap-3 justify-center lg:justify-start">
-                <RiCheckboxCircleLine className="h-5 w-5 text-primary flex-shrink-0" />
+                <RiCheckboxCircleLine className="h-5 w-5 shrink-0" />
                 <span className="text-muted-foreground">{feature}</span>
               </div>
             ))}
@@ -124,7 +122,7 @@ const Home = () => {
           {/* <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl -z-10" /> */}
 
           {/* Screenshot */}
-          <div className="relative w-full rounded-2xl overflow-hidden border-2 shadow-2xl bg-background transform hover:scale-[1.02] transition-transform duration-300">
+          <div className="relative w-full rounded-2xl overflow-hidden border border-border bg-background transform hover:scale-[1.02] transition-transform duration-300">
             <img
               src={theme === "light" ? LightScreenShot : DarkScreenshot}
               alt="Job Trackrr dashboard interface"
@@ -141,8 +139,8 @@ const Home = () => {
             className="absolute -bottom-6 -left-6 bg-background border shadow-xl rounded-xl px-6 py-4 hidden lg:block"
           >
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <RiCheckboxCircleLine className="h-6 w-6 text-primary" />
+              <div className="w-12 h-12 rounded-full  bg-foreground flex items-center justify-center">
+                <RiCheckboxCircleLine className="h-6 w-6 text-background" />
               </div>
               <div>
                 <p className="font-semibold text-sm">Applications tracked</p>

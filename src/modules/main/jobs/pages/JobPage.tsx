@@ -124,7 +124,7 @@ const JobPage = () => {
         {/* Role header */}
         <div className="p-1 md:p-5 flex flex-col sm:flex-row sm:items-center gap-3">
           <div className="flex items-center gap-3 flex-1">
-            <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center shrink-0">
+            <div className="h-9 w-9 rounded-full  flex items-center justify-center shrink-0">
               <User size={18} className="text-muted-foreground" />
             </div>
             <div>
@@ -178,7 +178,7 @@ const JobPage = () => {
       {job.feedback && (
         <div className="  rounded-2xl p-5">
           <div className="flex items-center gap-2 mb-3">
-            <div className="h-7 w-7 rounded-full bg-muted flex items-center justify-center">
+            <div className="h-7 w-7 rounded-full  flex items-center justify-center">
               <MessageSquare size={14} className="text-muted-foreground" />
             </div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">

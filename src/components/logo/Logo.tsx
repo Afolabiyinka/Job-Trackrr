@@ -16,7 +16,7 @@ const Logo = ({ collapsed = false }: LogoProps) => {
       <img
         src={logoImage}
         alt="Job Trackrr Logo"
-        className="h-9 w-auto object-contain flex-shrink-0"
+        className="h-8 w-auto object-contain shrink-0"
         fetchPriority="high"
         loading="eager"
       />
