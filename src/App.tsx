@@ -41,7 +41,6 @@ export function App() {
         toastOptions={{
           style: {
             borderRadius: "100px",
-            background: theme === "light" ? "white" : "#161616",
           },
         }}
       />

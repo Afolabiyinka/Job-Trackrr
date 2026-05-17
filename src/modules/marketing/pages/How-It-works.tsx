@@ -93,12 +93,7 @@ const HowItWorks = () => {
                   </p>
                 </div>
 
-                {/* Arrow indicator (mobile only) */}
-                {index < steps.length - 1 && (
-                  <div className="md:hidden w-full flex justify-center mt-4">
-                    <div className="w-0.5 h-8 bg-gradient-to-b from-primary to-transparent" />
-                  </div>
-                )}
+
               </div>
             </motion.div>
           ))}
