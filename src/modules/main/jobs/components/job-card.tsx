@@ -70,7 +70,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
           }
         </div>
         <span className="mt-4 flex justify-center">
-          {jobs.length === 3 && <ViewAllJobs />}
+          {jobs.length >= 3 && <ViewAllJobs />}
         </span>
       </CardContent>
     </Card>

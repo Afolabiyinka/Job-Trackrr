@@ -7,7 +7,7 @@ const FeatureInDevelopment = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="h-full flex items-center justify-center bg-muted/50 px-4 rounded-xl">
+        <div className="h-full flex items-center justify-center bg-muted/50 p-6 rounded-xl ">
             <div className="text-center max-w-md flex flex-col items-center justify-center">
 
                 <motion.div

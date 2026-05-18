@@ -26,7 +26,6 @@ import { formatDistanceToNow } from "date-fns";
 import { Briefcase, Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// Add after the loading check
 
 
 const TableView = () => {
@@ -140,41 +139,93 @@ const TableView = () => {
         </TableHeader>
         <TableBody className="w-full">
           {loading ? (
-            <div className="h-full w-full flex justify-center items-center border">
-              <Loader />
-            </div>
+            <TableRow>
+              <TableCell colSpan={5} className="h-40">
+                <div className="flex h-full w-full items-center justify-center">
+                  <Loader />
+                </div>
+              </TableCell>
+            </TableRow>
+          ) : filteredJobs?.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={5} className="h-96">
+                <div className="flex flex-col items-center justify-center gap-3 text-center">
+                  {activeFilter === "all" ? (
+                    <>
+                      <Briefcase className="h-16 w-16 text-muted-foreground" />
+
+                      <div>
+                        <h3 className="text-lg font-semibold">
+                          No jobs yet
+                        </h3>
+
+                        <p className="text-sm text-muted-foreground">
+                          Get started by adding your first job application
+                        </p>
+                      </div>
+
+                      <Button asChild>
+                        <Link to="/applications/new">
+                          <Plus className="mr-2 h-4 w-4" />
+                          Add New Job
+                        </Link>
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <Search className="h-16 w-16 text-muted-foreground" />
+
+                      <div>
+                        <h3 className="text-lg font-semibold">
+                          No {activeFilter} jobs
+                        </h3>
+
+                        <p className="text-sm text-muted-foreground">
+                          Try a different filter or add more applications
+                        </p>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </TableCell>
+            </TableRow>
           ) : (
-            filteredJobs?.map((job: Job) => {
-              return (
-                <TableRow
-                  key={job.id}
-                  onClick={() => navigate(`/jobs/${job.id}`)}
-                >
-                  <TableCell className="font-medium flex gap-2 items-center">
-                    <span className="h-6 w-6 border rounded-full  flex items-center justify-center">
-                      {job.company.charAt(0)}
-                    </span>
-                    {job.company}
-                  </TableCell>
-                  <TableCell>{job.role}</TableCell>
-                  <TableCell className="flex gap-2 items-center">
-                    <span
-                      className={`h-4 w-4 border rounded-full ${getStatusColor(
-                        job.status,
-                      )}`}
-                    ></span>
-                    {job.status}
-                  </TableCell>
-                  <TableCell>{job.companyEmail}</TableCell>
-                  <TableCell className="text-muted-foreground text-sm">
-                    {job.interviewDate
-                      ? formatDistanceToNow(new Date(job.interviewDate), {
-                        addSuffix: true,
-                      })
-                      : "Not scheduled"}
-                  </TableCell>                </TableRow>
-              );
-            })
+            filteredJobs?.map((job: Job) => (
+              <TableRow
+                key={job.id}
+                onClick={() => navigate(`/jobs/${job.id}`)}
+              >
+                <TableCell className="flex items-center gap-2 font-medium">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border">
+                    {job.company.charAt(0)}
+                  </span>
+
+                  {job.company}
+                </TableCell>
+
+                <TableCell>{job.role}</TableCell>
+
+                <TableCell className="flex items-center gap-2">
+                  <span
+                    className={`h-4 w-4 rounded-full border ${getStatusColor(
+                      job.status
+                    )}`}
+                  />
+
+                  {job.status}
+                </TableCell>
+
+                <TableCell>{job.companyEmail}</TableCell>
+
+                <TableCell className="text-sm text-muted-foreground">
+                  {job.appliedAt
+                    ? formatDistanceToNow(new Date(job.appliedAt), {
+                      addSuffix: true,
+                    })
+                    : "Not scheduled"}
+                </TableCell>
+              </TableRow>
+            ))
           )}
         </TableBody>
       </Table>

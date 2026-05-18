@@ -46,7 +46,7 @@ const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight"
+            className="text-4xl md:text-6xl font-bold tracking-tight font-[Inter]"
           >
             How it works
           </motion.h2>

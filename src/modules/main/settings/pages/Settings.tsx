@@ -6,10 +6,8 @@ import { useIsMobile } from "@/shared/hooks/useMobile";
 import { User, Palette, Shield, AlertTriangle } from "lucide-react";
 import FeatureInDevelopment from "@/modules/ComingSoon";
 
-
 const Settings = () => {
-  const isMobile = useIsMobile(738)
-
+  const isMobile = useIsMobile(738);
 
   const settingsTabs = [
     {
@@ -39,35 +37,51 @@ const Settings = () => {
     },
   ];
   return (
-    <Tabs defaultValue={settingsTabs[0].value} orientation={isMobile ? "horizontal" : "vertical"} className="w-full h-full">
+    <Tabs
+      defaultValue={settingsTabs[0].value}
+      orientation={isMobile ? "horizontal" : "vertical"}
+      className={`
+    flex w-full gap-4 h-full
+    ${isMobile ? "flex-col" : "flex-row items-start"}
+  `}
+    >
       <TabsList
         className={`
-    flex
+    shrink-0
     ${isMobile
-            ? "w-full overflow-x-auto gap-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-            : "flex-col items-stretch h-fit min-w-55 gap-1"
+            ? "flex w-full overflow-x-auto whitespace-nowrap gap-2 p-1"
+            : "flex h-fit min-w-55 flex-col items-stretch gap-1"
           }
   `}
-      >        {settingsTabs.map((tab) => (
-        <TabsTrigger key={tab.value} value={tab.value} className="p-2">
-          <tab.icon className="h-4 w-4" />
-          {tab.label}
-        </TabsTrigger>
-      ))}
+      >
+        {" "}
+        {settingsTabs.map((tab) => (
+          <TabsTrigger
+            key={tab.value}
+            value={tab.value}
+            className={`
+    flex items-center gap-2 p-2
+    ${isMobile ? "shrink-0" : "w-full justify-start"}
+  `}
+          >
+            {" "}
+            <tab.icon className="h-4 w-4" />
+            {tab.label}
+          </TabsTrigger>
+        ))}
       </TabsList>
 
-      <TabsContent value="account" className="w-full">
+      <TabsContent value="account" className="w-full h-full">
         <EditInfo />
       </TabsContent>
-      <TabsContent value="security" className="w-full">
+      <TabsContent value="security" className="w-full h-full">
         <FeatureInDevelopment />
       </TabsContent>
-      <TabsContent value="theme" className="w-full">
+      <TabsContent value="theme" className="w-full h-full">
         <ChangeTheme />
       </TabsContent>
       <TabsContent value="danger">
         <DeleteAccount />
-
       </TabsContent>
     </Tabs>
   );

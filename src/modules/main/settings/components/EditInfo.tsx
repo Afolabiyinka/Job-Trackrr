@@ -22,7 +22,7 @@ const EditInfo = () => {
   }, [user]);
   return (
     <Card className="shadow-none ring-0">
-      <CardHeader className="text-2xl">Edit your details</CardHeader>
+      <CardHeader className="">Edit Profile</CardHeader>
       <CardContent>
         <form className="" onSubmit={onSubmit}>
           <div className="grid md:grid-cols-2 gap-6 grid-cols-1">

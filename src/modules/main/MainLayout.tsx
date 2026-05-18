@@ -15,10 +15,10 @@ const MainLayout = () => {
   const { setJobs } = useJobs();
 
   useEffect(() => {
-    if (data) {
-      setJobs(data?.data);
+    if (data?.data) {
+      setJobs(data.data);
     }
-  }, [data, setJobs]);
+  }, [data]);
 
   if (!isAuthResolved) {
     return (
@@ -38,7 +38,7 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-3 flex flex-col md:p-3">
+      <main className="w-full gap-3 flex flex-col md:p-3 p-px">
         <span className="w-full">
           <Greeting />
           <Header />

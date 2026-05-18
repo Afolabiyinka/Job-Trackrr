@@ -16,60 +16,66 @@ import CustomInput from "../../jobs/components/create-job/input/custom-input";
 export default function SearchInput() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
+
   const { jobs } = useJobs();
   const navigate = useNavigate();
 
   const filteredJobs = jobs.filter((job) =>
-    job.company.trim().toLowerCase().includes(query.toLowerCase()),
+    job.company.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
-    <div className="flex flex-col gap-4">
+    <div>
       <Button
         onClick={() => setOpen(true)}
-        className=""
         variant="outline"
-        size={`icon-lg`}
+        size="icon-lg"
       >
-        <Search />
-        {/* Search */}
+        <Search className="h-5 w-5" />
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command className="p-2">
-          <CustomInput
-            placeholder="Search jobs..."
-            value={query}
-            onChange={setQuery}
-            type="search"
-            icon={`Search`}
-          />
+          <div className="mb-2">
+            <CustomInput
+              placeholder="Search jobs..."
+              value={query}
+              onChange={setQuery}
+              type="search"
+              icon="Search"
+            />
+          </div>
 
           <CommandList>
-
             <CommandEmpty className="py-12">
               <div className="flex flex-col items-center justify-center text-center">
-                <div className="rounded-full bg-muted p-3 mb-3">
+                <div className="mb-3 rounded-full bg-muted p-3">
                   <Briefcase className="h-6 w-6 text-muted-foreground" />
                 </div>
-                <p className="text-sm font-medium mb-1">No jobs found</p>
-                <p className="text-xs text-muted-foreground max-w-[240px]">
-                  Try a different search term or check your filters
+
+                <p className="mb-1 text-sm font-medium">
+                  No jobs found
+                </p>
+
+                <p className="max-w-[240px] text-xs text-muted-foreground">
+                  Try a different search term
                 </p>
               </div>
             </CommandEmpty>
-            <CommandGroup heading="Jobs" className="">
-              {filteredJobs.slice(0, 3).map((job) => (
+
+            <CommandGroup heading="Jobs">
+              {filteredJobs.slice(0, 5).map((job) => (
                 <CommandItem
-                  className="cursor-pointer"
                   key={job.id}
+                  value={job.company}
+                  className="cursor-pointer"
                   onSelect={() => {
-                    navigate(`jobs/${job.id}`);
+                    navigate(`/jobs/${job.id}`);
                     setOpen(false);
                   }}
                 >
-                  <Building2 />
-                  {job.company}
+                  <Building2 className="mr-2 h-4 w-4" />
+                  <span>{job.company}</span>
                 </CommandItem>
               ))}
             </CommandGroup>

@@ -4,9 +4,9 @@ import Footer from "./pages/Footer";
 
 const MarkettingLayout = () => {
   return (
-    <div className="w-full relative font-[Inter]">
+    <div className="w-full relative">
       <NavLayout />
-      <div className="pt-16">
+      <div className="md:pt-16 pt-2">
         <Outlet />
       </div>
       <Footer />

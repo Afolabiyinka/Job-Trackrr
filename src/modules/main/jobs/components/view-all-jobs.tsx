@@ -26,7 +26,7 @@ const ViewAllJobs = () => {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" size="lg">
-          View more <ChevronRight />
+          View All <ChevronRight />
         </Button>
       </DialogTrigger>
 

@@ -15,7 +15,7 @@ const Testimonials = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeIn" }}
-        className="text-2xl md:text-6xl font-bold mb-2 text-center leading-snug"
+        className="text-2xl md:text-6xl font-bold mb-2 text-center leading-snug font-[Inter]"
       >
         Loved by Job Seekers
       </motion.h1>
@@ -23,7 +23,7 @@ const Testimonials = () => {
         initial={{ y: 50, opacity: 0.8 }}
         whileInView={{ y: 1, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="text-md md:text-2xl leading-relaxed mb-8 text-muted-foreground"
+        className="text-md md:text-2xl leading-relaxed mb-8 text-muted-foreground "
       >
         Join thousands of proffesionals that landed their dream job using
         JobTrackrr
@@ -39,7 +39,7 @@ const Testimonials = () => {
           modules={[Autoplay, FreeMode]}
           freeMode
           loop={true}
-          speed={4000}
+          speed={6000}
           slidesPerView="auto"
           spaceBetween={20}
           autoplay={{ delay: 0, disableOnInteraction: false }}
