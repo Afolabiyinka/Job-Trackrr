@@ -5,6 +5,7 @@ import type { EditUserPayload } from "../types/types";
 const getUser = async () => {
   try {
     const res = await fetch(`${prodEndpoint}api/me`, {
+      method: "GET",
       credentials: "include",
     });
 

@@ -6,11 +6,12 @@ import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import ForgetPassword from "./ForgetPassword";
 import { motion } from "framer-motion";
+import { useGoogleLogin } from "../hooks/useGoogleLogin";
 import { GoogleLogin } from "@react-oauth/google";
 
 const Login = () => {
   const { handleLogin, loading, setLoginData, loginData } = useLogin();
-
+  const { handleGoogleLogin, googleLoading } = useGoogleLogin();
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     handleLogin();
@@ -35,13 +36,19 @@ const Login = () => {
 
           {/* Google Login - FIRST */}
           <div className="w-full pt-2">
-            <GoogleLogin
-              shape="pill"
-              size="large"
+            {googleLoading ? (
+              <span className="p-3 rounded-full border border-border flex justify-center items-center">
+                <Loader2 className="animate-spin mr-2 h-4 w-4" />
+              </span>
+            ) : (
+              <GoogleLogin
+                shape="pill"
+                size="large"
+                text="signin_with"
 
-              text="signin_with"
-              onSuccess={(data) => { console.log(data) }}
-            />
+                onSuccess={(data) => handleGoogleLogin(data)}
+              />
+            )}
           </div>
 
           {/* Divider */}
@@ -95,12 +102,7 @@ const Login = () => {
           </div>
 
           {/* Submit Button */}
-          <Button
-            type="submit"
-            size="lg"
-            className="w-full"
-            disabled={loading}
-          >
+          <Button type="submit" size="lg" className="w-full" disabled={loading}>
             {loading ? (
               <>
                 <Loader2 className="animate-spin mr-2 h-4 w-4" />
