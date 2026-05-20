@@ -4,18 +4,22 @@ import useToastMessage from "@/shared/lib/toastMsg";
 import { useResume } from "../store/useResume";
 
 export const useAnalyseResume = () => {
-  const { toastError } = useToastMessage();
+  const { toastError, toastWarning } = useToastMessage();
   const { resumeText } = useResume();
 
   const mutation = useMutation({
     mutationFn: analyseResume,
     onError: (err) => {
-      toastError(err.message || "Something went wrong, pls try again later");
+      toastError(err.message || "Analysis failed. Please try again.");
     },
   });
 
   function handleAnalyse() {
-    if (!resumeText) return;
+    if (!resumeText?.trim()) {
+      toastWarning("Please upload or paste your resume first");
+      return;
+    }
+
     mutation.mutate(resumeText);
   }
 
@@ -24,5 +28,8 @@ export const useAnalyseResume = () => {
     isPending: mutation.isPending,
     analysis: mutation.data,
     isSuccess: mutation.isSuccess,
+    isError: mutation.isError,
+    error: mutation.error,
+    reset: mutation.reset, // Expose reset to clear state between analyses
   };
 };

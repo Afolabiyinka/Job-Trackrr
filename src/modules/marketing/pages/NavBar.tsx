@@ -6,7 +6,7 @@ import Logo from "@/components/logo/Logo";
 
 const NavBar = () => {
   return (
-    <div className="p-2 w-full md:flex justify-center items-center px-16 hidden fixed top-2 z-50">
+    <div className="p-2 w-full lg:flex justify-center items-center px-16 hidden fixed top-2 z-50">
       <div className="flex lg:flex justify-around items-center border border-border p-2.5 w-full rounded-full bg-background">
         <Logo />
         <span className="flex gap-10">

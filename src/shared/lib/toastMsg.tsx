@@ -15,8 +15,13 @@ export default function useToastMessage() {
     toast.dismiss();
     toast.loading(message);
   };
+  const toastWarning = (message: string) => {
+    toast.dismiss()
+    toast.info(message)
+  }
   return {
     toastSuccess,
+    toastWarning,
     toastError,
     toastLoading,
   };

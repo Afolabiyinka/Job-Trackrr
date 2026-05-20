@@ -2,7 +2,7 @@ import { useIsMobile } from "@/shared/hooks/useMobile";
 import MobileNav from "./MobileNav";
 import NavBar from "./NavBar";
 const NavLayout = () => {
-  const isMobile = useIsMobile(900);
+  const isMobile = useIsMobile(1027);
   return (
     <div className="h-full">
       <NavBar />

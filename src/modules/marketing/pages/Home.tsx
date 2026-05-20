@@ -17,7 +17,7 @@ const Home = () => {
   ];
 
   return (
-    <section className="w-full min-h-screen flex items-center justify-center px-4 py-20 md:px-10">
+    <section className="w-full min-h-screen flex items-center justify-center px-4 py-20 lg:px-10">
       <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-16 items-center">
         {/* Left Content */}
         <motion.div
@@ -43,7 +43,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-7xl font-bold leading-[1.1] md:max-w-2xl font-[Inter]"          >
+            className="text-4xl lg:text-7xl font-bold leading-[1.1] lg:max-w-2xl font-[Inter]"          >
             Never lose track <br />of your{" "}
             <span className="text-primary">job applications</span>
           </motion.h1>
@@ -53,7 +53,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 "
+            className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 "
           >
             Organize, track, and manage all your job applications in one place.
             Stay on top of every opportunity with powerful insights and
@@ -80,7 +80,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4"
+            className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start pt-4"
           >
             <Link to="/signup">
               <Button size="lg" className="w-full sm:w-auto">
@@ -127,6 +127,7 @@ const Home = () => {
               alt="Job Trackrr dashboard interface"
               className="w-full h-full object-cover"
               fetchPriority="high"
+              loading="eager"
             />
           </div>
 
