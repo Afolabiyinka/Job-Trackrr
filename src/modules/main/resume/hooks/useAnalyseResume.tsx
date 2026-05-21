@@ -26,7 +26,7 @@ export const useAnalyseResume = () => {
   return {
     handleAnalyse,
     isPending: mutation.isPending,
-    analysis: mutation.data,
+    analysis: mutation.data?.suggestions,
     isSuccess: mutation.isSuccess,
     isError: mutation.isError,
     error: mutation.error,

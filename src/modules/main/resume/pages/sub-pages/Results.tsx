@@ -1,6 +1,5 @@
 import ScoreCircle from "../../components/ScoreCircle";
 import { useAnalyseResume } from "../../hooks/useAnalyseResume";
-import { Navigate } from "react-router-dom";
 import UploadResume from "../../components/UploadResume";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,12 +20,6 @@ import {
 const Results = () => {
 
   const { handleAnalyse, isPending, analysis } = useAnalyseResume();
-
-
-
-  if (!analysis) {
-    return <Navigate to="/resume" replace />;
-  }
 
   const strengths = analysis?.strengths || [];
   const weaknesses = analysis?.weaknesses || [];
@@ -52,7 +45,7 @@ const Results = () => {
             ) : (
               <RefreshCcw />
             )}
-          </Button>
+          </Button>``
         </span>
       </div>
       <div className="flex flex-col items-center justify-center p-1 gap-2">

@@ -1,105 +1,50 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="loader" />
+      <div className="loader">
+        <span className="bar bg-primary" />
+        <span className="bar bg-primary" />
+        <span className="bar bg-primary" />
+      </div>
     </StyledWrapper>
   );
-};
+}
 
 const StyledWrapper = styled.div`
   .loader {
-    position: relative;
-    width: 2.5em;
-    height: 2.5em;
-    transform: rotate(165deg);
+    display: flex;
+    align-items: center;
   }
 
-  .loader:before,
-  .loader:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: block;
-    width: 0.5em;
-    height: 0.5em;
-    border-radius: 0.25em;
-    transform: translate(-50%, -50%);
+  .bar {
+    display: inline-block;
+    width: 3px;
+    height: 20px;
+    border-radius: 10px;
+    animation: scale-up4 1s linear infinite;
   }
 
-  .loader:before {
-    animation: before8 2s infinite;
+  .bar:nth-child(2) {
+    height: 35px;
+    margin: 0 5px;
+    animation-delay: .25s;
   }
 
-  .loader:after {
-    animation: after6 2s infinite;
+  .bar:nth-child(3) {
+    animation-delay: .5s;
   }
 
-  @keyframes before8 {
-    0% {
-      width: 0.5em;
-      box-shadow:
-        1em -0.5em rgba(225, 20, 98, 0.75),
-        -1em 0.5em rgba(111, 202, 220, 0.75);
+  @keyframes scale-up4 {
+    20% {
+      background-color: #ffff;
+      transform: scaleY(1.5);
     }
 
-    35% {
-      width: 2.5em;
-      box-shadow:
-        0 -0.5em rgba(225, 20, 98, 0.75),
-        0 0.5em rgba(111, 202, 220, 0.75);
+    40% {
+      transform: scaleY(1);
     }
-
-    70% {
-      width: 0.5em;
-      box-shadow:
-        -1em -0.5em rgba(225, 20, 98, 0.75),
-        1em 0.5em rgba(111, 202, 220, 0.75);
-    }
-
-    100% {
-      box-shadow:
-        1em -0.5em rgba(225, 20, 98, 0.75),
-        -1em 0.5em rgba(111, 202, 220, 0.75);
-    }
-  }
-
-  @keyframes after6 {
-    0% {
-      height: 0.5em;
-      box-shadow:
-        0.5em 1em rgba(61, 184, 143, 0.75),
-        -0.5em -1em rgba(233, 169, 32, 0.75);
-    }
-
-    35% {
-      height: 2.5em;
-      box-shadow:
-        0.5em 0 rgba(61, 184, 143, 0.75),
-        -0.5em 0 rgba(233, 169, 32, 0.75);
-    }
-
-    70% {
-      height: 0.5em;
-      box-shadow:
-        0.5em -1em rgba(61, 184, 143, 0.75),
-        -0.5em 1em rgba(233, 169, 32, 0.75);
-    }
-
-    100% {
-      box-shadow:
-        0.5em 1em rgba(61, 184, 143, 0.75),
-        -0.5em -1em rgba(233, 169, 32, 0.75);
-    }
-  }
-
-  .loader {
-    // position: absolute;
-    // top: calc(50% - 1.25em);
-    // left: calc(50% - 1.25em);
-  }
-`;
+  }`;
 
 export default Loader;

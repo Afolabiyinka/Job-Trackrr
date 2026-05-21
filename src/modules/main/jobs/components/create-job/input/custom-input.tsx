@@ -6,7 +6,7 @@ interface Props {
   placeholder: string;
   icon: IconName;
   onChange?: (val: string) => void;
-  type: "number" | "text" | "email" | "password" | "search";
+  type: "tel" | "text" | "email" | "password" | "search";
   id?: string;
   value?: string | number;
   className?: string;

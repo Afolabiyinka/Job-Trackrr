@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import welcome_img from "@/assets/welcome.svg";
 import add_img from "@/assets/add.svg";
 import Confetti from "react-confetti";
@@ -9,31 +9,45 @@ import { ArrowRight, Plus } from "lucide-react";
 import { useWindowSize } from "react-use";
 import { useUser } from "../settings/store/useUser";
 import CreateJobStepper from "../jobs/components/create-job/stepper/CreateJob-Stepper";
+import { Navigate } from "react-router-dom";
+import { useEditUser } from "../settings/hooks/useEditUser";
 
 const OnBoarding = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
+
   const { height, width } = useWindowSize();
   const { user } = useUser();
+  const { handleEdit, setEditData, } = useEditUser();
+
+  const hasMarkedRef = useRef(false);
 
   const nextStep = () => {
     setActiveStep((prev) => prev + 1);
   };
 
-  // Confetti effect on mount
   useEffect(() => {
     setShowConfetti(true);
     const timer = setTimeout(() => setShowConfetti(false), 5000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Mark as onboarded when user reaches step 1
   useEffect(() => {
-    if (activeStep === 1) {
-      localStorage.setItem("onboarded", "true");
+    if (activeStep === 1 && !hasMarkedRef.current) {
+      hasMarkedRef.current = true;
+
+      setEditData((prev) => ({
+        ...prev,
+        onboarded: true,
+      }));
+
+      handleEdit();
     }
   }, [activeStep]);
 
+  if (user?.onboarded) {
+    return <Navigate to="/dashboard" replace />;
+  }
   return (
     <div className="p-4 min-h-screen flex w-full">
       {showConfetti && (

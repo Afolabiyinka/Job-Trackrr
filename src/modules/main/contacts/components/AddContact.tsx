@@ -123,7 +123,7 @@ const AddContact = ({ editing, title, id }: AddContactProps) => {
                         <CustomInput
                             placeholder="+234..."
                             icon="Phone"
-                            type="number"
+                            type="tel"
                             value={contactData.phoneNumber}
                             onChange={(e) => setContactData({ ...contactData, phoneNumber: e })}
                         />

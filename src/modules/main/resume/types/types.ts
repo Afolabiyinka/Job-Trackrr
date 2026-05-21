@@ -1,6 +1,8 @@
 export interface AnalysisType {
-  score: number;
-  strengths: String[];
-  weaknesses: String[];
-  improvements: String[];
+  suggestions: {
+    score: number;
+    strengths: String[];
+    weaknesses: String[];
+    improvements: String[];
+  }
 }

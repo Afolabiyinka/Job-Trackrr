@@ -5,12 +5,14 @@ import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/constants/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
+import { useUser } from "../../settings/store/useUser";
 
 export const useCreateJob = () => {
   const { toastError, toastSuccess } = useToastMessage();
   const navigate = useNavigate();
+  const { user } = useUser()
 
-  const hasOnboarded = localStorage.getItem("onboarded") === "true";
+  const hasOnboarded = user?.onboarded;
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: (payload: Job) => createJob(payload),

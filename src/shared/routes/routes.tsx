@@ -11,6 +11,7 @@ import MarkettingLayout from "@/modules/marketing/MarkettingLayout";
 import { authRoutes } from "@/modules/auth/auth.routes";
 import { mainRoutes } from "@/modules/main/main.routes";
 import { marketingRoutes } from "@/modules/marketing/marketing.routes";
+import CustomError from "@/modules/CustomError";
 
 const NotFound = lazy(() => import("@/modules/NotFound"));
 const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
@@ -30,6 +31,7 @@ const RootWrapper = () => {
 export const routes: RouteObject[] = [
   {
     element: <RootWrapper />,
+    errorElement: <CustomError />,
     children: [
       { path: "*", Component: NotFound },
       { path: "/", Component: MarkettingLayout, children: marketingRoutes },

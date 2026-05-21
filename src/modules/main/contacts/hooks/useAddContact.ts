@@ -4,13 +4,14 @@ import { createContact } from "../services/request"
 import { queryClient } from "@/shared/constants/queryClient"
 import useToastMessage from "@/shared/lib/toastMsg"
 import { useState } from "react"
+import { getErrorMessage } from "@/shared/lib/errorMsg"
 
 export const useAddContact = () => {
 
     const [contactData, setContactData] = useState<ContactPayload>({
         email: "",
         name: "",
-        phoneNumber: 0,
+        phoneNumber: "",
         role: "",
         socialLinks: [],
     })
@@ -22,7 +23,7 @@ export const useAddContact = () => {
             queryClient.invalidateQueries({ queryKey: ["contacts"] });
         },
         onError: (err) => {
-            toastError(err.message || "Contact removed")
+            toastError(getErrorMessage(err))
         }
     })
     return { mutate, isPending, contactData, setContactData }

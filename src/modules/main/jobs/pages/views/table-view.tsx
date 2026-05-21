@@ -147,7 +147,7 @@ const TableView = () => {
               </TableCell>
             </TableRow>
           ) : filteredJobs?.length === 0 ? (
-            <TableRow>
+            <TableRow className="hover:bg-transparent">
               <TableCell colSpan={5} className="h-96">
                 <div className="flex flex-col items-center justify-center gap-3 text-center">
                   {activeFilter === "all" ? (

@@ -6,5 +6,6 @@ export type EditUserPayload = {
 export interface AuthUser {
   username: string;
   email: string;
+  onboarded: boolean;
   [key: string]: any
 }
