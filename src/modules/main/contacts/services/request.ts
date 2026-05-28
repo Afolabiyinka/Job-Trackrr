@@ -43,7 +43,7 @@ const deleteContact = async (id: string | number) => {
 
 const editContact = async (id: string | number, payload: ContactPayload) => {
     const res = await fetch(`${prodEndpoint}api/contacts/${id}`, {
-        method: "PUT",
+        method: "PATCH",
         credentials: "include",
         headers: {
             "Content-Type": "application/json",

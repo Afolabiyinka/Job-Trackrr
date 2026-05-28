@@ -53,7 +53,7 @@ const JobPage = () => {
   if (job) document.title = `${job.role} at ${job.company}`;
   if (loading) return <JobPageSkeleton />;
   if (error) return <div>Failed to load job</div>;
-  if (!job) return <div>Job not found</div>;
+  if (!job) return <div className="h-full w-full text-3xl flex justify-center items-center">Job not found</div>;
 
   const formatedAppliedAtDate = formatDate(job?.appliedAt);
   const interviewIndicator = showInterviewIndicator(job.interviewDate);

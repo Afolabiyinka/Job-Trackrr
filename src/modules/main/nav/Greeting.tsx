@@ -6,7 +6,7 @@ const Greeting = () => {
   const { user } = useUser();
 
   return (
-    <div className="w-full flex flex-col md:flex-row gap-5 md:items-center  p-3 ml-2 justify-between md:px-6">
+    <div className="w-full flex flex-col md:flex-row gap-5 md:items-center  justify-between">
       <h1 className="text-lg md:text-xl flex md:items-center gap-2">
         Welcome back,
         {user ? (
