@@ -30,6 +30,9 @@ const MainLayout = () => {
     return <Navigate to="/login" replace />;
   }
 
+  if (!user.onboarded) {
+    return <Navigate to={`/onboarding`} replace />
+  }
 
 
   return (
@@ -38,7 +41,7 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-2 flex flex-col md:p-3 p-px">
+      <main className="w-full gap-2 flex flex-col md:p-4 p-px">
         <span className="w-full">
           <Greeting />
           <Header />

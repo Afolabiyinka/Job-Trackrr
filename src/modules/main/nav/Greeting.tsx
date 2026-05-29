@@ -1,7 +1,5 @@
-import { Bell } from "lucide-react";
 import { useUser } from "../settings/store/useUser";
 import SearchInput from "./components/SearchInput";
-import { Button } from "@/components/ui/button";
 const Greeting = () => {
   const { user } = useUser();
 
@@ -20,9 +18,9 @@ const Greeting = () => {
       </h1>
       <div className="md:flex gap-3 items-center hidden">
         <SearchInput />
-        <Button size={`icon-lg`}>
+        {/* <Button size={`icon-lg`}>
           <Bell />
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
