@@ -63,7 +63,7 @@ export default function SearchInput() {
               </div>
             </CommandEmpty>
 
-            <CommandGroup heading="Jobs">
+            <CommandGroup>
               {filteredJobs.slice(0, 5).map((job) => (
                 <CommandItem
                   key={job.id}

@@ -1,11 +1,11 @@
 import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-  SheetFooter,
-} from "@/components/ui/sheet";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Phone, Mail, Globe, Loader2 } from "lucide-react";
 import type { ContactPayload } from "../types/types";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -20,56 +20,48 @@ import AddContact from "./AddContact";
 
 const ContactCard = ({ contact }: { contact: ContactPayload }) => {
   if (!contact.id) return null;
-  const { handleDelete, isPending } = useDeleteContact({ id: contact.id }); return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <div className="flex gap-3 items-center p-3 rounded-full border bg-background hover:bg-muted/60 transition-all cursor-pointer hover:shadow-sm">
+  const { handleDelete, isPending } = useDeleteContact({ id: contact.id });
 
+  const initials = contact.name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .slice(0, 2);
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <div className="flex gap-3 items-center p-3 rounded-full border bg-muted/50 hover:bg-muted transition-all cursor-pointer hover:shadow-sm">
           {/* Avatar */}
           <div className="h-10 w-10 bg-primary/90 text-white flex items-center justify-center rounded-full font-semibold">
-            {contact.name
-              .split(" ")
-              .map((n) => n[0])
-              .join("")
-              .slice(0, 2)}
+            {initials}
           </div>
 
           {/* Info */}
           <div className="flex flex-col overflow-hidden">
-            <p className="text-sm font-semibold truncate">
-              {contact.name}
-            </p>
-            <p className="text-xs text-muted-foreground truncate">
-              {contact.role}
-            </p>
+            <p className="text-sm font-semibold truncate">{contact.name}</p>
+            <p className="text-xs text-muted-foreground truncate">{contact.role}</p>
           </div>
         </div>
-      </SheetTrigger>
+      </DialogTrigger>
 
-      {/* Drawer */}
-      <SheetContent side="right" className="w-95 sm:w-105 p-0 flex flex-col">
+      <DialogContent className="sm:max-w-md p-0 flex flex-col gap-0">
 
         {/* Header */}
-        <SheetHeader className="px-6 pt-6 pb-4 border-b">
+        <DialogHeader className="px-6 pt-6 pb-4 border-b">
           <div className="flex items-center gap-4">
-            <div className="h-12 w-12 bg-primary/90 text-white flex items-center justify-center rounded-full font-semibold">
-              {contact.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")
-                .slice(0, 2)}
+            <div className="h-12 w-12 bg-primary/90 text-white flex items-center justify-center rounded-full font-semibold shrink-0">
+              {initials}
             </div>
 
             <div>
-              <SheetTitle className="text-lg font-semibold">
+              <DialogTitle className="text-lg font-semibold">
                 {contact.name}
-              </SheetTitle>
-              <p className="text-sm text-muted-foreground">
-                {contact.role}
-              </p>
+              </DialogTitle>
+              <p className="text-sm text-muted-foreground">{contact.role}</p>
             </div>
           </div>
-        </SheetHeader>
+        </DialogHeader>
 
         {/* Body */}
         <div className="flex-1 overflow-y-auto px-6 py-5 space-y-6">
@@ -108,8 +100,8 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
                 {contact.socialLinks.map((link, index) => (
                   <Tooltip key={index}>
                     <TooltipTrigger asChild>
-                      <a
-                        href={link}
+
+                      <a href={link}
                         target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-1.5 text-xs bg-muted hover:bg-muted/80 px-3 py-1.5 rounded-full transition"
@@ -127,16 +119,20 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
         </div>
 
         {/* Footer */}
-        <SheetFooter className="px-6 py-4 border-t flex justify-between">
-
+        <DialogFooter className="px-6 py-4 border-t flex flex-row justify-between sm:justify-between gap-2">
           <AddContact title="Edit" editing id={contact.id} />
 
-          <Button variant="destructive" size="lg" onClick={() => handleDelete()}>
-            {isPending ? <Loader2 className="animate-spin" /> : " Delete"}
+          <Button
+            variant="destructive"
+            size="lg"
+            onClick={() => handleDelete()}
+            disabled={isPending}
+          >
+            {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Delete"}
           </Button>
-        </SheetFooter>
-      </SheetContent>
-    </Sheet>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 };
 

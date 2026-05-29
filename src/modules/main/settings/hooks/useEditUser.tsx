@@ -10,7 +10,9 @@ export const useEditUser = () => {
   const [editData, setEditData] = React.useState<AuthUser>({
     email: "",
     username: "",
-    onboarded: false
+    linkedinUrl: "",
+    preferredRole: "",
+    skills: []
   });
 
   const { mutate, isPending, error } = useMutation({

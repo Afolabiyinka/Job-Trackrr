@@ -26,7 +26,7 @@ export const useLogout = () => {
 
       logout()
       navigate("/");
-      queryClient.invalidateQueries({ queryKey: ["user"] });
+      queryClient.clear();
     },
 
     onError: (err) => {

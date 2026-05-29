@@ -6,8 +6,8 @@ export type EditUserPayload = {
 export interface AuthUser {
   username: string;
   email: string;
-  onboarded: boolean;
-  linkedinUrl?: string;
-  preferredRole?: string;
-  skills?: string[]
+  onboarded?: boolean;
+  linkedinUrl: string;
+  preferredRole: string;
+  skills: string[]
 }
