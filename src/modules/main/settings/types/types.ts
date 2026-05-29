@@ -7,5 +7,7 @@ export interface AuthUser {
   username: string;
   email: string;
   onboarded: boolean;
-  [key: string]: any
+  linkedinUrl?: string;
+  preferredRole?: string;
+  skills?: string[]
 }

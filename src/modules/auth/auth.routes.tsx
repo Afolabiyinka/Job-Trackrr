@@ -23,6 +23,7 @@ const authRoutes: RouteObject[] = [
     Component: VerifyOtp,
     handle: { title: "Verify Otp" }
   },
+
 ];
 
 export { authRoutes };
