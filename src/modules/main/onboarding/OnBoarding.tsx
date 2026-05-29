@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { Navigate } from "react-router-dom";
@@ -18,7 +18,6 @@ const OnBoarding = () => {
   const { user } = useUser();
 
 
-  const hasMarkedRef = useRef(false);
 
   const nextStep = () => {
     setActiveStep((prev) => prev + 1);
