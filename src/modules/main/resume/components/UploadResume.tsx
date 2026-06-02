@@ -41,7 +41,7 @@ const UploadResume = ({ title }: Props) => {
         <div className="mt-6 flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-4 text-center">
           {uploadedResume ? (
             <div className="mt-3 text-lg border overflow-hidden p-4 w-full h-full rounded-md flex flex-col items-center justify-between  gap-3 mb-3">
-              <span className="flex p-2 rounded-lg items-center gap-1 justify-start shadow">
+              <span className="flex p-2 rounded-full items-center gap-1 justify-start shadow">
                 <FileText fill="white" />{" "}
                 <p className="truncate w-48  text-left tracking-wide text-sm">
                   {uploadedResume.name}

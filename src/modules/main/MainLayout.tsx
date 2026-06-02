@@ -41,7 +41,7 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-2 flex flex-col md:p-4 p-px">
+      <main className="w-full gap-2 flex flex-col md:p-4 p-2">
         <span className="w-full">
           <Greeting />
           <Header />

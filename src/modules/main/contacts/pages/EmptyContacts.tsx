@@ -1,54 +1,54 @@
 import { motion } from "framer-motion";
 import contact_image from "@/assets/contact_image.svg";
-
 import AddContact from "../components/AddContact";
 
 const EmptyContacts = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center text-center p-6 h-full bg-muted/50 rounded-2xl shadow">
+    <div className="flex max-h-screen md:h-full flex-col md:flex-row shadow rounded-2xl bg-muted/50 overflow-hidden">
+      {/* Illustration panel */}
       <motion.div
-        className="w-full lg:w-1/2 flex justify-center items-center"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
+        initial={{ opacity: 0, x: -24 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <img
           src={contact_image}
           alt="No contacts illustration"
-          className="w-full max-w-sm object-contain"
+          className="w-full max-w-xs md:max-w-sm object-contain"
         />
       </motion.div>
 
-      {/* Text */}
-      <motion.div>
+      {/* Content panel */}
+      <motion.div
+        className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start gap-4 p-8 md:p-12 text-center md:text-left"
+        initial={{ opacity: 0, x: 24 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <motion.h2
-          className="text-xl font-semibold mt-6"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-2xl font-semibold"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.15 }}
         >
           No Contacts Yet
         </motion.h2>
 
         <motion.p
-          className="text-muted-foreground mt-2 max-w-md"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-muted-foreground max-w-sm text-sm md:text-base"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.25 }}
         >
           Start building your network by adding your first contact.
         </motion.p>
 
         <motion.div
-          className="mt-6"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.35 }}
         >
-          {/* <Button size={`lg`}>
-            <Plus className="mr-2 h-4 w-4" />
-            Add Contact
-          </Button> */}
           <AddContact title="Add Contact" />
         </motion.div>
       </motion.div>

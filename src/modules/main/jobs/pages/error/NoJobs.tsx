@@ -1,56 +1,61 @@
-import { Plus, Upload } from "lucide-react";
+import { Plus, Briefcase } from "lucide-react";
 import CreateJobStepper from "../../components/create-job/stepper/CreateJob-Stepper";
 import { motion } from "framer-motion";
-import add_image from "@/assets/add_image.svg";
-import { Button } from "@/components/ui/button";
+import add_image from "@/assets/empty_jobs.svg";
+
 export default function NoJobs() {
   return (
-    <div className="flex h-full flex-col md:flex-row shadow rounded-2xl bg-muted/50">
+    <div className="flex max-h-screen md:h-full flex-col md:flex-row shadow rounded-2xl bg-muted/50 overflow-hidden">
+      {/* Illustration panel */}
       <motion.div
-        className="w-full lg:w-1/2 flex justify-center items-center"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
+        initial={{ opacity: 0, x: -24 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <img
           src={add_image}
-          alt="No contacts illustration"
-          className="w-full max-w-sm object-contain"
+          alt="No jobs illustration"
+          className="w-full max-w-xs md:max-w-sm object-contain"
         />
       </motion.div>
-      <motion.div className="w-full lg:w-1/2 flex flex-col gap-6 text-center md:text-left justify-center">
-        <div className="h-full w-full flex flex-col justify-center items-center p-6 text-center rounded-xl transition">
-          <Button
-            size={`icon-lg`}
-            variant={`secondary`}
-            className="h-16 w-16 rounded-full"
-          >
-            <Upload aria-hidden className="h-10 w-10" />
-          </Button>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-2xl font-semibold mt-4"
-          >
-            No Jobs Added Yet
-          </motion.h2>
-
-          <motion.p
-            className="max-w-sm text-sm md:text-base  mt-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            Add your first job application to start tracking your job search in
-            one place.
-          </motion.p>
-
-          <div className="flex justify-center gap-2 mt-4">
-            <CreateJobStepper title="Add a new job" icon={<Plus />} />
-          </div>
+      {/* Content panel */}
+      <motion.div
+        className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start gap-4 p-8 md:p-12 text-center md:text-left"
+        initial={{ opacity: 0, x: 24 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <div className="h-14 w-14 rounded-full bg-secondary flex items-center justify-center">
+          <Briefcase className="h-6 w-6 text-secondary-foreground" aria-hidden />
         </div>
+
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="text-2xl font-semibold"
+        >
+          No Jobs Added Yet
+        </motion.h2>
+
+        <motion.p
+          className="max-w-sm text-sm md:text-base text-muted-foreground"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25 }}
+        >
+          Add your first job application to start tracking your search in one place.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35 }}
+        >
+          <CreateJobStepper title="Add a new job" icon={<Plus />} />
+        </motion.div>
       </motion.div>
     </div>
   );

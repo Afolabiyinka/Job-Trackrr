@@ -16,7 +16,7 @@ const FeatureInDevelopment = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    <div className="p-5 rounded-full bg-yellow-100">
+                    <div className="p-5 rounded-full">
                         <Construction size={40} className="text-yellow-600 stroke-[1px]" />
                     </div>
                 </motion.div>
