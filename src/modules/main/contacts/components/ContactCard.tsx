@@ -6,7 +6,7 @@ import {
   DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Phone, Mail, Globe, Loader2 } from "lucide-react";
+import { Phone, Mail, Globe, } from "lucide-react";
 import type { ContactPayload } from "../types/types";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/tooltip";
 import { useDeleteContact } from "../hooks/useDeleteContacts";
 import AddContact from "./AddContact";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const ContactCard = ({ contact }: { contact: ContactPayload }) => {
   if (!contact.id) return null;
@@ -128,7 +129,7 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
             onClick={() => handleDelete()}
             disabled={isPending}
           >
-            {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Delete"}
+            {isPending ? <SpinningLoader /> : "Delete"}
           </Button>
         </DialogFooter>
       </DialogContent>

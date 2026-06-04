@@ -10,12 +10,13 @@ import {
 
 import { Label } from "@/components/ui/label";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
-import { Loader2, Pencil, Plus, } from "lucide-react";
+import { Pencil, Plus, } from "lucide-react";
 import { useAddContact } from "../hooks/useAddContact";
 import { useEffect } from "react";
 import type { ContactPayload } from "../types/types";
 import { useEditContact } from "../hooks/useEditContact";
 import { useGetContacts } from "../hooks/useGetContacts";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 
 interface AddContactProps {
@@ -144,11 +145,11 @@ const AddContact = ({ editing, title, id }: AddContactProps) => {
                     <div className="px-6 py-4 border-t flex justify-end">
                         {editing ? (
                             <Button size="lg" type="submit">
-                                {isEditPending ? <Loader2 className="animate-spin" /> : "Save Changes"}
+                                {isEditPending ? <SpinningLoader /> : "Save Changes"}
                             </Button>
                         ) : (
                             <Button className="gap-2" size="lg" type="submit">
-                                {isPending ? <Loader2 className="animate-spin" /> : "Save Contact"}
+                                {isPending ? <SpinningLoader /> : "Save Contact"}
                             </Button>
                         )}
                     </div>

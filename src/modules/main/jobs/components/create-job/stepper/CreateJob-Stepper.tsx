@@ -14,7 +14,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Briefcase,
-  Loader2,
   Pencil,
 } from "lucide-react";
 
@@ -34,6 +33,7 @@ import { useJobs } from "../../../store/useJobs";
 import type { Job } from "../../../types/job";
 import { useEffect } from "react";
 import { useEditJobs } from "../../../hooks/useEditJob";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const STEPS = ["Basics", "Compensation", "Interview", "Status"];
 
@@ -354,7 +354,7 @@ const CreateJobStepper = ({
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
-                      <Loader2 className="h-4 w-4 animate-spin" />
+                      <SpinningLoader />
                       <span>Saving...</span>
                     </div>
                   ) : editing ? (

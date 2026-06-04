@@ -10,11 +10,12 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Loader2, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 
 import { useDeleteAccount } from "../hooks/useDeleteAccount";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { CopyButton } from "@/components/ui/copy-button";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const DeleteAccountModal = () => {
   const { handleDelete, loading, deleteInput, setDeleteInput, deletePhrase } =
@@ -24,7 +25,7 @@ const DeleteAccountModal = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="destructive" size="lg">
-          {loading ? <Loader2 className="animate-spin" /> : <span className="flex  items-center"><Trash className="mr-2" />
+          {loading ? <SpinningLoader /> : <span className="flex  items-center"><Trash className="mr-2" />
             Delete Account</span>}
         </Button>
       </AlertDialogTrigger>
@@ -63,7 +64,7 @@ const DeleteAccountModal = () => {
             onClick={() => handleDelete()}
           >
             {loading ? (
-              <Loader2 className="animate-spin h-8 w-6" />
+              <SpinningLoader />
             ) : (
               <>Delete Account</>
             )}

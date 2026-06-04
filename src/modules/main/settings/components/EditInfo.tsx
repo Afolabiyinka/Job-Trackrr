@@ -1,12 +1,13 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Save, X } from "lucide-react";
+import { Save, X } from "lucide-react";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { useUser } from "../store/useUser";
 import { useEditUser } from "../hooks/useEditUser";
 import React, { useEffect, useState } from "react";
 import { Label } from "@/components/ui/label";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const EditInfo = () => {
   const { user } = useUser();
@@ -153,7 +154,7 @@ const EditInfo = () => {
           <div className="flex justify-end">
             <Button size="lg" type="submit" disabled={loading}>
               <Save />
-              {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+              {loading && <SpinningLoader />}
               Save Changes
             </Button>
           </div>

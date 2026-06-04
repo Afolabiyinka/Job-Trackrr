@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Loader2, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
 import Settings from "../settings/pages/Settings";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const DesktopNav = () => {
   const location = useLocation();
@@ -58,7 +59,7 @@ const DesktopNav = () => {
           disabled={logoutLoading}
         >
           {logoutLoading && (
-            <Loader2 className="absolute inset-0 m-auto h-5 w-5 animate-spin" />
+            <SpinningLoader />
           )}
 
           <span className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}>

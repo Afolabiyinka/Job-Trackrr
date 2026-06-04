@@ -1,13 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import CustomInput from "@/modules/main/jobs/components/create-job/input/custom-input";
-import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import ForgetPassword from "./ForgetPassword";
 import { motion } from "framer-motion";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
 import { GoogleLogin } from "@react-oauth/google";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const Login = () => {
   const { handleLogin, loading, setLoginData, loginData } = useLogin();
@@ -38,7 +38,7 @@ const Login = () => {
           <div className="w-full pt-2">
             {googleLoading ? (
               <span className="p-3 rounded-full border border-border flex justify-center items-center">
-                <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                <SpinningLoader />
               </span>
             ) : (
               <GoogleLogin
@@ -105,7 +105,7 @@ const Login = () => {
           <Button type="submit" size="lg" className="w-full" disabled={loading}>
             {loading ? (
               <>
-                <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                <SpinningLoader />
                 Signing in...
               </>
             ) : (

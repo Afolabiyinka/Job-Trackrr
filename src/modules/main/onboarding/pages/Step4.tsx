@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Loader2, X } from "lucide-react";
+import { X } from "lucide-react";
 
 import { useOnboardingStore } from "../store/useOnboardingDetails";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useOnboarding } from "../hooks/useOnboarding";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const Step4 = () => {
     const { addSkill, removeSkill, setSkillInput, skillInput, skills, linkedinUrl, preferredRole } =
@@ -139,7 +140,7 @@ const Step4 = () => {
                 >
                     <Button variant={`ghost`} size={`lg`}>Skip</Button>
                     <Button size={`lg`}>
-                        {isPending ? <Loader2 className="animate-spin" /> : <>Continue</>}
+                        {isPending ? <SpinningLoader /> : <>Continue</>}
 
                     </Button>
                 </div>

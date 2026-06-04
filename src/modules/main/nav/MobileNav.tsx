@@ -3,12 +3,13 @@ import { useState } from "react";
 import { NAVLINKS } from "./utils/nav";
 import { NavLink } from "react-router-dom";
 import MenuButton from "./components/MenuButton";
-import { Bell, Loader2, LogOut } from "lucide-react";
+import { Bell, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
 import SearchInput from "./components/SearchInput";
 import Settings from "../settings/pages/Settings";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -76,7 +77,7 @@ const MobileNav = () => {
                 disabled={logoutLoading}
               >
                 {logoutLoading && (
-                  <Loader2 className="absolute inset-0 m-auto h-5 w-5 animate-spin" />
+                  <SpinningLoader />
                 )}
 
                 <span className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}>

@@ -1,14 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import CustomInput from "@/modules/main/jobs/components/create-job/input/custom-input";
-import { Loader2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useSignup } from "../hooks/useSignUp";
 import type React from "react";
 import { motion } from "framer-motion";
+import SpinningLoader from "@/components/loader/spinningloader";
+import { GoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "../hooks/useGoogleLogin";
 
 const SignUp = () => {
   const { handleSignup, loading, setSignUpData, signupData } = useSignup();
+  const { handleGoogleLogin, googleLoading } = useGoogleLogin();
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -30,6 +33,34 @@ const SignUp = () => {
             <p className="text-muted-foreground">
               Create your account and start tracking your job applications today
             </p>
+          </div>
+
+          <div className="w-full pt-2">
+            {googleLoading ? (
+              <span className="p-3 rounded-full border border-border flex justify-center items-center">
+                <SpinningLoader />
+              </span>
+            ) : (
+              <GoogleLogin
+                shape="pill"
+                size="large"
+                text="signin_with"
+
+                onSuccess={(data) => handleGoogleLogin(data)}
+              />
+            )}
+          </div>
+
+          {/* Divider */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background  px-2 p-1 rounded-full text-muted-foreground">
+                Or
+              </span>
+            </div>
           </div>
 
           {/* Form Fields */}
@@ -78,23 +109,6 @@ const SignUp = () => {
                 required
               />
             </div>
-
-            {/* <div className="space-y-1.5">
-              <Label htmlFor="confirm-password" className="text-sm font-medium">
-                Confirm password
-              </Label>
-              <CustomInput
-                type="password"
-                placeholder="Re-enter your password"
-                icon="Lock"
-                id="confirm-password"
-                value={signupData.confirmedPassword}
-                onChange={(e) =>
-                  setSignUpData({ ...signupData, confirmedPassword: e })
-                }
-                required
-              />
-            </div> */}
           </div>
 
 
@@ -108,7 +122,7 @@ const SignUp = () => {
           >
             {loading ? (
               <>
-                <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                <SpinningLoader />
                 Creating account...
               </>
             ) : (

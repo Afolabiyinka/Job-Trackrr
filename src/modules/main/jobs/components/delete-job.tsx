@@ -10,13 +10,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Loader2, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { useDeleteJob } from "../hooks/useDeleteJob";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const DeleteJobModal = ({ id }: { id: string }) => {
   const { handleDelete, loading } = useDeleteJob();
@@ -26,7 +27,7 @@ const DeleteJobModal = ({ id }: { id: string }) => {
         <Tooltip>
           <TooltipTrigger>
             <Button size={`icon-lg`} variant={`destructive`}>
-              {loading ? <Loader2 className="animate-spin" /> : <Trash2 />}
+              {loading ? <SpinningLoader /> : <Trash2 />}
             </Button>
           </TooltipTrigger>
           <TooltipContent>
@@ -50,7 +51,7 @@ const DeleteJobModal = ({ id }: { id: string }) => {
             onClick={() => handleDelete(id)}
           >
             {loading ? (
-              <Loader2 className="animate-spin h-8 w-6" />
+              <SpinningLoader />
             ) : (
               <>Delete job</>
             )}

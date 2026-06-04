@@ -8,29 +8,33 @@ import LoadingContainer from "@/components/loader/loadingcontainer";
 import NoJobs from "./error/NoJobs";
 import { Button } from "@/components/ui/button";
 import ListView from "./views/list-view";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+
+type JobView = "card" | "table" | "list";
+
+const VIEW_STORAGE_KEY = "jobsView";
+
+const jobViews: {
+  value: JobView;
+  label: string;
+  icon: React.ElementType;
+  content: React.ReactNode;
+}[] = [
+    { value: "card", label: "Card View", icon: LayoutGrid, content: <CardView /> },
+    { value: "table", label: "Table View", icon: Table, content: <TableView /> },
+    { value: "list", label: "List View", icon: LayoutList, content: <ListView /> },
+  ];
 
 const Jobs = () => {
-  const [currentView, setCurrentView] = useState<"card" | "table" | "list">(
-    "card",
-  );
+  const [currentView, setCurrentView] = useState<JobView>(() => {
+    const stored = localStorage.getItem(VIEW_STORAGE_KEY) as JobView | null;
+    return stored ?? "card";
+  });
 
-  // Load saved view from localStorage
-  useEffect(() => {
-    const stored = localStorage.getItem("jobsView") as
-      | "card"
-      | "table"
-      | "list"
-      | null;
-    if (stored) setCurrentView(stored);
-  }, []);
-
-  // Handle tab change
   function handleViewChange(value: string) {
-    if (value === "card" || value === "table" || value === "list") {
-      setCurrentView(value);
-      localStorage.setItem("jobsView", value);
-    }
+    const view = value as JobView;
+    setCurrentView(view);
+    localStorage.setItem(VIEW_STORAGE_KEY, view);
   }
 
   const { data, error, loading, refetch } = useGetJobs();
@@ -52,45 +56,35 @@ const Jobs = () => {
 
   return (
     <div className="h-full w-full flex flex-col gap-5 p-2">
-      <div className="flex justify-between md:items-center flex-col  md:flex-row w-full items-start gap-3">
+      <div className="flex justify-between md:items-center flex-col md:flex-row w-full items-start gap-3">
         <h1 className="text-2xl">Job Applications</h1>
-        <CreateJobStepper
-          title="Add a new job"
-          icon={<Plus />}
-          editing={false}
-        />
+        <CreateJobStepper title="Add a new job" icon={<Plus />} editing={false} />
       </div>
+
       <Tabs value={currentView} onValueChange={handleViewChange}>
-        <TabsList className="space-x-4 overflow-x-auto">
-          <TabsTrigger value="card">
-            <span className="flex items-center gap-1">
-              <LayoutGrid className="h-4 w-4" />
-              Card View
-            </span>
-          </TabsTrigger>
-          <TabsTrigger value="table">
-            <span className="flex items-center gap-1">
-              <Table className="h-4 w-4" />
-              Table View
-            </span>
-          </TabsTrigger>
-          <TabsTrigger value="list">
-            <span className="flex items-center gap-1">
-              <LayoutList className="h-4 w-4" />
-              List View
-            </span>
-          </TabsTrigger>
+        <TabsList className="space-x-4">
+          {jobViews.map(({ value, label, icon: Icon }) => (
+            <TabsTrigger key={value} value={value} className="group">
+              <Icon className="h-4 w-4 shrink-0" />
+              <span
+                className="
+      max-w-0 overflow-hidden opacity-0 whitespace-nowrap
+      transition-all duration-300 ease-in-out
+      group-data-[state=active]:max-w-[6rem] group-data-[state=active]:opacity-100 group-data-[state=active]:ml-1.5
+      md:max-w-none md:opacity-100 md:ml-1.5
+    "
+              >
+                {label}
+              </span>
+            </TabsTrigger>
+          ))}
         </TabsList>
 
-        <TabsContent value="card" className="h-full">
-          <CardView />
-        </TabsContent>
-        <TabsContent value="table" className="h-full">
-          <TableView />
-        </TabsContent>
-        <TabsContent value="list" className="h-full">
-          <ListView />
-        </TabsContent>
+        {jobViews.map(({ value, content }) => (
+          <TabsContent key={value} value={value} className="h-full">
+            {content}
+          </TabsContent>
+        ))}
       </Tabs>
     </div>
   );

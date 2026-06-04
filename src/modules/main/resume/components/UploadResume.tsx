@@ -7,10 +7,11 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { FileText, Loader2, Sparkles, UploadCloud } from "lucide-react";
+import { FileText, Sparkles, UploadCloud } from "lucide-react";
 import { useUploadResume } from "../hooks/useUploadResume";
 import { useNavigate } from "react-router-dom";
 import { useAnalyseResume } from "../hooks/useAnalyseResume";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 interface Props {
   title: string;
@@ -50,7 +51,7 @@ const UploadResume = ({ title }: Props) => {
 
               <span>
                 {loading ? (
-                  <Loader2 className="animate-spin h-8 w-8" />
+                  <SpinningLoader />
                 ) : (
                   <Button
                     onClick={() => {

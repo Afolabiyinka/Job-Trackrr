@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import {
   AlertTriangle,
   CheckCircle,
-  Loader2,
   RefreshCcw,
   Wrench,
 } from "lucide-react";
@@ -16,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import SpinningLoader from "@/components/loader/spinningloader";
 
 const Results = () => {
 
@@ -41,7 +41,7 @@ const Results = () => {
             className="flex items-center gap-2"
           >
             {isPending ? (
-              <Loader2 className="animate-spin h-6 w-6" />
+              <SpinningLoader />
             ) : (
               <RefreshCcw />
             )}
