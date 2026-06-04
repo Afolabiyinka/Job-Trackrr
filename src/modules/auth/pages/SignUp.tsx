@@ -44,8 +44,7 @@ const SignUp = () => {
               <GoogleLogin
                 shape="pill"
                 size="large"
-                text="signin_with"
-
+                text="continue_with"
                 onSuccess={(data) => handleGoogleLogin(data)}
               />
             )}

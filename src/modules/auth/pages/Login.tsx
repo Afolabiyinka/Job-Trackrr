@@ -45,7 +45,6 @@ const Login = () => {
                 shape="pill"
                 size="large"
                 text="signin_with"
-
                 onSuccess={(data) => handleGoogleLogin(data)}
               />
             )}
