@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, X } from "lucide-react";
+import { Loader2, Save, X } from "lucide-react";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { useUser } from "../store/useUser";
 import { useEditUser } from "../hooks/useEditUser";
@@ -109,7 +109,7 @@ const EditInfo = () => {
             <Label htmlFor="skill-input" className="text-sm font-medium">
               Skills
             </Label>
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center flex-col md:flex-row">
               <CustomInput
                 id="skill-input"
                 icon="Zap"
@@ -152,6 +152,7 @@ const EditInfo = () => {
 
           <div className="flex justify-end">
             <Button size="lg" type="submit" disabled={loading}>
+              <Save />
               {loading && <Loader2 className="h-4 w-4 animate-spin" />}
               Save Changes
             </Button>

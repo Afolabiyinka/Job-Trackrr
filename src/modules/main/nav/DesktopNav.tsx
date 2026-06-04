@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Loader2, LogOut, Settings } from "lucide-react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Loader2, LogOut } from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
+import Settings from "../settings/pages/Settings";
 
 const DesktopNav = () => {
   const location = useLocation();
@@ -48,13 +49,7 @@ const DesktopNav = () => {
       </div>
 
       <div className="mt-auto flex flex-col gap-3 border-t pt-4">
-        <Link
-          className="flex gap-2 items-center p-3 rounded-3xl hover:bg-muted transition"
-          to="settings"
-        >
-          <Settings className="h-4.5 w-4.5" />
-          <span>Settings</span>
-        </Link>
+        <Settings />
         <Button
           className="relative justify-start gap-3"
           size="lg"

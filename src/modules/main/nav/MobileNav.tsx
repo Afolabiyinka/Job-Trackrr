@@ -1,13 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { NAVLINKS } from "./utils/nav";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import MenuButton from "./components/MenuButton";
-import { Bell, Loader2, LogOut, Settings } from "lucide-react";
+import { Bell, Loader2, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
 import SearchInput from "./components/SearchInput";
+import Settings from "../settings/pages/Settings";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -64,14 +65,9 @@ const MobileNav = () => {
             })}
 
             <div className="mt-auto flex flex-col gap-3 border-t pt-4">
-              <Link
-                onClick={() => setOpen(false)}
-                className="flex gap-2 mb-2 p-2 rounded-xl cursor-pointer"
-                to={`settings`}
-              >
-                <Settings />
-                Settings
-              </Link>
+
+              <Settings />
+
               <Button
                 className="relative justify-start gap-3"
                 size="lg"
