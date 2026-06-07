@@ -29,24 +29,14 @@ const HowItWorks = () => {
   return (
     <section className="w-full min-h-screen flex items-center justify-center py-20 px-6 md:px-16 bg-muted/30">
       <div className="max-w-7xl w-full">
-        {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary"
-          >
-            Simple and powerful
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight font-[Inter]"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight font-[Inter]"
           >
             How it works
           </motion.h2>
@@ -62,7 +52,6 @@ const HowItWorks = () => {
           </motion.p>
         </div>
 
-        {/* Steps Grid */}
         <div className="grid md:grid-cols-3 gap-8 relative">
 
           {steps.map(({ step, title, description, icon: Icon }, index) => (
@@ -74,18 +63,15 @@ const HowItWorks = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="bg-muted/50 z-50 border rounded-2xl p-8 flex flex-col items-start gap-4 hover:shadow-xl hover:border-primary/50 transition-all duration-300 h-full group">
-                {/* Step number badge */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary/50 text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+              <div className="bg-muted/50 z-50 border rounded-2xl p-8 flex flex-col items-start gap-4 transition-all duration-300 h-full group">
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary/80 text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
                   {step}
                 </div>
 
-                {/* Icon */}
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-14 h-14 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-7 h-7 text-primary" />
                 </div>
 
-                {/* Content */}
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold">{title}</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -99,7 +85,6 @@ const HowItWorks = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

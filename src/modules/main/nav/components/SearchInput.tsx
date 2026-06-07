@@ -8,10 +8,11 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";
-import { Briefcase, Building2, Search } from "lucide-react";
+import { Briefcase, Search } from "lucide-react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
+import { getStatusColor } from "../../jobs/libs/utils";
 
 export default function SearchInput() {
   const [open, setOpen] = React.useState(false);
@@ -57,25 +58,47 @@ export default function SearchInput() {
                   No jobs found
                 </p>
 
-                <p className="max-w-[240px] text-xs text-muted-foreground">
+                <p className="max-w-60 text-xs text-muted-foreground">
                   Try a different search term
                 </p>
               </div>
             </CommandEmpty>
 
-            <CommandGroup>
+            <CommandGroup className="mt-3">
               {filteredJobs.slice(0, 5).map((job) => (
                 <CommandItem
                   key={job.id}
                   value={job.company}
-                  className="cursor-pointer"
+                  className="cursor-pointer p-2"
                   onSelect={() => {
                     navigate(`/jobs/${job.id}`);
                     setOpen(false);
                   }}
                 >
-                  <Building2 className="mr-2 h-4 w-4" />
-                  <span>{job.company}</span>
+                  <div className="flex justify-between items-center w-full">
+                    {/* LEFT */}
+                    <div className="flex items-center gap-2">
+                      <div className="h-9 w-9 rounded-full border flex items-center justify-center font-semibold">
+                        {job.company?.charAt(0) ?? "?"}
+                      </div>
+
+                      <p className="text-sm font-medium">
+                        {job.company}
+                      </p>
+                    </div>
+
+                    {/* RIGHT */}
+                    <div className="flex items-center">
+                      <span
+                        className={`h-2.5 w-2.5 rounded-full shrink-0 ${getStatusColor(job.status ?? "applied")}`}
+                      />
+
+                      <span className="px-2 py-0.5 rounded-full font-medium capitalize">
+                        {job.status}
+                      </span>
+                    </div>
+                  </div>
+
                 </CommandItem>
               ))}
             </CommandGroup>

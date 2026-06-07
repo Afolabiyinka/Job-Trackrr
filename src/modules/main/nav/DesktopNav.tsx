@@ -32,7 +32,7 @@ const DesktopNav = () => {
                     : "hover:bg-muted"
                     }`}
                 >
-                  <Icon className="h-4.5 w-4.5 stroke-[1.25px]" />
+                  <Icon className="h-4.5 w-4.5 stroke-[1.5px]" />
                   <p>{name}</p>
                 </NavLink>
               </motion.div>

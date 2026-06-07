@@ -5,8 +5,6 @@ import { Toaster } from "sonner";
 import { useUser } from "./modules/main/settings/store/useUser";
 import { useFetchUser } from "./modules/main/settings/hooks/useFetchUser";
 
-
-
 export function App() {
   const { fetchedUser, loading } = useFetchUser();
   const { setUser, setAuthResolved } = useUser();

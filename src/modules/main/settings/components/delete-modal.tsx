@@ -25,8 +25,14 @@ const DeleteAccountModal = () => {
     <AlertDialog>
       <AlertDialogTrigger asChild>
         <Button variant="destructive" size="lg">
-          {loading ? <SpinningLoader /> : <span className="flex  items-center"><Trash className="mr-2" />
-            Delete Account</span>}
+          {loading ? (
+            <SpinningLoader />
+          ) : (
+            <span className="flex  items-center">
+              <Trash className="mr-2" />
+              Delete Account
+            </span>
+          )}
         </Button>
       </AlertDialogTrigger>
 
@@ -63,11 +69,7 @@ const DeleteAccountModal = () => {
             disabled={deleteInput.trim() !== deletePhrase || loading}
             onClick={() => handleDelete()}
           >
-            {loading ? (
-              <SpinningLoader />
-            ) : (
-              <>Delete Account</>
-            )}
+            {loading ? <SpinningLoader /> : <>Delete Account</>}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

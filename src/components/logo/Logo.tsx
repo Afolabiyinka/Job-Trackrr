@@ -32,8 +32,7 @@ const Logo = ({ collapsed = false }: LogoProps) => {
           duration: 0.3,
           ease: [0.4, 0, 0.2, 1]
         }}
-        className="text-2xl font-bold tracking-wide whitespace-nowrap overflow-hidden"
-      >
+        className="text-xl font-bold tracking-tight"      >
         Job Trackrr
       </motion.span>
     </Link>

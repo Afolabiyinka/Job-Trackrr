@@ -38,7 +38,6 @@ export default function InputOTPForm() {
         Go back
       </Button>
 
-      {/* //The first step */}
 
       {activeStep === 0 && (
         <Card className="mx-auto max-w-md w-full">
@@ -61,8 +60,7 @@ export default function InputOTPForm() {
         </Card>
       )}
 
-      {/* //The second step */}
-
+      s
       {activeStep === 1 && (
         <Card className="mx-auto max-w-lg">
           <CardHeader>

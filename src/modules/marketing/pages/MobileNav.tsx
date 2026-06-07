@@ -11,8 +11,8 @@ const MobileNav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="p-3 flex flex-col justify-between relative">
-      <span className="flex justify-between relative w-full border border-border bg-background rounded-full p-3 px-6 items-center">
+    <div className="p-2 flex flex-col justify-between fixed  z-50 w-full bg-white dark:bg-[#141414]">
+      <span className="flex justify-between relative w-full  rounded-full p-2 px-6 items-center">
         <Logo />
         <MenuButton open={open} onClick={() => setOpen(!open)} />
       </span>

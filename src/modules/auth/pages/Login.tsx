@@ -26,7 +26,6 @@ const Login = () => {
         transition={{ duration: 0.5 }}
       >
         <form onSubmit={onSubmit} className="space-y-4">
-          {/* Header */}
           <div className="text-left space-y-2">
             <h1 className="text-4xl font-bold tracking-tight">Welcome back</h1>
             <p className="text-muted-foreground">
@@ -34,7 +33,6 @@ const Login = () => {
             </p>
           </div>
 
-          {/* Google Login - FIRST */}
           <div className="w-full pt-2">
             {googleLoading ? (
               <span className="p-3 rounded-full border border-border flex justify-center items-center">
@@ -50,7 +48,6 @@ const Login = () => {
             )}
           </div>
 
-          {/* Divider */}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
@@ -62,7 +59,6 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Form Fields */}
           <div className="space-y-4">
             <div className="space-y-1.5">
               <Label htmlFor="email" className="text-sm font-medium">
@@ -95,12 +91,11 @@ const Login = () => {
             </div>
           </div>
 
-          {/* Forgot Password */}
           <div className="flex items-center justify-end">
             <ForgetPassword />
           </div>
 
-          {/* Submit Button */}
+
           <Button type="submit" size="lg" className="w-full" disabled={loading}>
             {loading ? (
               <>
@@ -112,7 +107,6 @@ const Login = () => {
             )}
           </Button>
 
-          {/* Footer */}
           <div className="text-center pt-2">
             <p className="text-sm text-muted-foreground">
               New to JobTrackrr?{" "}

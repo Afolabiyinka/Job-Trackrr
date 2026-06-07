@@ -4,8 +4,7 @@ import ResultsSkeleton from "./sub-pages/LoadingState";
 import Results from "./sub-pages/Results";
 
 const Resume = () => {
-  const { isPending, analysis, isSuccess, isError, error } =
-    useAnalyseResume();
+  const { isPending, analysis, isSuccess, isError, error } = useAnalyseResume();
 
   // Loading state
   if (isPending) {
@@ -15,11 +14,9 @@ const Resume = () => {
   // Error state
   if (isError) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] space-y-4">
+      <div className="flex flex-col items-center justify-center min-h-100 space-y-4">
         <div className="text-center space-y-2">
-          <h3 className="text-lg font-medium text-red-600">
-            Analysis Failed
-          </h3>
+          <h3 className="text-lg font-medium text-red-600">Analysis Failed</h3>
 
           <p className="text-sm text-gray-600">
             {error?.message || "Something went wrong. Please try again."}

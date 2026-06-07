@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NAVLINKS } from "./utils/nav";
 import { NavLink } from "react-router-dom";
 import MenuButton from "./components/MenuButton";
-import { Bell, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
@@ -19,12 +19,9 @@ const MobileNav = () => {
   return (
     <div className="p-2  flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
-        <Logo collapsed />
+        <Logo />
         <div className="flex gap-2 items-center">
           <SearchInput />
-          <Button variant={`secondary`} size={`icon-lg`}>
-            <Bell />
-          </Button>
           <MenuButton open={open} onClick={() => setOpen(!open)} />
         </div>
       </span>

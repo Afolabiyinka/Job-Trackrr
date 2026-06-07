@@ -18,9 +18,6 @@ const Greeting = () => {
       </h1>
       <div className="md:flex gap-3 items-center hidden">
         <SearchInput />
-        {/* <Button size={`icon-lg`}>
-          <Bell />
-        </Button> */}
       </div>
     </div>
   );

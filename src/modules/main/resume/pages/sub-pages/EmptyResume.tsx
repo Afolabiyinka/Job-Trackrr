@@ -27,8 +27,8 @@ const EmptyResume = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="h-14 w-14 rounded-full bg-secondary flex items-center justify-center">
-          <Upload className="h-6 w-6 text-secondary-foreground" aria-hidden />
+        <div className="h-20 w-20 rounded-full flex items-center justify-center">
+          <Upload size={40} className="text-secondary-foreground" aria-hidden />
         </div>
 
         <motion.h2

@@ -26,8 +26,6 @@ import { formatDistanceToNow } from "date-fns";
 import { Briefcase, Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-
-
 const TableView = () => {
   const navigate = useNavigate();
   const { currentPage, handleNextPage, handlePrevPage } = usePagination();
@@ -35,9 +33,6 @@ const TableView = () => {
 
   const { appliedJobs, interviewJobs, offeredJobs, rejectedJobs } =
     useFilterJobs();
-
-
-
 
   const [activeFilter, setActiveFilter] = useState<
     "all" | "applied" | "interview" | "offer" | "rejected"
@@ -58,7 +53,6 @@ const TableView = () => {
     offer: offeredJobs,
     rejected: rejectedJobs,
   }[activeFilter];
-
 
   {
     !loading && filteredJobs?.length === 0 && (
@@ -85,7 +79,9 @@ const TableView = () => {
               <>
                 <Search className="h-16 w-16 text-muted-foreground" />
                 <div>
-                  <h3 className="font-semibold text-lg">No {activeFilter} jobs</h3>
+                  <h3 className="font-semibold text-lg">
+                    No {activeFilter} jobs
+                  </h3>
                   <p className="text-sm text-muted-foreground">
                     Try a different filter or add more applications
                   </p>
@@ -95,12 +91,12 @@ const TableView = () => {
           </div>
         </TableCell>
       </TableRow>
-    )
+    );
   }
 
   return (
     <div className="h-full w-full flex flex-col gap-3 p-2">
-      <div className="w-full flex justify-end">
+      <div className="w-full flex justify-start">
         <Select
           onValueChange={(value) =>
             setActiveFilter(
@@ -109,7 +105,6 @@ const TableView = () => {
           }
         >
           <SelectTrigger className="rounded-full">
-            {/* <FilterIcon /> */}
             <SelectValue placeholder="Filter by Status" />
           </SelectTrigger>
 
@@ -155,9 +150,7 @@ const TableView = () => {
                       <Briefcase className="h-16 w-16 text-muted-foreground" />
 
                       <div>
-                        <h3 className="text-lg font-semibold">
-                          No jobs yet
-                        </h3>
+                        <h3 className="text-lg font-semibold">No jobs yet</h3>
 
                         <p className="text-sm text-muted-foreground">
                           Get started by adding your first job application
@@ -208,7 +201,7 @@ const TableView = () => {
                 <TableCell className="flex items-center gap-2">
                   <span
                     className={`h-4 w-4 rounded-full border ${getStatusColor(
-                      job.status
+                      job.status,
                     )}`}
                   />
 
@@ -220,8 +213,8 @@ const TableView = () => {
                 <TableCell className="text-sm text-muted-foreground">
                   {job.appliedAt
                     ? formatDistanceToNow(new Date(job.appliedAt), {
-                      addSuffix: true,
-                    })
+                        addSuffix: true,
+                      })
                     : "Not scheduled"}
                 </TableCell>
               </TableRow>

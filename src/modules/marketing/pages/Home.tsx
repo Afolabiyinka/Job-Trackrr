@@ -19,36 +19,29 @@ const Home = () => {
   return (
     <section className="w-full min-h-screen flex items-center justify-center px-4 py-20 lg:px-10">
       <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-16 items-center">
-        {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           className="space-y-8 text-center lg:text-left"
         >
-          {/* Badge */}
           <Badge
             variant={`secondary`}
-            // initial={{ opacity: 0, y: 20 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 p-3 h-12 px-6 text-sm font-medium"
+            className="inline-flex items-center gap-2 p-3 h-12 px-6 text-sm font-medium bg-muted/50"
           >
 
             Your job search, simplified
           </Badge>
 
-          {/* Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl lg:text-7xl font-bold leading-[1.1] lg:max-w-2xl font-[Inter]"          >
-            Never lose track <br />of your{" "}
+            className="text-4xl lg:text-6xl font-extrabold leading-[1.1] lg:max-w-2xl font-[Inter]"          >
+            Never lose track of your{" "}
             <span className="text-primary">job applications</span>
           </motion.h1>
 
-          {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +53,6 @@ const Home = () => {
             reminders.
           </motion.p>
 
-          {/* Feature List */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -75,7 +67,6 @@ const Home = () => {
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -97,7 +88,6 @@ const Home = () => {
             </Link>
           </motion.div>
 
-          {/* Social Proof */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -116,12 +106,7 @@ const Home = () => {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="relative w-full"
         >
-          {/* Decorative blur circles */}
-          {/* <div className="absolute -top-10 -right-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl -z-10" /> */}
-          {/* <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl -z-10" /> */}
-
-          {/* Screenshot */}
-          <div className="relative w-full rounded-2xl overflow-hidden border border-border bg-background transform hover:scale-[1.02] transition-transform duration-300">
+          <div className="relative w-full rounded-2xl overflow-hidden  bg-background transform hover:scale-[1.02] transition-transform duration-300">
             <img
               src={theme === "light" ? LightScreenShot : DarkScreenshot}
               alt="Job Trackrr dashboard interface"
@@ -131,12 +116,11 @@ const Home = () => {
             />
           </div>
 
-          {/* Floating badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="absolute -bottom-6 -left-6 bg-background border shadow-xl rounded-xl px-6 py-4 hidden lg:block"
+            className="absolute -bottom-6 -left-6 bg-muted z-30 border shadow-xl rounded-xl px-6 py-4 hidden lg:block"
           >
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full  bg-muted/50 flex items-center justify-center">

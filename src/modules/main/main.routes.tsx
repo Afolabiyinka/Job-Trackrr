@@ -1,19 +1,19 @@
 import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
 
-// Lazy-loaded  main pages
+// Lazy loading the   main pages
 const Dashboard = lazy(
   () => import("@/modules/main/dashboard/pages/DashBoard"),
 );
 const Jobs = lazy(() => import("@/modules/main/jobs/pages/Jobs"));
 const JobPage = lazy(() => import("@/modules/main/jobs/pages/JobPage"));
 const Settings = lazy(() => import("@/modules/main/settings/pages/Settings"));
-import Resume from "@/modules/main/resume/pages/Resume";
-import Results from "@/modules/main/resume/pages/sub-pages/Results";
-
-import FeatureInDevelopment from "../ComingSoon";
-
+const Resume = lazy(() => import("@/modules/main/resume/pages/Resume"));
+const Results = lazy(
+  () => import("@/modules/main/resume/pages/sub-pages/Results"),
+);
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
+const FeatureInDevelopment = lazy(() => import("../ComingSoon"));
 
 const mainRoutes: RouteObject[] = [
   {
@@ -71,7 +71,6 @@ const mainRoutes: RouteObject[] = [
     Component: FeatureInDevelopment,
     handle: { title: "Interviews" },
   },
-
 ];
 
 export { mainRoutes };

@@ -30,6 +30,6 @@ export const useAnalyseResume = () => {
     isSuccess: mutation.isSuccess,
     isError: mutation.isError,
     error: mutation.error,
-    reset: mutation.reset, // Expose reset to clear state between analyses
+    reset: mutation.reset,
   };
 };

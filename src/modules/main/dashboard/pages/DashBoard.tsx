@@ -2,7 +2,7 @@ import GoalsStatsCard from "../components/goals/GoalsStatsCard";
 import ContactsStatsCard from "../components/ContactsStatsCard";
 import StatsCard from "../components/stats/StatsCard";
 import { useGetJobs } from "../../jobs/hooks/useGetJobs";
-import NoJobs from "../../jobs/pages/error/NoJobs";
+import NoJobs from "../../jobs/pages/empty/NoJobs";
 
 const DashBoard = () => {
   const { data } = useGetJobs();

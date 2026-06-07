@@ -6,7 +6,6 @@ import add_image from "@/assets/empty_jobs.svg";
 export default function NoJobs() {
   return (
     <div className="flex max-h-screen md:h-full flex-col md:flex-row shadow rounded-2xl bg-muted/50 overflow-hidden">
-      {/* Illustration panel */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
         initial={{ opacity: 0, x: -24 }}
@@ -20,15 +19,18 @@ export default function NoJobs() {
         />
       </motion.div>
 
-      {/* Content panel */}
       <motion.div
         className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start gap-4 p-8 md:p-12 text-center md:text-left"
         initial={{ opacity: 0, x: 24 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="h-14 w-14 rounded-full bg-secondary flex items-center justify-center">
-          <Briefcase className="h-6 w-6 text-secondary-foreground" aria-hidden />
+        <div className="h-20 w-20 rounded-lg flex items-center justify-center">
+          <Briefcase
+            className=" text-secondary-foreground"
+            aria-hidden
+            size={40}
+          />
         </div>
 
         <motion.h2
@@ -46,7 +48,8 @@ export default function NoJobs() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25 }}
         >
-          Add your first job application to start tracking your search in one place.
+          Add your first job application to start tracking your search in one
+          place.
         </motion.p>
 
         <motion.div

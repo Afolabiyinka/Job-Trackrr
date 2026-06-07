@@ -7,13 +7,12 @@ const Features = () => {
     <section className="w-full py-24 px-4 md:px-10">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-16">
 
-        {/* Heading */}
         <div className="text-center max-w-3xl space-y-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-bold leading-tight font-[Inter]"
+            className="text-4xl md:text-6xl font-extrabold leading-tight font-[Inter]"
           >
             Everything you need to land your dream job
           </motion.h1>
@@ -29,7 +28,6 @@ const Features = () => {
           </motion.p>
         </div>
 
-        {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
           {features.map(({ description, icon, title }, i) => (
 

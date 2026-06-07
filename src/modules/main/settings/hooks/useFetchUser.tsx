@@ -5,7 +5,6 @@ export const useFetchUser = () => {
   const { data, isLoading, isFetched, error } = useQuery({
     queryKey: ["user"],
     queryFn: getUser,
-    retry: false,
     refetchOnWindowFocus: false,
   });
 

@@ -27,7 +27,6 @@ const SignUp = () => {
         transition={{ duration: 0.5 }}
       >
         <form onSubmit={onSubmit} className="space-y-6">
-          {/* Header */}
           <div className="text-left space-y-2">
             <h1 className="text-4xl font-bold tracking-tight">New here?</h1>
             <p className="text-muted-foreground">
@@ -50,7 +49,6 @@ const SignUp = () => {
             )}
           </div>
 
-          {/* Divider */}
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />
@@ -62,7 +60,6 @@ const SignUp = () => {
             </div>
           </div>
 
-          {/* Form Fields */}
           <div className="space-y-4">
             <div className="space-y-1.5">
               <Label htmlFor="username" className="text-sm font-medium">
@@ -112,7 +109,6 @@ const SignUp = () => {
 
 
 
-          {/* Submit Button */}
           <Button
             type="submit"
             size="lg"
@@ -129,7 +125,6 @@ const SignUp = () => {
             )}
           </Button>
 
-          {/* Footer */}
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
               Already have an account?{" "}

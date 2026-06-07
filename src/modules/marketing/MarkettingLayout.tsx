@@ -6,7 +6,7 @@ const MarkettingLayout = () => {
   return (
     <div className="w-full relative">
       <NavLayout />
-      <div className="md:pt-16 pt-2">
+      <div className="pt-16">
         <Outlet />
       </div>
       <Footer />

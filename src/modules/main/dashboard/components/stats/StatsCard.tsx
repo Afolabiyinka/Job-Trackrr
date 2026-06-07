@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CalendarCheck2, TrendingUp, } from "lucide-react";
+import { CalendarCheck2, TrendingUp } from "lucide-react";
 import { useJobs } from "../../../jobs/store/useJobs";
 import { formatDate } from "../../../jobs/libs/utils";
 import { useInterviews } from "../../../interviews/hooks/useInterview";
@@ -7,7 +7,7 @@ import StatsCardItem from "./StatsCardItem";
 
 const StatsCard = () => {
   const { jobs } = useJobs();
-  const { totalInterviews, } = useInterviews();
+  const { totalInterviews } = useInterviews();
 
   const todaysDate = formatDate(new Date());
 
@@ -35,11 +35,6 @@ const StatsCard = () => {
             <CalendarCheck2 className="stroke-[1px] text-blue-600" size={30} />
           }
         />
-        {/* <StatsCardItem
-          value={upcomingInterviews}
-          label={`Upcoming ${interviewText}`}
-          icon={<Clock className="stroke-[1px] text-orange-600" size={30} />}
-        /> */}
       </CardContent>
     </Card>
   );

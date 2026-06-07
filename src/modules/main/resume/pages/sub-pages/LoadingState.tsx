@@ -9,7 +9,6 @@ const SkeletonBlock = ({ className }: { className?: string }) => (
 const ResultsSkeleton = () => {
   return (
     <div>
-      {/* Header */}
       <div className="p-3 flex justify-between items-center flex-col md:flex-row gap-3">
         <div className="flex items-center gap-3 border p-2 px-4 rounded-full">
           <SkeletonBlock className="h-10 w-10 rounded-full" />
@@ -24,7 +23,6 @@ const ResultsSkeleton = () => {
 
       <div className="flex flex-col items-center justify-center p-1 gap-4">
         <div className="p-1 grid md:grid-cols-2 gap-10 w-full">
-          {/* Strengths */}
           <Card>
             <CardHeader>
               <SkeletonBlock className="h-6 w-48 mb-2" />
@@ -37,7 +35,6 @@ const ResultsSkeleton = () => {
             </CardContent>
           </Card>
 
-          {/* Weakness */}
           <Card>
             <CardHeader>
               <SkeletonBlock className="h-6 w-48 mb-2" />
@@ -51,7 +48,6 @@ const ResultsSkeleton = () => {
           </Card>
         </div>
 
-        {/* Improvements */}
         <Card className="w-full">
           <CardHeader>
             <SkeletonBlock className="h-6 w-64" />

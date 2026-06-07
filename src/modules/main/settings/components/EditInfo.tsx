@@ -43,7 +43,6 @@ const EditInfo = () => {
       <CardContent>
         <form onSubmit={onSubmit} className="flex flex-col gap-6">
           <div className="grid md:grid-cols-2 gap-6 grid-cols-1">
-
             {/* Username */}
             <div className="space-y-1.5">
               <Label htmlFor="username" className="text-sm font-medium">
@@ -74,7 +73,6 @@ const EditInfo = () => {
               />
             </div>
 
-            {/* LinkedIn URL */}
             <div className="space-y-1.5">
               <Label htmlFor="linkedin" className="text-sm font-medium">
                 LinkedIn URL
@@ -89,7 +87,6 @@ const EditInfo = () => {
               />
             </div>
 
-            {/* Preferred Role */}
             <div className="space-y-1.5">
               <Label htmlFor="preferred-role" className="text-sm font-medium">
                 Preferred Role
@@ -105,7 +102,6 @@ const EditInfo = () => {
             </div>
           </div>
 
-          {/* Skills */}
           <div className="space-y-2">
             <Label htmlFor="skill-input" className="text-sm font-medium">
               Skills
@@ -122,7 +118,6 @@ const EditInfo = () => {
               <Button
                 type="button"
                 size={`lg`}
-                // variant="outline"
                 onClick={handleAddSkill}
                 disabled={!skillInput.trim()}
               >
