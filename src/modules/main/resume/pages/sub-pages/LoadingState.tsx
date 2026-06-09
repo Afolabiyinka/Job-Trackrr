@@ -1,9 +1,7 @@
-// components/ResultsSkeleton.tsx
-
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const SkeletonBlock = ({ className }: { className?: string }) => (
-  <div className={`bg-muted animate-pulse rounded-md ${className}`} />
+  <div className={`bg-muted animate-pulse rounded-full ${className}`} />
 );
 
 const ResultsSkeleton = () => {
@@ -16,8 +14,8 @@ const ResultsSkeleton = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <SkeletonBlock className="h-10 w-40" />
-          <SkeletonBlock className="h-10 w-10" />
+          <SkeletonBlock className="h-10 w-40 rounded-full" />
+          <SkeletonBlock className="h-10 w-10 rounded-full" />
         </div>
       </div>
 

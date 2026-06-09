@@ -4,8 +4,8 @@ import type { AnalysisType } from "../types/types";
 interface ResumeStore {
   resumeText: string;
   setResumeText: (rt: string) => void;
-  analysis: AnalysisType[] | null,
-  setAnalysis: (analysis: AnalysisType[]) => void
+  analysis: AnalysisType | null,
+  setAnalysis: (analysis: AnalysisType) => void
 }
 
 export const useResume = create<ResumeStore>((set) => ({

@@ -5,12 +5,15 @@ import { useResume } from "../store/useResume";
 
 export const useAnalyseResume = () => {
   const { toastError, toastWarning } = useToastMessage();
-  const { resumeText } = useResume();
+  const { resumeText, setAnalysis } = useResume();
 
   const mutation = useMutation({
     mutationFn: analyseResume,
     onError: (err) => {
       toastError(err.message || "Analysis failed. Please try again.");
+    },
+    onSuccess: (data) => {
+      setAnalysis(data);
     },
   });
 
@@ -26,7 +29,6 @@ export const useAnalyseResume = () => {
   return {
     handleAnalyse,
     isPending: mutation.isPending,
-    analysis: mutation.data?.suggestions,
     isSuccess: mutation.isSuccess,
     isError: mutation.isError,
     error: mutation.error,

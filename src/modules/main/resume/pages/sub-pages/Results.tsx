@@ -4,6 +4,7 @@ import UploadResume from "../../components/UploadResume";
 import { Button } from "@/components/ui/button";
 import {
   AlertTriangle,
+  ArrowLeft,
   CheckCircle,
   RefreshCcw,
   Wrench,
@@ -16,19 +17,49 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import SpinningLoader from "@/components/loader/spinningloader";
+import ResultsSkeleton from "./LoadingState";
+import { useEffect } from "react";
+import { useResume } from "../../store/useResume";
+import { useNavigate } from "react-router-dom";
 
 const Results = () => {
+  const { handleAnalyse, isPending, isError, error } = useAnalyseResume();
+  const { setResumeText, resumeText, analysis } = useResume();
 
-  const { handleAnalyse, isPending, analysis } = useAnalyseResume();
+  const navigate = useNavigate();
 
-  const strengths = analysis?.strengths || [];
-  const weaknesses = analysis?.weaknesses || [];
-  const improvements = analysis?.improvements || [];
+  useEffect(() => {
+    handleAnalyse();
+  }, [setResumeText]);
+
+  if (isPending) {
+    return <ResultsSkeleton />;
+  }
+
+  if (isError || !resumeText) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen h-full space-y-4">
+        <div className="text-center space-y-2">
+          <p className="text-2xl">
+            {error?.message || "Something went wrong. Please try again."}
+          </p>
+          <Button onClick={() => navigate("/resume")} size={`lg`}>
+            <ArrowLeft />
+            Try again
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  const strengths = analysis?.suggestions.strengths || [];
+  const weaknesses = analysis?.suggestions.weaknesses || [];
+  const improvements = analysis?.suggestions.improvements || [];
   return (
     <div>
       <div className="p-3 flex justify-start md:justify-between items-center flex-col md:flex-row gap-3">
         <span className=" flex items-center gap-3 shadow border p-2 px-4 rounded-full">
-          <ScoreCircle score={analysis?.score || 0} />
+          <ScoreCircle score={analysis?.suggestions.score || 0} />
           <p className="text-2xl  tracking-tight">Resume score</p>
         </span>
         <span className="flex items-center gap-2">
@@ -40,12 +71,8 @@ const Results = () => {
             disabled={isPending}
             className="flex items-center gap-2"
           >
-            {isPending ? (
-              <SpinningLoader />
-            ) : (
-              <RefreshCcw />
-            )}
-          </Button>``
+            {isPending ? <SpinningLoader /> : <RefreshCcw />}
+          </Button>
         </span>
       </div>
       <div className="flex flex-col items-center justify-center p-1 gap-2">

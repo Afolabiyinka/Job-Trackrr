@@ -10,7 +10,7 @@ import StarRating from "../components/StarRating";
 
 const Testimonials = () => {
   return (
-    <div className="min-h-screen rounded-lg p-2 md:p-10 w-full text-center">
+    <div className="min-h-screen rounded-lg p-2 md:p-10 w-full text-center flex justify-center items-center flex-col">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

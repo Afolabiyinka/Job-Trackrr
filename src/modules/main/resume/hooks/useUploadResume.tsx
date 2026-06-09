@@ -36,5 +36,6 @@ export const useUploadResume = () => {
     handlePdfUpload,
     uploadedResume,
     loading,
+    setResumeText,
   };
 };

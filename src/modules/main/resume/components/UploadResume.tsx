@@ -10,7 +10,6 @@ import {
 import { FileText, Sparkles, UploadCloud } from "lucide-react";
 import { useUploadResume } from "../hooks/useUploadResume";
 import { useNavigate } from "react-router-dom";
-import { useAnalyseResume } from "../hooks/useAnalyseResume";
 import SpinningLoader from "@/components/loader/spinningloader";
 
 interface Props {
@@ -19,7 +18,6 @@ interface Props {
 
 const UploadResume = ({ title }: Props) => {
   const { handlePdfUpload, uploadedResume, loading } = useUploadResume();
-  const { handleAnalyse } = useAnalyseResume();
   const navigate = useNavigate();
   return (
     <Dialog>
@@ -54,9 +52,10 @@ const UploadResume = ({ title }: Props) => {
                   <SpinningLoader />
                 ) : (
                   <Button
+                    size={`lg`}
                     onClick={() => {
-                      navigate("/resume");
-                      handleAnalyse();
+                      navigate("/resume/results");
+                      // handleAnalyse();
                     }}
                   >
                     Analyse <Sparkles />
