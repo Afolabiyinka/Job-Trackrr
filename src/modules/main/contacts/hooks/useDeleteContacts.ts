@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { deleteContact } from "../services/request";
+import { deleteContact } from "../services/contacts.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { queryClient } from "@/shared/constants/queryClient";
 

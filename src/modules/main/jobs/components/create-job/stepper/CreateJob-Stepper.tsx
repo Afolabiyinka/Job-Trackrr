@@ -10,12 +10,7 @@ import {
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 import CustomInput from "../input/custom-input";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Briefcase,
-  Pencil,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, Briefcase, Pencil } from "lucide-react";
 
 import CreateDropdown from "../create-dropdown";
 import { DatePicker } from "../date-picker";
@@ -30,7 +25,7 @@ import {
 import { useCreateJob } from "../../../hooks/useCreateJob";
 import MoneyInput from "../input/salary-range";
 import { useJobs } from "../../../store/useJobs";
-import type { Job } from "../../../types/job";
+import type { Job } from "../../../types/job.types";
 import { useEffect } from "react";
 import { useEditJobs } from "../../../hooks/useEditJob";
 import SpinningLoader from "@/components/loader/spinningloader";
@@ -119,7 +114,8 @@ const CreateJobStepper = ({
         interviewDate,
         interviewType,
         workType,
-      }); if (success) {
+      });
+      if (success) {
         setOpen(false);
       }
       return;
@@ -136,7 +132,8 @@ const CreateJobStepper = ({
       interviewDate,
       interviewType,
       workType,
-    }); if (success) {
+    });
+    if (success) {
       reset();
       setOpen(false);
     }
@@ -178,7 +175,8 @@ const CreateJobStepper = ({
             {editing
               ? "Update the details for this job application."
               : "Track a new job application across basics, compensation, interview, and status."}
-          </DialogDescription>        </DialogHeader>
+          </DialogDescription>{" "}
+        </DialogHeader>
 
         {/* Step indicator */}
         <div className="px-6   pt-4">
@@ -187,12 +185,13 @@ const CreateJobStepper = ({
               <React.Fragment key={i}>
                 <div className="flex flex-col items-center gap-1.5">
                   <div
-                    className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${i < activeStep
-                      ? "bg-primary text-primary-foreground"
-                      : i === activeStep
-                        ? "bg-primary text-primary-foreground ring-4 ring-primary/20"
-                        : "bg-muted text-muted-foreground"
-                      }`}
+                    className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
+                      i < activeStep
+                        ? "bg-primary text-primary-foreground"
+                        : i === activeStep
+                          ? "bg-primary text-primary-foreground ring-4 ring-primary/20"
+                          : "bg-muted text-muted-foreground"
+                    }`}
                   >
                     {i < activeStep ? (
                       <svg
@@ -214,18 +213,20 @@ const CreateJobStepper = ({
                     )}
                   </div>
                   <span
-                    className={`text-[10px] font-medium tracking-wide ${i === activeStep
-                      ? "text-foreground"
-                      : "text-muted-foreground"
-                      }`}
+                    className={`text-[10px] font-medium tracking-wide ${
+                      i === activeStep
+                        ? "text-foreground"
+                        : "text-muted-foreground"
+                    }`}
                   >
                     {label}
                   </span>
                 </div>
                 {i < STEPS.length - 1 && (
                   <div
-                    className={`flex-1 h-px mx-1 mb-5 transition-colors ${i < activeStep ? "bg-primary" : "bg-border"
-                      }`}
+                    className={`flex-1 h-px mx-1 mb-5 transition-colors ${
+                      i < activeStep ? "bg-primary" : "bg-border"
+                    }`}
                   />
                 )}
               </React.Fragment>
@@ -345,7 +346,6 @@ const CreateJobStepper = ({
                   />
                 </FieldGroup>
 
-
                 <Button
                   type="submit"
                   size="lg"
@@ -367,8 +367,6 @@ const CreateJobStepper = ({
                     </>
                   )}
                 </Button>
-
-
               </div>
             )}
           </div>

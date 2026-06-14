@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Job } from "../types/job";
+import type { Job } from "../types/job.types";
 
 interface JobStore {
   jobs: Job[];

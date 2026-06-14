@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { formatDate, getStatusColor } from "../libs/utils";
-import type { Job } from "../types/job";
+import type { Job } from "../types/job.types";
 
 const ListItem = ({ job }: { job: Job }) => {
   const navigate = useNavigate();

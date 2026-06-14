@@ -7,7 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { getStatusColor } from "../../libs/utils";
-import type { Status } from "../../types/job";
+import type { Status } from "../../types/job.types";
 
 interface Props<T = string> {
   dropdownItems: T[];

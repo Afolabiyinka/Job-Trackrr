@@ -1,4 +1,4 @@
-import { Navigate, Outlet, } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import NavLayout from "./nav/NavLayout";
 import Greeting from "@/modules/main/nav/Greeting";
 import Header from "@/modules/main/nav/Header";
@@ -21,9 +21,7 @@ const MainLayout = () => {
   }, [data]);
 
   if (!isAuthResolved) {
-    return (
-      <LoadingContainer />
-    );
+    return <LoadingContainer />;
   }
 
   if (!user) {
@@ -31,9 +29,8 @@ const MainLayout = () => {
   }
 
   if (!user.onboarded) {
-    return <Navigate to={`/onboarding`} replace />
+    return <Navigate to={`/onboarding`} replace />;
   }
-
 
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">

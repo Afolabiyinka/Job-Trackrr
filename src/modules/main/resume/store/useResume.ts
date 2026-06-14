@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { AnalysisType } from "../types/types";
+import type { AnalysisType } from "../types/resume.types";
 
 interface ResumeStore {
   resumeText: string;

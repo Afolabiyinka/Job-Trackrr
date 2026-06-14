@@ -1,7 +1,7 @@
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { deleteAccount } from "../services/request";
+import { deleteAccount } from "../services/user.request";
 import { useLogout } from "@/modules/auth/hooks/useLogout";
 
 export const useDeleteAccount = () => {

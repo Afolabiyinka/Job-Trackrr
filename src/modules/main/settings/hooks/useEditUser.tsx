@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import type { AuthUser, EditUserPayload } from "../types/types";
-import { editUser } from "../services/request";
+import type { AuthUser, EditUserPayload } from "../types/user.types";
+import { editUser } from "../services/user.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import React from "react";
 import { queryClient } from "@/shared/constants/queryClient";
@@ -12,7 +12,7 @@ export const useEditUser = () => {
     username: "",
     linkedinUrl: "",
     preferredRole: "",
-    skills: []
+    skills: [],
   });
 
   const { mutate, isPending, error } = useMutation({

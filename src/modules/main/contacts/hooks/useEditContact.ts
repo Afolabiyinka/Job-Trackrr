@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { editContact } from "../services/request";
+import { editContact } from "../services/contacts.request";
 import { queryClient } from "@/shared/constants/queryClient";
 import useToastMessage from "@/shared/lib/toastMsg";
-import type { ContactPayload } from "../types/types";
+import type { ContactPayload } from "../types/contact.types";
 
 export const useEditContact = () => {
     const { toastError, toastSuccess } = useToastMessage();

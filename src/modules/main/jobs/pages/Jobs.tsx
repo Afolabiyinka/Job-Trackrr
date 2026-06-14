@@ -51,8 +51,11 @@ const Jobs = () => {
 
   if (error) {
     return (
-      <div className="h-full rounded-xl w-full flex flex-col justify-center items-center border">
-        <h1 className="text-3xl mb-3">Failed to get all jobs</h1>
+      <div className="h-full rounded-xl w-full flex flex-col gap-2 justify-center items-center text-center">
+        <h1 className="text-3xl font-extrabold tracking-wider">
+          Failed to get all jobs
+        </h1>
+        <p className="text-xl">Something went wrong</p>
         <Button size="lg" onClick={() => refetch()}>
           <RefreshCcw />
           Retry

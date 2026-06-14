@@ -1,10 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import type { Job } from "../types/job";
+import type { Job } from "../types/job.types";
 import useToastMessage from "@/shared/lib/toastMsg";
-import { editJob } from "../services/request";
+import { editJob } from "../services/job.request";
 import { queryClient } from "@/shared/constants/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
-
 
 export const useEditJobs = () => {
   const { toastError, toastSuccess } = useToastMessage();
@@ -28,7 +27,7 @@ export const useEditJobs = () => {
 
   const handleEdit = async (
     id: number | string,
-    payload: Job
+    payload: Job,
   ): Promise<boolean> => {
     try {
       await mutateAsync({ id, payload });

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { InterviewType, JobType, Status, WorkType } from "../types/job";
+import type { InterviewType, JobType, Status, WorkType } from "../types/job.types";
 
 interface Addjob {
   appliedAt: Date | null;

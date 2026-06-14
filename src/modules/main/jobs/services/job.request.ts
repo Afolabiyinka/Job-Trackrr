@@ -1,6 +1,6 @@
 import { prodEndpoint } from "@/shared/constants/api-data";
 import axios from "axios";
-import type { Job } from "../types/job";
+import type { Job } from "../types/job.types";
 
 const createJob = async (payload: Job) => {
   const res = await fetch(`${prodEndpoint}api/jobs`, {

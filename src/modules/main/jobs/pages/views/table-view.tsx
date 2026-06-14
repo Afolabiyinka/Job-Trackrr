@@ -10,7 +10,7 @@ import { getStatusColor } from "../../libs/utils";
 import { Link, useNavigate } from "react-router-dom";
 import { useFilterJobs } from "../../hooks/useFilterJobs";
 import { useState } from "react";
-import type { Job } from "../../types/job";
+import type { Job } from "../../types/job.types";
 import {
   Select,
   SelectContent,

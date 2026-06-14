@@ -1,6 +1,6 @@
 import { prodEndpoint } from "@/shared/constants/api-data";
 import axios from "axios";
-import type { EditUserPayload } from "../types/types";
+import type { EditUserPayload } from "../types/user.types";
 
 const getUser = async () => {
   try {

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
-import type { ContactPayload } from "../types/types"
-import { createContact } from "../services/request"
+import type { ContactPayload } from "../types/contact.types"
+import { createContact } from "../services/contacts.request"
 import { queryClient } from "@/shared/constants/queryClient"
 import useToastMessage from "@/shared/lib/toastMsg"
 import { useState } from "react"

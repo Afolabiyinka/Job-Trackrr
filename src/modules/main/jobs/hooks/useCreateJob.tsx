@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import type { Job } from "../types/job";
-import { createJob } from "../services/request";
+import type { Job } from "../types/job.types";
+import { createJob } from "../services/job.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/constants/queryClient";
@@ -10,7 +10,7 @@ import { useUser } from "../../settings/store/useUser";
 export const useCreateJob = () => {
   const { toastError, toastSuccess } = useToastMessage();
   const navigate = useNavigate();
-  const { user } = useUser()
+  const { user } = useUser();
 
   const hasOnboarded = user?.onboarded;
 

@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { deleteJob } from "../services/request";
+import { deleteJob } from "../services/job.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 

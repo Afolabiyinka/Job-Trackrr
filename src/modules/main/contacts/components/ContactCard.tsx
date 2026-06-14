@@ -7,7 +7,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Phone, Mail, Globe } from "lucide-react";
-import type { ContactPayload } from "../types/types";
+import type { ContactPayload } from "../types/contact.types";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Button } from "@/components/ui/button";
 import {

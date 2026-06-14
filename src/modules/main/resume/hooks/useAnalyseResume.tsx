@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { analyseResume } from "../services/request";
+import { analyseResume } from "../services/resume.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useResume } from "../store/useResume";
 

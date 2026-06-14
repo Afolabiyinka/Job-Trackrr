@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getParticularJob } from "../services/request";
+import { getParticularJob } from "../services/job.request";
 import { useUser } from "../../settings/store/useUser";
 
 export const useGetJob = ({ id }: { id: string }) => {

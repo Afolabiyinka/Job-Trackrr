@@ -6,7 +6,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { getStatusColor, showInterviewIndicator } from "../libs/utils";
-import type { Job, Status } from "../types/job";
+import type { Job, Status } from "../types/job.types";
 import { useNavigate } from "react-router-dom";
 
 import ViewAllJobs from "./view-all-jobs";
@@ -34,9 +34,11 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
         <div className="flex flex-col gap-3">
           {jobs.length === 0 ? (
             <div className="text-center">No {title} found</div>
-          ) :
+          ) : (
             jobs.slice(0, 3).map((job) => {
-              const interviewIndicator = showInterviewIndicator(job.interviewDate);
+              const interviewIndicator = showInterviewIndicator(
+                job.interviewDate,
+              );
 
               return (
                 <span
@@ -67,7 +69,7 @@ const JobCard = ({ jobs, title, desc, status }: Props) => {
                 </span>
               );
             })
-          }
+          )}
         </div>
         <span className="mt-4 flex justify-center">
           {jobs.length >= 3 && <ViewAllJobs />}

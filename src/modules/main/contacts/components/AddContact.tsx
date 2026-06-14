@@ -13,7 +13,7 @@ import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { Pencil, Plus } from "lucide-react";
 import { useAddContact } from "../hooks/useAddContact";
 import { useEffect } from "react";
-import type { ContactPayload } from "../types/types";
+import type { ContactPayload } from "../types/contact.types";
 import { useEditContact } from "../hooks/useEditContact";
 import { useGetContacts } from "../hooks/useGetContacts";
 import SpinningLoader from "@/components/loader/spinningloader";

@@ -3,7 +3,7 @@ import type {
   JobType,
   Status,
   WorkType,
-} from "../../../types/job";
+} from "../../../types/job.types";
 
 export const INTERVIEW_TYPES: InterviewType[] = ["Virtual", "In_Person"];
 export const STATUS_TYPES: Status[] = [

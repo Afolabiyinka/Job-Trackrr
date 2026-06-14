@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { getContacts } from "../services/request"
+import { getContacts } from "../services/contacts.request"
 
 export const useGetContacts = () => {
 

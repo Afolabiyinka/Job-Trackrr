@@ -1,4 +1,4 @@
-import type { ContactPayload } from "../types/types";
+import type { ContactPayload } from "../types/contact.types";
 
 export const MOCK_CONTACTS: ContactPayload[] = [
   {
