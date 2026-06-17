@@ -20,13 +20,14 @@ const jobViews: {
   icon: React.ElementType;
   content: React.ReactNode;
 }[] = [
-  { value: "table", label: "Table View", icon: Table, content: <TableView /> },
   {
     value: "list",
     label: "List View",
     icon: LayoutList,
     content: <ListView />,
   },
+  { value: "table", label: "Table View", icon: Table, content: <TableView /> },
+
   {
     value: "card",
     label: "Card View",
@@ -70,7 +71,14 @@ const Jobs = () => {
   return (
     <div className="h-full w-full flex flex-col gap-5 p-2">
       <div className="flex justify-between md:items-center flex-col md:flex-row w-full items-start gap-3">
-        <h1 className="text-2xl">Job Applications</h1>
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Job Applications
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            Manage all your job applications
+          </p>
+        </div>
         <CreateJobStepper
           title="Add a new job"
           icon={<Plus />}
@@ -86,7 +94,7 @@ const Jobs = () => {
               <span
                 className="
       max-w-0 overflow-hidden opacity-0 whitespace-nowrap
-      transition-all duration-300 ease-in-out
+      transition-all duration-700 ease-in-out
       group-data-[state=active]:max-w-24 group-data-[state=active]:opacity-100 group-data-[state=active]:ml-1.5
       md:max-w-none md:opacity-100 md:ml-1.5
     "

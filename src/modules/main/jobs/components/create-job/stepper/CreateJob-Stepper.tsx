@@ -163,8 +163,8 @@ const CreateJobStepper = ({
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button size="lg" variant={variant} className="gap-1.5">
+          <span className="">{icon}</span>
           {title}
-          <span className="h-3.5 w-3.5">{icon}</span>
         </Button>
       </DialogTrigger>
 

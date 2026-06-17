@@ -15,7 +15,7 @@ const ContactsStatsCard = () => {
   const navigate = useNavigate();
   const { contacts } = useGetContacts();
 
-  const count = contacts.length || contacts.length === 0 && "no";
+  const count = contacts.length || (contacts.length === 0 && "no");
   const label = count === 1 ? "Contact" : "Contacts";
 
   return (
@@ -37,11 +37,9 @@ const ContactsStatsCard = () => {
             No contacts yet. Add one to get started.
           </p>
         ) : (
-          <div className="flex gap-4 overflow-x-auto pb-2">
+          <div className="flex gap-4 overflow-x-auto">
             {contacts.slice(0, 3).map((contact) => (
-              <div key={contact.id} className="min-w-50">
-                <ContactCard contact={contact} />
-              </div>
+              <ContactCard contact={contact} />
             ))}
           </div>
         )}

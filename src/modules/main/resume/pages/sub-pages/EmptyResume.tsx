@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import resume_image from "@/assets/resume_image.svg";
-import { Upload } from "lucide-react";
+import { FolderOpen } from "lucide-react";
 import UploadResume from "../../components/UploadResume";
 
 const EmptyResume = () => {
   return (
     <div className="flex max-h-screen md:h-full flex-col md:flex-row shadow rounded-2xl bg-muted/50 overflow-hidden">
-      {/* Illustration panel */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
         initial={{ opacity: 0, x: -24 }}
@@ -20,7 +19,6 @@ const EmptyResume = () => {
         />
       </motion.div>
 
-      {/* Content panel */}
       <motion.div
         className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start gap-4 p-8 md:p-12 text-center md:text-left"
         initial={{ opacity: 0, x: 24 }}
@@ -28,7 +26,11 @@ const EmptyResume = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="h-20 w-20 rounded-full flex items-center justify-center">
-          <Upload size={40} className="text-secondary-foreground" aria-hidden />
+          <FolderOpen
+            size={40}
+            className="text-secondary-foreground"
+            aria-hidden
+          />
         </div>
 
         <motion.h2

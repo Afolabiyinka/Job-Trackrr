@@ -12,7 +12,7 @@ const StatsCard = () => {
   const todaysDate = formatDate(new Date());
 
   // Correcting grammar
-  const interviewText = totalInterviews === 1 ? "interview" : "interviews";
+  const interviewText = totalInterviews === 1 ? "Interview" : "Interviews";
   const applicationText = jobs.length === 1 ? "application" : "applications";
 
   return (
@@ -25,14 +25,17 @@ const StatsCard = () => {
           value={jobs.length}
           label={`Job ${applicationText}`}
           icon={
-            <TrendingUp className="stroke-[1px] text-green-600" size={30} />
+            <TrendingUp className="stroke-[1.5px] text-green-600" size={30} />
           }
         />
         <StatsCardItem
           value={totalInterviews}
           label={`${interviewText}`}
           icon={
-            <CalendarCheck2 className="stroke-[1px] text-blue-600" size={30} />
+            <CalendarCheck2
+              className="text-blue-600 stroke-[1.5px]"
+              size={30}
+            />
           }
         />
       </CardContent>

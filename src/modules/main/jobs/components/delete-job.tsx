@@ -49,12 +49,9 @@ const DeleteJobModal = ({ id }: { id: string }) => {
             variant={`destructive`}
             size={`lg`}
             onClick={() => handleDelete(id)}
+            className="flex justify-center items-center"
           >
-            {loading ? (
-              <SpinningLoader />
-            ) : (
-              <>Delete job</>
-            )}
+            {loading ? <SpinningLoader /> : <>Delete job</>}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -166,7 +166,7 @@ const TableView = () => {
                     </>
                   ) : (
                     <>
-                      <Search className="h-16 w-16 text-muted-foreground" />
+                      <Search className="h-16 w-16" />
 
                       <div>
                         <h3 className="text-lg font-semibold">

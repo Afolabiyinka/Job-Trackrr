@@ -22,17 +22,19 @@ export default function SearchInput() {
   const navigate = useNavigate();
 
   const filteredJobs = jobs.filter((job) =>
-    job.company.toLowerCase().includes(query.toLowerCase())
+    job.company.toLowerCase().includes(query.toLowerCase()),
   );
 
   return (
     <div>
       <Button
         onClick={() => setOpen(true)}
-        variant="outline"
-        size="icon-lg"
+        variant="secondary"
+        size={`lg`}
+        className="group transition-all duration-150"
       >
-        <Search className="h-5 w-5" />
+        <Search className="" />
+        <p className="hidden md:block">Search</p>
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
@@ -54,9 +56,7 @@ export default function SearchInput() {
                   <Briefcase className="h-6 w-6 text-muted-foreground" />
                 </div>
 
-                <p className="mb-1 text-sm font-medium">
-                  No jobs found
-                </p>
+                <p className="mb-1 text-sm font-medium">No jobs found</p>
 
                 <p className="max-w-60 text-xs text-muted-foreground">
                   Try a different search term
@@ -82,9 +82,7 @@ export default function SearchInput() {
                         {job.company?.charAt(0) ?? "?"}
                       </div>
 
-                      <p className="text-sm font-medium">
-                        {job.company}
-                      </p>
+                      <p className="text-sm font-medium">{job.company}</p>
                     </div>
 
                     {/* RIGHT */}
@@ -98,7 +96,6 @@ export default function SearchInput() {
                       </span>
                     </div>
                   </div>
-
                 </CommandItem>
               ))}
             </CommandGroup>

@@ -44,9 +44,9 @@ const AddContact = ({ editing, title, id }: AddContactProps) => {
         <Button
           size="lg"
           className="gap-2"
-          variant={editing ? "outline" : "default"}
+          variant={editing ? "secondary" : "default"}
         >
-          {editing ? <Pencil className="h-4 w-4" /> : <Plus size={10} />}
+          {editing ? <Pencil size={10} /> : <Plus size={10} />}
           {title}
         </Button>
       </DialogTrigger>

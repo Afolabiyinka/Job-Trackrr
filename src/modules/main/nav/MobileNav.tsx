@@ -13,9 +13,7 @@ import SpinningLoader from "@/components/loader/spinningloader";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
-  const { logoutLoading,
-    logoutMutate
-  } = useLogout();
+  const { logoutLoading, logoutMutate } = useLogout();
   return (
     <div className="p-2  flex flex-col justify-between relative">
       <span className="flex justify-between relative w-full items-center">
@@ -28,11 +26,12 @@ const MobileNav = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ translateY: -20 }}
-            exit={{ translateY: -1 }}
-            animate={{ translateY: 1 }}
-            className={`transform overflow-hidden flex flex-col gap-3 p-2 rounded-lg ${open ? "max-h-full py-4" : "max-h-0"
-              }`}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+            className={`transform overflow-hidden flex flex-col gap-3 p-2`}
           >
             {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
               const pathMatch = location.pathname.includes(path);
@@ -52,8 +51,11 @@ const MobileNav = () => {
 
                   <NavLink
                     to={path}
-                    className={`flex gap-2 items-center rounded-3xl p-1.5 text-md px-3  transition w-full ${pathMatch ? "bg-primary text-white p-3" : "hover:bg-muted p-3"
-                      }`}
+                    className={`flex gap-2 items-center rounded-3xl p-1.5 text-md px-3  transition w-full ${
+                      pathMatch
+                        ? "bg-primary text-white p-3"
+                        : "hover:bg-muted p-3"
+                    }`}
                   >
                     <Icon className={`h-4.5 w-4.5 stroke-[1.25px]`} />
                     <p>{name}</p>
@@ -63,7 +65,6 @@ const MobileNav = () => {
             })}
 
             <div className="mt-auto flex flex-col gap-3 border-t pt-4">
-
               <Settings />
 
               <Button
@@ -73,11 +74,13 @@ const MobileNav = () => {
                 onClick={() => logoutMutate()}
                 disabled={logoutLoading}
               >
-                {logoutLoading && (
-                  <SpinningLoader />
-                )}
+                {logoutLoading && <SpinningLoader />}
 
-                <span className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}>
+                <span
+                  className={
+                    logoutLoading ? "opacity-0" : "flex items-center gap-3"
+                  }
+                >
                   <LogOut className="h-4.5 w-4.5" />
                   Logout
                 </span>

@@ -19,7 +19,7 @@ const StatsCardItem = ({ value, label, icon, loading }: Props) => {
           <div className="h-12 w-12 bg-muted rounded-lg" />
         </div>
       ) : (
-        <div className="flex flex-col justify-between p-2 gap-3 px-4 h-full">
+        <div className="flex flex-col justify-between  p-5 gap-3 h-full">
           <div className="flex justify-center items-center w-fit p-2 rounded-lg bg-muted">
             {icon}
           </div>

@@ -14,12 +14,11 @@ import { mockgoals } from "../../libs/Mockgoals";
 const GoalsStatsCard = () => {
   const navigate = useNavigate();
 
-
   const count = mockgoals.length;
   const label = count === 1 ? "Goal" : "Goals";
 
   return (
-    <Card className="w-full ring-0 shadow-none">
+    <Card className="w-full ring-0 shadow-none p-0">
       <CardHeader>
         <CardTitle>Goals</CardTitle>
         <CardDescription>

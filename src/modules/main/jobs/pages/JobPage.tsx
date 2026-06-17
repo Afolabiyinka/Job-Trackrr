@@ -69,7 +69,7 @@ const JobPage = () => {
   return (
     <div className="mx-auto p-1 md:p-4 space-y-4">
       <div className="flex md:items-center justify-between">
-        <Button onClick={() => navigate(-1)} variant="secondary" size="lg">
+        <Button onClick={() => navigate(-1)} variant="ghost" size="lg">
           <ArrowLeft size={16} />
           Back
         </Button>
@@ -79,6 +79,7 @@ const JobPage = () => {
             icon={<Pencil size={14} />}
             editing
             id={job.id}
+            variant="secondary"
           />
           <DeleteJobModal id={id} />
         </div>

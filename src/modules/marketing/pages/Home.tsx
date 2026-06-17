@@ -29,7 +29,6 @@ const Home = () => {
             variant={`secondary`}
             className="inline-flex items-center gap-2 p-3 h-12 px-6 text-sm font-medium bg-muted/50"
           >
-
             Your job search, simplified
           </Badge>
 
@@ -37,7 +36,8 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl lg:text-6xl font-extrabold leading-[1.1] lg:max-w-2xl font-[Inter]"          >
+            className="text-3xl lg:text-6xl font-extrabold leading-[1.1] lg:max-w-2xl font-[Inter]"
+          >
             Never lose track of your{" "}
             <span className="text-primary">job applications</span>
           </motion.h1>
@@ -46,7 +46,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 "
+            className="text-md lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 "
           >
             Organize, track, and manage all your job applications in one place.
             Stay on top of every opportunity with powerful insights and
@@ -60,7 +60,10 @@ const Home = () => {
             className="space-y-3"
           >
             {features.map((feature, index) => (
-              <div key={index} className="flex items-center gap-3 justify-center lg:justify-start">
+              <div
+                key={index}
+                className="flex items-center gap-3 justify-center lg:justify-start"
+              >
                 <CheckCircle2 className="h-5 w-5 shrink-0" />
                 <span className="text-muted-foreground">{feature}</span>
               </div>
@@ -71,7 +74,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start pt-4"
+            className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start pt-4 w-fit mx-auto"
           >
             <Link to="/signup">
               <Button size="lg" className="w-full sm:w-auto">
@@ -94,8 +97,8 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-sm text-muted-foreground pt-4"
           >
-            Join <span className="font-semibold text-foreground">500+</span>{" "}
-            job seekers who landed their dream roles
+            Join <span className="font-semibold text-foreground">500+</span> job
+            seekers who landed their dream roles
           </motion.p>
         </motion.div>
 
