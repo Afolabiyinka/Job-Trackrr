@@ -1,4 +1,4 @@
-import { Plus, Briefcase } from "lucide-react";
+import { Plus, BriefcaseBusiness } from "lucide-react";
 import CreateJobStepper from "../../components/create-job/stepper/CreateJob-Stepper";
 import { motion } from "framer-motion";
 import add_image from "@/assets/empty_jobs.svg";
@@ -26,7 +26,7 @@ export default function NoJobs() {
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
         <div className="h-20 w-20 rounded-lg flex items-center justify-center">
-          <Briefcase
+          <BriefcaseBusiness
             className=" text-secondary-foreground"
             aria-hidden
             size={40}

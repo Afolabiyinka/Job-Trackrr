@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
-  Briefcase,
+  BriefcaseBusiness,
   CalendarCheck,
   CalendarClockIcon,
   ClipboardList,
@@ -142,7 +142,7 @@ const JobPage = () => {
         </div>
 
         <div className="p-5 grid md:grid-cols-3 gap-x-6 gap-y-5">
-          <DetailItem icon={<Briefcase size={13} />} label="Job type">
+          <DetailItem icon={<BriefcaseBusiness size={13} />} label="Job type">
             {job.jobType}
           </DetailItem>
           <DetailItem icon={<Laptop size={13} />} label="Work type">

@@ -23,7 +23,7 @@ import { usePagination } from "../../hooks/usePagination";
 import { useGetJobs } from "../../hooks/useGetJobs";
 import Loader from "@/components/loader/Loader";
 import { formatDistanceToNow } from "date-fns";
-import { Briefcase, Plus, Search } from "lucide-react";
+import { BriefcaseBusiness, Plus, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const TableView = () => {
@@ -61,7 +61,7 @@ const TableView = () => {
           <div className="flex flex-col items-center justify-center gap-3 text-center">
             {activeFilter === "all" ? (
               <>
-                <Briefcase className="h-16 w-16 text-muted-foreground" />
+                <BriefcaseBusiness className="h-16 w-16 text-muted-foreground" />
                 <div>
                   <h3 className="font-semibold text-lg">No jobs yet</h3>
                   <p className="text-sm text-muted-foreground">
@@ -147,7 +147,7 @@ const TableView = () => {
                 <div className="flex flex-col items-center justify-center gap-3 text-center">
                   {activeFilter === "all" ? (
                     <>
-                      <Briefcase className="h-16 w-16 text-muted-foreground" />
+                      <BriefcaseBusiness className="h-16 w-16 text-muted-foreground" />
 
                       <div>
                         <h3 className="text-lg font-semibold">No jobs yet</h3>

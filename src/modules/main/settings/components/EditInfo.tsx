@@ -93,7 +93,7 @@ const EditInfo = () => {
               </Label>
               <CustomInput
                 id="preferred-role"
-                icon="Briefcase"
+                icon="BriefcaseBusiness"
                 placeholder="e.g. Frontend Developer"
                 type="text"
                 value={editData.preferredRole}
