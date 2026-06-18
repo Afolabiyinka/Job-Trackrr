@@ -13,10 +13,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { getStatusColor } from "../../jobs/libs/utils";
+import { useIsMobile } from "@/shared/hooks/useMobile";
 
 export default function SearchInput() {
   const [open, setOpen] = React.useState(false);
   const [query, setQuery] = React.useState("");
+  const isMobile = useIsMobile();
 
   const { jobs } = useJobs();
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ export default function SearchInput() {
       <Button
         onClick={() => setOpen(true)}
         variant="secondary"
-        size={`lg`}
+        size={isMobile ? "icon-lg" : "lg"}
         className="group transition-all duration-150"
       >
         <Search className="" />
