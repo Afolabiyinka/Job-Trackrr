@@ -4,11 +4,11 @@ import CardView from "./views/card-view";
 import { LayoutGrid, LayoutList, Plus, RefreshCcw, Table } from "lucide-react";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import { useGetJobs } from "../hooks/useGetJobs";
-import LoadingContainer from "@/components/loader/loadingcontainer";
 import NoJobs from "./empty/NoJobs";
 import { Button } from "@/components/ui/button";
 import ListView from "./views/list-view";
 import { useState } from "react";
+import { JobsPageSkeleton } from "../../MainPgeSkeleton";
 
 type JobView = "card" | "table" | "list";
 
@@ -65,7 +65,7 @@ const Jobs = () => {
     );
   }
 
-  if (loading) return <LoadingContainer />;
+  if (loading) return <JobsPageSkeleton />;
   if (data?.data.length === 0) return <NoJobs />;
 
   return (

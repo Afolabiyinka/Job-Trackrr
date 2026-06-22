@@ -1,16 +1,15 @@
 import { useUser } from "@/modules/main/settings/store/useUser";
 import { Navigate, Outlet } from "react-router-dom";
 import { useFetchUser } from "../main/settings/hooks/useFetchUser";
-import LoadingContainer from "@/components/loader/loadingcontainer";
 import { motion } from "framer-motion";
 import signup_img from "@/assets/auth_image.svg";
+import Logo from "@/components/logo/Logo";
+import LoadingContainer from "@/components/loader/loadingcontainer";
 
 const AuthLayout = () => {
   const { user } = useUser();
   const { loading } = useFetchUser();
   const hasOnboarded = user?.onboarded;
-
-
 
   if (loading) {
     return (
@@ -29,6 +28,9 @@ const AuthLayout = () => {
 
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center p-4 md:p-10">
+      <div className="pt-2">
+        <Logo />
+      </div>
       <div className="h-full w-full flex flex-col md:flex-row gap-6 justify-center items-center p-4 md:p-10">
         <motion.div className="w-full h-full md:w-1/2 rounded-lg">
           <Outlet />

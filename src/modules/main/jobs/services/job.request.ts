@@ -1,4 +1,4 @@
-import type { Job, JobType, PaginatedJobs } from "../types/job.types";
+import type { Job, PaginatedJobs } from "../types/job.types";
 import { apiClient } from "@/shared/api/axios-config";
 import type { Response } from "@/shared/types/shared.types";
 

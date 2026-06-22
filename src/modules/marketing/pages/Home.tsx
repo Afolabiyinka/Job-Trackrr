@@ -64,7 +64,8 @@ const Home = () => {
                 key={index}
                 className="flex items-center gap-3 justify-center lg:justify-start"
               >
-                <CheckCircle2 className="h-5 w-5 shrink-0" />
+                {/* <CheckCircle2 className="h-5 w-5 shrink-0" /> */}
+                <span className="h-2 w-2 bg-foreground rounded-full" />
                 <span className="text-muted-foreground">{feature}</span>
               </div>
             ))}

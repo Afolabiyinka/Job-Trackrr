@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { AlertTriangle, Home } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import { useNavigate, useRouteError } from "react-router-dom";
 import { motion } from "framer-motion";
-import SpinningLoader from "@/components/loader/spinningloader";
 
 const CustomError = () => {
   const navigate = useNavigate();

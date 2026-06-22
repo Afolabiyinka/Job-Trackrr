@@ -13,7 +13,7 @@ const MobileNav = () => {
   return (
     <div className="p-2 flex flex-col justify-between fixed  z-50 w-full bg-white dark:bg-[#141414]">
       <span className="flex justify-between relative w-full  rounded-full p-2 px-6 items-center">
-        <Logo />
+        <Logo linkTo="/" />
         <MenuButton open={open} onClick={() => setOpen(!open)} />
       </span>
       <AnimatePresence>
@@ -21,8 +21,9 @@ const MobileNav = () => {
           <motion.div
             initial={{ translateY: -20 }}
             animate={{ translateY: 1 }}
-            className={`transform overflow-hidden flex flex-col gap-6 p-3  ${open ? "max-h-96 py-4" : "max-h-0"
-              }`}
+            className={`transform overflow-hidden flex flex-col gap-6 p-3  ${
+              open ? "max-h-96 py-4" : "max-h-0"
+            }`}
           >
             {NAVLINKS.map(({ name, path, icon: Icon }, i) => (
               <NavLink
@@ -39,9 +40,7 @@ const MobileNav = () => {
             ))}
             <span className="flex gap-3 items-center">
               <Link to={`/login`}>
-                <Button variant={`link`}>
-                  Log In
-                </Button>
+                <Button variant={`link`}>Log In</Button>
               </Link>
 
               <Link to={`/signup`}>
@@ -50,7 +49,8 @@ const MobileNav = () => {
                   <ArrowRight />
                 </Button>
               </Link>
-            </span>          </motion.div>
+            </span>{" "}
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

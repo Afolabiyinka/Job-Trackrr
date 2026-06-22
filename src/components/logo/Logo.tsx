@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 
 interface LogoProps {
   collapsed?: boolean;
+  linkTo?: string;
 }
 
-const Logo = ({ collapsed = false }: LogoProps) => {
+const Logo = ({ collapsed = false, linkTo = "dashboard" }: LogoProps) => {
   return (
     <Link
-      to="/"
+      to={linkTo}
       className="flex items-center justify-start rounded-3xl overflow-hidden"
       aria-label="Job Trackrr - Home"
     >
@@ -26,13 +27,14 @@ const Logo = ({ collapsed = false }: LogoProps) => {
         animate={{
           width: collapsed ? 0 : "auto",
           opacity: collapsed ? 0 : 1,
-          marginLeft: collapsed ? 0 : "0.5rem"
+          marginLeft: collapsed ? 0 : "0.5rem",
         }}
         transition={{
           duration: 0.3,
-          ease: [0.4, 0, 0.2, 1]
+          ease: [0.4, 0, 0.2, 1],
         }}
-        className="text-xl font-bold tracking-tight"      >
+        className="text-xl font-bold tracking-tight"
+      >
         Job Trackrr
       </motion.span>
     </Link>

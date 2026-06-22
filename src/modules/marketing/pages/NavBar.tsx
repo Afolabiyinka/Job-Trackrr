@@ -8,16 +8,17 @@ const NavBar = () => {
   return (
     <div className="p-2 w-full lg:flex justify-center items-center px-16 hidden fixed  z-50 bg-white dark:bg-[#141414]">
       <div className="flex lg:flex justify-around items-center  p-2.5 w-full rounded-full">
-        <Logo />
+        <Logo linkTo="/" />
         <span className="flex gap-10">
           {NAVLINKS.map(({ name, path, icon: Icon }) => (
             <NavLink
               key={path}
               to={path}
               className={({ isActive }) =>
-                `flex items-center gap-2 transition-colors ${isActive
-                  ? "text-primary font-medium"
-                  : "text-muted-foreground hover:text-primary"
+                `flex items-center gap-2 transition-colors ${
+                  isActive
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground hover:text-primary"
                 }`
               }
             >
@@ -29,9 +30,7 @@ const NavBar = () => {
 
         <span className="flex gap-3 items-center">
           <Link to={`/login`}>
-            <Button variant={`link`}>
-              Log In
-            </Button>
+            <Button variant={`link`}>Log In</Button>
           </Link>
 
           <Link to={`/signup`}>
