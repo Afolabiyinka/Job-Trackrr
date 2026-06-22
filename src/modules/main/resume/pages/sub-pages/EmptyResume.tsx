@@ -1,11 +1,26 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import resume_image from "@/assets/resume_image.svg";
 import { FolderOpen } from "lucide-react";
 import UploadResume from "../../components/UploadResume";
 
+const containerVariants: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+
 const EmptyResume = () => {
   return (
-    <div className="flex max-h-screen md:h-full flex-col md:flex-row shadow rounded-2xl bg-muted/50 overflow-hidden">
+    <div className="flex max-h-screen md:h-full flex-col-reverse md:flex-row  overflow-hidden">
       <motion.div
         className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
         initial={{ opacity: 0, x: -24 }}
@@ -15,49 +30,41 @@ const EmptyResume = () => {
         <img
           src={resume_image}
           alt="Resume illustration"
-          className="w-full max-w-xs md:max-w-sm object-contain"
+          className="w-full max-w-xs md:max-w-sm lg:max-w-md object-contain"
         />
       </motion.div>
 
       <motion.div
         className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start gap-4 p-8 md:p-12 text-center md:text-left"
-        initial={{ opacity: 0, x: 24 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
       >
-        <div className="h-20 w-20 rounded-full flex items-center justify-center">
+        <motion.div
+          variants={itemVariants}
+          className="h-16 w-16 rounded-xl bg-secondary flex items-center justify-center"
+        >
           <FolderOpen
-            size={40}
+            size={32}
             className="text-secondary-foreground"
             aria-hidden
           />
-        </div>
+        </motion.div>
 
-        <motion.h2
-          className="text-2xl font-semibold"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-        >
-          No Resume Yet
+        <motion.h2 variants={itemVariants} className="text-2xl font-semibold">
+          Let's take a look at your resume
         </motion.h2>
 
         <motion.p
+          variants={itemVariants}
           className="text-muted-foreground max-w-sm text-sm md:text-base"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
         >
-          Upload your resume to see how it performs and get tips to make it
-          better.
+          Upload it and we'll break down what's working, what's not, and how to
+          make it stronger.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35 }}
-        >
-          <UploadResume title="Upload Resume" />
+        <motion.div variants={itemVariants}>
+          <UploadResume title="Upload your resume" />
         </motion.div>
       </motion.div>
     </div>
