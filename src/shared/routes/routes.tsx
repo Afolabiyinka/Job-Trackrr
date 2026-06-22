@@ -13,7 +13,6 @@ import { marketingRoutes } from "@/modules/marketing/marketing.routes";
 
 //Other routes
 const CustomError = lazy(() => import("@/modules/CustomError"));
-const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
 const NotFound = lazy(() => import("@/modules/NotFound"));
 
 const RootWrapper = () => {
@@ -37,13 +36,6 @@ export const routes: RouteObject[] = [
       { path: "/", Component: MarkettingLayout, children: marketingRoutes },
       { path: "/", Component: MainLayout, children: mainRoutes },
       { path: "/", Component: AuthLayout, children: authRoutes },
-      {
-        path: "onboarding",
-        Component: OnBoarding,
-        handle: {
-          title: "Onboarding",
-        },
-      },
     ],
   },
 ];

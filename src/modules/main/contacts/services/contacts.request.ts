@@ -1,13 +1,16 @@
 import { prodEndpoint } from "@/shared/constants/api-data";
 import axios from "axios";
 import type { ContactPayload } from "../types/contact.types";
+
+
+
 const getContacts = async (): Promise<ContactPayload[]> => {
     const res = await axios.get(`${prodEndpoint}api/contacts`, { withCredentials: true })
     return res.data.contacts
 }
 
 const createContact = async (payload: ContactPayload) => {
-    const res = await fetch(`${prodEndpoint}api/contacts/`, {
+    const res = await fetch(`${prodEndpoint}/contacts/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -25,7 +28,7 @@ const createContact = async (payload: ContactPayload) => {
 
 const deleteContact = async (id: string | number) => {
 
-    const res = await fetch(`${prodEndpoint}api/contacts/${id}`, {
+    const res = await fetch(`${prodEndpoint}/contacts/${id}`, {
         method: "DELETE",
         credentials: "include",
         headers: {
@@ -42,7 +45,7 @@ const deleteContact = async (id: string | number) => {
 }
 
 const editContact = async (id: string | number, payload: ContactPayload) => {
-    const res = await fetch(`${prodEndpoint}api/contacts/${id}`, {
+    const res = await fetch(`${prodEndpoint}/contacts/${id}`, {
         method: "PATCH",
         credentials: "include",
         headers: {

@@ -1,21 +1,16 @@
-import { prodEndpoint } from "@/shared/constants/api-data";
-import axios from "axios";
 import type { AnalysisType } from "../types/resume.types";
+import { apiClient } from "@/shared/api/axios-config";
 
 async function analyseResume(resumeText: string): Promise<AnalysisType> {
   try {
-    const res = await axios.post(
-      `${prodEndpoint}api/resume`,
+    const res = await apiClient.post(
+      `/resume`,
       { resumeText },
-      {
-        withCredentials: true,
-      },
+
     );
     return res.data;
-  } catch (err) {
-    console.error(err);
-    throw new Error("Something went wrong");
-  }
+  } catch (err) { throw err; }
+
 }
 
 export { analyseResume };

@@ -1,16 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Loader = () => {
   return (
     <StyledWrapper>
       <div className="loader">
-        <span className="bar bg-primary" />
-        <span className="bar bg-primary" />
-        <span className="bar bg-primary" />
+        <span className="bar bg-primary p-1" />
+        <span className="bar bg-primary p-1" />
+        <span className="bar bg-primary p-1" />
       </div>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
   .loader {
@@ -29,11 +29,11 @@ const StyledWrapper = styled.div`
   .bar:nth-child(2) {
     height: 35px;
     margin: 0 5px;
-    animation-delay: .25s;
+    animation-delay: 0.25s;
   }
 
   .bar:nth-child(3) {
-    animation-delay: .5s;
+    animation-delay: 0.5s;
   }
 
   @keyframes scale-up4 {
@@ -45,6 +45,7 @@ const StyledWrapper = styled.div`
     40% {
       transform: scaleY(1);
     }
-  }`;
+  }
+`;
 
 export default Loader;

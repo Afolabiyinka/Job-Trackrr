@@ -9,12 +9,11 @@ const Greeting = () => {
         Welcome back,
         {user ? (
           <span className="truncate font-semibold  max-w-32.5">
-            {user.username}   👋
+            {user.username} 👋
           </span>
         ) : (
-          <span className="inline-block h-5 w-50 rounded-full bg-muted animate-pulse" />
+          <p>Guest</p>
         )}
-
       </h1>
       <div className="md:flex gap-3 items-center hidden">
         <SearchInput />

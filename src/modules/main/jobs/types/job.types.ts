@@ -20,3 +20,14 @@ export interface Job {
   salaryRange: number | null;
   feedback?: string | null;
 }
+
+
+export type PaginatedJobs = {
+  data: Job[];
+  pagination: {
+    total: number;
+    currentPage: number;
+    totalPages: number;
+  }
+
+};

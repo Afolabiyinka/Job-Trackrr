@@ -1,44 +1,35 @@
-import { prodEndpoint } from "@/shared/constants/api-data";
-import axios from "axios";
-import type { EditUserPayload } from "../types/user.types";
+import type { AuthUser, EditUserPayload } from "../types/user.types";
+import { apiClient } from "@/shared/api/axios-config";
 
+
+
+export interface UserResponse {
+  user: AuthUser
+}
 const getUser = async () => {
   try {
-    const res = await fetch(`${prodEndpoint}api/me`, {
-      method: "GET",
-      credentials: "include",
-    });
-
-    if (!res.ok) return null;
-
-    return await res.json();
-  } catch {
-    return null;
+    const res = await apiClient.get<UserResponse>(`/me`)
+    return res.data
   }
-};
+  catch (err) { throw err; }
+}
+
+
 
 const editUser = async (payload: EditUserPayload) => {
   try {
-    const res = await axios.put(`${prodEndpoint}api/me`, payload, {
-      withCredentials: true,
-    });
+    const res = await apiClient.put(`/me`, payload)
+    return res.data
+  } catch (err) { throw err; }
 
-    return res.data;
-  } catch (err) {
-    console.error(err);
-    throw new Error("Failed to update user");
-  }
-};
+}
 
 const deleteAccount = async () => {
   try {
-    const res = await axios.delete(`${prodEndpoint}api/me`, {
-      withCredentials: true,
-    });
+    const res = await apiClient.delete(`/me`);
     return res.data;
-  } catch (err) {
-    throw new Error("Failed to delete Account");
-  }
+  } catch (err) { throw err; }
+
 };
 
 export { getUser, editUser, deleteAccount };

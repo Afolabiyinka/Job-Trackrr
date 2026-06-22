@@ -1,60 +1,34 @@
-import { prodEndpoint } from "@/shared/constants/api-data";
 import type { LoginPayload, SignupPayload } from "../types/auth.types";
 import type { Response } from "@/shared/types/shared.types";
+import { apiClient } from "@/shared/api/axios-config";
 
 
-const login = async (payload: LoginPayload): Promise<Response> => {
-  const res = await fetch(`${prodEndpoint}api/auth/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-    credentials: "include",
-  });
 
-  const data = await res.json();
-
-  if (!res.ok) {
-    throw new Error(data.message || "Something went wrong");
+const login = async (payload: LoginPayload) => {
+  try {
+    const res = apiClient.post<Response>(`/auth/login`, payload)
+    return (await res).data
   }
+  catch (err) { throw err; }
+}
 
-  return data;
-};
 
-const signup = async (payload: SignupPayload): Promise<Response> => {
-  const res = await fetch(`${prodEndpoint}api/auth/signup`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-    credentials: "include",
-  });
-  const data = await res.json();
+const signup = async (payload: SignupPayload) => {
+  try {
+    const res = await apiClient.post<Response>(`/auth/signup`, payload)
+    return res.data
+  } catch (err) { throw err; }
 
-  if (!res.ok) {
-    const message = data?.message || "Login failed";
-    throw new Error(message);
+}
+
+
+const googleLogin = async (payload: { credential?: string }) => {
+  try {
+    const res = await apiClient.post<Response>("/auth/google", payload)
+    return res.data
   }
+  catch (err) { throw err; }
 
-  return data;
-};
+}
 
-
-const googleLogin = async (payload: { credential?: string }): Promise<Response> => {
-  const res = await fetch(`${prodEndpoint}api/auth/google`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      credential: payload.credential,
-    }),
-    credentials: "include"
-  });
-
-  const data = res.json()
-  return data
-};
 export { login, signup, googleLogin };

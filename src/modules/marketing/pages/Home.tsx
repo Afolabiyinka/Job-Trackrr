@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Lightbulb, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import LightScreenShot from "@/assets/screenshots/Light Screenshot.png";
@@ -74,7 +74,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col lg:flex-row gap-4 justify-center lg:justify-start pt-4 w-fit mx-auto"
+            className="flex flex-col lg:flex-row gap-4 lg:justify-start justify-center items-center pt-4"
           >
             <Link to="/signup">
               <Button size="lg" className="w-full sm:w-auto">
@@ -83,12 +83,12 @@ const Home = () => {
               </Button>
             </Link>
 
-            <Link to="/how-it-works">
+            {/* <Link to="/how-it-works">
               <Button size="lg" variant="outline" className="w-full sm:w-auto">
                 <Lightbulb className="mr-2 h-4 w-4" />
                 See how it works
               </Button>
-            </Link>
+            </Link> */}
           </motion.div>
 
           <motion.p

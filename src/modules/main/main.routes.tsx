@@ -12,6 +12,8 @@ const Resume = lazy(() => import("@/modules/main/resume/pages/Resume"));
 const Results = lazy(
   () => import("@/modules/main/resume/pages/sub-pages/Results"),
 );
+const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
+
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
 const FeatureInDevelopment = lazy(() => import("../ComingSoon"));
 
@@ -70,6 +72,13 @@ const mainRoutes: RouteObject[] = [
     path: "interviews",
     Component: FeatureInDevelopment,
     handle: { title: "Interviews" },
+  },
+  {
+    path: "onboarding",
+    Component: OnBoarding,
+    handle: {
+      title: "Onboarding",
+    },
   },
 ];
 

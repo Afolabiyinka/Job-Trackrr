@@ -1,93 +1,57 @@
-import { prodEndpoint } from "@/shared/constants/api-data";
-import axios from "axios";
-import type { Job } from "../types/job.types";
+import type { Job, PaginatedJobs } from "../types/job.types";
+import { apiClient } from "@/shared/api/axios-config";
+import type { Response } from "@/shared/types/shared.types";
+
 
 const createJob = async (payload: Job) => {
-  const res = await fetch(`${prodEndpoint}api/jobs`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-    credentials: "include",
-  });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    throw data;
+  try {
+    const res = await apiClient.post<Response>("/jobs", payload)
+    return res.data
   }
+  catch (err) {
+    throw new Error()
+  }
+}
 
-  return data;
-};
 
 const editJob = async (payload: Partial<Job>, id: number | string) => {
-  const res = await fetch(`${prodEndpoint}api/jobs/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-    credentials: "include",
-  });
-
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error(data.message);
+  try {
+    const res = await apiClient.put<Response>(`/jobs${id}`, payload)
+    return res.data
   }
-
-  return data;
-};
-
-type PaginatedJobs = {
-  data: Job[];
-  pagination: {
-    total: number;
-    currentPage: number;
-    totalPages: number;
+  catch (err) {
+    throw new Error();
   }
+}
 
-};
 
 const getAllJobs = async ({
   page = 1,
 }: {
   page?: number;
-}): Promise<PaginatedJobs> => {
-  const res = await fetch(`${prodEndpoint}api/jobs?page=${page}`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  });
-
-  const data = await res.json();
-
-  if (!res.ok) {
-    throw new Error(data.message);
+}) => {
+  try {
+    const res = await apiClient.get<PaginatedJobs>(`/jobs?page=${page}`)
+    return res.data
+  } catch (err) {
+    throw new Error()
   }
-
-  return data;
-};
+}
 
 const getParticularJob = async (id: string): Promise<Job> => {
   try {
-    const res: any = await axios.get(`${prodEndpoint}api/jobs/${id}`, {
-      withCredentials: true,
-    });
-    return res.data.job;
+    const res = await apiClient.get<Job>(`/jobs/${id}`);
+    return res.data
   } catch (err) {
     throw new Error();
   }
 };
+
 const deleteJob = async (id: string) => {
   try {
-    const res = await axios.delete(`${prodEndpoint}api/jobs/${id}`, {
-      withCredentials: true,
-    });
+    const res = await apiClient.delete<Response>(`/jobs/${id}`);
     return res;
   } catch (err) {
-    console.log(err);
     throw new Error();
   }
 };
