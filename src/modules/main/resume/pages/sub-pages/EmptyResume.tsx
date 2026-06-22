@@ -42,7 +42,7 @@ const EmptyResume = () => {
       >
         <motion.div
           variants={itemVariants}
-          className="h-16 w-16 rounded-xl bg-secondary flex items-center justify-center"
+          className="h-16 w-16 rounded-full bg-secondary flex items-center justify-center"
         >
           <FolderOpen
             size={32}

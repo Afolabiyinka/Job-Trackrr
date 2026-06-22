@@ -12,7 +12,7 @@ export const useGetJob = ({ id }: { id: string }) => {
     enabled: !!user,
   });
   return {
-    job: data ?? null,
+    job: data?.job ?? null,
     loading: isLoading,
     error,
   };

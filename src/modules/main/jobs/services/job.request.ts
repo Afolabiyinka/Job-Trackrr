@@ -1,4 +1,4 @@
-import type { Job, PaginatedJobs } from "../types/job.types";
+import type { Job, JobType, PaginatedJobs } from "../types/job.types";
 import { apiClient } from "@/shared/api/axios-config";
 import type { Response } from "@/shared/types/shared.types";
 
@@ -38,12 +38,16 @@ const getAllJobs = async ({
   }
 }
 
-const getParticularJob = async (id: string): Promise<Job> => {
+type ParticulatJobType = {
+  job: Job
+}
+
+const getParticularJob = async (id: string) => {
   try {
-    const res = await apiClient.get<Job>(`/jobs/${id}`);
+    const res = await apiClient.get<ParticulatJobType>(`/jobs/${id}`);
     return res.data
   } catch (err) {
-    throw new Error();
+    throw err;
   }
 };
 
