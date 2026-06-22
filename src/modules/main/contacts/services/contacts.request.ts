@@ -5,7 +5,7 @@ import type { ContactPayload } from "../types/contact.types";
 
 
 const getContacts = async (): Promise<ContactPayload[]> => {
-    const res = await axios.get(`${prodEndpoint}api/contacts`, { withCredentials: true })
+    const res = await axios.get(`${prodEndpoint}/contacts`, { withCredentials: true })
     return res.data.contacts
 }
 

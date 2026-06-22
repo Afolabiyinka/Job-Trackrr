@@ -10,7 +10,7 @@ export const useLogout = () => {
 
   const { mutate: logoutMutate, isPending: logoutLoading } = useMutation({
     mutationFn: async () => {
-      const res = await fetch(`${prodEndpoint}api/auth/logout`, {
+      const res = await fetch(`${prodEndpoint}/auth/logout`, {
         credentials: "include",
         method: "POST",
       });
@@ -23,8 +23,7 @@ export const useLogout = () => {
     },
 
     onSuccess: () => {
-
-      logout()
+      logout();
       navigate("/");
       queryClient.clear();
     },
@@ -34,7 +33,7 @@ export const useLogout = () => {
     },
   });
   return {
-    logoutMutate, logoutLoading
-  }
-
+    logoutMutate,
+    logoutLoading,
+  };
 };

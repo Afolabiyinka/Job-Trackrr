@@ -10,9 +10,7 @@ import SpinningLoader from "@/components/loader/spinningloader";
 
 const DesktopNav = () => {
   const location = useLocation();
-  const { logoutLoading,
-    logoutMutate
-  } = useLogout();
+  const { logoutLoading, logoutMutate } = useLogout();
 
   return (
     <nav className="h-full w-full lg:flex hidden flex-col gap-6 p-3">
@@ -27,10 +25,9 @@ const DesktopNav = () => {
               <motion.div whileTap={{ scale: 0.95 }} className="flex-1">
                 <NavLink
                   to={path}
-                  className={`flex gap-2 items-center rounded-3xl px-3 py-3 text-md transition w-full ${isActive
-                    ? "bg-primary text-white"
-                    : "hover:bg-muted"
-                    }`}
+                  className={`flex gap-2 items-center rounded-3xl px-3 py-3 text-md transition w-full ${
+                    isActive ? "bg-primary/80 text-white" : "hover:bg-muted"
+                  }`}
                 >
                   <Icon className="h-4.5 w-4.5 stroke-[1.5px]" />
                   <p>{name}</p>
@@ -58,11 +55,11 @@ const DesktopNav = () => {
           onClick={() => logoutMutate()}
           disabled={logoutLoading}
         >
-          {logoutLoading && (
-            <SpinningLoader />
-          )}
+          {logoutLoading && <SpinningLoader />}
 
-          <span className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}>
+          <span
+            className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}
+          >
             <LogOut className="h-4.5 w-4.5" />
             Logout
           </span>
