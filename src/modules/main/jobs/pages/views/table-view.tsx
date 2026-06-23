@@ -104,7 +104,7 @@ const TableView = () => {
             )
           }
         >
-          <SelectTrigger className="rounded-full">
+          <SelectTrigger className="rounded-full p-4">
             <SelectValue placeholder="Filter by Status" />
           </SelectTrigger>
 
@@ -169,11 +169,11 @@ const TableView = () => {
                       <Search className="h-16 w-16" />
 
                       <div>
-                        <h3 className="text-lg font-semibold">
+                        <h3 className="text-2xl font-bold">
                           No {activeFilter} jobs
                         </h3>
 
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground  tracking-tight">
                           Try a different filter or add more applications
                         </p>
                       </div>

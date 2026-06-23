@@ -10,7 +10,7 @@ import {
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 import CustomInput from "../input/custom-input";
-import { ArrowLeft, ArrowRight, Briefcase, Pencil } from "lucide-react";
+import { ArrowLeft, ArrowRight, Briefcase, Check, Pencil } from "lucide-react";
 
 import CreateDropdown from "../create-dropdown";
 import { DatePicker } from "../date-picker";
@@ -187,30 +187,13 @@ const CreateJobStepper = ({
                   <div
                     className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
                       i < activeStep
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary/70 text-primary-foreground"
                         : i === activeStep
                           ? "bg-primary text-primary-foreground ring-4 ring-primary/20"
                           : "bg-muted text-muted-foreground"
                     }`}
                   >
-                    {i < activeStep ? (
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                      >
-                        <path
-                          d="M2 6l3 3 5-5"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    ) : (
-                      i + 1
-                    )}
+                    {i < activeStep ? <Check size={15} /> : i + 1}
                   </div>
                   <span
                     className={`text-[10px] font-medium tracking-wide ${

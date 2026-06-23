@@ -32,8 +32,7 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl lg:text-6xl font-extrabold leading-[1.1] lg:max-w-2xl"
           >
-            Never lose track of your{" "}
-            <span className="text-primary">job applications</span>
+            Never lose track of your <span className="">job applications</span>
           </motion.h1>
 
           <motion.p
