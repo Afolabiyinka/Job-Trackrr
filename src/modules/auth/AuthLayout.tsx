@@ -29,7 +29,7 @@ const AuthLayout = () => {
   return (
     <div className="h-screen w-screen flex flex-col justify-center items-center p-4 md:p-10">
       <div className="pt-2">
-        <Logo />
+        <Logo linkTo="/" />
       </div>
       <div className="h-full w-full flex flex-col md:flex-row gap-6 justify-center items-center p-4 md:p-10">
         <motion.div className="w-full h-full md:w-1/2 rounded-lg">

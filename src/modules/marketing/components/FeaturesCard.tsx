@@ -18,7 +18,7 @@ const FeaturesCard = ({ desc, icon: Icon, title }: Props) => {
       transition={{ duration: 0.6, ease: "easeIn" }}
     >
       <span className="flex justify-center items-center w-16 h-16 rounded-full ">
-        <Icon className="text-primary stroke-[1.5px]" size={35} />
+        <Icon className="text-primary/80 stroke-[1.5px]" size={35} />
       </span>
       <div className="flex flex-col">
         <h3 className="font-semibold text-lg">{title}</h3>

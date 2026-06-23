@@ -12,8 +12,14 @@ const MobileNav = () => {
 
   return (
     <div className="p-2 flex flex-col justify-between fixed  z-50 w-full bg-white dark:bg-[#141414]">
-      <span className="flex justify-between relative w-full  rounded-full p-2 px-6 items-center">
+      <span className="flex justify-between relative w-full  rounded-full p-2 px-3 items-center ">
         <Logo linkTo="/" />
+        <Link to={`/login`}>
+          <Button variant={`default`} size={`lg`}>
+            Log In
+          </Button>
+        </Link>
+
         <MenuButton open={open} onClick={() => setOpen(!open)} />
       </span>
       <AnimatePresence>
@@ -39,9 +45,9 @@ const MobileNav = () => {
               </NavLink>
             ))}
             <span className="flex gap-3 items-center">
-              <Link to={`/login`}>
+              {/* <Link to={`/login`}>
                 <Button variant={`link`}>Log In</Button>
-              </Link>
+              </Link> */}
 
               <Link to={`/signup`}>
                 <Button size={`lg`}>

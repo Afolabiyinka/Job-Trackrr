@@ -15,7 +15,7 @@ const CustomError = () => {
         className="w-full max-w-md p-8 text-center space-y-6"
       >
         <div className="flex justify-center">
-          <div className="p-4 rounded-full bg-destructive/10 text-destructive">
+          <div className="p-4 rounded-full  text-destructive">
             <AlertTriangle />
           </div>
         </div>
