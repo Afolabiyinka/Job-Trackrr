@@ -16,7 +16,7 @@ const createJob = async (payload: Job) => {
 
 const editJob = async (payload: Partial<Job>, id: number | string) => {
   try {
-    const res = await apiClient.put<Response>(`/jobs${id}`, payload)
+    const res = await apiClient.put<Response>(`/jobs/${id}`, payload)
     return res.data
   }
   catch (err) {
