@@ -4,6 +4,7 @@ import React from "react";
 import { Toaster } from "sonner";
 import { useUser } from "./modules/main/settings/store/useUser";
 import { useFetchUser } from "./modules/main/settings/hooks/useFetchUser";
+import { Analytics } from "@vercel/analytics/react";
 
 export function App() {
   const { fetchedUser, loading } = useFetchUser();
@@ -42,6 +43,7 @@ export function App() {
           },
         }}
       />
+      <Analytics />
     </div>
   );
 }
