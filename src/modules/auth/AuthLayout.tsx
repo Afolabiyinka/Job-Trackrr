@@ -2,7 +2,7 @@ import { useUser } from "@/modules/main/settings/store/useUser";
 import { Navigate, Outlet } from "react-router-dom";
 import { useFetchUser } from "../main/settings/hooks/useFetchUser";
 import { motion } from "framer-motion";
-import signup_img from "@/assets/auth_image.svg";
+import signup_img from "@/assets/images/auth_image.svg";
 import Logo from "@/components/logo/Logo";
 import LoadingContainer from "@/components/loader/loadingcontainer";
 

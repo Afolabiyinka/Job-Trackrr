@@ -1,7 +1,7 @@
 import { Plus, BriefcaseBusiness } from "lucide-react";
 import CreateJobStepper from "../../components/create-job/stepper/CreateJob-Stepper";
 import { motion, type Variants } from "framer-motion";
-import add_image from "@/assets/empty_jobs.svg";
+import add_image from "@/assets/images/empty_jobs.svg";
 
 const containerVariants: Variants = {
   hidden: {},

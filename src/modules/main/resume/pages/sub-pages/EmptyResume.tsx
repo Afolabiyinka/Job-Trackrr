@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import resume_image from "@/assets/resume_image.svg";
+import resume_image from "@/assets/images/resume_image.svg";
 import { FolderOpen } from "lucide-react";
 import UploadResume from "../../components/UploadResume";
 
