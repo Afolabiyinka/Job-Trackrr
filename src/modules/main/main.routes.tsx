@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
+import OnBoarding from "./onboarding/OnBoarding";
 
 // Lazy loading the   main pages
 const Dashboard = lazy(
@@ -12,7 +13,7 @@ const Resume = lazy(() => import("@/modules/main/resume/pages/Resume"));
 const Results = lazy(
   () => import("@/modules/main/resume/pages/sub-pages/Results"),
 );
-const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
+// const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
 
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
 const FeatureInDevelopment = lazy(() => import("../ComingSoon"));
