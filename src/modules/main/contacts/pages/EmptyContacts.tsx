@@ -1,6 +1,6 @@
 import { Users } from "lucide-react";
 import { motion, type Variants } from "framer-motion";
-import contact_image from "@/assets/contact_image.svg";
+import contact_image from "@/assets/images/contact_image.svg";
 import AddContact from "../components/AddContact";
 
 const containerVariants: Variants = {

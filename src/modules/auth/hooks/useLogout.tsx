@@ -1,8 +1,8 @@
-import { prodEndpoint } from "@/shared/constants/api-data";
 import { queryClient } from "@/shared/constants/queryClient";
 import { useUser } from "@/modules/main/settings/store/useUser";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import { apiClient } from "@/shared/api/axios-config";
 
 export const useLogout = () => {
   const { logout } = useUser();
@@ -10,16 +10,12 @@ export const useLogout = () => {
 
   const { mutate: logoutMutate, isPending: logoutLoading } = useMutation({
     mutationFn: async () => {
-      const res = await fetch(`${prodEndpoint}/auth/logout`, {
-        credentials: "include",
-        method: "POST",
-      });
-
-      if (!res.ok) {
-        throw new Error("Logout failed");
+      try {
+        const res = await apiClient.post(`/auth/logout`);
+        return res.data;
+      } catch (err) {
+        throw err;
       }
-
-      return await res.json();
     },
 
     onSuccess: () => {

@@ -1,20 +1,9 @@
-import { prodEndpoint } from "@/shared/constants/api-data";
 import type { OnboardingPayload } from "../types/onboarding.types";
+import { apiClient } from "@/shared/api/axios-config";
 
 export async function onboardUser(payload: OnboardingPayload) {
-    const res = await fetch(`${prodEndpoint}api/me/onboarding`, {
-        method: "PATCH",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.message ?? "Failed to complete onboarding");
-    }
-
-    return res.json();
+    try {
+        const res = await apiClient.patch(`/me/onboarding`, payload)
+        return res.data
+    } catch (err) { throw err; }
 }
