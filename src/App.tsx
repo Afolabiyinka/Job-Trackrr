@@ -31,18 +31,9 @@ export function App() {
   }, [theme]);
 
   return (
-    <div className="font-[Montserrat] min-h-screen">
+    <div className="font-sans min-h-screen">
       <RoutesConfig />
-      <Toaster
-        position="top-right"
-        theme={theme}
-        richColors
-        toastOptions={{
-          style: {
-            borderRadius: "100px",
-          },
-        }}
-      />
+      <Toaster position="top-right" theme={theme} richColors />
       <Analytics />
     </div>
   );

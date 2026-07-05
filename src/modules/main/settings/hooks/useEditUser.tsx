@@ -17,8 +17,8 @@ export const useEditUser = () => {
 
   const { mutate, isPending, error } = useMutation({
     mutationFn: (payload: EditUserPayload) => editUser(payload),
-    onSuccess: (data) => {
-      toastSuccess(data.message);
+    onSuccess: () => {
+      toastSuccess("Profile updated succesfully");
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });

@@ -16,13 +16,19 @@ function NotFound() {
       >
         <h1 className="text-9xl font-light text-primary">404</h1>
 
-        <h2 className="mt-6 text-3xl md:text-4xl font-bold">Page not found</h2>
+        <h2 className="mt-6 text-3xl md:text-4xl font-bold font-heading">
+          Page not found
+        </h2>
 
-        <p className="mt-4 text-muted-foreground">
+        <p className="mt-4 text-muted-foreground font-heading">
           The page you’re looking for doesn’t exist or is still being built.
         </p>
 
-        <Button className="mt-6" size="lg" onClick={() => navigate(-1)}>
+        <Button
+          className="mt-6"
+          size="lg"
+          onClick={() => navigate("/dashboard")}
+        >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Go Home
         </Button>

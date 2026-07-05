@@ -125,7 +125,7 @@ const EditInfo = () => {
               </Button>
             </div>
 
-            {editData.skills.length > 0 && (
+            {editData?.skills.length > 0 && (
               <div className="flex flex-wrap gap-2 pt-1">
                 {editData.skills.map((skill) => (
                   <Badge

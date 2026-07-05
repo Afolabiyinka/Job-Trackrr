@@ -23,7 +23,7 @@ import { useResume } from "../../store/useResume";
 import { useNavigate } from "react-router-dom";
 
 const Results = () => {
-  const { handleAnalyse, isPending, isError, error } = useAnalyseResume();
+  const { handleAnalyse, isPending, isError } = useAnalyseResume();
   const { setResumeText, resumeText, analysis } = useResume();
 
   const navigate = useNavigate();
@@ -41,7 +41,7 @@ const Results = () => {
       <div className="flex flex-col items-center justify-center min-h-screen h-full space-y-4">
         <div className="text-center space-y-2">
           <p className="text-2xl">
-            {error?.message || "Something went wrong. Please try again."}
+            {"Something went wrong. Please try again."}
           </p>
           <Button onClick={() => navigate("/resume")} size={`lg`}>
             <ArrowLeft />

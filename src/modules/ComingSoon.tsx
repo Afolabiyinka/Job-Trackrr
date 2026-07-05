@@ -36,7 +36,10 @@ const FeatureInDevelopment = () => {
           <Construction size={32} className="text-yellow-600 stroke-[1px]" />
         </motion.div>
 
-        <motion.h1 variants={itemVariants} className="text-3xl font-bold mb-2">
+        <motion.h1
+          variants={itemVariants}
+          className="text-3xl font-bold mb-2 font-heading"
+        >
           We're still building this
         </motion.h1>
 

@@ -10,6 +10,7 @@ import MarkettingLayout from "@/modules/marketing/MarkettingLayout";
 import { authRoutes } from "@/modules/auth/auth.routes";
 import { mainRoutes } from "@/modules/main/main.routes";
 import { marketingRoutes } from "@/modules/marketing/marketing.routes";
+import OnBoarding from "@/modules/main/onboarding/OnBoarding";
 
 //Other routes
 const CustomError = lazy(() => import("@/modules/CustomError"));
@@ -36,6 +37,13 @@ export const routes: RouteObject[] = [
       { path: "/", Component: MarkettingLayout, children: marketingRoutes },
       { path: "/", Component: MainLayout, children: mainRoutes },
       { path: "/", Component: AuthLayout, children: authRoutes },
+      {
+        path: "onboarding",
+        Component: OnBoarding,
+        handle: {
+          title: "Onboarding",
+        },
+      },
     ],
   },
 ];

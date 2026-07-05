@@ -22,12 +22,3 @@ export interface Job {
 }
 
 
-export type PaginatedJobs = {
-  data: Job[];
-  pagination: {
-    total: number;
-    currentPage: number;
-    totalPages: number;
-  }
-
-};

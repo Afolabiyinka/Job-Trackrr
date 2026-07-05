@@ -9,7 +9,7 @@ const login = async (payload: LoginPayload) => {
     const res = apiClient.post<Response>(`/auth/login`, payload)
     return (await res).data
   }
-  catch (err) { throw err; }
+  catch (err: any) { throw new Error(err.message); }
 }
 
 

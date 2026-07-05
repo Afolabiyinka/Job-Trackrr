@@ -38,7 +38,7 @@ const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-extrabold tracking-tight"
+            className="text-4xl md:text-6xl font-extrabold tracking-tight font-heading"
           >
             How it works
           </motion.h2>
@@ -48,7 +48,7 @@ const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-heading"
           >
             Get started with JobTrackrr in three simple steps. From signup to
             insights in minutes.

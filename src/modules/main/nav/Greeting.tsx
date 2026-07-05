@@ -1,5 +1,5 @@
 import { useUser } from "../settings/store/useUser";
-import SearchInput from "./components/SearchInput";
+import SearchInput from "../search/components/SearchInput";
 const Greeting = () => {
   const { user } = useUser();
 
@@ -15,7 +15,7 @@ const Greeting = () => {
           <p>Guest</p>
         )}
       </h1>
-      <div className="md:flex gap-3 items-center hidden">
+      <div className="lg:flex gap-3 items-center hidden">
         <SearchInput />
       </div>
     </div>
