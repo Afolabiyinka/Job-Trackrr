@@ -20,8 +20,11 @@ import AddContact from "./AddContact";
 import SpinningLoader from "@/components/loader/spinningloader";
 
 const ContactCard = ({ contact }: { contact: ContactPayload }) => {
+  const { handleDelete, isPending } = useDeleteContact({
+    id: contact.id ?? "",
+  });
+
   if (!contact.id) return null;
-  const { handleDelete, isPending } = useDeleteContact({ id: contact.id });
 
   const initials = contact.name
     .split(" ")
