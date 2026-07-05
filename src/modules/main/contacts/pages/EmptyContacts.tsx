@@ -46,10 +46,17 @@ const EmptyContacts = () => {
           variants={itemVariants}
           className="h-16 w-16 rounded-full bg-secondary flex items-center justify-center"
         >
-          <Users className="text-secondary-foreground" aria-hidden size={32} />
+          <Users
+            className="text-secondary-foreground stroke-[1.25px]"
+            aria-hidden
+            size={32}
+          />
         </motion.div>
 
-        <motion.h2 variants={itemVariants} className="text-2xl font-semibold">
+        <motion.h2
+          variants={itemVariants}
+          className="text-2xl font-semibold font-heading"
+        >
           No one here yet{" "}
         </motion.h2>
 

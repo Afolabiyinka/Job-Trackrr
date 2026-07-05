@@ -45,13 +45,16 @@ export default function NoJobs() {
           className="h-16 w-16 rounded-full bg-secondary flex items-center justify-center"
         >
           <BriefcaseBusiness
-            className="text-secondary-foreground"
+            className="text-secondary-foreground stroke-[1.25px]"
             aria-hidden
             size={32}
           />
         </motion.div>
 
-        <motion.h2 variants={itemVariants} className="text-2xl font-semibold">
+        <motion.h2
+          variants={itemVariants}
+          className="text-2xl font-semibold font-heading"
+        >
           Your job board is empty{" "}
         </motion.h2>
 

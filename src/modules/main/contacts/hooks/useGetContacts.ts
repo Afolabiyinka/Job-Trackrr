@@ -9,5 +9,8 @@ export const useGetContacts = () => {
         retry: false,
         refetchOnWindowFocus: false,
     })
-    return { contacts: data ?? [], error, isLoading }
+    return {
+        contacts: data ?? [], error, isLoading, keepPreviousData: true,
+        staleTime: 1000 * 60 * 2,
+    }
 }

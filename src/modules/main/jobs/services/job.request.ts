@@ -1,11 +1,11 @@
-import type { Job, PaginatedJobs } from "../types/job.types";
+import type { Job, } from "../types/job.types";
 import { apiClient } from "@/shared/api/axios-config";
-import type { Response } from "@/shared/types/shared.types";
+import type { PaginatedResponse, Response } from "@/shared/types/shared.types";
 
 
 const createJob = async (payload: Job) => {
   try {
-    const res = await apiClient.post<Response>("/jobs", payload)
+    const res = await apiClient.post<Response>("/jobs", payload, { withCredentials: true })
     return res.data
   }
   catch (err) {
@@ -31,7 +31,7 @@ const getAllJobs = async ({
   page?: number;
 }) => {
   try {
-    const res = await apiClient.get<PaginatedJobs>(`/jobs?page=${page}`)
+    const res = await apiClient.get<PaginatedResponse<Job>>(`/jobs?page=${page}`)
     return res.data
   } catch (err) {
     throw new Error()

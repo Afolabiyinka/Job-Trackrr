@@ -17,13 +17,9 @@ const OnBoarding = () => {
   const { height, width } = useWindowSize();
   const { user } = useUser();
 
-
-
   const nextStep = () => {
     setActiveStep((prev) => prev + 1);
   };
-
-
 
   useEffect(() => {
     setShowConfetti(true);
@@ -34,8 +30,6 @@ const OnBoarding = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
-
 
   if (user?.onboarded) {
     return <Navigate to="/dashboard" replace />;
@@ -53,24 +47,12 @@ const OnBoarding = () => {
         />
       )}
 
-      {activeStep === 0 && (
-        <Step1 onNext={nextStep} />
-      )}
+      {activeStep === 0 && <Step1 onNext={nextStep} />}
 
-      {activeStep === 1 && (
-        <Step2
-          onNext={nextStep}
-        />
-      )}
+      {activeStep === 1 && <Step2 onNext={nextStep} />}
 
-      {activeStep === 2 && (
-        <Step3 onNext={nextStep}
-        />
-      )}
-      {activeStep === 3 && (
-        <Step4
-        />
-      )}
+      {activeStep === 2 && <Step3 onNext={nextStep} />}
+      {activeStep === 3 && <Step4 />}
     </div>
   );
 };

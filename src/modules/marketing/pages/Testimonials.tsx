@@ -15,7 +15,7 @@ const Testimonials = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeIn" }}
-        className="text-2xl md:text-6xl font-extrabold mb-2 text-center leading-snug font-[Inter]"
+        className="text-2xl md:text-6xl font-extrabold mb-2 text-center leading-snug font-heading"
       >
         Loved by Job Seekers
       </motion.h1>

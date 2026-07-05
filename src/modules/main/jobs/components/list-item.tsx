@@ -12,7 +12,7 @@ const ListItem = ({ job }: { job: Job }) => {
   return (
     <div
       onClick={() => navigate(`/jobs/${job.id}`)}
-      className="group flex flex-col md:flex-row justify-between gap-3 border rounded-4xl md:p-6 p-4 hover:bg-muted/50 transition cursor-pointer"
+      className="group flex flex-col md:flex-row justify-between gap-3 border rounded-4xl md:p-4 md:px-5 items-center p-4 hover:bg-muted/50 transition cursor-pointer"
     >
       <div className="flex gap-3 items-center">
         <div className="h-10 w-10 rounded-full border flex items-center justify-center font-semibold">

@@ -12,7 +12,7 @@ const ThemeToggle = () => {
   ];
 
   return (
-    <div className="relative flex w-full max-w-75 rounded-full bg-muted p-1 gap-3 px-4">
+    <div className="relative flex w-full max-w-75 rounded-full bg-muted p-2 gap-3">
       <motion.div
         layoutId="theme-indicator"
         className="absolute top-1 bottom-1 w-1/3 rounded-full bg-background shadow-sm"

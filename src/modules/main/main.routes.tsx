@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
-import OnBoarding from "./onboarding/OnBoarding";
 
 // Lazy loading the   main pages
 const Dashboard = lazy(
@@ -73,13 +72,6 @@ const mainRoutes: RouteObject[] = [
     path: "interviews",
     Component: FeatureInDevelopment,
     handle: { title: "Interviews" },
-  },
-  {
-    path: "onboarding",
-    Component: OnBoarding,
-    handle: {
-      title: "Onboarding",
-    },
   },
 ];
 

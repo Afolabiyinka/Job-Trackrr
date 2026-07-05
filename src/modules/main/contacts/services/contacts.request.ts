@@ -1,12 +1,17 @@
 import { prodEndpoint } from "@/shared/constants/api-data";
-import axios from "axios";
 import type { ContactPayload } from "../types/contact.types";
+import { apiClient } from "@/shared/api/axios-config";
 
 
 
 const getContacts = async (): Promise<ContactPayload[]> => {
-    const res = await axios.get(`${prodEndpoint}/contacts`, { withCredentials: true })
-    return res.data.contacts
+    try {
+        const res = await apiClient.get(`/contacts`, { withCredentials: true })
+        return res.data.contacts
+    }
+    catch (err) {
+        throw new Error
+    }
 }
 
 const createContact = async (payload: ContactPayload) => {

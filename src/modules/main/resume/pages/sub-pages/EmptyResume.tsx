@@ -46,12 +46,15 @@ const EmptyResume = () => {
         >
           <FolderOpen
             size={32}
-            className="text-secondary-foreground"
+            className="text-secondary-foreground stroke-[1.25px]"
             aria-hidden
           />
         </motion.div>
 
-        <motion.h2 variants={itemVariants} className="text-2xl font-semibold">
+        <motion.h2
+          variants={itemVariants}
+          className="text-2xl font-semibold font-heading"
+        >
           Let's take a look at your resume
         </motion.h2>
 

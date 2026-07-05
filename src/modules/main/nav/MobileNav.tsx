@@ -7,7 +7,7 @@ import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
-import SearchInput from "./components/SearchInput";
+import SearchInput from "../search/components/SearchInput";
 import Settings from "../settings/pages/Settings";
 import SpinningLoader from "@/components/loader/spinningloader";
 
