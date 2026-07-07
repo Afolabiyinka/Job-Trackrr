@@ -53,7 +53,7 @@ export default function NoJobs() {
 
         <motion.h2
           variants={itemVariants}
-          className="text-2xl font-semibold font-heading"
+          className="text-4xl font-bold font-heading"
         >
           Your job board is empty{" "}
         </motion.h2>

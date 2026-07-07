@@ -38,7 +38,7 @@ const FeatureInDevelopment = () => {
 
         <motion.h1
           variants={itemVariants}
-          className="text-3xl font-bold mb-2 font-heading"
+          className="text-4xl font-bold mb-2 font-heading"
         >
           We're still building this
         </motion.h1>
