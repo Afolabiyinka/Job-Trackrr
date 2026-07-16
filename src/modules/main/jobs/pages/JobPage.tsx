@@ -104,7 +104,7 @@ const JobPage = () => {
         </div>
 
         <div
-          className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-sm font-medium shrink-0 ${
+          className={`flex items-center gap-2 px-3 py-1.5 rounded-xl md:rounded-full border text-sm font-medium shrink-0 ${
             interviewIndicator.upcoming
               ? "border-primary/30 text-primary bg-primary/5"
               : "border-muted text-muted-foreground bg-muted/40"

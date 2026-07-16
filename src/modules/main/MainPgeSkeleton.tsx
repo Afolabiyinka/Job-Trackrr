@@ -128,7 +128,7 @@ const PageHeaderSkeleton = ({ ctaWidth = "w-44" }: { ctaWidth?: string }) => (
 
 // shared row card: avatar + name/subtitle on left, meta on right
 const RowCardSkeleton = ({ withMeta = true }: { withMeta?: boolean }) => (
-  <div className="border border-zinc-200 rounded-3xl p-5 flex items-center justify-between">
+  <div className="rounded-3xl p-5 flex items-center justify-between">
     <div className="flex items-center gap-4">
       <Shimmer className="h-11 w-11 rounded-full" />
       <div className="flex flex-col gap-2">
