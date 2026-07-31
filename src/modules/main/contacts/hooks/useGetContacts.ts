@@ -1,16 +1,15 @@
 import { useQuery } from "@tanstack/react-query"
 import { getContacts } from "../services/contacts.request"
+import { type ContactPayload } from "../types/contact.types"
 
 export const useGetContacts = () => {
 
-    const { data, error, isLoading } = useQuery({
+    const { data, error, isLoading, isError, refetch } = useQuery<ContactPayload[]>({
         queryKey: ["contacts"],
         queryFn: getContacts,
-        retry: false,
-        refetchOnWindowFocus: false,
+
     })
     return {
-        contacts: data ?? [], error, isLoading, keepPreviousData: true,
-        staleTime: 1000 * 60 * 2,
+        contacts: data ?? [], error, isLoading, isError, refetch
     }
 }

@@ -33,7 +33,14 @@ export function App() {
   return (
     <div className="font-sans min-h-screen">
       <RoutesConfig />
-      <Toaster position="top-right" theme={theme} richColors />
+      <Toaster
+        position="top-right"
+        theme={theme}
+        richColors
+        style={{
+          borderRadius: "100px",
+        }}
+      />
       <Analytics />
     </div>
   );

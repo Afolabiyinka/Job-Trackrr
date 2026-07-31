@@ -1,3 +1,4 @@
+import { getErrorMessage } from "@/shared/lib/errorMsg";
 import type { AuthUser, EditUserPayload } from "../types/user.types";
 import { apiClient } from "@/shared/api/axios-config";
 
@@ -11,7 +12,7 @@ const getUser = async () => {
     const res = await apiClient.get<UserResponse>(`/me`)
     return res.data
   }
-  catch (err) { throw err; }
+  catch (err) { throw new Error(getErrorMessage(err)) }
 }
 
 
@@ -20,7 +21,7 @@ const editUser = async (payload: EditUserPayload) => {
   try {
     const res = await apiClient.put(`/me`, payload)
     return res.data
-  } catch (err) { throw err; }
+  } catch (err) { throw new Error(getErrorMessage(err)) }
 
 }
 
@@ -28,7 +29,7 @@ const deleteAccount = async () => {
   try {
     const res = await apiClient.delete(`/me`);
     return res.data;
-  } catch (err) { throw err; }
+  } catch (err) { throw new Error(getErrorMessage(err)) }
 
 };
 

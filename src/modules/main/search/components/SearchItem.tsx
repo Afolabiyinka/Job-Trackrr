@@ -2,12 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { getStatusColor } from "../../jobs/libs/utils";
 import type { Job } from "../../jobs/types/job.types";
 
-const SearchItem = ({ job }: { job: Job }) => {
+const SearchItem = ({ job, onSelect }: { job: Job; onSelect?: () => void }) => {
   const navigate = useNavigate();
   return (
     <div
       className="flex justify-between  w-full gap-2 items-center hover:bg-primary/80 hover:text-white p-1 md:p-2 rounded-full cursor-pointer relative"
-      onClick={() => navigate(`/jobs/${job.id}`)}
+      onClick={() => {
+        onSelect?.();
+        navigate(`/jobs/${job.id}`);
+      }}
     >
       {/* LEFT */}
       <div className="flex items-center gap-2">

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { useIsMobile } from "@/shared/hooks/useMobile";
 import { Briefcase, Search } from "lucide-react";
+import { useState } from "react";
 import CustomInput from "../../jobs/components/create-job/input/custom-input";
 import { useSearch } from "../hooks/useSearch";
 import SearchItem from "./SearchItem";
@@ -16,19 +17,13 @@ import SpinningLoader from "@/components/loader/spinningloader";
 
 const SearchInput = () => {
   const isMobile = useIsMobile();
-  const {
-    query,
-    setQuery,
-
-    searchLoading,
-    searchresults,
-  } = useSearch();
+  const { query, setQuery, searchLoading, searchresults } = useSearch();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
-          // onClick={() => setOpen(true)}
           variant="secondary"
           size={isMobile ? "icon-lg" : "lg"}
           className="group transition-all duration-150"
@@ -71,7 +66,11 @@ const SearchInput = () => {
             <div>{searchLoading && <SpinningLoader />}</div>
             <div className="mt-5 w-full">
               {searchresults?.data.map((job) => (
-                <SearchItem job={job} key={job.id} />
+                <SearchItem
+                  job={job}
+                  key={job.id}
+                  onSelect={() => setIsOpen(false)}
+                />
               ))}
             </div>
           </div>

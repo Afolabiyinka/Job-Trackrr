@@ -10,4 +10,5 @@ export interface AuthUser {
   linkedinUrl: string;
   preferredRole: string;
   skills: string[]
+  dateJoined?: Date
 }

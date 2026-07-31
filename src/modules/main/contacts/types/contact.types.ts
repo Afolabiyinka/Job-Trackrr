@@ -5,4 +5,8 @@ export interface ContactPayload {
     email: string;
     phoneNumber: string | number;
     socialLinks: string[];
-} 
+}
+
+export interface ContactResponse {
+    contacts: ContactPayload[]
+}

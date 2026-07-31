@@ -12,7 +12,5 @@ export const useGetJobs = (page: number = 1) => {
     loading: isLoading,
     error,
     refetch,
-    keepPreviousData: true,
-    staleTime: 1000 * 60 * 2,
   };
 };
