@@ -71,7 +71,9 @@ const SignUp = () => {
                 icon="User"
                 id="username"
                 value={signupData.username}
-                onChange={(e) => setSignUpData({ ...signupData, username: e })}
+                onChange={(e) =>
+                  setSignUpData({ ...signupData, username: e.target.value })
+                }
                 required
               />
             </div>
@@ -86,7 +88,9 @@ const SignUp = () => {
                 icon="Mail"
                 id="email"
                 value={signupData.email}
-                onChange={(e) => setSignUpData({ ...signupData, email: e })}
+                onChange={(e) =>
+                  setSignUpData({ ...signupData, email: e.target.value })
+                }
                 required
               />
             </div>
@@ -101,20 +105,15 @@ const SignUp = () => {
                 icon="Lock"
                 id="password"
                 value={signupData.password}
-                onChange={(e) => setSignUpData({ ...signupData, password: e })}
+                onChange={(e) =>
+                  setSignUpData({ ...signupData, password: e.target.value })
+                }
                 required
               />
             </div>
           </div>
 
-
-
-          <Button
-            type="submit"
-            size="lg"
-            className="w-full"
-            disabled={loading}
-          >
+          <Button type="submit" size="lg" className="w-full" disabled={loading}>
             {loading ? (
               <>
                 <SpinningLoader />

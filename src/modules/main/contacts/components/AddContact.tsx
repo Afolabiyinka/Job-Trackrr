@@ -81,7 +81,9 @@ const AddContact = ({ editing, title, id, contact }: AddContactProps) => {
               icon="User"
               type="text"
               value={contactData?.name}
-              onChange={(e) => setContactData({ ...contactData, name: e })}
+              onChange={(e) =>
+                setContactData({ ...contactData, name: e.target.value })
+              }
             />
           </div>
 
@@ -94,7 +96,9 @@ const AddContact = ({ editing, title, id, contact }: AddContactProps) => {
               icon="User"
               type="text"
               value={contactData?.role}
-              onChange={(e) => setContactData({ ...contactData, role: e })}
+              onChange={(e) =>
+                setContactData({ ...contactData, role: e.target.value })
+              }
             />
           </div>
 
@@ -107,7 +111,9 @@ const AddContact = ({ editing, title, id, contact }: AddContactProps) => {
               placeholder="john@email.com"
               icon="Mail"
               value={contactData.email}
-              onChange={(e) => setContactData({ ...contactData, email: e })}
+              onChange={(e) =>
+                setContactData({ ...contactData, email: e.target.value })
+              }
             />
           </div>
 
@@ -121,7 +127,7 @@ const AddContact = ({ editing, title, id, contact }: AddContactProps) => {
               type="tel"
               value={contactData.phoneNumber}
               onChange={(e) =>
-                setContactData({ ...contactData, phoneNumber: e })
+                setContactData({ ...contactData, phoneNumber: e.target.value })
               }
             />
           </div>

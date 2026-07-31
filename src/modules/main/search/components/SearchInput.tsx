@@ -38,11 +38,11 @@ const SearchInput = () => {
           <DialogDescription></DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-3">
+        <div className="space-y-10">
           <CustomInput
             placeholder="Start Typing..."
             value={query}
-            onChange={setQuery}
+            onChange={(e) => setQuery(e.target.value)}
             type="search"
             icon="Search"
           />
@@ -51,11 +51,11 @@ const SearchInput = () => {
             <div>
               {searchresults?.data.length === 0 && (
                 <div className="flex flex-col items-center justify-center text-center w-full">
-                  <div className="mb-3 rounded-full bg-muted p-3">
-                    <Briefcase className="h-6 w-6 text-muted-foreground" />
+                  <div className="mb-3 rounded-full p-3">
+                    <Briefcase className="h-10 w-10 stroke-[1px] text-muted-foreground" />
                   </div>
 
-                  <p className="mb-1 text-sm font-medium">No jobs found</p>
+                  <p className="mb-1 text-sm font-medium">No Jobs Found</p>
 
                   <p className="max-w-60 text-xs text-muted-foreground">
                     Try a different search term

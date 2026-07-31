@@ -54,7 +54,9 @@ const EditInfo = () => {
                 placeholder="Username"
                 type="text"
                 value={editData.username}
-                onChange={(e) => setEditData({ ...editData, username: e })}
+                onChange={(e) =>
+                  setEditData({ ...editData, username: e.target.value })
+                }
               />
             </div>
 
@@ -69,7 +71,9 @@ const EditInfo = () => {
                 placeholder="Email"
                 type="text"
                 value={editData.email}
-                onChange={(e) => setEditData({ ...editData, email: e })}
+                onChange={(e) =>
+                  setEditData({ ...editData, email: e.target.value })
+                }
               />
             </div>
 
@@ -83,7 +87,9 @@ const EditInfo = () => {
                 placeholder="https://linkedin.com/in/yourname"
                 type="text"
                 value={editData.linkedinUrl}
-                onChange={(e) => setEditData({ ...editData, linkedinUrl: e })}
+                onChange={(e) =>
+                  setEditData({ ...editData, linkedinUrl: e.target.value })
+                }
               />
             </div>
 
@@ -97,7 +103,9 @@ const EditInfo = () => {
                 placeholder="e.g. Frontend Developer"
                 type="text"
                 value={editData.preferredRole}
-                onChange={(e) => setEditData({ ...editData, preferredRole: e })}
+                onChange={(e) =>
+                  setEditData({ ...editData, preferredRole: e.target.value })
+                }
               />
             </div>
           </div>
@@ -113,7 +121,7 @@ const EditInfo = () => {
                 placeholder="e.g. React, Node.js, Figma"
                 type="text"
                 value={skillInput}
-                onChange={(e) => setSkillInput(e)}
+                onChange={(e) => setSkillInput(e.target.value)}
               />
               <Button
                 type="button"

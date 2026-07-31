@@ -29,6 +29,13 @@ import type { Job } from "../../../types/job.types";
 import { useEffect } from "react";
 import { useEditJobs } from "../../../hooks/useEditJob";
 import SpinningLoader from "@/components/loader/spinningloader";
+import { useForm } from "react-hook-form";
+import {
+  refinedJobSchema,
+  type JobFormInput,
+  type JobFormOutput,
+} from "../../../libs/job.validation";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const STEPS = ["Basics", "Compensation", "Interview", "Status"];
 
@@ -93,6 +100,13 @@ const CreateJobStepper = ({
     reset,
   } = useSetJob();
 
+  const {
+    setValue,
+    formState: { errors },
+  } = useForm<JobFormInput, unknown, JobFormOutput>({
+    resolver: zodResolver(refinedJobSchema),
+    mode: "onChange",
+  });
   const { handleCreate, createLoading } = useCreateJob();
   const { handleEdit, editLoading } = useEditJobs();
 
@@ -219,32 +233,60 @@ const CreateJobStepper = ({
 
         {/* Form */}
         <form onSubmit={handleSubmit}>
-          <div className="px-6 py-4   min-h-[240px]">
+          <div className="px-6 py-4   min-h-60">
             {activeStep === 0 && (
               <div className="flex flex-col gap-4">
                 <FieldGroup label="Company name">
                   <CustomInput
                     value={company}
-                    onChange={(e) => setCompany(e)}
+                    onChange={(e) => {
+                      setCompany(e.target.value);
+
+                      setValue("company", e.target.value, {
+                        shouldValidate: true,
+                        shouldDirty: true,
+                      });
+                    }}
                     placeholder="e.g. Google"
                     icon="Building2"
                     type="text"
+                    error={errors.company?.message}
                   />
                 </FieldGroup>
                 <FieldGroup label="Role">
                   <CustomInput
-                    placeholder="e.g. Frontend Engineer"
-                    icon="User"
-                    type="text"
                     value={role}
-                    onChange={(e) => setRole(e)}
+                    onChange={(e) => {
+                      setRole(e.target.value);
+
+                      setValue("role", e.target.value, {
+                        shouldValidate: true,
+                        shouldDirty: true,
+                      });
+                    }}
+                    placeholder="e.g. Software Engineer"
+                    icon="Briefcase"
+                    type="text"
+                    error={errors.role?.message}
                   />
                 </FieldGroup>
                 <FieldGroup label="Applied at">
-                  <DatePicker
+                  {/* <DatePicker
                     title=""
                     onSelect={(val) => val && setApplied(val)}
                     inputtedDate={appliedAt ?? undefined}
+                  /> */}
+                  <DatePicker
+                    inputtedDate={appliedAt ?? undefined}
+                    onSelect={(date) => {
+                      date && setApplied(date);
+
+                      setValue("appliedAt", date, {
+                        shouldValidate: true,
+                        shouldDirty: true,
+                      });
+                    }}
+                    error={errors.appliedAt?.message}
                   />
                 </FieldGroup>
               </div>
@@ -292,18 +334,33 @@ const CreateJobStepper = ({
                 </FieldGroup>
                 <FieldGroup label="Interview date">
                   <DatePicker
-                    title=""
                     inputtedDate={interviewDate ?? undefined}
-                    onSelect={(val) => val && setInterviewDate(val)}
+                    onSelect={(date) => {
+                      date && setInterviewDate(date);
+
+                      setValue("interviewDate", date, {
+                        shouldValidate: true,
+                        shouldDirty: true,
+                      });
+                    }}
+                    error={errors.interviewDate?.message}
                   />
                 </FieldGroup>
                 <FieldGroup label="Company email">
                   <CustomInput
-                    icon="Mail"
-                    placeholder="e.g. careers@company.com"
-                    type="email"
                     value={companyEmail}
-                    onChange={(e) => setCompanyEmail(e)}
+                    onChange={(e) => {
+                      setCompanyEmail(e.target.value);
+
+                      setValue("companyEmail", e.target.value, {
+                        shouldValidate: true,
+                        shouldDirty: true,
+                      });
+                    }}
+                    placeholder="e.g. hiring@google.com"
+                    icon="Mail"
+                    type="email"
+                    error={errors.companyEmail?.message}
                   />
                 </FieldGroup>
               </div>
@@ -316,7 +373,7 @@ const CreateJobStepper = ({
                     value={status ?? undefined}
                     dropdownItems={STATUS_TYPES}
                     placeholder="Select current status"
-                    hasColor={false}
+                    hasColor
                     onSelect={(e) => setStatus(e)}
                   />
                 </FieldGroup>
@@ -325,7 +382,7 @@ const CreateJobStepper = ({
                     placeholder="Feedback, impressions, or anything to remember..."
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
-                    className="resize-none text-xs min-h-[90px]"
+                    className="resize-none text-xs min-h-22.5"
                   />
                 </FieldGroup>
 
@@ -333,7 +390,7 @@ const CreateJobStepper = ({
                   type="submit"
                   size="lg"
                   disabled={isLoading}
-                  className="gap-2 min-w-[140px]"
+                  className="gap-2 min-w-35"
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
@@ -362,7 +419,7 @@ const CreateJobStepper = ({
               disabled={activeStep === 0}
               variant="outline"
               size="lg"
-              className="gap-1.5 min-w-[80px] sm:min-w-[100px]"
+              className="gap-1.5 min-w-20 sm:min-w-25"
             >
               <ArrowLeft size={14} />
               <span className="hidden xs:inline">Back</span>
@@ -376,7 +433,7 @@ const CreateJobStepper = ({
               type="button"
               onClick={nextStep}
               size="lg"
-              className="gap-1.5 min-w-[80px] sm:min-w-[100px]"
+              className="gap-1.5 min-w-20 sm:min-w-25"
               disabled={activeStep === 3}
             >
               <span className="hidden xs:inline">Next</span>

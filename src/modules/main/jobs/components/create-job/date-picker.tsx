@@ -14,44 +14,48 @@ import {
 import { formatDate } from "../../libs/utils";
 
 interface Props {
-  title: string;
+  title?: string;
   inputtedDate?: Date;
   onSelect?: (val: Date | undefined) => void;
+  error?: string;
 }
-export function DatePicker({ title, inputtedDate, onSelect }: Props) {
+export function DatePicker({ title, inputtedDate, onSelect, error }: Props) {
   const [open, setOpen] = React.useState(false);
 
   const formattedDate = formatDate(inputtedDate ?? null);
 
   return (
-    <div className="flex flex-col gap-3 w-full">
-      <Label htmlFor="date" className="px-1">
-        {title}
-      </Label>
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            id="date"
-            className="w-full h-14 justify-between font-normal"
-          >
-            {inputtedDate ? formattedDate : "Select date"}
-            <ChevronDownIcon />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-auto overflow-hidden p-0" align="start">
-          <Calendar
-            mode="single"
-            selected={inputtedDate}
-            captionLayout="dropdown"
-            onSelect={(date) => {
-              setOpen(false);
-              onSelect?.(date);
-            }}
-            animate
-          />
-        </PopoverContent>
-      </Popover>
+    <div className="w-full">
+      <div className="flex flex-col gap-3 w-full">
+        <Label htmlFor="date" className="px-1">
+          {title}
+        </Label>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="outline"
+              id="date"
+              className="w-full h-16 px-6 justify-between font-normal"
+            >
+              {inputtedDate ? formattedDate : "Select date"}
+              <ChevronDownIcon />
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+            <Calendar
+              mode="single"
+              selected={inputtedDate}
+              captionLayout="dropdown"
+              onSelect={(date) => {
+                setOpen(false);
+                onSelect?.(date);
+              }}
+              animate
+            />
+          </PopoverContent>
+        </Popover>
+      </div>
+      {error && <p className="text-xs ml-4 text-destructive mt-2">{error}</p>}
     </div>
   );
 }
