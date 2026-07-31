@@ -1,14 +1,14 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import TableView from "./views/table-view";
 import CardView from "./views/card-view";
-import { LayoutGrid, LayoutList, Plus, RefreshCcw, Table } from "lucide-react";
+import { LayoutGrid, LayoutList, Plus, Table } from "lucide-react";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import { useGetJobs } from "../hooks/useGetJobs";
 import NoJobs from "./empty/NoJobs";
-import { Button } from "@/components/ui/button";
 import ListView from "./views/list-view";
 import { useState } from "react";
 import { JobsPageSkeleton } from "../../MainPgeSkeleton";
+import ErrorPage from "../../loading-screens/ErrorRefetch";
 
 type JobView = "card" | "table" | "list";
 
@@ -50,19 +50,9 @@ const Jobs = () => {
 
   const { data, error, loading, refetch } = useGetJobs();
 
+  console.log(error?.message);
   if (error) {
-    return (
-      <div className="h-full rounded-xl w-full flex flex-col gap-2 justify-center items-center text-center">
-        <h1 className="text-3xl font-extrabold tracking-wider">
-          Failed to get all jobs
-        </h1>
-        <p className="text-xl">Something went wrong</p>
-        <Button size="lg" onClick={() => refetch()}>
-          <RefreshCcw />
-          Retry
-        </Button>
-      </div>
-    );
+    return <ErrorPage action={refetch} />;
   }
 
   if (loading) return <JobsPageSkeleton />;
@@ -89,7 +79,7 @@ const Jobs = () => {
       <Tabs value={currentView} onValueChange={handleViewChange}>
         <TabsList className="space-x-4">
           {jobViews.map(({ value, label, icon: Icon }) => (
-            <TabsTrigger key={value} value={value} className="group">
+            <TabsTrigger key={value} value={value} className="group px-4">
               <Icon className="h-4 w-4 shrink-0" />
               <span
                 className="

@@ -117,7 +117,7 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
         </div>
 
         <DialogFooter className="px-6 py-4 border-t flex flex-row justify-between sm:justify-between gap-2">
-          <AddContact title="Edit" editing id={contact.id} />
+          <AddContact title="Edit" editing id={contact.id} contact={contact} />
 
           <Button
             variant="destructive"

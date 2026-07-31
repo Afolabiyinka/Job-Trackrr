@@ -24,6 +24,7 @@ import { NumericFormat } from "react-number-format";
 import { useGetJob } from "../hooks/useGetJob";
 import JobPageSkeleton from "../components/loading-skeleton";
 import DeleteJobModal from "../components/delete-job";
+import ErrorPage from "../../loading-screens/ErrorRefetch";
 
 const DetailItem = ({
   icon,
@@ -47,7 +48,7 @@ const JobPage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const { job, error, loading } = useGetJob({ id: id ?? "" });
+  const { job, error, loading, refetch } = useGetJob({ id: id ?? "" });
 
   useEffect(() => {
     if (job) document.title = `${job.role} at ${job.company}`;
@@ -55,13 +56,8 @@ const JobPage = () => {
 
   if (!id) return <div>Invalid job ID</div>;
   if (loading) return <JobPageSkeleton />;
-  if (error) return <div>Failed to load job</div>;
-  if (!job)
-    return (
-      <div className="h-full w-full text-3xl flex justify-center items-center">
-        Job not found
-      </div>
-    );
+  if (error) return <ErrorPage action={refetch} />;
+  if (!job) return <ErrorPage />;
 
   const formattedAppliedAtDate = formatDate(job.appliedAt);
   const interviewIndicator = showInterviewIndicator(job.interviewDate);

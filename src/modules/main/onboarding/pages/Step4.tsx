@@ -92,7 +92,7 @@ const Step4 = () => {
               icon="Zap"
               type="text"
               value={skillInput}
-              onChange={(e) => setSkillInput(e)}
+              onChange={(e) => setSkillInput(e.target.value)}
               placeholder="e.g. React, Node.js, Figma"
             />
 

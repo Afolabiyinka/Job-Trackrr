@@ -62,7 +62,7 @@ const Step3 = ({ onNext }: StepProps) => {
             icon="User"
             type="text"
             value={preferredRole}
-            onChange={(e) => setPreferredRole(e)}
+            onChange={(e) => setPreferredRole(e.target.value)}
             placeholder="e.g. Frontend Developer, Product Designer"
           />
 

@@ -1,23 +1,26 @@
 import type { LoginPayload, SignupPayload } from "../types/auth.types";
 import type { Response } from "@/shared/types/shared.types";
 import { apiClient } from "@/shared/api/axios-config";
+import { getErrorMessage } from "@/shared/lib/errorMsg";
 
 
 
 const login = async (payload: LoginPayload) => {
   try {
-    const res = apiClient.post<Response>(`/auth/login`, payload)
-    return (await res).data
+    const res = await apiClient.post<Response>("/auth/login", payload);
+
+    return res.data.message;
+  } catch (err: unknown) {
+    throw new Error(getErrorMessage(err));
   }
-  catch (err: any) { throw new Error(err.message); }
-}
+};
 
 
 const signup = async (payload: SignupPayload) => {
   try {
     const res = await apiClient.post<Response>(`/auth/signup`, payload)
     return res.data
-  } catch (err) { throw err; }
+  } catch (err) { throw new Error(getErrorMessage(err)); }
 
 }
 
@@ -27,7 +30,7 @@ const googleLogin = async (payload: { credential?: string }) => {
     const res = await apiClient.post<Response>("/auth/google", payload)
     return res.data
   }
-  catch (err) { throw err; }
+  catch (err) { throw new Error(getErrorMessage(err)); }
 
 }
 

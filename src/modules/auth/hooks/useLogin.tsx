@@ -20,11 +20,12 @@ export const useLogin = () => {
       queryClient.invalidateQueries({
         queryKey: ["user"],
       });
-      toastSuccess(data.message);
+      toastSuccess(data);
       navigate("/dashboard");
     },
-    onError: (error) => {
-      toastError(error.message);
+    onError: (err) => {
+      console.log(err);
+      toastError(err.message);
     },
   });
 

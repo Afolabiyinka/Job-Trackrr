@@ -2,16 +2,23 @@ import ContactCard from "../components/ContactCard";
 import EmptyContacts from "./EmptyContacts";
 import AddContact from "../components/AddContact";
 import { useGetContacts } from "../hooks/useGetContacts";
+import ErrorPage from "../../loading-screens/ErrorRefetch";
 
 const Contacts = () => {
-  const { contacts, error, isLoading } = useGetContacts();
+  const { contacts, error, isLoading, refetch } = useGetContacts();
 
   if (!isLoading && contacts?.length === 0) {
     return <EmptyContacts />;
   }
 
   if (error) {
-    <div className="text-sm text-red-500">Failed to load contacts.</div>;
+    return (
+      <ErrorPage
+        action={refetch}
+        // title="We couldn't load your contacts"
+        // message="Something went wrong while loading your contacts. You can try again in a moment."
+      />
+    );
   }
 
   return (

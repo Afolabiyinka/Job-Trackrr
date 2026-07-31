@@ -1,14 +1,7 @@
 import ScoreCircle from "../../components/ScoreCircle";
 import { useAnalyseResume } from "../../hooks/useAnalyseResume";
-import UploadResume from "../../components/UploadResume";
 import { Button } from "@/components/ui/button";
-import {
-  AlertTriangle,
-  ArrowLeft,
-  CheckCircle,
-  RefreshCcw,
-  Wrench,
-} from "lucide-react";
+import { AlertTriangle, CheckCircle, RefreshCcw, Wrench } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -21,6 +14,7 @@ import ResultsSkeleton from "./LoadingState";
 import { useEffect } from "react";
 import { useResume } from "../../store/useResume";
 import { useNavigate } from "react-router-dom";
+import ErrorPage from "@/modules/main/loading-screens/ErrorRefetch";
 
 const Results = () => {
   const { handleAnalyse, isPending, isError } = useAnalyseResume();
@@ -37,19 +31,7 @@ const Results = () => {
   }
 
   if (isError || !resumeText) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen h-full space-y-4">
-        <div className="text-center space-y-2">
-          <p className="text-2xl">
-            {"Something went wrong. Please try again."}
-          </p>
-          <Button onClick={() => navigate("/resume")} size={`lg`}>
-            <ArrowLeft />
-            Try again
-          </Button>
-        </div>
-      </div>
-    );
+    return <ErrorPage action={() => navigate("/resume")} />;
   }
 
   const strengths = analysis?.suggestions.strengths || [];
@@ -63,7 +45,9 @@ const Results = () => {
           <p className="text-2xl  tracking-tight">Resume score</p>
         </span>
         <span className="flex items-center gap-2">
-          <UploadResume title="Upload a new resume" />
+          <Button onClick={() => navigate("/resume")}>
+            Upload a new resume
+          </Button>
           <Button
             size="icon"
             variant={`outline`}

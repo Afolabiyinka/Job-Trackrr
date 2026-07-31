@@ -31,6 +31,10 @@ const OnBoarding = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
+
   if (user?.onboarded) {
     return <Navigate to="/dashboard" replace />;
   }

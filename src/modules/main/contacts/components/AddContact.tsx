@@ -15,22 +15,17 @@ import { useAddContact } from "../hooks/useAddContact";
 import { useEffect } from "react";
 import type { ContactPayload } from "../types/contact.types";
 import { useEditContact } from "../hooks/useEditContact";
-import { useGetContacts } from "../hooks/useGetContacts";
 import SpinningLoader from "@/components/loader/spinningloader";
 
 interface AddContactProps {
   editing?: boolean;
   title: string;
   id?: number | string;
+  contact?: ContactPayload;
 }
-const AddContact = ({ editing, title, id }: AddContactProps) => {
+const AddContact = ({ editing, title, id, contact }: AddContactProps) => {
   const { contactData, isPending, mutate, setContactData } = useAddContact();
   const { handleEdit, loading: isEditPending } = useEditContact();
-  const { contacts } = useGetContacts();
-
-  const contact = contacts?.find(
-    (contact: ContactPayload) => contact.id === id,
-  );
 
   useEffect(() => {
     if (editing && contact) {
@@ -86,7 +81,9 @@ const AddContact = ({ editing, title, id }: AddContactProps) => {
               icon="User"
               type="text"
               value={contactData?.name}
-              onChange={(e) => setContactData({ ...contactData, name: e })}
+              onChange={(e) =>
+                setContactData({ ...contactData, name: e.target.value })
+              }
             />
           </div>
 
@@ -99,7 +96,9 @@ const AddContact = ({ editing, title, id }: AddContactProps) => {
               icon="User"
               type="text"
               value={contactData?.role}
-              onChange={(e) => setContactData({ ...contactData, role: e })}
+              onChange={(e) =>
+                setContactData({ ...contactData, role: e.target.value })
+              }
             />
           </div>
 
@@ -112,7 +111,9 @@ const AddContact = ({ editing, title, id }: AddContactProps) => {
               placeholder="john@email.com"
               icon="Mail"
               value={contactData.email}
-              onChange={(e) => setContactData({ ...contactData, email: e })}
+              onChange={(e) =>
+                setContactData({ ...contactData, email: e.target.value })
+              }
             />
           </div>
 
@@ -126,7 +127,7 @@ const AddContact = ({ editing, title, id }: AddContactProps) => {
               type="tel"
               value={contactData.phoneNumber}
               onChange={(e) =>
-                setContactData({ ...contactData, phoneNumber: e })
+                setContactData({ ...contactData, phoneNumber: e.target.value })
               }
             />
           </div>

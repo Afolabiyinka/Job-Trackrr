@@ -1,5 +1,6 @@
 import type { Job, } from "../types/job.types";
 import { apiClient } from "@/shared/api/axios-config";
+import { getErrorMessage } from "@/shared/lib/errorMsg";
 import type { PaginatedResponse, Response } from "@/shared/types/shared.types";
 
 
@@ -9,7 +10,7 @@ const createJob = async (payload: Job) => {
     return res.data
   }
   catch (err) {
-    throw new Error()
+    throw new Error(getErrorMessage(err))
   }
 }
 
@@ -20,7 +21,7 @@ const editJob = async (payload: Partial<Job>, id: number | string) => {
     return res.data
   }
   catch (err) {
-    throw new Error();
+    throw new Error(getErrorMessage(err))
   }
 }
 
@@ -34,7 +35,7 @@ const getAllJobs = async ({
     const res = await apiClient.get<PaginatedResponse<Job>>(`/jobs?page=${page}`)
     return res.data
   } catch (err) {
-    throw new Error()
+    throw new Error(getErrorMessage(err))
   }
 }
 
@@ -47,7 +48,7 @@ const getParticularJob = async (id: string) => {
     const res = await apiClient.get<ParticulatJobType>(`/jobs/${id}`);
     return res.data
   } catch (err) {
-    throw err;
+    throw new Error(getErrorMessage(err))
   }
 };
 
@@ -56,7 +57,7 @@ const deleteJob = async (id: string) => {
     const res = await apiClient.delete<Response>(`/jobs/${id}`);
     return res;
   } catch (err) {
-    throw new Error();
+    throw new Error(getErrorMessage(err))
   }
 };
 

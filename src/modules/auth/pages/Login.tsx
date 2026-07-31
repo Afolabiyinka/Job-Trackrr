@@ -70,7 +70,9 @@ const Login = () => {
                 icon="Mail"
                 id="email"
                 value={loginData.email}
-                onChange={(e) => setLoginData({ ...loginData, email: e })}
+                onChange={(e) =>
+                  setLoginData({ ...loginData, email: e.target.value })
+                }
                 required
               />
             </div>
@@ -85,7 +87,9 @@ const Login = () => {
                 icon="Lock"
                 id="password"
                 value={loginData.password}
-                onChange={(e) => setLoginData({ ...loginData, password: e })}
+                onChange={(e) =>
+                  setLoginData({ ...loginData, password: e.target.value })
+                }
                 required
               />
             </div>

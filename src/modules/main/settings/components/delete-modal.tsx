@@ -57,7 +57,7 @@ const DeleteAccountModal = () => {
             type="text"
             placeholder={deletePhrase}
             value={deleteInput}
-            onChange={(e) => setDeleteInput(e)}
+            onChange={(e) => setDeleteInput(e.target.value)}
           />
         </div>
 
