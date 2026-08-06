@@ -1,4 +1,4 @@
-import { queryClient } from "@/shared/constants/queryClient";
+import { queryClient } from "@/shared/api/queryClient";
 import { useUser } from "@/modules/main/settings/store/useUser";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";

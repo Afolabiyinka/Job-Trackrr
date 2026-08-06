@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import type { Job } from "../types/job.types";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { editJob } from "../services/job.request";
-import { queryClient } from "@/shared/constants/queryClient";
+import { queryClient } from "@/shared/api/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
 
 export const useEditJobs = () => {

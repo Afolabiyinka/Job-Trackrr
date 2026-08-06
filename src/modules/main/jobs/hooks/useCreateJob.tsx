@@ -3,7 +3,7 @@ import type { Job } from "../types/job.types";
 import { createJob } from "../services/job.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
-import { queryClient } from "@/shared/constants/queryClient";
+import { queryClient } from "@/shared/api/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
 import { useUser } from "../../settings/store/useUser";
 

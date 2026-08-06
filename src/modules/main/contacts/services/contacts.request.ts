@@ -1,4 +1,4 @@
-import { prodEndpoint } from "@/shared/constants/api-data";
+import { prodEndpoint } from "@/shared/api/api-data";
 import type { ContactPayload, ContactResponse } from "../types/contact.types";
 import { apiClient } from "@/shared/api/axios-config";
 import { getErrorMessage } from "@/shared/lib/errorMsg";

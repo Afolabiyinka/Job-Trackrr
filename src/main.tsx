@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Suspense } from "react";
 import LoadingContainer from "./components/loader/loadingcontainer.tsx";
-import { queryClient } from "./shared/constants/queryClient.ts";
+import { queryClient } from "./shared/api/queryClient.ts";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 createRoot(document.getElementById("root")!).render(

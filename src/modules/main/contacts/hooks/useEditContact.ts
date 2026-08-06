@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { editContact } from "../services/contacts.request";
-import { queryClient } from "@/shared/constants/queryClient";
+import { queryClient } from "@/shared/api/queryClient";
 import useToastMessage from "@/shared/lib/toastMsg";
 import type { ContactPayload } from "../types/contact.types";
 

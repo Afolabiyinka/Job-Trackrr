@@ -4,7 +4,7 @@ import type { SignupPayload } from "../types/auth.types";
 import { useNavigate } from "react-router-dom";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { signup } from "../services/auth.request";
-import { queryClient } from "@/shared/constants/queryClient";
+import { queryClient } from "@/shared/api/queryClient";
 
 export const useSignup = () => {
   const [signupData, setSignUpData] = React.useState<SignupPayload>({

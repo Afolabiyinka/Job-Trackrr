@@ -16,9 +16,9 @@ export default function useToastMessage() {
     toast.loading(message);
   };
   const toastWarning = (message: string) => {
-    toast.dismiss()
-    toast.info(message)
-  }
+    toast.dismiss();
+    toast.info(message);
+  };
   return {
     toastSuccess,
     toastWarning,
