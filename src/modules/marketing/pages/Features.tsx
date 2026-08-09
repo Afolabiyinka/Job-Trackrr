@@ -11,7 +11,7 @@ const Features = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-6xl font-extrabold leading-tight"
+            className="text-4xl md:text-6xl font-extrabold font-heading leading-tight"
           >
             Everything you need to land your dream job
           </motion.h1>

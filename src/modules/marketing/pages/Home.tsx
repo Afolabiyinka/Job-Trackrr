@@ -20,8 +20,8 @@ const Home = () => {
           className="space-y-8 text-center lg:text-left  w-full"
         >
           <Badge
-            variant={`secondary`}
-            className="inline-flex items-center gap-2 p-3 h-12 px-6 text-sm font-medium bg-muted/50"
+            variant={"ghost"}
+            className="inline-flex items-center gap-2 p-3 h-12 px-6 text-sm"
           >
             Your job search, simplified
           </Badge>
@@ -30,7 +30,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl lg:text-6xl font-extrabold leading-[1.1] lg:max-w-2xl"
+            className="text-3xl lg:text-6xl font-extrabold leading-[1.1] lg:max-w-2xl font-heading"
           >
             Never lose track of your <span className="">job applications</span>
           </motion.h1>
@@ -76,7 +76,7 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="relative flex items-center justify-center  lg:h-[60vh]"
+          className="relative flex items-center justify-center"
         >
           <div className="relative w-full overflow-hidden  bg-background transform scale-[1.02] transition-transform duration-300">
             <img

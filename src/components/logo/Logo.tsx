@@ -33,7 +33,7 @@ const Logo = ({ collapsed = false, linkTo = "dashboard" }: LogoProps) => {
           duration: 0.3,
           ease: [0.4, 0, 0.2, 1],
         }}
-        className="text-xl font-bold tracking-tight"
+        className="text-xl font-bold tracking-tight font-heading"
       >
         Job Trackrr
       </motion.span>
