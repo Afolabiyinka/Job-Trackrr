@@ -15,7 +15,7 @@ const Results = lazy(
 // const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
 
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
-const FeatureInDevelopment = lazy(() => import("../ComingSoon"));
+const FeatureInDevelopment = lazy(() => import("../systen-pages/ComingSoon"));
 
 const mainRoutes: RouteObject[] = [
   {

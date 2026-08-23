@@ -1,6 +1,6 @@
-# 💼 Job Trackkrr
+# 💼 Job Trackrr
 
-Job Trackkrr is a modern job application tracking system built with React, TypeScript, and Vite.  
+Job Trackrr is a modern job application tracking system built with React, TypeScript, and Vite.  
 It helps users manage, organize, and monitor their job applications in one clean dashboard.
 
 ---

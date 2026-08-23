@@ -20,7 +20,7 @@ const Header = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -30, opacity: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="md:text-center md:text-lg font-heading font-semibold"
+          className="md:text-center md:text-lg font-heading font-semibold tracking-wide"
         >
           {jobMotivations[index]}
         </motion.h1>

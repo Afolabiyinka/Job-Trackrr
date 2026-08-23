@@ -50,7 +50,6 @@ const Jobs = () => {
 
   const { data, error, loading, refetch } = useGetJobs();
 
-  console.log(error?.message);
   if (error) {
     return <ErrorPage action={refetch} />;
   }

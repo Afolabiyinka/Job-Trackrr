@@ -10,7 +10,7 @@ import {
   AlertTriangle,
   SettingsIcon,
 } from "lucide-react";
-import FeatureInDevelopment from "@/modules/ComingSoon";
+import FeatureInDevelopment from "@/modules/systen-pages/ComingSoon";
 import {
   Dialog,
   DialogContent,

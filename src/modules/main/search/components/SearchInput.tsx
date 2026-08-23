@@ -34,8 +34,10 @@ const SearchInput = () => {
       </DialogTrigger>
       <DialogContent showCloseButton={false} className="">
         <DialogHeader>
-          <DialogTitle></DialogTitle>
-          <DialogDescription></DialogDescription>
+          <DialogTitle>Search</DialogTitle>
+          <DialogDescription>
+            Search through your job applications
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-10">

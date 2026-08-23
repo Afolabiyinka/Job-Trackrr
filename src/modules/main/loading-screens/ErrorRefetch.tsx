@@ -19,7 +19,7 @@ const ErrorPage = ({ action }: ErrorPageProps) => {
           )}
         </div>
 
-        <h2 className="text-2xl font-semibold tracking-tight">
+        <h2 className="text-2xl font-semibold tracking-tight font-heading">
           {offline ? "You're offline" : "Something went wrong"}
         </h2>
 

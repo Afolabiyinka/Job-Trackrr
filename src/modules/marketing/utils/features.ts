@@ -1,4 +1,4 @@
-import { Target, BarChart3, TrendingUp, Users, Sparkles } from "lucide-react";
+import { Target, BarChart3, TrendingUp, Users, Sparkles, Bell } from "lucide-react";
 
 export const features = [
   {
@@ -7,12 +7,12 @@ export const features = [
       "Keep track of every application with detailed status updates and custom stages.",
     icon: Target,
   },
-  // {
-  //   title: "Smart Reminders",
-  //   description:
-  //     "Never miss a follow-up with automated reminders and notifications.",
-  //   icon: Bell,
-  // },
+  {
+    title: "Smart Reminders",
+    description:
+      "Never miss a follow-up with automated reminders and notifications.",
+    icon: Bell,
+  },
   {
     title: "Analytics & Insights",
     description:

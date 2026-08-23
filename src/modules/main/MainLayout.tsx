@@ -5,14 +5,35 @@ import Header from "@/modules/main/nav/Header";
 import { motion } from "framer-motion";
 import { useGetJobs } from "@/modules/main/jobs/hooks/useGetJobs";
 import { useJobs } from "@/modules/main/jobs/store/useJobs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "@/modules/main/settings/store/useUser";
 import MainLayoutSkeleton from "./MainPgeSkeleton";
+import ErrorPage from "./loading-screens/ErrorRefetch";
 
 const MainLayout = () => {
+  const [networkError, setNetwork] = useState(!navigator.onLine);
+
   const { user, isAuthResolved } = useUser();
   const { data } = useGetJobs();
   const { setJobs } = useJobs();
+
+  useEffect(() => {
+    const handleOnline = () => {
+      setNetwork(false);
+    };
+
+    const handleOffline = () => {
+      setNetwork(true);
+    };
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
 
   useEffect(() => {
     if (data?.data) {
@@ -38,16 +59,22 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <main className="w-full gap-2 flex flex-col md:p-4 p-2">
-        <span className="w-full">
-          <Greeting />
-          <Header />
-        </span>
+      <div className="w-full gap-2 flex flex-col md:p-4 p-2">
+        {networkError ? (
+          <ErrorPage />
+        ) : (
+          <main className="w-full gap-2 flex flex-col">
+            <span className="w-full">
+              <Greeting />
+              <Header />
+            </span>
 
-        <motion.div className="h-full w-full overflow-y-scroll p-1 md:p-2 rounded-xl">
-          <Outlet />
-        </motion.div>
-      </main>
+            <motion.div className="h-full w-full overflow-y-scroll p-1 md:p-2 rounded-xl">
+              <Outlet />
+            </motion.div>
+          </main>
+        )}
+      </div>
     </div>
   );
 };
