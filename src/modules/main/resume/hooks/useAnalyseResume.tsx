@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { analyseResume } from "../services/resume.request";
 import useToastMessage from "@/shared/lib/toastMsg";
@@ -5,7 +6,7 @@ import { useResume } from "../store/useResume";
 
 export const useAnalyseResume = () => {
   const { toastError, toastWarning } = useToastMessage();
-  const { resumeText, setAnalysis } = useResume();
+  const { resumeFile, setAnalysis } = useResume();
 
   const mutation = useMutation({
     mutationFn: analyseResume,
@@ -17,14 +18,16 @@ export const useAnalyseResume = () => {
     },
   });
 
-  function handleAnalyse() {
-    if (!resumeText?.trim()) {
-      toastWarning("Please upload or paste your resume first");
+  const handleAnalyse = useCallback(() => {
+    if (!resumeFile) {
+      toastWarning("Please upload your resume first");
       return;
     }
 
-    mutation.mutate(resumeText);
-  }
+    if (mutation.isPending) return;
+
+    mutation.mutate(resumeFile);
+  }, [mutation, resumeFile, toastWarning]);
 
   return {
     handleAnalyse,

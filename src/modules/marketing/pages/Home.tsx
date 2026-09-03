@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import LightScreenShot from "@/assets/screenshots/Light Screenshot.png";
-import DarkScreenshot from "@/assets/screenshots/Dark Screenshot.png";
+import LightScreenShot from "@/assets/screenshots/lightmode_screenshot.png";
+import DarkScreenshot from "@/assets/screenshots/darkmode_screenshot.png";
 import { useTheme } from "@/modules/main/theme/useTheme";
 import { Badge } from "@/components/ui/badge";
 

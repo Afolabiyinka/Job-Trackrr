@@ -19,8 +19,8 @@ const ResultsSkeleton = () => {
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-center p-1 gap-1">
-        <div className="p-1 grid md:grid-cols-2 gap-10 w-full">
+      <div className="flex flex-col items-center justify-center p-1 gap-4">
+        <div className="p-1 grid md:grid-cols-2 gap-5 w-full">
           <Card>
             <CardHeader>
               <SkeletonBlock className="h-6 w-48 mb-2" />

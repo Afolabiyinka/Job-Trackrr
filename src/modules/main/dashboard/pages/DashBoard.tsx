@@ -1,6 +1,6 @@
-import GoalsStatsCard from "../components/goals/GoalsStatsCard";
 import ContactsStatsCard from "../components/ContactsStatsCard";
 import StatsCard from "../components/stats/StatsCard";
+import InterviewRemindersCard from "../components/InterviewRemindersCard";
 import { useGetJobs } from "../../jobs/hooks/useGetJobs";
 import NoJobs from "../../jobs/pages/empty/NoJobs";
 
@@ -17,7 +17,8 @@ const DashBoard = () => {
         <StatsCard />
       </div>
       <section className="grid md:grid-cols-1 w-full gap-6  h-full">
-        <GoalsStatsCard />
+        <InterviewRemindersCard />
+        {/* <GoalsStatsCard /> */}
         <ContactsStatsCard />
       </section>
     </div>

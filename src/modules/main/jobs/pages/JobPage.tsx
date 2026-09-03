@@ -5,7 +5,6 @@ import {
   ArrowLeft,
   BriefcaseBusiness,
   CalendarCheck,
-  CalendarClockIcon,
   ClipboardList,
   DollarSign,
   Laptop,
@@ -14,17 +13,14 @@ import {
   User,
 } from "lucide-react";
 import { CopyButton } from "@/components/ui/copy-button";
-import {
-  formatDate,
-  getStatusColor,
-  showInterviewIndicator,
-} from "../libs/utils";
+import { formatDate } from "../libs/utils";
 import CreateJobStepper from "../components/create-job/stepper/CreateJob-Stepper";
 import { NumericFormat } from "react-number-format";
 import { useGetJob } from "../hooks/useGetJob";
 import JobPageSkeleton from "../components/loading-skeleton";
 import DeleteJobModal from "../components/delete-job";
 import ErrorPage from "../../loading-screens/ErrorRefetch";
+import InterviewBadge from "../components/interview-badge";
 
 const DetailItem = ({
   icon,
@@ -60,7 +56,6 @@ const JobPage = () => {
   if (!job) return <ErrorPage />;
 
   const formattedAppliedAtDate = formatDate(job.appliedAt);
-  const interviewIndicator = showInterviewIndicator(job.interviewDate);
 
   return (
     <div className="mx-auto p-1 md:p-4 space-y-4">
@@ -99,21 +94,10 @@ const JobPage = () => {
           </div>
         </div>
 
-        <div
-          className={`flex items-center gap-2 px-3 py-1.5 rounded-xl md:rounded-full border text-sm font-medium shrink-0 ${
-            interviewIndicator.upcoming
-              ? "border-primary/30 text-primary bg-primary/5"
-              : "border-muted text-muted-foreground bg-muted/40"
-          }`}
-        >
-          <CalendarClockIcon size={14} className="stroke-[1.5px]" />
-          {interviewIndicator.message}
-          <span
-            className={`h-1.5 w-1.5 rounded-full animate-ping ${
-              interviewIndicator.upcoming ? "bg-primary" : "bg-red-500"
-            }`}
-          />
-        </div>
+        <InterviewBadge
+          interviewDate={job.interviewDate}
+          className="shrink-0"
+        />
       </div>
 
       <div className="rounded-2xl">
@@ -128,12 +112,6 @@ const JobPage = () => {
               </p>
               <h3 className="text-2xl font-bold leading-tight">{job.role}</h3>
             </div>
-          </div>
-          <div className="flex items-center gap-2 shrink-0">
-            <span
-              className={`h-2.5 w-2.5 rounded-full ${getStatusColor(job.status)}`}
-            />
-            <span className="text-sm font-semibold">{job.status}</span>
           </div>
         </div>
 

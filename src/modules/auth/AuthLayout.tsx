@@ -4,7 +4,7 @@ import { useFetchUser } from "../main/settings/hooks/useFetchUser";
 import { motion } from "framer-motion";
 import signup_img from "@/assets/images/auth_image.svg";
 import Logo from "@/components/logo/Logo";
-import LoadingContainer from "@/components/loader/loadingcontainer";
+import MainLayoutSkeleton from "../main/MainPgeSkeleton";
 
 const AuthLayout = () => {
   const { user } = useUser();
@@ -14,7 +14,7 @@ const AuthLayout = () => {
   if (loading) {
     return (
       <div className="h-screen w-screen flex justify-center items-center">
-        <LoadingContainer />
+        <MainLayoutSkeleton />
       </div>
     );
   }

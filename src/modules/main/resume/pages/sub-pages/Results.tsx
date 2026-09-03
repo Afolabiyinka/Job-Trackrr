@@ -11,26 +11,29 @@ import {
 } from "@/components/ui/card";
 import SpinningLoader from "@/components/loader/spinningloader";
 import ResultsSkeleton from "./LoadingState";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useResume } from "../../store/useResume";
 import { useNavigate } from "react-router-dom";
 import ErrorPage from "@/modules/main/loading-screens/ErrorRefetch";
+import { useEffect } from "react";
 
 const Results = () => {
   const { handleAnalyse, isPending, isError } = useAnalyseResume();
-  const { setResumeText, resumeText, analysis } = useResume();
+  const { resumeFile, analysis } = useResume();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    handleAnalyse();
-  }, [setResumeText]);
+    if (!analysis && resumeFile && !isPending && !isError) {
+      handleAnalyse();
+    }
+  }, [analysis, resumeFile, handleAnalyse, isPending, isError]);
 
   if (isPending) {
     return <ResultsSkeleton />;
   }
 
-  if (isError || !resumeText) {
+  if (isError || !resumeFile || !analysis) {
     return <ErrorPage action={() => navigate("/resume")} />;
   }
 
@@ -45,7 +48,7 @@ const Results = () => {
           <p className="text-2xl  tracking-tight">Resume score</p>
         </span>
         <span className="flex items-center gap-2">
-          <Button onClick={() => navigate("/resume")}>
+          <Button onClick={() => navigate("/resume")} size={`lg`}>
             Upload a new resume
           </Button>
           <Button

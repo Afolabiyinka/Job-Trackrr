@@ -1,73 +1,74 @@
-import { prodEndpoint } from "@/shared/api/api-data";
-import type { ContactPayload, ContactResponse } from "../types/contact.types";
+import type {
+    ContactPayload,
+    ContactResponse,
+} from "../types/contact.types";
+
 import { apiClient } from "@/shared/api/axios-config";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
-
-
+import type { Response } from "@/shared/types/shared.types";
 
 const getContacts = async () => {
-    console.log("🔥 CONTACTS REQUEST");
-
     try {
-        const res = await apiClient.get<ContactResponse>(`/contacts`, { withCredentials: true })
-        return res.data.contacts
+        const res = await apiClient.get<ContactResponse>("/contacts", {
+            withCredentials: true,
+        });
+
+        return res.data.contacts;
+    } catch (err) {
+        throw new Error(getErrorMessage(err));
     }
-    catch (err) {
-        throw new Error(getErrorMessage(err))
-    }
-}
+};
 
 const createContact = async (payload: ContactPayload) => {
-    const res = await fetch(`${prodEndpoint}/contacts/`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-        credentials: "include",
-    });
+    try {
+        const res = await apiClient.post<Response>(
+            "/contacts",
+            payload,
+            {
+                withCredentials: true,
+            }
+        );
 
-    const data = await res.json();
-    if (!res.ok) {
-        throw new Error(data.message);
+        return res.data;
+    } catch (err) {
+        throw new Error(getErrorMessage(err));
     }
-    return data;
 };
 
 const deleteContact = async (id: string | number) => {
+    try {
+        const res = await apiClient.delete<Response>(`/contacts/${id}`, {
+            withCredentials: true,
+        });
 
-    const res = await fetch(`${prodEndpoint}/contacts/${id}`, {
-        method: "DELETE",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-        }
-
-    })
-    const data = await res.json()
-
-    if (!res.ok) {
-        throw new Error(data.message || "Something went wrong");
+        return res.data;
+    } catch (err) {
+        throw new Error(getErrorMessage(err));
     }
-    return data;
-}
+};
 
-const editContact = async (id: string | number, payload: ContactPayload) => {
-    const res = await fetch(`${prodEndpoint}/contacts/${id}`, {
-        method: "PATCH",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload)
+const editContact = async (
+    id: string | number,
+    payload: ContactPayload
+) => {
+    try {
+        const res = await apiClient.patch<Response>(
+            `/contacts/${id}`,
+            payload,
+            {
+                withCredentials: true,
+            }
+        );
 
-    })
-    const data = await res.json()
-
-    if (!res.ok) {
-        throw new Error(data.message || "Something went wrong");
+        return res.data;
+    } catch (err) {
+        throw new Error(getErrorMessage(err));
     }
-    return data;
-}
+};
 
-export { getContacts, createContact, deleteContact, editContact }
+export {
+    getContacts,
+    createContact,
+    deleteContact,
+    editContact,
+};
