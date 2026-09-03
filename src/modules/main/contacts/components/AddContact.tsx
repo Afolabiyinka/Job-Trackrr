@@ -144,11 +144,21 @@ const AddContact = ({ editing, title, id, contact }: AddContactProps) => {
           </div>
           <div className="px-6 py-4 border-t flex justify-end">
             {editing ? (
-              <Button size="lg" type="submit">
+              <Button
+                size="lg"
+                type="submit"
+                disabled={isEditPending}
+                className="gap-2"
+              >
                 {isEditPending ? <SpinningLoader /> : "Save Changes"}
               </Button>
             ) : (
-              <Button className="gap-2" size="lg" type="submit">
+              <Button
+                className="gap-2"
+                size="lg"
+                type="submit"
+                disabled={isPending}
+              >
                 {isPending ? <SpinningLoader /> : "Save Contact"}
               </Button>
             )}

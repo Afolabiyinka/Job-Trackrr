@@ -35,8 +35,8 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <div className="flex gap-3 items-center p-3 rounded-full border bg-muted/50 hover:bg-muted transition-all cursor-pointer hover:shadow-sm">
-          <div className="h-10 w-10 bg-primary/90 text-white flex items-center justify-center rounded-full font-semibold">
+        <div className="flex gap-3 items-center p-3.5 rounded-full bg-muted/50 hover:bg-muted transition-all cursor-pointer hover:shadow-sm">
+          <div className="h-10 w-10 bg-primary/80 text-white flex items-center justify-center rounded-full font-semibold">
             {initials}
           </div>
 

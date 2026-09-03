@@ -1,21 +1,14 @@
-import { useAnalyseResume } from "../hooks/useAnalyseResume";
 import EmptyResume from "./sub-pages/EmptyResume";
-import ResultsSkeleton from "./sub-pages/LoadingState";
-import Results from "./sub-pages/Results";
+import { useResume } from "../store/useResume";
+import { Navigate } from "react-router-dom";
 
 const Resume = () => {
-  const { isPending, isSuccess } = useAnalyseResume();
+  const { analysis, resumeFile } = useResume();
 
-  // Loading state
-  if (isPending) {
-    return <ResultsSkeleton />;
+  if (analysis && resumeFile) {
+    return <Navigate to="/resume/results" />;
   }
 
-  if (isSuccess) {
-    return <Results />;
-  }
-
-  // Empty state
   return <EmptyResume />;
 };
 

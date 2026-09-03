@@ -8,7 +8,7 @@ const Header = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % jobMotivations.length);
-    }, 9000);
+    }, 20000);
     return () => clearInterval(interval);
   }, []);
   return (
@@ -20,7 +20,7 @@ const Header = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -30, opacity: 0 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="md:text-center md:text-lg font-heading font-semibold tracking-wide"
+          className="md:text-center md:text-lg font-heading tracking-wide"
         >
           {jobMotivations[index]}
         </motion.h1>

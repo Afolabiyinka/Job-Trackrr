@@ -15,6 +15,12 @@ const Results = lazy(
 // const OnBoarding = lazy(() => import("@/modules/main/onboarding/OnBoarding"));
 
 const Contacts = lazy(() => import("@/modules/main/contacts/pages/Contacts"));
+const Analytics = lazy(
+  () => import("@/modules/main/analytics/pages/Analytics"),
+);
+const Interviews = lazy(
+  () => import("@/modules/main/interviews/pages/Notifications"),
+);
 const FeatureInDevelopment = lazy(() => import("../systen-pages/ComingSoon"));
 
 const mainRoutes: RouteObject[] = [
@@ -59,6 +65,11 @@ const mainRoutes: RouteObject[] = [
     ],
   },
   {
+    path: "analytics",
+    Component: Analytics,
+    handle: { title: "Analytics" },
+  },
+  {
     path: "settings",
     Component: Settings,
     handle: { title: "Settings" },
@@ -70,7 +81,7 @@ const mainRoutes: RouteObject[] = [
   },
   {
     path: "interviews",
-    Component: FeatureInDevelopment,
+    Component: Interviews,
     handle: { title: "Interviews" },
   },
 ];

@@ -2,16 +2,21 @@ import { create } from "zustand";
 import type { AnalysisType } from "../types/resume.types";
 
 interface ResumeStore {
-  resumeText: string;
-  setResumeText: (rt: string) => void;
-  analysis: AnalysisType | null,
-  setAnalysis: (analysis: AnalysisType) => void
+  resumeFile: File | null;
+  setResumeFile: (file: File | null) => void;
+  analysis: AnalysisType | null;
+  setAnalysis: (analysis: AnalysisType | null) => void;
+  clearAnalysis: () => void;
 }
 
 export const useResume = create<ResumeStore>((set) => ({
-  resumeText: "",
-  setResumeText: (rt) => set({ resumeText: rt }),
+  resumeFile: null,
+  setResumeFile: (file) =>
+    set({
+      resumeFile: file,
+      analysis: null,
+    }),
   analysis: null,
-  setAnalysis: (analysis) => set({ analysis: analysis })
-
+  setAnalysis: (analysis) => set({ analysis }),
+  clearAnalysis: () => set({ analysis: null }),
 }));
