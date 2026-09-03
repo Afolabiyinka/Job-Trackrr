@@ -1,6 +1,5 @@
 import Logo from "@/components/logo/Logo";
 import { Github, Twitter, Linkedin } from "lucide-react";
-import { Link } from "react-router-dom";
 import { footerSections } from "../utils/footer";
 
 const Footer = () => {
@@ -28,12 +27,12 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-muted-foreground">
               {section.links.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
+                  <a
+                    href={link.href}
                     className="hover:text-foreground transition"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

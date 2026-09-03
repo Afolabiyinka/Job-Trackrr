@@ -1,5 +1,7 @@
 import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
+import PrivacyPolicy from "./pages/footer-links/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 const LandingPage = lazy(() => import("@/modules/marketing/pages/LandingPage"));
 const Testimonials = lazy(
@@ -28,6 +30,14 @@ const marketingRoutes: RouteObject[] = [
     path: "features",
     Component: Features,
     handle: { title: "Features" },
+  },
+  {
+    path: "privacy-policy",
+    Component: PrivacyPolicy,
+  },
+  {
+    path: "terms-of-service",
+    Component: TermsOfService,
   },
 ];
 

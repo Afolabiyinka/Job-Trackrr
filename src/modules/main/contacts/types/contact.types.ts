@@ -1,5 +1,5 @@
 export interface ContactPayload {
-    id?: string | number
+    id?: string | number;
     name: string;
     role: string;
     email: string;
@@ -8,5 +8,5 @@ export interface ContactPayload {
 }
 
 export interface ContactResponse {
-    contacts: ContactPayload[]
+    contacts: ContactPayload[];
 }

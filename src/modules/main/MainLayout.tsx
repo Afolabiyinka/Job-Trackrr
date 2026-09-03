@@ -59,7 +59,7 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <div className="w-full gap-2 flex flex-col md:p-4 p-2">
+      <div className="w-full gap-2 flex flex-col md:p-4 p-2 overflow-y-scroll">
         {networkError ? (
           <ErrorPage />
         ) : (
@@ -69,7 +69,7 @@ const MainLayout = () => {
               <Header />
             </span>
 
-            <motion.div className="h-full w-full overflow-y-scroll p-1 md:p-2 rounded-xl">
+            <motion.div className="h-full w-full  p-1 md:p-2 rounded-xl">
               <Outlet />
             </motion.div>
           </main>

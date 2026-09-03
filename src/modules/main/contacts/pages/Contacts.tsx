@@ -1,8 +1,8 @@
 import ContactCard from "../components/ContactCard";
 import EmptyContacts from "./EmptyContacts";
-import AddContact from "../components/AddContact";
 import { useGetContacts } from "../hooks/useGetContacts";
 import ErrorPage from "../../loading-screens/ErrorRefetch";
+import AddContact from "../components/AddContact";
 
 const Contacts = () => {
   const { contacts, error, isLoading, refetch } = useGetContacts();

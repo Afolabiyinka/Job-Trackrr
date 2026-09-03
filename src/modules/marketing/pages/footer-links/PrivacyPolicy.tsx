@@ -101,7 +101,7 @@ export default function PrivacyPolicy() {
   return (
     <main className="min-h-screen">
       <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-        <Logo />
+        <Logo linkTo="/" />
         <h1 className="mt-2 text-3xl sm:text-4xl font-semibold">
           Privacy Policy
         </h1>
