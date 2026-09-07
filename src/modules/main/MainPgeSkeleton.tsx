@@ -9,7 +9,7 @@ const Shimmer = ({ className = "" }: { className?: string }) => (
 );
 
 const NavSkeleton = () => (
-  <div className="flex flex-col h-full">
+  <div className="md:flex flex-col  hidden">
     {/* logo */}
     <div className="flex items-center gap-2 px-2 pb-6">
       <Shimmer className="h-8 w-8 rounded-full" />
@@ -17,7 +17,7 @@ const NavSkeleton = () => (
     </div>
 
     {/* nav items */}
-    <div className="flex flex-col gap-2">
+    <div className="md:flex flex-col gap-2 hidden">
       {Array.from({ length: 6 }).map((_, i) => (
         <div key={i} className="flex items-center gap-3 px-3 py-3">
           <Shimmer className="h-5 w-5 rounded" />

@@ -56,6 +56,7 @@ const JobPage = () => {
   if (!job) return <ErrorPage />;
 
   const formattedAppliedAtDate = formatDate(job.appliedAt);
+  const formattedInterviewDate = formatDate(job.interviewDate);
 
   return (
     <div className="mx-auto p-1 md:p-4 space-y-4">
@@ -141,6 +142,14 @@ const JobPage = () => {
           {job.appliedAt && (
             <DetailItem icon={<CalendarCheck size={13} />} label="Applied">
               {formattedAppliedAtDate}
+            </DetailItem>
+          )}
+          {job.interviewDate && (
+            <DetailItem
+              icon={<CalendarCheck size={13} />}
+              label="Interview date"
+            >
+              {formattedInterviewDate}
             </DetailItem>
           )}
         </div>

@@ -65,8 +65,8 @@ const HowItWorks = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="bg-muted/50 z-50 border rounded-2xl p-8 flex flex-col items-start gap-4 transition-all duration-300 h-full group">
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary/80 text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg shadow-lg">
+              <div className="bg-muted/50 z-50  rounded-2xl p-8 flex flex-col items-start gap-4 transition-all duration-300 h-full group">
+                <div className="absolute -top-4 -right-4 w-12 h-12 z-30 bg-primary/40 rounded-xl flex items-center justify-center font-bold text-lg shadow-lg">
                   {step}
                 </div>
 

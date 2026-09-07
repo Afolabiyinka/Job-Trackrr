@@ -1,8 +1,18 @@
 import NavLayout from "@/modules/marketing/pages/NavLayout";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./pages/Footer";
+import React from "react";
 
 const MarkettingLayout = () => {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "instant",
+    });
+  }, [location.pathname]);
+
   return (
     <div className="w-full relative">
       <NavLayout />

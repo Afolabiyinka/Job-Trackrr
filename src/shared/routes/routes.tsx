@@ -11,12 +11,10 @@ import { authRoutes } from "@/modules/auth/auth.routes";
 import { mainRoutes } from "@/modules/main/main.routes";
 import { marketingRoutes } from "@/modules/marketing/marketing.routes";
 import OnBoarding from "@/modules/main/onboarding/OnBoarding";
-import PrivacyPolicy from "@/modules/marketing/pages/footer-links/PrivacyPolicy";
-import TermsOfService from "@/modules/marketing/pages/TermsOfService";
 
 //Other routes
-const CustomError = lazy(() => import("@/modules/systen-pages/CustomError"));
-const NotFound = lazy(() => import("@/modules/systen-pages/NotFound"));
+const CustomError = lazy(() => import("@/modules/system-pages/CustomError"));
+const NotFound = lazy(() => import("@/modules/system-pages/NotFound"));
 
 const RootWrapper = () => {
   const matches = useMatches();
@@ -45,14 +43,6 @@ export const routes: RouteObject[] = [
         handle: {
           title: "Onboarding",
         },
-      },
-      {
-        path: "privacy-policy",
-        Component: PrivacyPolicy,
-      },
-      {
-        path: "terms-of-service",
-        Component: TermsOfService,
       },
     ],
   },

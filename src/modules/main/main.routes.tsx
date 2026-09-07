@@ -21,7 +21,7 @@ const Analytics = lazy(
 const Interviews = lazy(
   () => import("@/modules/main/interviews/pages/Notifications"),
 );
-const FeatureInDevelopment = lazy(() => import("../systen-pages/ComingSoon"));
+const FeatureInDevelopment = lazy(() => import("../system-pages/ComingSoon"));
 
 const mainRoutes: RouteObject[] = [
   {

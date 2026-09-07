@@ -3,7 +3,7 @@ const StarRating = ({ rating }: { rating: number }) => {
   const emptyStar = "☆";
 
   return (
-    <div className="flex text-yellow-500 text-2xl">
+    <div className="flex text-primary text-2xl">
       {Array.from({ length: 5 }, (_, index) =>
         index < rating ? (
           <span key={index}>{filledStar}</span>

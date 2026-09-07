@@ -29,23 +29,15 @@ export default function About() {
   return (
     <main className="min-h-screen">
       <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
-        <p className="text-sm uppercase tracking-wide text-neutral-500">
-          Job Trackrr
-        </p>
-        <h1 className="mt-2 text-3xl sm:text-4xl font-semibold text-white">
-          About
-        </h1>
+        <h1 className="mt-3 text-3xl sm:text-4xl font-semibold">About</h1>
 
         <div className="mt-12 space-y-10">
           {sections.map((s) => (
             <section key={s.title}>
-              <h2 className="text-lg font-medium text-white">{s.title}</h2>
+              <h2 className="text-lg font-medium">{s.title}</h2>
               <div className="mt-3 space-y-3">
                 {s.body.map((p, i) => (
-                  <p
-                    key={i}
-                    className="text-[15px] leading-relaxed text-neutral-400"
-                  >
+                  <p key={i} className="text-[15px] leading-relaxed">
                     {p}
                   </p>
                 ))}
