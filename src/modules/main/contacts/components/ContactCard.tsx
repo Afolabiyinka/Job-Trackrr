@@ -38,7 +38,7 @@ const ContactCard = ({ contact }: { contact: ContactPayload }) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <div className="group flex cursor-pointer items-center gap-3 rounded-full bg-muted/50 p-3.5 transition-all hover:bg-muted hover:shadow-sm">
+        <div className="group flex cursor-pointer items-center gap-3 rounded-4xl bg-muted/50 p-3.5 transition-all hover:bg-muted hover:shadow-sm">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/80 font-semibold text-white">
             {initials}
           </div>

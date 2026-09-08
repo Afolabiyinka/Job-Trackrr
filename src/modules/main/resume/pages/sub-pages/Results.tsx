@@ -62,7 +62,7 @@ const Results = () => {
           </Button>
         </span>
       </div>
-      <div className="flex flex-col items-center justify-center p-1 gap-2">
+      <div className="flex flex-col items-center justify-center p-1 gap-5">
         <div className="p-1 grid md:grid-cols-2 gap-10">
           {/* //Strengths */}
           <Card className="transition">
