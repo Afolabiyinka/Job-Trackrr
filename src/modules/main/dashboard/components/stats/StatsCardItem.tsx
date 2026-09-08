@@ -8,28 +8,29 @@ interface Props {
 }
 
 const StatsCardItem = ({ value, label, icon, loading }: Props) => {
-  return (
-    <div className="border rounded-3xl h-full overflow-hidden">
-      {loading ? (
-        <div className="h-full w-full p-2 animate-pulse flex flex-col justify-between items-center">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="h-6 w-6 bg-muted rounded-full" />
-            <div className="h-3 w-52 bg-muted rounded" />
-          </div>
-          <div className="h-12 w-12 bg-muted rounded-lg" />
+  if (loading) {
+    return (
+      <div className="border rounded-2xl h-full p-5 flex flex-col justify-between gap-6 animate-pulse">
+        <div className="h-9 w-9 rounded-lg bg-muted" />
+        <div className="flex flex-col gap-2">
+          <div className="h-8 w-14 bg-muted rounded" />
+          <div className="h-4 w-24 bg-muted rounded" />
         </div>
-      ) : (
-        <div className="flex flex-col justify-between  p-5 gap-3 h-full">
-          <div className="flex justify-center items-center w-fit p-2 rounded-lg bg-muted">
-            {icon}
-          </div>
+      </div>
+    );
+  }
 
-          <div className="flex flex-col gap-3">
-            <h1 className="text-2xl font-bold">{value}</h1>
-            <p className="text-lg font-medium">{label}</p>
-          </div>
-        </div>
-      )}
+  return (
+    <div className="rounded-2xl h-full p-5 flex  justify-between gap-6 transition-colors  bg-muted">
+      <div className="flex flex-col gap-0.5">
+        <h1 className="text-3xl font-semibold tracking-tight tabular-nums">
+          {value.toLocaleString()}
+        </h1>
+        <p className="text-sm text-muted-foreground">{label}</p>
+      </div>
+      <div className="flex justify-center items-center w-9 h-9 rounded-lg bg-muted text-muted-foreground [&>svg]:h-4.5 [&>svg]:w-4.5">
+        {icon}
+      </div>
     </div>
   );
 };

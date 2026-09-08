@@ -2,9 +2,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ApplicationsBarChart } from "../components/ApplicationsBarChart";
 import { StatusBreakdownChart } from "../components/StatusBreakdownChart";
 import { useAnalytics } from "../hooks/useAnalytics";
+import EmptyAnalytics from "./EmptyAnalytics";
 
 const Analytics = () => {
   const { jobs, pieData, barData, successRate } = useAnalytics();
+
+  if (jobs.length === 0) return <EmptyAnalytics />;
 
   return (
     <div className="w-full space-y-6">

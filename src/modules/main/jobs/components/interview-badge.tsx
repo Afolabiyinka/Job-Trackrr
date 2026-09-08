@@ -19,9 +19,7 @@ const InterviewBadge = ({
     <span
       className={cn(
         "inline-flex items-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium",
-        indicator.upcoming
-          ? "border-primary/30 bg-primary/5 text-primary"
-          : "border-muted bg-muted/40 text-muted-foreground",
+        indicator.upcoming ? "border" : "border-muted bg-muted/40",
         className,
       )}
     >

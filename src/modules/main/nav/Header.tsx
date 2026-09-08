@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { jobMotivations } from "../jobs/libs/motivation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 const Header = () => {
   const [index, setIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -11,16 +12,20 @@ const Header = () => {
     }, 20000);
     return () => clearInterval(interval);
   }, []);
+
   return (
-    <div className="w-full flex justify-start mt-2 items-center">
+    <div className="w-full flex justify-start  items-center mt-2">
       <AnimatePresence mode="wait">
         <motion.h1
           key={jobMotivations[index]}
-          initial={{ y: 30, opacity: 0 }}
+          initial={shouldReduceMotion ? { opacity: 0 } : { y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -30, opacity: 0 }}
-          transition={{ duration: 0.7, ease: "easeInOut" }}
-          className="md:text-center md:text-lg font-heading tracking-wide"
+          exit={shouldReduceMotion ? { opacity: 0 } : { y: -30, opacity: 0 }}
+          transition={{
+            duration: shouldReduceMotion ? 0.2 : 0.7,
+            ease: "easeInOut",
+          }}
+          className="text-lg font-heading tracking-wide md:text-center"
         >
           {jobMotivations[index]}
         </motion.h1>

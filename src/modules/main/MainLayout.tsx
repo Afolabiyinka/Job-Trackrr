@@ -63,7 +63,7 @@ const MainLayout = () => {
         {networkError ? (
           <ErrorPage />
         ) : (
-          <main className="w-full gap-2 flex flex-col">
+          <main className="w-full gap-2 flex flex-col h-full">
             <span className="w-full">
               <Greeting />
               <Header />

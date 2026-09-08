@@ -71,8 +71,7 @@ const Step4 = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Add your top skills so we can match you with the right
-            opportunities.
+            Add your top skills so we can give you better ai insights
           </motion.p>
         </div>
 
