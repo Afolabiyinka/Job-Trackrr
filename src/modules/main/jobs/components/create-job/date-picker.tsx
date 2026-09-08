@@ -11,6 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+
 import { formatDate } from "../../libs/utils";
 
 interface Props {
@@ -19,10 +20,16 @@ interface Props {
   onSelect?: (val: Date | undefined) => void;
   error?: string;
 }
+
 export function DatePicker({ title, inputtedDate, onSelect, error }: Props) {
   const [open, setOpen] = React.useState(false);
 
   const formattedDate = formatDate(inputtedDate ?? null);
+
+  const handleClear = () => {
+    onSelect?.(undefined);
+    setOpen(false);
+  };
 
   return (
     <div className="w-full">
@@ -30,6 +37,7 @@ export function DatePicker({ title, inputtedDate, onSelect, error }: Props) {
         <Label htmlFor="date" className="px-1">
           {title}
         </Label>
+
         <Popover open={open} onOpenChange={setOpen}>
           <PopoverTrigger asChild>
             <Button
@@ -41,6 +49,7 @@ export function DatePicker({ title, inputtedDate, onSelect, error }: Props) {
               <ChevronDownIcon />
             </Button>
           </PopoverTrigger>
+
           <PopoverContent className="w-auto overflow-hidden p-0" align="start">
             <Calendar
               mode="single"
@@ -52,9 +61,23 @@ export function DatePicker({ title, inputtedDate, onSelect, error }: Props) {
               }}
               animate
             />
+
+            {inputtedDate && (
+              <div className="border-t p-2">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className="w-full"
+                  onClick={handleClear}
+                >
+                  Clear date
+                </Button>
+              </div>
+            )}
           </PopoverContent>
         </Popover>
       </div>
+
       {error && <p className="text-xs ml-4 text-destructive mt-2">{error}</p>}
     </div>
   );

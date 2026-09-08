@@ -6,7 +6,7 @@ interface ResumeStore {
   setResumeFile: (file: File | null) => void;
   analysis: AnalysisType | null;
   setAnalysis: (analysis: AnalysisType | null) => void;
-  clearAnalysis: () => void;
+  reset: () => void;
 }
 
 export const useResume = create<ResumeStore>((set) => ({
@@ -18,5 +18,5 @@ export const useResume = create<ResumeStore>((set) => ({
     }),
   analysis: null,
   setAnalysis: (analysis) => set({ analysis }),
-  clearAnalysis: () => set({ analysis: null }),
+  reset: () => set({ resumeFile: null, analysis: null }),
 }));

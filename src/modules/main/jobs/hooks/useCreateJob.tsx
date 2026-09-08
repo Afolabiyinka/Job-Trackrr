@@ -8,7 +8,7 @@ import { getErrorMessage } from "@/shared/lib/errorMsg";
 import { useUser } from "../../settings/store/useUser";
 
 export const useCreateJob = () => {
-  const { toastError, toastSuccess } = useToastMessage();
+  const { toastWarning, toastSuccess } = useToastMessage();
   const navigate = useNavigate();
   const { user } = useUser();
 
@@ -28,7 +28,7 @@ export const useCreateJob = () => {
     },
 
     onError: (err) => {
-      toastError(getErrorMessage(err));
+      toastWarning(getErrorMessage(err));
     },
   });
 

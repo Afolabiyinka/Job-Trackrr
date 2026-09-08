@@ -39,7 +39,7 @@ const ContactsStatsCard = () => {
         ) : (
           <div className="flex gap-4 overflow-x-auto">
             {contacts.slice(0, 3).map((contact) => (
-              <ContactCard contact={contact} />
+              <ContactCard contact={contact} key={contact.id} />
             ))}
           </div>
         )}

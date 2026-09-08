@@ -7,7 +7,7 @@ export const useGetJob = ({ id }: { id: string }) => {
   const { data, isLoading, error, refetch } = useQuery({
     queryKey: ["job", id],
     queryFn: () => getParticularJob(id),
-    enabled: !!user,
+    enabled: !!user && !!id,
   });
   return {
     job: data?.job ?? null,

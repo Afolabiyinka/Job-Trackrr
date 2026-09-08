@@ -2,19 +2,19 @@ import { z } from "zod";
 
 export const JobTypeEnum = z.enum(["Full_Time", "Part_Time", "Contract", "Internship"], {
    error: "Please select a valid job type",
-});
+}).optional().nullable();
 
 export const WorkTypeEnum = z.enum(["Remote", "Hybrid", "On-Site"], {
    error: "Please select a valid work type",
-});
+}).optional().nullable();
 
 export const JobStatusEnum = z.enum(["interview", "applied", "offer", "rejected"], {
    error: "Please select a valid status",
-});
+}).optional().nullable();
 
 export const InterviewTypeEnum = z.enum(["Virtual", "In_Person"], {
    error: "Please select a valid interview type",
-});
+}).optional().nullable();
 
 export const baseJobSchema = z.object({
    company: z

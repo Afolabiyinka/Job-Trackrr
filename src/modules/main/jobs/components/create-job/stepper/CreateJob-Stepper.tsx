@@ -8,34 +8,22 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
-import React, { useState } from "react";
+import React from "react";
 import CustomInput from "../input/custom-input";
 import { ArrowLeft, ArrowRight, Briefcase, Check, Pencil } from "lucide-react";
 
 import CreateDropdown from "../create-dropdown";
 import { DatePicker } from "../date-picker";
 import { Textarea } from "@/components/ui/textarea";
-import { useSetJob } from "../../../store/useAddJob";
 import {
   INTERVIEW_TYPES,
   JOB_TYPES,
   STATUS_TYPES,
   WORK_TYPES,
 } from "../utils/utils";
-import { useCreateJob } from "../../../hooks/useCreateJob";
 import MoneyInput from "../input/salary-range";
-import { useJobs } from "../../../store/useJobs";
-import type { Job } from "../../../types/job.types";
-import { useEffect } from "react";
-import { useEditJobs } from "../../../hooks/useEditJob";
+import { useCreateJobStepper } from "../../../hooks/useCreateJobStepper";
 import SpinningLoader from "@/components/loader/spinningloader";
-import { useForm } from "react-hook-form";
-import {
-  refinedJobSchema,
-  type JobFormInput,
-  type JobFormOutput,
-} from "../../../libs/job.validation";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 const STEPS = ["Basics", "Compensation", "Interview", "Status"];
 
@@ -65,14 +53,19 @@ const CreateJobStepper = ({
   id?: number | string;
   variant?: "default" | "secondary" | "outline" | "ghost";
 }) => {
-  const { jobs } = useJobs();
-  const job = jobs.find((job: Job) => job.id === id);
-
-  const [activeStep, setActiveStep] = useState(0);
-  const [open, setOpen] = useState(false);
-
-  const nextStep = () => setActiveStep((prev) => Math.min(prev + 1, 3));
-  const prevStep = () => setActiveStep((prev) => Math.max(prev - 1, 0));
+  const {
+    activeStep,
+    open,
+    setOpen,
+    formData,
+    updateField,
+    nextStep,
+    prevStep,
+    handleSubmit,
+    setValue,
+    errors,
+    isLoading,
+  } = useCreateJobStepper({ editing, id });
 
   const {
     company,
@@ -86,92 +79,7 @@ const CreateJobStepper = ({
     workType,
     jobType,
     appliedAt,
-    setApplied,
-    setCompany,
-    setInterviewType,
-    setRole,
-    setStatus,
-    setWorkType,
-    setCompanyEmail,
-    setJobType,
-    setFeedback,
-    setSalaryRange,
-    setInterviewDate,
-    reset,
-  } = useSetJob();
-
-  const {
-    setValue,
-    formState: { errors },
-  } = useForm<JobFormInput, unknown, JobFormOutput>({
-    resolver: zodResolver(refinedJobSchema),
-    mode: "onChange",
-  });
-  const { handleCreate, createLoading } = useCreateJob();
-  const { handleEdit, editLoading } = useEditJobs();
-
-  const isLoading = createLoading || editLoading;
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (editing) {
-      if (!id) return;
-      const success = await handleEdit(id, {
-        appliedAt,
-        company,
-        role,
-        companyEmail,
-        feedback,
-        status,
-        jobType,
-        salaryRange,
-        interviewDate,
-        interviewType,
-        workType,
-      });
-      if (success) {
-        setOpen(false);
-      }
-      return;
-    }
-    const success = await handleCreate({
-      appliedAt,
-      company,
-      role,
-      companyEmail,
-      feedback,
-      status,
-      jobType,
-      salaryRange,
-      interviewDate,
-      interviewType,
-      workType,
-    });
-    if (success) {
-      reset();
-      setOpen(false);
-    }
-  }
-
-  useEffect(() => {
-    if (editing && job) {
-      setApplied(job.appliedAt ? new Date(job.appliedAt) : null);
-      setCompany(job.company);
-      setRole(job.role);
-      setCompanyEmail(job.companyEmail);
-      setSalaryRange(job.salaryRange);
-      setInterviewDate(job.interviewDate ? new Date(job.interviewDate) : null);
-      setInterviewType(job.interviewType ?? null);
-      setStatus(job.status ?? null);
-      setWorkType(job.workType ?? null);
-      setJobType(job.jobType ?? null);
-      setFeedback(job.feedback ?? "");
-    }
-  }, [editing, job]);
-
-  useEffect(() => {
-    if (!editing) reset();
-  }, [job]);
+  } = formData;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -240,7 +148,7 @@ const CreateJobStepper = ({
                   <CustomInput
                     value={company}
                     onChange={(e) => {
-                      setCompany(e.target.value);
+                      updateField("company", e.target.value);
 
                       setValue("company", e.target.value, {
                         shouldValidate: true,
@@ -257,7 +165,7 @@ const CreateJobStepper = ({
                   <CustomInput
                     value={role}
                     onChange={(e) => {
-                      setRole(e.target.value);
+                      updateField("role", e.target.value);
 
                       setValue("role", e.target.value, {
                         shouldValidate: true,
@@ -279,7 +187,7 @@ const CreateJobStepper = ({
                   <DatePicker
                     inputtedDate={appliedAt ?? undefined}
                     onSelect={(date) => {
-                      date && setApplied(date);
+                      date && updateField("appliedAt", date);
 
                       setValue("appliedAt", date, {
                         shouldValidate: true,
@@ -300,7 +208,7 @@ const CreateJobStepper = ({
                     placeholder="Select job type"
                     hasColor={false}
                     value={jobType ?? undefined}
-                    onSelect={(e) => setJobType(e)}
+                    onSelect={(e) => updateField("jobType", e)}
                   />
                 </FieldGroup>
                 <FieldGroup label="Work type">
@@ -309,13 +217,13 @@ const CreateJobStepper = ({
                     placeholder="Select work type"
                     hasColor={false}
                     value={workType ?? undefined}
-                    onSelect={(e) => setWorkType(e)}
+                    onSelect={(e) => updateField("workType", e)}
                   />
                 </FieldGroup>
                 <FieldGroup label="Salary expectation (optional)">
                   <MoneyInput
                     value={salaryRange ?? null}
-                    onChange={(value) => setSalaryRange(value)}
+                    onChange={(value) => updateField("salaryRange", value)}
                   />
                 </FieldGroup>
               </div>
@@ -329,14 +237,14 @@ const CreateJobStepper = ({
                     placeholder="Select interview type"
                     hasColor={false}
                     value={interviewType ?? undefined}
-                    onSelect={(e) => setInterviewType(e)}
+                    onSelect={(e) => updateField("interviewType", e)}
                   />
                 </FieldGroup>
                 <FieldGroup label="Interview date">
                   <DatePicker
                     inputtedDate={interviewDate ?? undefined}
                     onSelect={(date) => {
-                      date && setInterviewDate(date);
+                      date && updateField("interviewDate", date);
 
                       setValue("interviewDate", date, {
                         shouldValidate: true,
@@ -350,7 +258,7 @@ const CreateJobStepper = ({
                   <CustomInput
                     value={companyEmail}
                     onChange={(e) => {
-                      setCompanyEmail(e.target.value);
+                      updateField("companyEmail", e.target.value);
 
                       setValue("companyEmail", e.target.value, {
                         shouldValidate: true,
@@ -374,14 +282,14 @@ const CreateJobStepper = ({
                     dropdownItems={STATUS_TYPES}
                     placeholder="Select current status"
                     hasColor
-                    onSelect={(e) => setStatus(e)}
+                    onSelect={(e) => updateField("status", e)}
                   />
                 </FieldGroup>
                 <FieldGroup label="Notes">
                   <Textarea
                     placeholder="Feedback, impressions, or anything to remember..."
                     value={feedback}
-                    onChange={(e) => setFeedback(e.target.value)}
+                    onChange={(e) => updateField("feedback", e.target.value)}
                     className="resize-none text-xs min-h-22.5"
                   />
                 </FieldGroup>

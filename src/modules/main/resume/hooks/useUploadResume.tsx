@@ -7,7 +7,7 @@ export const useUploadResume = () => {
   const [uploadedResume, setUploadedResume] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const lastUploadedFile = useRef<File | null>(null);
-  const { setResumeFile, clearAnalysis } = useResume();
+  const { setResumeFile, reset } = useResume();
 
   async function handlePdfUpload(e: ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -24,7 +24,7 @@ export const useUploadResume = () => {
     try {
       setLoading(true);
       setUploadedResume(file);
-      clearAnalysis();
+      reset();
       setResumeFile(file);
     } catch (error) {
       lastUploadedFile.current = null;

@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import SpinningLoader from "@/components/loader/spinningloader";
 import ResultsSkeleton from "./LoadingState";
-// import { useEffect } from "react";
 import { useResume } from "../../store/useResume";
 import { useNavigate } from "react-router-dom";
 import ErrorPage from "@/modules/main/loading-screens/ErrorRefetch";
@@ -48,7 +47,7 @@ const Results = () => {
           <p className="text-2xl  tracking-tight">Resume score</p>
         </span>
         <span className="flex items-center gap-2">
-          <Button onClick={() => navigate("/resume")} size={`lg`}>
+          <Button onClick={() => navigate("/resume?new=true")} size={`lg`}>
             Upload a new resume
           </Button>
           <Button
