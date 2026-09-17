@@ -1,4 +1,4 @@
-import { RefreshCw, WifiOff, ServerCrash } from "lucide-react";
+import { RefreshCw, WifiOff, FrownIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ErrorPageProps {
@@ -15,7 +15,7 @@ const ErrorPage = ({ action }: ErrorPageProps) => {
           {offline ? (
             <WifiOff className="h-7 w-7 text-muted-foreground" />
           ) : (
-            <ServerCrash className="h-7 w-7 text-muted-foreground" />
+            <FrownIcon className="h-7 w-7 text-muted-foreground" />
           )}
         </div>
 
