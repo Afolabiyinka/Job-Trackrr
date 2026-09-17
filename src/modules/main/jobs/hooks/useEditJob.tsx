@@ -18,6 +18,9 @@ export const useEditJobs = () => {
       queryClient.invalidateQueries({
         queryKey: ["job"],
       });
+      queryClient.invalidateQueries({
+        queryKey: ["jobs"],
+      });
     },
 
     onError: (err) => {

@@ -15,7 +15,7 @@ const StatsCard = () => {
   const applicationText = jobs.length === 1 ? "application" : "applications";
 
   return (
-    <Card className="w-full h-full ring-0 shadow-none">
+    <Card className="w-full h-fit  ring-0 shadow-none ">
       <CardHeader>
         <CardTitle className="text-xl font-semibold">{todaysDate}</CardTitle>
       </CardHeader>

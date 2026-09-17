@@ -12,7 +12,7 @@ const DashBoard = () => {
   }
 
   return (
-    <div className="h-full  w-full flex flex-col  gap-4 p-1">
+    <div className=" w-full flex flex-col  gap-2 p-1">
       <div className="w-full h-full">
         <StatsCard />
       </div>

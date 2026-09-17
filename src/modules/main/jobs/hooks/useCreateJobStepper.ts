@@ -15,6 +15,7 @@ import type {
 import { useCreateJob } from "./useCreateJob";
 import { useEditJobs } from "./useEditJob";
 import { useGetJob } from "./useGetJob";
+import useToastMessage from "@/shared/lib/toastMsg";
 
 export type JobDraft = {
    appliedAt: Date | null;
@@ -57,6 +58,7 @@ export const useCreateJobStepper = ({
    const { job } = useGetJob({ id: id?.toString() ?? "" });
    const { handleCreate, createLoading } = useCreateJob();
    const { handleEdit, editLoading } = useEditJobs();
+   const { toastWarning } = useToastMessage();
    const {
       setValue,
       formState: { errors },
@@ -90,6 +92,12 @@ export const useCreateJobStepper = ({
          interviewType,
          workType,
       } = formData;
+
+      const validation = refinedJobSchema.safeParse(formData);
+      if (!validation.success) {
+         toastWarning(validation.error.issues[0]?.message ?? "Please check the form fields.");
+         return;
+      }
 
       if (editing) {
          if (!id) return;

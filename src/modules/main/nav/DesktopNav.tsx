@@ -25,7 +25,7 @@ const DesktopNav = () => {
               <motion.div whileTap={{ scale: 0.95 }} className="flex-1">
                 <NavLink
                   to={path}
-                  className={`flex gap-2 items-center rounded-3xl px-3 py-3 text-md transition w-full ${
+                  className={`flex gap-2 items-center rounded-xl px-3 py-3 text-md transition w-full ${
                     isActive ? "bg-primary/80 text-white" : "hover:bg-muted"
                   }`}
                 >
