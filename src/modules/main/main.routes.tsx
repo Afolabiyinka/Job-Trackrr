@@ -1,5 +1,6 @@
 import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
+import OnBoarding from "./onboarding/OnBoarding";
 
 // Lazy loading the   main pages
 const Dashboard = lazy(
