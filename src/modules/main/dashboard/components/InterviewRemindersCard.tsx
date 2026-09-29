@@ -21,14 +21,14 @@ const InterviewRemindersCard = () => {
         new Date(b.interviewDate as Date).getTime(),
     );
   return (
-    <Card className="w-full ring-0 shadow-none">
-      <CardHeader className="flex flex-row items-center justify-between gap-3">
+    <Card className="w-full ring-0 shadow-none py-3">
+      <CardHeader className="flex flex-row items-center justify-between gap-2 px-3 pb-2">
         <div>
-          <CardTitle className="flex items-center gap-2">
-            <BellRing className="h-4 w-4 text-primary" />
+          <CardTitle className="flex items-center gap-1.5 text-sm">
+            <BellRing className="h-3.5 w-3.5 text-primary" />
             Interview reminders
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-xs">
             {reminders.length > 0
               ? `${reminders.length} upcoming interview${reminders.length > 1 ? "s" : ""} to keep an eye on`
               : "No interview reminders yet"}
@@ -36,7 +36,7 @@ const InterviewRemindersCard = () => {
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-3">
+      <CardContent className="px-3 pt-0 space-y-3 grid grid-cols-3 gap-5">
         {reminders.length === 0 ? (
           <div className="rounded-xl border border-dashed p-1 md:p-4 text-sm text-muted-foreground">
             Add interview dates to your jobs to get reminders here.
@@ -46,21 +46,20 @@ const InterviewRemindersCard = () => {
             return (
               <div
                 key={job.id ?? `${job.company}-${job.role}`}
-                className="rounded-xl border bg-muted/20 p-4"
+                className="rounded-xl border bg-muted/20 p-4 flex flex-col gap-3"
               >
                 <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
                   <div>
                     <p className="font-medium">{job.company}</p>
                     <p className="text-sm text-muted-foreground">{job.role}</p>
                   </div>
-
-                  <InterviewBadge interviewDate={job.interviewDate} />
                 </div>
 
                 <div className="mt-3 flex items-center gap-2 text-sm text-muted-foreground">
                   <CalendarClock className="h-4 w-4" />
                   {formatDate(job.interviewDate)}
                 </div>
+                <InterviewBadge interviewDate={job.interviewDate} />
               </div>
             );
           })

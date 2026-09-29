@@ -15,7 +15,7 @@ const MainLayout = () => {
 
   const { user, isAuthResolved } = useUser();
   const { data } = useGetJobs();
-  const { setJobs } = useJobs();
+  const { setJobs, setJobsLength } = useJobs();
 
   useEffect(() => {
     const handleOnline = () => {
@@ -38,6 +38,7 @@ const MainLayout = () => {
   useEffect(() => {
     if (data?.data) {
       setJobs(data.data);
+      setJobsLength(data.pagination.total);
     }
   }, [data]);
 
@@ -59,7 +60,7 @@ const MainLayout = () => {
         <NavLayout />
       </aside>
 
-      <div className="w-full gap-2 flex flex-col md:p-4 p-2 overflow-y-scroll">
+      <div className="w-full gap-2 flex flex-col md:p-4 p-2 overflow-y-scroll ">
         {networkError ? (
           <ErrorPage />
         ) : (

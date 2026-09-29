@@ -6,7 +6,7 @@ import { useInterviews } from "../../../interviews/hooks/useInterview";
 import StatsCardItem from "./StatsCardItem";
 
 const StatsCard = () => {
-  const { jobs } = useJobs();
+  const { jobs, jobsLength } = useJobs();
   const { totalInterviews } = useInterviews();
 
   const todaysDate = formatDate(new Date());
@@ -21,7 +21,7 @@ const StatsCard = () => {
       </CardHeader>
       <CardContent className="grid md:grid-cols-3 gap-4 p-2">
         <StatsCardItem
-          value={jobs.length}
+          value={jobsLength}
           label={`Job ${applicationText}`}
           icon={<TrendingUp className="stroke-[1.5px] text-green-600" />}
         />

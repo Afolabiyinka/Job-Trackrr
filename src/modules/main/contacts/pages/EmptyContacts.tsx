@@ -20,7 +20,7 @@ const itemVariants: Variants = {
 
 const EmptyContacts = () => {
   return (
-    <div className="flex max-h-screen md:h-full flex-col-reverse md:flex-row overflow-hidden">
+    <div className="flex max-h-screen md:h-full flex-col-reverse md:flex-row overflow-hidden bg-muted/50 rounded-xl">
       {/* Illustration panel */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
@@ -55,7 +55,7 @@ const EmptyContacts = () => {
 
         <motion.h2
           variants={itemVariants}
-          className="text-2xl font-semibold font-heading"
+          className="text-3xl font-semibold font-heading"
         >
           No one here yet{" "}
         </motion.h2>

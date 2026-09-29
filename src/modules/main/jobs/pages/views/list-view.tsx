@@ -8,7 +8,7 @@ const ListView = () => {
   const { currentPage, handleNextPage, handlePrevPage } = usePagination();
 
   return (
-    <div className="space-y-4 rounded-md p-1 md:p-4  overflow-y-auto">
+    <div className="space-y-2 rounded-md p-1 md:p-4  overflow-y-auto">
       {data?.data.map((job) => (
         <ListItem key={job.id} job={job} />
       ))}
