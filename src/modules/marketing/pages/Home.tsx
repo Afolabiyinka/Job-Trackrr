@@ -76,9 +76,9 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="relative flex items-center justify-center"
+          className="relative flex items-center justify-center p-2"
         >
-          <div className="relative w-full overflow-hidden  bg-background transform scale-[1.02] transition-transform duration-300">
+          <div className="relative w-full overflow-hidden  bg-background transform scale-[1.02] border rounded-xl transition-transform duration-300">
             <img
               src={theme === "light" ? LightScreenShot : DarkScreenshot}
               alt="Job Trackrr dashboard interface"
