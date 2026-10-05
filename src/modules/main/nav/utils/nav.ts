@@ -3,12 +3,12 @@ import {
   BriefcaseBusiness,
   CalendarClock,
   File,
-  LayoutPanelLeft,
+  HouseIcon,
   Users,
 } from "lucide-react";
 
 const NAVLINKS = [
-  { name: "Dashboard", icon: LayoutPanelLeft, path: "dashboard" },
+  { name: "Dashboard", icon: HouseIcon, path: "dashboard" },
   { name: "Jobs", icon: BriefcaseBusiness, path: "jobs" },
   { name: "Interviews", icon: CalendarClock, path: "interviews" },
   { name: "Contacts", icon: Users, path: "contacts" },
