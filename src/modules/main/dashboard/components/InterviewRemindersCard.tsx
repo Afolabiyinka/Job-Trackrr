@@ -36,7 +36,7 @@ const InterviewRemindersCard = () => {
         </div>
       </CardHeader>
 
-      <CardContent className="px-3 pt-0 space-y-3 grid grid-cols-3 gap-5">
+      <CardContent className="px-3 pt-0 space-y-3 grid md:grid-cols-3 gap-5">
         {reminders.length === 0 ? (
           <div className="rounded-xl border border-dashed p-1 md:p-4 text-sm text-muted-foreground">
             Add interview dates to your jobs to get reminders here.
