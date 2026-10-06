@@ -1,7 +1,7 @@
 import React from "react";
 import type { LoginPayload } from "../types/auth.types";
-import { useMutation } from "@tanstack/react-query";
-import { login } from "../services/auth.request";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { login, signup } from "../services/auth.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/api/queryClient";
