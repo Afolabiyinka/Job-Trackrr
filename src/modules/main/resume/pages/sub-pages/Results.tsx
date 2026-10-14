@@ -1,7 +1,14 @@
 import ScoreCircle from "../../components/ScoreCircle";
 import { useAnalyseResume } from "../../hooks/useAnalyseResume";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle, CheckCircle, RefreshCcw, Wrench } from "lucide-react";
+import {
+  AlertTriangle,
+  ArrowLeft,
+  CheckCircle,
+  FileX,
+  RefreshCcw,
+  Wrench,
+} from "lucide-react";
 import {
   Card,
   CardContent,
@@ -32,8 +39,23 @@ const Results = () => {
     return <ResultsSkeleton />;
   }
 
-  if (isError || !resumeFile || !analysis) {
-    return <ErrorPage action={() => navigate("/resume")} />;
+  console.log(analysis?.suggestions.message);
+  if (isError || !resumeFile || !analysis || !analysis.suggestions.success) {
+    return (
+      <ErrorPage
+        title="Couldn't load your analysis"
+        message={
+          analysis?.suggestions.message ||
+          "An error occurred while analyzing your resume. Please try again."
+        }
+        buttonText="Back to resume"
+        icon={FileX}
+        buttonIcon={ArrowLeft}
+        action={() => {
+          navigate("/resume?new=true");
+        }}
+      />
+    );
   }
 
   const strengths = analysis?.suggestions.strengths || [];
