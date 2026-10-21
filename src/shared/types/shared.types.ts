@@ -8,6 +8,6 @@ export type PaginatedResponse<T> = {
     total: number;
     currentPage: number;
     totalPages: number;
-  }
-
+    limit?: number;
+  };
 };
