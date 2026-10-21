@@ -57,6 +57,8 @@ const Jobs = () => {
   if (loading) return <JobsPageSkeleton />;
   if (data?.data.length === 0) return <NoJobs />;
 
+  const totalApplications = data?.pagination?.total ?? data?.data.length ?? 0;
+
   return (
     <div className="h-full w-full flex flex-col gap-5 p-2">
       <div className="flex justify-between md:items-center flex-col md:flex-row w-full items-start gap-3">
@@ -65,7 +67,8 @@ const Jobs = () => {
             Job Applications
           </h1>
           <p className="text-sm text-muted-foreground">
-            Manage all your job applications
+            You have {totalApplications}{" "}
+            {totalApplications === 1 ? "application" : "applications"}
           </p>
         </div>
         <CreateJobStepper

@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
 import { GoogleLogin } from "@react-oauth/google";
 import SpinningLoader from "@/components/loader/spinningloader";
+import LinkedInLoginButton from "../components/LinkedInLoginButton";
 
 const Login = () => {
   const { handleLogin, loading, setLoginData, loginData } = useLogin();
@@ -33,19 +34,24 @@ const Login = () => {
             </p>
           </div>
 
-          <div className="w-full pt-2">
-            {googleLoading ? (
-              <span className="p-3 rounded-full border border-border flex justify-center items-center">
-                <SpinningLoader />
-              </span>
-            ) : (
-              <GoogleLogin
-                shape="pill"
-                size="large"
-                text="signin_with"
-                onSuccess={(data) => handleGoogleLogin(data)}
-              />
-            )}
+          <div className="space-y-3 w-full pt-2">
+            <div className="w-full flex justify-center [&>div]:w-full [&>div>iframe]:!w-full">
+              {googleLoading ? (
+                <span className="h-10 w-full rounded-full border border-border flex justify-center items-center">
+                  <SpinningLoader />
+                </span>
+              ) : (
+                <GoogleLogin
+                  shape="pill"
+                  size="large"
+                  text="signin_with"
+                  width="100%"
+                  onSuccess={(data) => handleGoogleLogin(data)}
+                />
+              )}
+            </div>
+
+            <LinkedInLoginButton text="Sign in with LinkedIn" />
           </div>
 
           <div className="relative">
@@ -53,7 +59,7 @@ const Login = () => {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background  px-2 p-1 rounded-full text-muted-foreground">
+              <span className="bg-background px-2 p-1 rounded-full text-muted-foreground">
                 Or
               </span>
             </div>

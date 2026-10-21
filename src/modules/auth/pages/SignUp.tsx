@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import SpinningLoader from "@/components/loader/spinningloader";
 import { GoogleLogin } from "@react-oauth/google";
 import { useGoogleLogin } from "../hooks/useGoogleLogin";
+import LinkedInLoginButton from "../components/LinkedInLoginButton";
 
 const SignUp = () => {
   const { handleSignup, loading, setSignUpData, signupData } = useSignup();
@@ -34,19 +35,24 @@ const SignUp = () => {
             </p>
           </div>
 
-          <div className="w-full pt-2">
-            {googleLoading ? (
-              <span className="p-3 rounded-full border border-border flex justify-center items-center">
-                <SpinningLoader />
-              </span>
-            ) : (
-              <GoogleLogin
-                shape="pill"
-                size="large"
-                text="continue_with"
-                onSuccess={(data) => handleGoogleLogin(data)}
-              />
-            )}
+          <div className="space-y-3 w-full pt-2">
+            <div className="w-full flex justify-center [&>div]:w-full [&>div>iframe]:!w-full">
+              {googleLoading ? (
+                <span className="h-10 w-full rounded-full border border-border flex justify-center items-center">
+                  <SpinningLoader />
+                </span>
+              ) : (
+                <GoogleLogin
+                  shape="pill"
+                  size="large"
+                  text="continue_with"
+                  width="100%"
+                  onSuccess={(data) => handleGoogleLogin(data)}
+                />
+              )}
+            </div>
+
+            <LinkedInLoginButton text="Continue with LinkedIn" />
           </div>
 
           <div className="relative">
@@ -54,7 +60,7 @@ const SignUp = () => {
               <span className="w-full border-t" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background  px-2 p-1 rounded-full text-muted-foreground">
+              <span className="bg-background px-2 p-1 rounded-full text-muted-foreground">
                 Or
               </span>
             </div>
@@ -124,7 +130,7 @@ const SignUp = () => {
             )}
           </Button>
 
-          <div className="text-center">
+          <div className="text-center pt-2">
             <p className="text-sm text-muted-foreground">
               Already have an account?{" "}
               <Link

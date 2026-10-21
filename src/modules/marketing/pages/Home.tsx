@@ -1,11 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import LightScreenShot from "@/assets/screenshots/lightmode_screenshot.png";
 import DarkScreenshot from "@/assets/screenshots/darkmode_screenshot.png";
 import { useTheme } from "@/modules/main/theme/useTheme";
 import { Badge } from "@/components/ui/badge";
+import MarketingButton from "../components/MarketingButton";
 
 const Home = () => {
   const { theme } = useTheme();
@@ -50,14 +49,29 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col lg:flex-row gap-4 lg:justify-start justify-center items-center pt-2"
+            className="flex flex-col sm:flex-row gap-4 lg:justify-start justify-center items-center pt-2"
           >
-            <Link to="/signup">
-              <Button size="lg" className="w-full sm:w-auto">
-                Get started for free
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+            <MarketingButton
+              to="/signup"
+              size="lg"
+              variant="cta"
+              rightIcon={ArrowRight}
+              iconEffect="slide"
+              className="w-full sm:w-auto"
+            >
+              Get started for free
+            </MarketingButton>
+
+            <MarketingButton
+              to="/how-it-works"
+              size="lg"
+              variant="outline"
+              rightIcon={Sparkles}
+              iconEffect="bounce"
+              className="w-full sm:w-auto"
+            >
+              See how it works
+            </MarketingButton>
           </motion.div>
 
           <motion.p
