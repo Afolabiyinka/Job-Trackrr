@@ -15,21 +15,25 @@ const ContactsStatsCard = () => {
   const navigate = useNavigate();
   const { contacts } = useGetContacts();
 
-  const count = contacts.length || (contacts.length === 0 && "no");
+  const count = contacts.length;
   const label = count === 1 ? "Contact" : "Contacts";
 
   return (
-    <Card className="w-full ring-0 shadow-none">
-      <CardHeader>
-        <CardTitle>Manage Contacts</CardTitle>
+    <Card className="h-full w-full rounded-2xl bg-muted/30 shadow-none ring-0">
+      <CardHeader className="pb-3">
+        <CardTitle>People in your corner</CardTitle>
         <CardDescription>
-          You have {count} {label} saved on your account
+          {count} {label.toLowerCase()} saved for your search
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-3">
-        <Button size="lg" onClick={() => navigate("/contacts")}>
+        <Button
+          variant="secondary"
+          size={`lg`}
+          onClick={() => navigate("/contacts")}
+        >
           <User className="mr-2 h-4 w-4" />
-          Manage Contacts
+          Open contacts
         </Button>
 
         {count === 0 ? (
@@ -37,7 +41,7 @@ const ContactsStatsCard = () => {
             No contacts yet. Add one to get started.
           </p>
         ) : (
-          <div className="flex gap-4 overflow-x-auto">
+          <div className="flex gap-3 overflow-x-auto pb-1">
             {contacts.slice(0, 3).map((contact) => (
               <ContactCard contact={contact} key={contact.id} />
             ))}

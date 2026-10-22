@@ -4,6 +4,7 @@ import { editUser } from "../services/user.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import React from "react";
 import { queryClient } from "@/shared/api/queryClient";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useEditUser = () => {
   const { toastError, toastSuccess } = useToastMessage();
@@ -20,7 +21,7 @@ export const useEditUser = () => {
     onSuccess: () => {
       toastSuccess("Profile updated succesfully");
       queryClient.invalidateQueries({
-        queryKey: ["user"],
+        queryKey: queryKeys.user,
       });
     },
     onError: (err) => {

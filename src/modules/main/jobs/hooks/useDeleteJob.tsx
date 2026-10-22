@@ -3,6 +3,7 @@ import { deleteJob } from "../services/job.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/api/queryClient";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useDeleteJob = () => {
   const { toastSuccess, toastError } = useToastMessage();
@@ -13,15 +14,20 @@ export const useDeleteJob = () => {
       toastSuccess("Job Deleted Succesfully");
 
       queryClient.invalidateQueries({
-        queryKey: ["job"],
+        queryKey: queryKeys.job.all,
       });
       queryClient.invalidateQueries({
-        queryKey: ["jobs"],
+        queryKey: queryKeys.jobs.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.dashboard,
       });
       navigate(-1);
     },
-    onError: (err: any) => {
-      toastError(err.response?.data?.message ?? "Something went wrong");
+    onError: (error) => {
+      toastError(
+        error instanceof Error ? error.message : "Something went wrong",
+      );
     },
   });
   function handleDelete(id: string) {

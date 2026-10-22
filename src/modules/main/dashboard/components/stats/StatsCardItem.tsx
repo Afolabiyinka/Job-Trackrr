@@ -21,14 +21,14 @@ const StatsCardItem = ({ value, label, icon, loading }: Props) => {
   }
 
   return (
-    <div className="rounded-2xl h-full p-5 flex  justify-between gap-6 transition-colors  bg-muted">
-      <div className="flex flex-col gap-0.5">
-        <h1 className="text-3xl font-semibold tracking-tight tabular-nums">
+    <div className="flex min-h-28 items-center justify-between gap-4 rounded-2xl bg-muted/60 p-5 transition-colors hover:bg-muted sm:min-h-32 sm:p-6">
+      <div className="flex min-w-0 flex-col gap-1">
+        <p className="text-3xl font-semibold tracking-tight tabular-nums sm:text-4xl">
           {value.toLocaleString()}
-        </h1>
-        <p className="text-sm text-muted-foreground">{label}</p>
+        </p>
+        <p className="text-sm leading-snug text-muted-foreground">{label}</p>
       </div>
-      <div className="flex justify-center items-center w-9 h-9 rounded-lg bg-muted text-muted-foreground [&>svg]:h-4.5 [&>svg]:w-4.5">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-background/80 text-muted-foreground [&>svg]:h-5 [&>svg]:w-5">
         {icon}
       </div>
     </div>

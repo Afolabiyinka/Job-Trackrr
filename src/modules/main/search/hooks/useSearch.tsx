@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "@/shared/hooks/useDebounce";
 import { searchJobs } from "../services/search.request";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useSearch = () => {
   const [query, setQuery] = useState("");
@@ -14,7 +15,7 @@ export const useSearch = () => {
     isLoading: searchLoading,
     refetch,
   } = useQuery({
-    queryKey: ["search-results", debouncedQuery],
+    queryKey: queryKeys.search.results(debouncedQuery),
     queryFn: () => searchJobs(debouncedQuery),
     enabled: !!debouncedQuery.trim(),
     retry: false,

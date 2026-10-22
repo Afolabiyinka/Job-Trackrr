@@ -5,6 +5,7 @@ import useToastMessage from "@/shared/lib/toastMsg";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
 import { queryClient } from "@/shared/api/queryClient";
 import { useNavigate } from "react-router-dom";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useGoogleLogin = () => {
   const { toastError, toastSuccess } = useToastMessage();
@@ -16,7 +17,7 @@ export const useGoogleLogin = () => {
 
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["user"],
+        queryKey: queryKeys.user,
       });
       toastSuccess(data.message);
       navigate("/dashboard");

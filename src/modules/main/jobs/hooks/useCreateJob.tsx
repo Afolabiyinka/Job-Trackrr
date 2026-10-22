@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/api/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
 import { useUser } from "../../settings/store/useUser";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useCreateJob = () => {
   const { toastWarning, toastSuccess } = useToastMessage();
@@ -21,7 +22,10 @@ export const useCreateJob = () => {
       toastSuccess(data.message);
 
       queryClient.invalidateQueries({
-        queryKey: ["jobs"],
+        queryKey: queryKeys.jobs.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.dashboard,
       });
 
       navigate(hasOnboarded ? "/dashboard" : "/jobs");

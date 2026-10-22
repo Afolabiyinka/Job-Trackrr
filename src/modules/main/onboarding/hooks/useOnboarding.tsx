@@ -5,6 +5,7 @@ import type { OnboardingPayload } from "../types/onboarding.types";
 import { queryClient } from "@/shared/api/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
 import { useMutation } from "@tanstack/react-query";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useOnboarding = () => {
   const { toastError, toastSuccess } = useToastMessage();
@@ -17,7 +18,7 @@ export const useOnboarding = () => {
       toastSuccess(data.message);
 
       queryClient.invalidateQueries({
-        queryKey: ["user"],
+        queryKey: queryKeys.user,
       });
 
       navigate("/dashboard");

@@ -3,6 +3,7 @@ import { editContact } from "../services/contacts.request";
 import { queryClient } from "@/shared/api/queryClient";
 import useToastMessage from "@/shared/lib/toastMsg";
 import type { ContactPayload } from "../types/contact.types";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useEditContact = () => {
     const { toastError, toastSuccess } = useToastMessage();
@@ -17,7 +18,7 @@ export const useEditContact = () => {
         }) => editContact(id, payload),
         onSuccess: (data) => {
             toastSuccess(data.message || "Contact updated");
-            queryClient.invalidateQueries({ queryKey: ["contacts"] });
+            queryClient.invalidateQueries({ queryKey: queryKeys.contacts });
         },
         onError: (err: any) => {
             toastError(err.message || "Something went wrong");

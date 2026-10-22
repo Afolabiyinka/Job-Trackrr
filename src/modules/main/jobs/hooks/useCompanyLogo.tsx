@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { queryKeys } from "@/shared/queryKeys";
 export const useCompanyLogo = (q: string) => {
   const logDevKey = import.meta.env.VITE_LOGO_DEV_KEY;
   const getLogo = async () => {
@@ -17,7 +18,7 @@ export const useCompanyLogo = (q: string) => {
     error,
   } = useQuery({
     queryFn: () => getLogo(),
-    queryKey: ["logo"],
+    queryKey: queryKeys.logo,
   });
   return {
     logos,

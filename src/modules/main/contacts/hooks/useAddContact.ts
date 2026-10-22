@@ -5,6 +5,7 @@ import { queryClient } from "@/shared/api/queryClient"
 import useToastMessage from "@/shared/lib/toastMsg"
 import { useState } from "react"
 import { getErrorMessage } from "@/shared/lib/errorMsg"
+import { queryKeys } from "@/shared/queryKeys"
 
 export const useAddContact = () => {
 
@@ -20,7 +21,7 @@ export const useAddContact = () => {
         mutationFn: (payload: ContactPayload) => createContact(payload),
         onSuccess: (data) => {
             toastSuccess(data.message || "Contact Added")
-            queryClient.invalidateQueries({ queryKey: ["contacts"] });
+            queryClient.invalidateQueries({ queryKey: queryKeys.contacts });
         },
         onError: (err) => {
             toastError(getErrorMessage(err))

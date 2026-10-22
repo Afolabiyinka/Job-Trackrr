@@ -1,52 +1,56 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { formatDistanceToNow } from "date-fns";
 import { ArrowRight, MailCheck } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useJobs } from "../../jobs/store/useJobs";
+import type { DashboardFollowUps } from "../dashboard.types";
 
-const FOLLOW_UP_AFTER_DAYS = 7;
-const MAX_PROMPTS = 3;
+const relativeDateFormatter = new Intl.RelativeTimeFormat(undefined, {
+  numeric: "auto",
+});
 
-const FollowUpPrompts = () => {
-  const { jobs } = useJobs();
-  const now = new Date();
-  const followUps = jobs
-    .filter((job) => {
-      if (job.status !== "applied" || !job.appliedAt || job.interviewDate) {
-        return false;
-      }
+const formatRelativeDate = (value: string) => {
+  const date = new Date(value);
+  const differenceInSeconds = (date.getTime() - Date.now()) / 1000;
+  const units = [
+    { unit: "year", seconds: 31_536_000 },
+    { unit: "month", seconds: 2_592_000 },
+    { unit: "week", seconds: 604_800 },
+    { unit: "day", seconds: 86_400 },
+    { unit: "hour", seconds: 3_600 },
+    { unit: "minute", seconds: 60 },
+    { unit: "second", seconds: 1 },
+  ] as const;
+  const unit = units.find(
+    ({ seconds }) => Math.abs(differenceInSeconds) >= seconds,
+  ) ?? { unit: "second", seconds: 1 };
 
-      const appliedAt = new Date(job.appliedAt);
-      return (
-        !Number.isNaN(appliedAt.getTime()) &&
-        now.getTime() - appliedAt.getTime() >=
-          FOLLOW_UP_AFTER_DAYS * 24 * 60 * 60 * 1000
-      );
-    })
-    .sort(
-      (first, second) =>
-        new Date(first.appliedAt as Date).getTime() -
-        new Date(second.appliedAt as Date).getTime(),
-    );
+  return relativeDateFormatter.format(
+    Math.round(differenceInSeconds / unit.seconds),
+    unit.unit,
+  );
+};
 
-  const visibleFollowUps = followUps.slice(0, MAX_PROMPTS);
+interface FollowUpPromptsProps {
+  followUps: DashboardFollowUps;
+}
 
+const FollowUpPrompts = ({ followUps }: FollowUpPromptsProps) => {
   return (
-    <Card className="w-full shadow-none ring-0">
-      <CardHeader>
+    <Card className="h-full w-full rounded-2xl bg-background shadow-none ring-0">
+      <CardHeader className="pb-3">
         <CardTitle>Follow up</CardTitle>
         <CardDescription>
-          Applications marked applied with no interview date after a week.
+          Applications waiting {followUps.thresholdDays}{" "}
+          {followUps.thresholdDays === 1 ? "day" : "days"} for a response.
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {visibleFollowUps.length > 0 ? (
+        {followUps.items.length > 0 ? (
           <ul className="space-y-1">
-            {visibleFollowUps.map((job) => (
+            {followUps.items.map((job) => (
               <li
-                key={job.id ?? `${job.company}-${job.role}`}
-                className="flex flex-col gap-3 rounded-xl p-3 transition-colors hover:bg-muted/60 sm:flex-row sm:items-center sm:justify-between"
+                key={job.jobId}
+                className="flex flex-col gap-3 rounded-2xl bg-muted/30 p-3 transition-colors hover:bg-muted/60 sm:flex-row sm:items-center sm:justify-between"
               >
                 <div className="flex min-w-0 items-center gap-3">
                   <span
@@ -61,10 +65,7 @@ const FollowUpPrompts = () => {
                       {job.role}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      Applied{" "}
-                      {formatDistanceToNow(new Date(job.appliedAt as Date), {
-                        addSuffix: true,
-                      })}
+                      Applied {formatRelativeDate(job.appliedAt)}
                     </p>
                   </div>
                 </div>
@@ -74,7 +75,10 @@ const FollowUpPrompts = () => {
                   variant="ghost"
                   className="self-start sm:self-auto"
                 >
-                  <Link to={job.id ? `/jobs/${job.id}` : "/jobs"}>
+                  <Link
+                    to={`/jobs/${job.jobId}`}
+                    aria-label={`Review ${job.role} at ${job.company}`}
+                  >
                     Review application
                     <ArrowRight aria-hidden="true" className="h-4 w-4" />
                   </Link>
@@ -89,14 +93,15 @@ const FollowUpPrompts = () => {
               className="h-5 w-5 shrink-0 text-muted-foreground"
             />
             <p className="text-sm text-muted-foreground">
-              No applications need a follow-up right now.
+              No applications need follow-up.
             </p>
           </div>
         )}
-        {followUps.length > MAX_PROMPTS && (
-          <Button asChild variant="link" className="mt-2 px-3">
-            <Link to="/jobs">View all {followUps.length} applications</Link>
-          </Button>
+        {followUps.total > followUps.items.length && (
+          <p className="mt-3 px-3 text-sm text-muted-foreground">
+            Showing {followUps.items.length} of {followUps.total} applications
+            needing follow-up.
+          </p>
         )}
       </CardContent>
     </Card>

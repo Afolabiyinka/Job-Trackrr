@@ -4,6 +4,7 @@ import useToastMessage from "@/shared/lib/toastMsg";
 import { editJob } from "../services/job.request";
 import { queryClient } from "@/shared/api/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useEditJobs = () => {
   const { toastError, toastSuccess } = useToastMessage();
@@ -16,10 +17,13 @@ export const useEditJobs = () => {
       toastSuccess(data.message);
 
       queryClient.invalidateQueries({
-        queryKey: ["job"],
+        queryKey: queryKeys.job.all,
       });
       queryClient.invalidateQueries({
-        queryKey: ["jobs"],
+        queryKey: queryKeys.jobs.all,
+      });
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.dashboard,
       });
     },
 

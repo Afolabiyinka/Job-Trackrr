@@ -6,6 +6,7 @@ import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/api/queryClient";
 import { getErrorMessage } from "@/shared/lib/errorMsg";
+import { queryKeys } from "@/shared/queryKeys";
 export const useLogin = () => {
   const [loginData, setLoginData] = React.useState<LoginPayload>({
     email: "",
@@ -19,7 +20,7 @@ export const useLogin = () => {
     mutationFn: (payload: LoginPayload) => login(payload),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["user"],
+        queryKey: queryKeys.user,
       });
       toastSuccess(data);
       navigate("/dashboard");

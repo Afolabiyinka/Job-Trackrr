@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { signup } from "../services/auth.request";
 import { queryClient } from "@/shared/api/queryClient";
+import { queryKeys } from "@/shared/queryKeys";
 
 export const useSignup = () => {
   const [signupData, setSignUpData] = React.useState<SignupPayload>({
@@ -21,7 +22,7 @@ export const useSignup = () => {
     mutationFn: (payload: SignupPayload) => signup(payload),
     onSuccess: (data) => {
       queryClient.invalidateQueries({
-        queryKey: ["user"],
+        queryKey: queryKeys.user,
       });
       toastSuccess(data.message);
       navigate("/onboarding");
