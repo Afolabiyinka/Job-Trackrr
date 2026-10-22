@@ -2,11 +2,17 @@ import { motion } from "framer-motion";
 
 type Props = {
   score: number;
+  radius?: number;
+  strokeWidth?: number;
+  textSize?: string;
 };
 
-const ScoreCircle = ({ score }: Props) => {
-  const radius = 25;
-  const strokeWidth = 5;
+const ScoreCircle = ({
+  score,
+  radius = 25,
+  strokeWidth = 5,
+  textSize,
+}: Props) => {
   const normalizedRadius = radius - strokeWidth / 2;
 
   const circumference = 2 * Math.PI * normalizedRadius;
@@ -24,6 +30,7 @@ const ScoreCircle = ({ score }: Props) => {
         <svg height={radius * 2} width={radius * 2}>
           <circle
             stroke="#e5e7eb"
+            className="dark:stroke-neutral-800"
             fill="transparent"
             strokeWidth={strokeWidth}
             r={normalizedRadius}
@@ -48,7 +55,13 @@ const ScoreCircle = ({ score }: Props) => {
         </svg>
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className={`font-bold ${getColor()}`}>{score}</span>
+          <span
+            className={`font-bold ${getColor()} ${
+              textSize || (radius > 35 ? "text-2xl font-extrabold" : "text-base")
+            }`}
+          >
+            {score}
+          </span>
         </div>
       </div>
     </div>

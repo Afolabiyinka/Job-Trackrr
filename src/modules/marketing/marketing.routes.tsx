@@ -6,6 +6,9 @@ const Testimonials = lazy(
   () => import("@/modules/marketing/pages/Testimonials"),
 );
 const Features = lazy(() => import("@/modules/marketing/pages/Features"));
+const AiResumeAnalysis = lazy(
+  () => import("@/modules/marketing/pages/AiResumeAnalysis"),
+);
 const HowItWorks = lazy(() => import("@/modules/marketing/pages/How-It-works"));
 const About = lazy(() => import("@/modules/marketing/pages/About"));
 const JobSearchTips = lazy(
@@ -40,6 +43,11 @@ const marketingRoutes: RouteObject[] = [
     path: "features",
     Component: Features,
     handle: { title: "Features" },
+  },
+  {
+    path: "ai-resume-analysis",
+    Component: AiResumeAnalysis,
+    handle: { title: "AI Resume Analysis" },
   },
   {
     path: "about",

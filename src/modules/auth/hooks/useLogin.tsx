@@ -5,6 +5,7 @@ import { login } from "../services/auth.request";
 import useToastMessage from "@/shared/lib/toastMsg";
 import { useNavigate } from "react-router-dom";
 import { queryClient } from "@/shared/api/queryClient";
+import { getErrorMessage } from "@/shared/lib/errorMsg";
 export const useLogin = () => {
   const [loginData, setLoginData] = React.useState<LoginPayload>({
     email: "",
@@ -24,8 +25,7 @@ export const useLogin = () => {
       navigate("/dashboard");
     },
     onError: (err) => {
-      console.log(err);
-      toastError(err.message);
+      toastError(getErrorMessage(err.message));
     },
   });
 

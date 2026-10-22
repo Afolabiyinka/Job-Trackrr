@@ -1,5 +1,6 @@
 import { useUser } from "../settings/store/useUser";
 import SearchInput from "../search/components/SearchInput";
+import DashboardNotifications from "./DashboardNotifications";
 const Greeting = () => {
   const { user } = useUser();
 
@@ -16,6 +17,7 @@ const Greeting = () => {
         )}
       </h1>
       <div className="lg:flex gap-3 items-center hidden">
+        <DashboardNotifications />
         <SearchInput />
       </div>
     </div>

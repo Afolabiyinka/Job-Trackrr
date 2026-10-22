@@ -1,11 +1,16 @@
 import ContactsStatsCard from "../components/ContactsStatsCard";
 import StatsCard from "../components/stats/StatsCard";
-import InterviewRemindersCard from "../components/InterviewRemindersCard";
+import FollowUpPrompts from "../components/FollowUpPrompts";
 import { useGetJobs } from "../../jobs/hooks/useGetJobs";
 import NoJobs from "../../jobs/pages/empty/NoJobs";
+import DashboardLoader from "../../loading-screens/DashboardLoader";
 
 const DashBoard = () => {
-  const { data } = useGetJobs();
+  const { data, loading } = useGetJobs();
+
+  if (loading) {
+    return <DashboardLoader />;
+  }
 
   if (data?.data.length === 0) {
     return <NoJobs />;
@@ -16,9 +21,8 @@ const DashBoard = () => {
       <div className="w-full h-full">
         <StatsCard />
       </div>
-      <section className="grid md:grid-cols-1 w-full gap-6  h-full">
-        <InterviewRemindersCard />
-        {/* <GoalsStatsCard /> */}
+      <section className="grid w-full gap-6">
+        <FollowUpPrompts />
         <ContactsStatsCard />
       </section>
     </div>

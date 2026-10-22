@@ -10,6 +10,7 @@ import Logo from "@/components/logo/Logo";
 import SearchInput from "../search/components/SearchInput";
 import Settings from "../settings/pages/Settings";
 import SpinningLoader from "@/components/loader/spinningloader";
+import DashboardNotifications from "./DashboardNotifications";
 
 const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -19,6 +20,7 @@ const MobileNav = () => {
       <span className="flex justify-between relative w-full items-center">
         <Logo />
         <div className="flex gap-2 items-center">
+          <DashboardNotifications />
           <SearchInput />
           <MenuButton open={open} onClick={() => setOpen(!open)} />
         </div>
