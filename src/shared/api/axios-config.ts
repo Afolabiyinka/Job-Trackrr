@@ -1,8 +1,8 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from "axios";
-import { testingEndpoint } from "./api-data";
+import { prodEndpoint, } from "./api-data";
 
 export const apiClient = axios.create({
-   baseURL: testingEndpoint,
+   baseURL: prodEndpoint,
    headers: { Accept: "application/json" },
    withCredentials: true,
 });

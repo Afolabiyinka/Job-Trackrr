@@ -6,7 +6,7 @@ import Logo from "@/components/logo/Logo";
 
 const NavBar = () => {
   return (
-    <div className="p-2 w-full lg:flex justify-center items-center px-16 hidden fixed  z-50 bg-white dark:bg-[#141414]">
+    <div className="p-2 w-full lg:flex justify-center items-center px-16 hidden fixed  z-50 bg-background">
       <div className="flex lg:flex justify-around items-center  p-2.5 w-full rounded-full">
         <Logo linkTo="/" />
         <span className="flex gap-10">

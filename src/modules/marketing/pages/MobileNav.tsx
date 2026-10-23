@@ -11,7 +11,7 @@ const MobileNav = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="p-2 flex flex-col justify-between fixed  z-50 w-full bg-white dark:bg-[#141414]">
+    <div className="p-2 flex flex-col justify-between fixed  z-50 w-full bg-background">
       <span className="flex justify-between relative w-full  rounded-full p-2 px-3 items-center ">
         <Logo linkTo="/" />
         <Link to={`/login`}>
