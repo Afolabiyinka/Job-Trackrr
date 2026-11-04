@@ -9,6 +9,11 @@ import ListView from "./views/list-view";
 import { useState } from "react";
 import { JobsPageSkeleton } from "../../MainPgeSkeleton";
 import ErrorPage from "../../loading-screens/ErrorRefetch";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type JobView = "card" | "table" | "list";
 
@@ -63,7 +68,7 @@ const Jobs = () => {
     <div className="h-full w-full flex flex-col gap-5 p-2">
       <div className="flex justify-between md:items-center flex-col md:flex-row w-full items-start gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">
+          <h1 className="text-2xl font-semibold font-heading tracking-tight">
             Job Applications
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -79,20 +84,17 @@ const Jobs = () => {
       </div>
 
       <Tabs value={currentView} onValueChange={handleViewChange}>
-        <TabsList className="space-x-4">
+        <TabsList className="space-x-2 border rounded-full">
           {jobViews.map(({ value, label, icon: Icon }) => (
             <TabsTrigger key={value} value={value} className="group px-4">
-              <Icon className="h-4 w-4 shrink-0" />
-              <span
-                className="
-      max-w-0 overflow-hidden opacity-0 whitespace-nowrap
-      transition-all duration-700 ease-in-out
-      group-data-[state=active]:max-w-24 group-data-[state=active]:opacity-100 group-data-[state=active]:ml-1.5
-      md:max-w-none md:opacity-100 md:ml-1.5
-    "
-              >
-                {label}
-              </span>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Icon className="h-5 w-5 shrink-0" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{label}</p>
+                </TooltipContent>
+              </Tooltip>
             </TabsTrigger>
           ))}
         </TabsList>

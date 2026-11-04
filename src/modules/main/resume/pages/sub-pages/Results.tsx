@@ -58,15 +58,15 @@ const Results = () => {
     );
   }
 
-  const strengths = analysis?.suggestions.strengths || [];
-  const weaknesses = analysis?.suggestions.weaknesses || [];
-  const improvements = analysis?.suggestions.improvements || [];
+  const strengths = analysis?.suggestions.data.strengths || [];
+  const weaknesses = analysis?.suggestions.data.weaknesses || [];
+  const improvements = analysis?.suggestions.data.improvements || [];
   return (
     <div>
       <div className="p-3 flex justify-start md:justify-between items-center flex-col md:flex-row gap-3">
         <span className=" flex items-center gap-3 shadow border p-2 px-4 rounded-full">
-          <ScoreCircle score={analysis?.suggestions.score || 0} />
-          <p className="text-2xl  tracking-tight">Resume score</p>
+          <ScoreCircle score={analysis?.suggestions.data.score || 0} />
+          <p className="text-2xl  tracking-tight font-heading">Resume score</p>
         </span>
         <span className="flex items-center gap-2">
           <Button onClick={() => navigate("/resume?new=true")} size={`lg`}>

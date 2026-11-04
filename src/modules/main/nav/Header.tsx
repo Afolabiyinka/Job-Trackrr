@@ -25,7 +25,7 @@ const Header = () => {
             duration: shouldReduceMotion ? 0.2 : 0.7,
             ease: "easeInOut",
           }}
-          className="text-lg font-heading tracking-wide md:text-center"
+          className="text-2xl font-semibold font-heading tracking-wide md:text-center"
         >
           {jobMotivations[index]}
         </motion.h1>

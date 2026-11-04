@@ -1,19 +1,19 @@
-import {
-  BarChart3,
-  BriefcaseBusiness,
-  CalendarClock,
-  File,
-  HouseIcon,
-  Users,
-} from "lucide-react";
+// import {
+//   BriefcaseBusiness,
+//   CalendarClock,
+//   File,
+//   HouseIcon,
+//   Users,
+// } from "lucide-react";
+
+import { BriefcaseIcon, CalendarIcon, FileIcon, HouseIcon, UsersIcon } from "@phosphor-icons/react";
 
 const NAVLINKS = [
   { name: "Dashboard", icon: HouseIcon, path: "dashboard" },
-  { name: "Jobs", icon: BriefcaseBusiness, path: "jobs" },
-  { name: "Interviews", icon: CalendarClock, path: "interviews" },
-  { name: "Contacts", icon: Users, path: "contacts" },
-  { name: "Resume", icon: File, path: "resume" },
-  { name: "Analytics", icon: BarChart3, path: "analytics" },
+  { name: "Jobs", icon: BriefcaseIcon, path: "jobs" },
+  { name: "Interviews", icon: CalendarIcon, path: "interviews" },
+  { name: "Contacts", icon: UsersIcon, path: "contacts" },
+  { name: "Resume", icon: FileIcon, path: "resume" },
 ];
 
 export { NAVLINKS };
