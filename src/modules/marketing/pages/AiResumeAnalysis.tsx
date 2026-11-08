@@ -5,21 +5,21 @@ import { Button } from "@/components/ui/button";
 
 const insights = [
   {
-    title: "What's working",
+    title: "Your strengths",
     description:
-      "We point out the bullets and skills that already land with recruiters.",
+      "See which achievements, skills, and sections are already working well.",
     icon: CheckCircle,
   },
   {
-    title: "What's holding you back",
+    title: "Areas to improve",
     description:
-      "Vague bullets, missing numbers, and sections that get skimmed past.",
+      "Spot vague phrasing, missing impact, and details that could be clearer.",
     icon: AlertTriangle,
   },
   {
-    title: "How to fix it",
+    title: "Practical suggestions",
     description:
-      "Line-by-line rewrites you can paste straight into your resume.",
+      "Get focused recommendations to make your experience easier to understand.",
     icon: Wrench,
   },
 ];
@@ -35,7 +35,7 @@ const AiResumeAnalysis = () => (
           transition={{ duration: 0.5 }}
           className="font-heading text-4xl font-extrabold leading-tight md:text-6xl"
         >
-          Does your resume say what you actually did?{" "}
+          Make your resume work harder
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 30 }}
@@ -44,12 +44,12 @@ const AiResumeAnalysis = () => (
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-lg leading-relaxed text-muted-foreground md:text-xl"
         >
-          Upload it and get a score, plus the exact lines to fix before you
-          apply.
+          Get a clear score and useful feedback to help strengthen your next
+          application.
         </motion.p>
       </div>
 
-      <div className="flex flex-col w-full gap-10 md:gap-8 max-w-2xl">
+      <div className="grid w-full gap-10 md:grid-cols-3 md:gap-8">
         {insights.map(({ title, description, icon: Icon }, index) => (
           <motion.div
             key={title}
@@ -57,14 +57,16 @@ const AiResumeAnalysis = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: index * 0.1 }}
-            className="flex items-center gap-4 text-center border p-2 rounded-2xl bg-muted"
+            className="flex flex-col items-center gap-4 text-center"
           >
             <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <Icon aria-hidden="true" className="h-6 w-6" />
             </span>
-            <div className="w-full flex items-start justify-start flex-col">
+            <div className="space-y-2">
               <h3 className="font-heading text-xl font-bold">{title}</h3>
-              <p className="text-sm text-muted-foreground">{description}</p>
+              <p className="leading-relaxed text-muted-foreground">
+                {description}
+              </p>
             </div>
           </motion.div>
         ))}
@@ -72,7 +74,8 @@ const AiResumeAnalysis = () => (
 
       <Link to="/signup">
         <Button size="lg" className="gap-2">
-          Score my resume <ArrowRight aria-hidden="true" className="h-4 w-4" />
+          Analyze your resume
+          <ArrowRight aria-hidden="true" className="h-4 w-4" />
         </Button>
       </Link>
     </div>

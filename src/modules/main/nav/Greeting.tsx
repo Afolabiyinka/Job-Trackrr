@@ -7,9 +7,11 @@ const Greeting = () => {
   return (
     <div className="w-full flex flex-col md:flex-row gap-5 md:items-center  justify-between">
       <h1 className="text-lg md:text-xl flex md:items-center gap-2">
-        Goodluck,
+        Welcome back,
         {user ? (
-          <span className="truncate  max-w-32.5">{user.username} 👋</span>
+          <span className="truncate font-semibold  max-w-32.5">
+            {user.username} 👋
+          </span>
         ) : (
           <p>Guest</p>
         )}

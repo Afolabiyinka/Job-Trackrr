@@ -1,51 +1,104 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { AlertTriangle, Palette, Shield, UserRound } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ChangeTheme from "../components/ChangeTheme";
+import DeleteAccount from "../components/DeleteAccount";
+import EditInfo from "../components/EditInfo";
+import { useIsMobile } from "@/shared/hooks/useMobile";
+import {
+  User,
+  Palette,
+  Shield,
+  AlertTriangle,
+  SettingsIcon,
+} from "lucide-react";
+import FeatureInDevelopment from "@/modules/system-pages/ComingSoon";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
-const settingsSections = [
-  { label: "Theme", path: "theme", icon: Palette },
-  { label: "Account", path: "account", icon: UserRound },
-  { label: "Security", path: "security", icon: Shield },
-  { label: "Danger Zone", path: "danger", icon: AlertTriangle },
-];
+const settingsTabs = [
+  { value: "theme", label: "Theme", icon: Palette, content: <ChangeTheme /> },
+  { value: "account", label: "Account", icon: User, content: <EditInfo /> },
+  {
+    value: "security",
+    label: "Security",
+    icon: Shield,
+    content: <FeatureInDevelopment />,
+  },
+  {
+    value: "danger",
+    label: "Danger Zone",
+    icon: AlertTriangle,
+    content: <DeleteAccount />,
+  },
+] as const;
 
 const Settings = () => {
+  const isMobile = useIsMobile(738);
+
   return (
-    <section className="mx-auto flex w-full max-w-6xl flex-col gap-6">
-      <header className="space-y-2">
-        <h1 className="text-2xl font-semibold">Settings</h1>
-        <p className="text-sm text-muted-foreground">
-          Manage your profile, appearance, and account.
-        </p>
-      </header>
+    <Dialog>
+      <DialogTrigger className="flex gap-2 items-center p-3 rounded-3xl hover:bg-muted transition cursor-pointer">
+        <SettingsIcon className="h-4.5 w-4.5" />
+        <span>Settings</span>
+      </DialogTrigger>
 
-      <div className="flex min-w-0 flex-col gap-6 md:flex-row">
-        <nav
-          aria-label="Settings sections"
-          className="flex shrink-0 gap-2 overflow-x-auto pb-1 md:w-56 md:flex-col md:overflow-visible md:pb-0"
+      <DialogContent className="sm:max-w-5xl h-[80vh] max-h-[80vh] flex flex-col overflow-hidden">
+        <DialogHeader>
+          <DialogTitle className="text-2xl">Settings</DialogTitle>
+          <DialogDescription>
+            Manage your account settings and preferences.
+          </DialogDescription>
+        </DialogHeader>
+        <Tabs
+          defaultValue={settingsTabs[0].value}
+          orientation={isMobile ? "horizontal" : "vertical"}
+          className={`flex w-full h-full min-h-0 ${isMobile ? "flex-col" : "flex-row"}`}
         >
-          {settingsSections.map(({ label, path, icon: Icon }) => (
-            <NavLink
-              key={path}
-              to={`/settings/${path}`}
-              className={({ isActive }) =>
-                `flex shrink-0 items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                  isActive
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }`
+          <TabsList
+            className={`
+              shrink-0
+              ${
+                isMobile
+                  ? "flex w-full overflow-x-auto gap-1 p-2"
+                  : "flex flex-col h-full items-stretch gap-1 p-2 w-52"
               }
-            >
-              <Icon className="h-4 w-4 shrink-0" />
-              {label}
-            </NavLink>
-          ))}
-        </nav>
+            `}
+          >
+            {settingsTabs.map(({ value, label, icon: Icon }) => (
+              <TabsTrigger
+                key={value}
+                value={value}
+                className={`
+                  flex items-center gap-2.5 px-3 py-2 text-sm
+                  ${isMobile ? "shrink-0" : "w-full justify-start"}
+                `}
+              >
+                <Icon className="h-4 w-4 shrink-0" />
+                <span className={isMobile ? "hidden" : "block"}>{label}</span>
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        <div className="min-w-0 flex-1">
-          <Outlet />
-        </div>
-      </div>
-    </section>
+          <div className="flex-1 min-h-0 overflow-y-auto md:p-6">
+            {settingsTabs.map(({ value, content }) => (
+              <TabsContent
+                key={value}
+                value={value}
+                forceMount
+                className="mt-0 h-full data-[state=inactive]:hidden"
+              >
+                {content}
+              </TabsContent>
+            ))}
+          </div>
+        </Tabs>
+      </DialogContent>
+    </Dialog>
   );
 };
 

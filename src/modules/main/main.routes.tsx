@@ -1,5 +1,4 @@
 import { lazy } from "react";
-import { Navigate } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
 
 // Lazy loading the   main pages
@@ -9,15 +8,6 @@ const Dashboard = lazy(
 const Jobs = lazy(() => import("@/modules/main/jobs/pages/Jobs"));
 const JobPage = lazy(() => import("@/modules/main/jobs/pages/JobPage"));
 const Settings = lazy(() => import("@/modules/main/settings/pages/Settings"));
-const ThemeSettings = lazy(
-  () => import("@/modules/main/settings/components/ChangeTheme"),
-);
-const AccountSettings = lazy(
-  () => import("@/modules/main/settings/components/EditInfo"),
-);
-const DangerSettings = lazy(
-  () => import("@/modules/main/settings/components/DeleteAccount"),
-);
 const Resume = lazy(() => import("@/modules/main/resume/pages/Resume"));
 const Results = lazy(
   () => import("@/modules/main/resume/pages/sub-pages/Results"),
@@ -81,34 +71,8 @@ const mainRoutes: RouteObject[] = [
   },
   {
     path: "settings",
-    handle: { title: "Settings" },
     Component: Settings,
-    children: [
-      {
-        index: true,
-        element: <Navigate to="theme" replace />,
-      },
-      {
-        path: "theme",
-        Component: ThemeSettings,
-        handle: { title: "Theme settings" },
-      },
-      {
-        path: "account",
-        Component: AccountSettings,
-        handle: { title: "Account settings" },
-      },
-      {
-        path: "security",
-        Component: FeatureInDevelopment,
-        handle: { title: "Security settings" },
-      },
-      {
-        path: "danger",
-        Component: DangerSettings,
-        handle: { title: "Danger zone" },
-      },
-    ],
+    handle: { title: "Settings" },
   },
   {
     path: "goals",
