@@ -3,122 +3,79 @@ import styled from "styled-components";
 const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="dot-spinner">
-        <div className="dot-spinner__dot" />
-        <div className="dot-spinner__dot" />
-        <div className="dot-spinner__dot" />
-        <div className="dot-spinner__dot" />
-        <div className="dot-spinner__dot" />
-        <div className="dot-spinner__dot" />
-        <div className="dot-spinner__dot" />
-        <div className="dot-spinner__dot" />
-      </div>
+      <div className="loader" />
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .dot-spinner {
-    --uib-size: 2.8rem;
-    --uib-speed: 0.9s;
-    --uib-color: #284008;
+  .loader {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: var(--uib-size);
-    width: var(--uib-size);
+    width: 120px;
+    height: 90px;
+    margin: 0 auto;
   }
 
-  .dot-spinner__dot {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    height: 100%;
-    width: 100%;
-  }
-
-  .dot-spinner__dot::before {
+  .loader:before {
     content: "";
-    height: 20%;
-    width: 20%;
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
-    background-color: var(--uib-color);
-    transform: scale(0);
-    opacity: 0.5;
-    animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
-    box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+    background: #2a9d8f;
+    animation: loading-bounce 0.5s ease-in-out infinite alternate;
   }
 
-  .dot-spinner__dot:nth-child(2) {
-    transform: rotate(45deg);
+  .loader:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 7px;
+    width: 45px;
+    border-radius: 4px;
+    box-shadow:
+      0 5px 0 #f2f2f2,
+      -35px 50px 0 #f2f2f2,
+      -70px 95px 0 #f2f2f2;
+    animation: loading-step 1s ease-in-out infinite;
   }
 
-  .dot-spinner__dot:nth-child(2)::before {
-    animation-delay: calc(var(--uib-speed) * -0.875);
-  }
-
-  .dot-spinner__dot:nth-child(3) {
-    transform: rotate(90deg);
-  }
-
-  .dot-spinner__dot:nth-child(3)::before {
-    animation-delay: calc(var(--uib-speed) * -0.75);
-  }
-
-  .dot-spinner__dot:nth-child(4) {
-    transform: rotate(135deg);
-  }
-
-  .dot-spinner__dot:nth-child(4)::before {
-    animation-delay: calc(var(--uib-speed) * -0.625);
-  }
-
-  .dot-spinner__dot:nth-child(5) {
-    transform: rotate(180deg);
-  }
-
-  .dot-spinner__dot:nth-child(5)::before {
-    animation-delay: calc(var(--uib-speed) * -0.5);
-  }
-
-  .dot-spinner__dot:nth-child(6) {
-    transform: rotate(225deg);
-  }
-
-  .dot-spinner__dot:nth-child(6)::before {
-    animation-delay: calc(var(--uib-speed) * -0.375);
-  }
-
-  .dot-spinner__dot:nth-child(7) {
-    transform: rotate(270deg);
-  }
-
-  .dot-spinner__dot:nth-child(7)::before {
-    animation-delay: calc(var(--uib-speed) * -0.25);
-  }
-
-  .dot-spinner__dot:nth-child(8) {
-    transform: rotate(315deg);
-  }
-
-  .dot-spinner__dot:nth-child(8)::before {
-    animation-delay: calc(var(--uib-speed) * -0.125);
-  }
-
-  @keyframes pulse0112 {
-    0%,
-    100% {
-      transform: scale(0);
-      opacity: 0.5;
+  @keyframes loading-bounce {
+    0% {
+      transform: scale(1, 0.7);
     }
 
-    50% {
-      transform: scale(1);
-      opacity: 1;
+    40% {
+      transform: scale(0.8, 1.2);
+    }
+
+    60% {
+      transform: scale(1, 1);
+    }
+
+    100% {
+      bottom: 140px;
+    }
+  }
+
+  @keyframes loading-step {
+    0% {
+      box-shadow:
+        0 10px 0 rgba(0, 0, 0, 0),
+        0 10px 0 #f2f2f2,
+        -35px 50px 0 #f2f2f2,
+        -70px 90px 0 #f2f2f2;
+    }
+
+    100% {
+      box-shadow:
+        0 10px 0 #f2f2f2,
+        -35px 50px 0 #f2f2f2,
+        -70px 90px 0 #f2f2f2,
+        -70px 90px 0 rgba(0, 0, 0, 0);
     }
   }
 `;
