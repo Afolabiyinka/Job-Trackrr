@@ -67,7 +67,7 @@ const MainLayout = () => {
         {networkError ? (
           <ErrorPage />
         ) : (
-          <main className="w-full lg:w-[80%] gap-2 flex flex-col">
+          <main className="w-full h-full lg:w-[80%] gap-2 flex flex-col">
             {!isSettingsRoute && (
               <span className="w-full">
                 <Header />
@@ -75,7 +75,7 @@ const MainLayout = () => {
               </span>
             )}
 
-            <motion.div className="w-full p-1 md:p-4 rounded-xl">
+            <motion.div className="w-full p-1 md:p-4 rounded-xl h-full">
               <Outlet />
             </motion.div>
           </main>

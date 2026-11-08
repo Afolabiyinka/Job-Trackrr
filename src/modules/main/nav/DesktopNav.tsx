@@ -76,14 +76,6 @@ const DesktopNav = () => {
             <Tooltip>
               <TooltipTrigger asChild>
                 <DropdownMenuTrigger asChild>
-                  {/* <button
-                    aria-label="Account"
-                    className="flex size-12 items-center justify-center rounded-full transition hover:bg-muted active:scale-95"
-                  >
-                    <span className="flex size-8 items-center justify-center rounded-full bg-muted text-sm font-medium uppercase">
-                      {user?.username?.[0] ?? <UserRound className="size-4" />}
-                    </span>
-                  </button> */}
                   <Avatar size="lg">
                     <AvatarImage></AvatarImage>
                     <AvatarFallback>
@@ -99,7 +91,7 @@ const DesktopNav = () => {
               side="right"
               align="end"
               sideOffset={12}
-              className="min-w-44"
+              className="min-w-44 p-2"
             >
               <DropdownMenuItem asChild>
                 <NavLink to="/settings">
