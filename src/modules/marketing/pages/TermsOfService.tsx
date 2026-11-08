@@ -95,7 +95,7 @@ export default function TermsOfService() {
     <main className="min-h-screen">
       <div className="mx-auto max-w-3xl px-6 py-16 sm:py-20">
         <Logo linkTo="/" />
-        <h1 className="mt-2 text-3xl sm:text-4xl font-semibold">
+        <h1 className="mt-2 text-3xl sm:text-4xl font-semibold text-white">
           Terms of Service
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
