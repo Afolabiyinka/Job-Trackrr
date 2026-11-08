@@ -1,10 +1,13 @@
 export interface AnalysisType {
   suggestions: {
-    score: number;
-    success: boolean,
-    message: string,
+        message: string,
+      success: boolean,
+    data: {
+          score: number;
+
     strengths: String[];
     weaknesses: String[];
     improvements: String[];
+    }
   }
 }

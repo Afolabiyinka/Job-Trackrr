@@ -23,9 +23,7 @@ import { useGetJob } from "../hooks/useGetJob";
 import ErrorPage from "../../loading-screens/ErrorRefetch";
 
 const statusLabel = (status: string | null) =>
-  status
-    ? status.charAt(0).toUpperCase() + status.slice(1)
-    : "Status not set";
+  status ? status.charAt(0).toUpperCase() + status.slice(1) : "Status not set";
 
 const DetailItem = ({
   icon: Icon,

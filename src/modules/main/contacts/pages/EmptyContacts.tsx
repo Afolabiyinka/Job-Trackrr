@@ -20,7 +20,7 @@ const itemVariants: Variants = {
 
 const EmptyContacts = () => {
   return (
-    <div className="flex max-h-screen md:h-full flex-col-reverse md:flex-row overflow-hidden bg-muted/50 rounded-xl">
+    <div className="flex max-h-screen md:h-full flex-col-reverse md:flex-row overflow-hidden  rounded-xl">
       {/* Illustration panel */}
       <motion.div
         className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
