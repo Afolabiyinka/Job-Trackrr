@@ -1,71 +1,118 @@
-import { Button } from "@/components/ui/button";
-import { LogOut } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { NAVLINKS } from "./utils/nav";
 import { useLogout } from "../../auth/hooks/useLogout";
 import Logo from "@/components/logo/Logo";
-import Settings from "../settings/pages/Settings";
 import SpinningLoader from "@/components/loader/spinningloader";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { LogOut, Settings as SettingsIcon, UserRound } from "lucide-react";
+import { useUser } from "../settings/store/useUser";
+import { cn } from "@/shared/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const DesktopNav = () => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const { logoutLoading, logoutMutate } = useLogout();
+  const { user } = useUser();
 
   return (
-    <nav className="h-full w-full lg:flex hidden flex-col gap-6 p-3">
-      <Logo />
-      <hr />
+    <TooltipProvider delayDuration={100}>
+      <nav className="hidden lg:flex h-full w-18 flex-col items-center gap-2 border-r bg-background py-4">
+        <div className="mb-3 flex size-12 items-center justify-center rounded-full transition hover:bg-muted">
+          <Logo collapsed />
+        </div>
 
-      <div className="flex flex-col gap-4 w-full">
-        {NAVLINKS.map(({ icon: Icon, name, path }, i) => {
-          const isActive = location.pathname.includes(path);
-          return (
-            <div key={i} className="relative flex items-center gap-2">
-              <motion.div whileTap={{ scale: 0.95 }} className="flex-1">
-                <NavLink
-                  to={path}
-                  className={`flex gap-2 items-center rounded-xl px-3 py-3 text-md transition w-full ${
-                    isActive ? "bg-primary/80 text-white" : "hover:bg-muted"
-                  }`}
-                >
-                  <Icon className="h-4.5 w-4.5 stroke-[1.5px]" />
-                  <p>{name}</p>
+        <div className="flex flex-col items-center gap-5">
+          {NAVLINKS.map(({ icon: Icon, name, path }) => {
+            const isActive = pathname.includes(path);
+            return (
+              <Tooltip key={path}>
+                <TooltipTrigger asChild>
+                  <NavLink
+                    to={path}
+                    aria-label={name}
+                    className="relative flex size-12 items-center justify-center rounded-xl transition hover:bg-muted active:scale-95"
+                  >
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 rounded-xl bg-primary/70"
+                        transition={{
+                          type: "spring",
+                          stiffness: 350,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                    <Icon
+                      weight={isActive ? "fill" : "regular"}
+                      className={cn(
+                        "relative size-6 stroke-[1.75px]",
+                        isActive && "text-background",
+                      )}
+                    />
+                  </NavLink>
+                </TooltipTrigger>
+                <TooltipContent side="right">{name}</TooltipContent>
+              </Tooltip>
+            );
+          })}
+        </div>
+
+        <div className="mt-auto">
+          <DropdownMenu>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <DropdownMenuTrigger asChild>
+                  <Avatar size="lg">
+                    <AvatarImage></AvatarImage>
+                    <AvatarFallback>
+                      {user?.username?.[0] ?? <UserRound className="size-4" />}
+                    </AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+              </TooltipTrigger>
+              <TooltipContent side="right">{user?.username}</TooltipContent>
+            </Tooltip>
+
+            <DropdownMenuContent
+              side="right"
+              align="end"
+              sideOffset={12}
+              className="min-w-44 p-2"
+            >
+              <DropdownMenuItem asChild>
+                <NavLink to="/settings">
+                  <SettingsIcon />
+                  Settings
                 </NavLink>
-              </motion.div>
-
-              {isActive && (
-                <motion.div
-                  layoutId="active-indicator"
-                  className="absolute -right-3 h-full w-1 bg-primary rounded-full"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="mt-auto flex flex-col gap-3 border-t pt-4">
-        <Settings />
-        <Button
-          className="relative justify-start gap-3"
-          size="lg"
-          variant="destructive"
-          onClick={() => logoutMutate()}
-          disabled={logoutLoading}
-        >
-          {logoutLoading && <SpinningLoader />}
-
-          <span
-            className={logoutLoading ? "opacity-0" : "flex items-center gap-3"}
-          >
-            <LogOut className="h-4.5 w-4.5" />
-            Logout
-          </span>
-        </Button>
-      </div>
-    </nav>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                variant="destructive"
+                onSelect={() => logoutMutate()}
+                disabled={logoutLoading}
+              >
+                {logoutLoading ? <SpinningLoader /> : <LogOut />}
+                {logoutLoading ? "Logging out..." : "Logout"}
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </nav>
+    </TooltipProvider>
   );
 };
 

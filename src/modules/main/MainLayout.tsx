@@ -1,4 +1,4 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import NavLayout from "./nav/NavLayout";
 import Greeting from "@/modules/main/nav/Greeting";
 import Header from "@/modules/main/nav/Header";
@@ -12,6 +12,9 @@ import ErrorPage from "./loading-screens/ErrorRefetch";
 
 const MainLayout = () => {
   const [networkError, setNetwork] = useState(!navigator.onLine);
+  const { pathname } = useLocation();
+  const isSettingsRoute =
+    pathname === "/settings" || pathname.startsWith("/settings/");
 
   const { user, isAuthResolved } = useUser();
   const { data } = useGetJobs();
@@ -56,21 +59,23 @@ const MainLayout = () => {
 
   return (
     <div className="flex flex-col lg:flex-row h-screen p-2">
-      <aside className="lg:w-80">
+      <aside>
         <NavLayout />
       </aside>
 
-      <div className="w-full gap-2 flex flex-col md:p-4 p-2 overflow-y-scroll ">
+      <div className="flex-1 min-h-0 min-w-0 flex flex-col items-center md:p-4 p-2 pb-28 lg:pb-4 overflow-y-auto">
         {networkError ? (
           <ErrorPage />
         ) : (
-          <main className="w-full gap-2 flex flex-col h-full">
-            <span className="w-full">
-              <Greeting />
-              <Header />
-            </span>
+          <main className="w-full h-full lg:w-[80%] gap-2 flex flex-col">
+            {!isSettingsRoute && (
+              <span className="w-full">
+                <Header />
+                <Greeting />
+              </span>
+            )}
 
-            <motion.div className="h-full w-full  p-1 md:p-2 rounded-xl">
+            <motion.div className="w-full p-1 md:p-4 rounded-xl h-full">
               <Outlet />
             </motion.div>
           </main>

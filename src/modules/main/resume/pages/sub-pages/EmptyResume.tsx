@@ -20,7 +20,7 @@ const itemVariants: Variants = {
 
 const EmptyResume = () => {
   return (
-    <div className="flex max-h-screen md:h-full flex-col-reverse md:flex-row  overflow-hidden rounded-xl bg-muted/50">
+    <div className="flex max-h-screen md:h-full flex-col-reverse md:flex-row  overflow-hidden rounded-xl">
       <motion.div
         className="w-full md:w-1/2 flex justify-center items-center p-8 md:p-12"
         initial={{ opacity: 0, x: -24 }}
