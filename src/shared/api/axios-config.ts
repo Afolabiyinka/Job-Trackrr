@@ -1,5 +1,5 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from "axios";
-import { prodEndpoint, } from "./api-data";
+import { prodEndpoint } from "./api-data";
 
 export const apiClient = axios.create({
    baseURL: prodEndpoint,
@@ -10,6 +10,8 @@ export const apiClient = axios.create({
 type RetryConfig = InternalAxiosRequestConfig & { _retry?: boolean };
 
 let refreshPromise: Promise<unknown> | null = null;
+
+const PUBLIC_PATHS = ["/", "/login", "/signup"];
 
 apiClient.interceptors.response.use(
    (response) => response,
@@ -34,7 +36,7 @@ apiClient.interceptors.response.use(
          await refreshPromise;
          return apiClient.request(original);
       } catch (refreshError) {
-         if (window.location.pathname !== "/login") {
+         if (!PUBLIC_PATHS.includes(window.location.pathname)) {
             window.location.href = "/login";
          }
          return Promise.reject(refreshError);

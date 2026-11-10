@@ -34,7 +34,7 @@ const LinkedInLoginButton = ({
   return (
     <Button
       className={cn(
-        "w-full h-12 rounded-full font-medium text-sm flex items-center justify-center gap-2 border border-border shadow-xs",
+        "w-full h-10 rounded-full font-medium text-sm flex items-center justify-center gap-2 border border-border",
         className,
       )}
       variant="outline"
