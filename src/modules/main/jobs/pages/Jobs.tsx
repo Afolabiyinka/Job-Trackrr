@@ -84,7 +84,7 @@ const Jobs = () => {
       </div>
 
       <Tabs value={currentView} onValueChange={handleViewChange}>
-        <TabsList className="space-x-2 border rounded-full">
+        <TabsList className="border rounded-full">
           {jobViews.map(({ value, label, icon: Icon }) => (
             <TabsTrigger key={value} value={value} className="group px-4">
               <Tooltip>

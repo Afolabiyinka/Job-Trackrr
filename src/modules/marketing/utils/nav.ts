@@ -1,11 +1,15 @@
-
-import { CheckCircle, Home, Lightbulb, MessagesSquare } from "lucide-react";
+import {
+  HouseIcon,
+  LightbulbIcon,
+  CheckCircleIcon,
+  ChatsIcon,
+} from "@phosphor-icons/react";
 
 const NAVLINKS = [
-  { name: "Home", path: "/", icon: Home },
-  { name: "How it works", path: "/how-it-works", icon: Lightbulb },
-  { name: "Features", path: "/features", icon: CheckCircle },
-  { name: "Reviews", path: "/reviews", icon: MessagesSquare },
+  { name: "Home", path: "/", icon: HouseIcon },
+  { name: "How it works", path: "/how-it-works", icon: LightbulbIcon },
+  { name: "Features", path: "/features", icon: CheckCircleIcon },
+  { name: "Reviews", path: "/reviews", icon: ChatsIcon },
 ];
 
 export { NAVLINKS };
